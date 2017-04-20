@@ -1,3 +1,5 @@
 dataSource - aws KH2102 oracle
 
+jdbc.url=jdbc:oracle:thin:@KH2102.cgvm6pzsrrqf.ap-northeast-2.rds.amazonaws.com:1521:ORCL
 assword: oracle11
+fdsfjsdf
