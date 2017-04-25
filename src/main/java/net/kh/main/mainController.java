@@ -12,7 +12,7 @@ import com.mycom.goods.GoodsModel;
 import com.mycom.goods.GoodsService;
 
 @Controller
-public class mainController {
+public class MainController {
 	
 	@Resource(name="goodsService")
 	private GoodsService goodsService;
