@@ -17,8 +17,6 @@
 	<!-- Oracle jdbc Repository -->
 	<repositories>
 
-
-
 		<repository>
 			<id>mesir-repo</id>
 			<url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url>
