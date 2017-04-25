@@ -16,7 +16,7 @@ public interface MemberDao {
 
 	public Object memberDelete(String email); // µy·Ú
 	
-	
+	//
 }
 
 
