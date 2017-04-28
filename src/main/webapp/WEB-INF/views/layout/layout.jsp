@@ -31,8 +31,7 @@
     <div id="wrap"> 
         
         <tiles:insertAttribute name="header" />
-        <tiles:insertAttribute name="side" />
-        <tiles:insertAttribute name="content" />
+        <tiles:insertAttribute name="body" />
         <tiles:insertAttribute name="footer" />
     </div>
     
