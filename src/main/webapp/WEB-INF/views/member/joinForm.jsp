@@ -32,13 +32,13 @@
 
 
 <!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css" href="css/default.css">
-<link rel="stylesheet" type="text/css" href="css/owl.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/owl.css">
 
 <!-- 공통 JS  -->
-<script src="js/1602931226643913.js" async=""></script>
-<script async="" src="js/fbevents.js"></script>
-<script async="" src="js/analytics.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/1602931226643913.js" async=""></script>
+<script async="" src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
+<script async="" src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
 <script type="text/javascript">
 	function get_version_of_IE () {
 
@@ -73,15 +73,15 @@
 		} 
 	}*/
 	</script>
-<script src="js/jquery-1.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/owl.js"></script>
-<script src="js/masonry.js"></script>
-<script src="js/jquery_002.js"></script>
-<script src="js/imgliquid.js"></script>
-<script src="js/iscroll.js"></script>
-<script src="js/jquery_003.js"></script>
-<script src="js/common.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/owl.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/masonry.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery_002.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/imgliquid.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/iscroll.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery_003.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
 </head>
 
 <body class="pcweb" oncontextmenu="return false"
@@ -92,10 +92,10 @@
 
 
 		<!-- 페이지별 호출 소스 -->
-		<link rel="stylesheet" type="text/css" href="css/user.css">
-		<script src="js/user.js"></script>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user.css">
+		<script src="${pageContext.request.contextPath}/resources/js/user.js"></script>
 
-		<script src="js/check.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/check.js"></script>
 
 		<script>
 	(function($) {
@@ -441,7 +441,7 @@ else {
 	</script>
 
 
-		<script type="text/javascript" src="js/wcslog.js"> </script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/wcslog.js"> </script>
 		<script type="text/javascript"> 
 	if (!wcs_add) var wcs_add={};
 	wcs_add["wa"] = "s_4540c185467c";
