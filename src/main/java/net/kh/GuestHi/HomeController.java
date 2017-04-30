@@ -33,7 +33,7 @@ public class HomeController {
 //		
 //		model.addAttribute("serverTime", formattedDate );
 		
-		return "member/loginForm/join";
+		return "notice/noticeList/nList";
 	}
 	
 }
