@@ -43,10 +43,6 @@
  -->
 
 
-
-
-
-
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -66,7 +62,6 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
 
 
 		<!-- AspectJ -->
@@ -152,21 +147,17 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-
 		<!-- oracle jdbc -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc14</artifactId>
 			<version>10.2.0.4.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
-
-
 		<!-- jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
