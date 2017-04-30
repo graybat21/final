@@ -1,0 +1,552 @@
+@charset "UTF-8";
+
+/* 공통 */
+#headerWrap {border-bottom:1px solid #e62a4a}
+.mweb .page_navi {display:none;}
+.mweb .my_menu {display:none;}
+.my_wrap {position:relative;}
+.my_menu {position:absolute;left:0;top:40px;width:100%;border-bottom:2px solid #e62a4a;z-index:99;}
+.my_menu h3 {display:none;}
+.my_menu ul li a {display:block;padding:15px 0;border-bottom:1px solid #ccc;text-align:center;color:#353535;background:#fff;}
+.my_menu ul li a:hover, .my_menu ul li a.active {color:#e62a4a;}
+.my_menu ul li:last-child a {border-bottom:none;}
+.my_wrap .my_contents {background:#f8f8f8;}
+.my_contents .my_title {width:100%;background:#FFF;}
+.my_contents .my_title h4 {padding:12px 0;color:#fff;text-align:center;background:#e62a4a url('https://img.goodchoice.kr/images/web_v2/service/ic_menu_down.png') no-repeat 98% 48%;background-size:24px auto;}
+.my_contents .my_title h4.active {background:#e62a4a url('https://img.goodchoice.kr/images/web_v2/service/ic_menu_up.png') no-repeat 98% 48%;background-size:24px auto;}
+.my_contents .my_cont_wrap {padding: 0 15px;padding-bottom:30px;min-height: 530px;}
+
+/* 내정보 영역 */
+.myinfo_area {position:relative;padding-left:135px;border-bottom:2px solid #ddd; display:none;}
+.myinfo_area .my_nick {position:absolute;left:0;top:0;display:inline-block;width:135px;}
+.myinfo_area .my_nick .user_img {display:inline-block;width:50px;height:50px;margin:10px 15px 0 15px;}
+.myinfo_area .my_nick .user_img img {width:100%;height:100%;border-radius:50%;}
+.myinfo_area .my_nick .user_lv {position:absolute;right:15px;top:30px;color:#505050;font-weight:700;}
+.myinfo_area .my_nick .user_nick {display:block;margin:8px 8px 10px 15px;color:#707070;font-size:0.875rem;font-weight:500;text-overflow: ellipsis;overflow:hidden;white-space: nowrap;}
+.myinfo_area .my_item_info {display:table;width:100%;*zoom:1;box-sizing:border-box;}
+.myinfo_area .my_item_info:after {content:'';display:block;clear:both;}
+.myinfo_area .my_item_info li {display:table-cell;float:left;width:20%;padding:23px 2px 15px 2px;border-left:1px solid #ddd;box-sizing:border-box;}
+.myinfo_area .my_item_info li a {display:block;text-align:center;}
+.myinfo_area .my_item_info li a strong {display:block;margin-bottom:20px;color:#e62a4a;}
+.myinfo_area .my_item_info li a span {display:block;font-size:0.875rem;font-weight:bold;}
+
+@media all and (max-width:380px) {
+	.myinfo_area {padding-left:120px;}
+	.myinfo_area .my_nick {width:120px;padding-top:5px;top:50%;margin-top:-45px;}
+	.myinfo_area .my_nick .user_img {margin:5px 15px 0 10px;}
+	.myinfo_area .my_nick .user_lv {top:30px;font-size:0.875rem;}
+	.myinfo_area .my_nick .user_nick {margin-left:10px;font-size:0.75rem;}
+	.myinfo_area .my_item_info li {width:50%;padding:12px 5px;}
+	.myinfo_area .my_item_info li a {clear:both;overflow:hidden;text-align:left;}
+	.myinfo_area .my_item_info li a strong {display:inline-block;min-width:40px;margin-right:5px;margin-bottom:0;color:#e62a4a;font-size:0.75rem;}
+	.myinfo_area .my_item_info li a span {float:right;display:inline-block;min-width:35px;margin-top:4px;font-size:0.75rem;text-align:right;}
+	.myinfo_area .my_item_info li.item_zzim {border-bottom:1px solid #ddd;}
+	.myinfo_area .my_item_info li.item_point {border-bottom:1px solid #ddd;}
+	.my_zzim_list .srch_list li a .ad_info .ad_addr {max-width:70%;}
+}
+
+/* 리스트 상단 보유현황 */
+.my_count {position:relative;margin:15px 0 5px 0;}
+.my_count p {clear:both;overflow:hidden;font-size:1.15rem;color:#353535;}
+.my_count p .cnt_title {float:left;}
+.my_count p .cnt_num {margin-left:10px;color:#707070;}
+.my_count p .cnt_num em {display:inline-block;margin-right:5px;color:#353535;font-style:normal;}
+.my_count p .txt_info {clear:both;display:block;margin-top:10px;color:#707070;font-size:0.7rem;}
+.my_count p .pop_point_info {position:absolute;right:0;top:-2px;display:inline-block;padding:5px 15px 3px 5px;border:1px solid #ddd;border-radius:10px;font-size:0.75rem;background:#fff url('https://img.goodchoice.kr/images/web_v2/mypage/ic_pop_arrow.png') no-repeat 96% 50%;background-size:6px auto;}
+.my_zzim_list { margin: 14px -15px 0 -15px; }
+.my_zzim_list .srch_list_wrap .srch_list {padding:0;}
+.my_zzim_list .srch_list li a .ad_icon.ic_new {left:-6px;}
+.my_zzim_list .list_none {padding:100px 15px;text-align:center;}
+.my_zzim_list .list_none h5 {margin-bottom:15px;color:#353535;text-align:center;}
+.my_zzim_list .list_none p {color:#909090;font-size:0.875rem;line-height:1.5;}
+
+/* 테이블 리스트 */
+.mypage_list table {border-top:2px solid #ccc;width:100%;}
+.mypage_list table th {padding:12px 5px;border-bottom:2px solid #ccc;font-size:0.875rem;}
+.mypage_list table th.list_date {max-width:100px;}
+.mypage_list table th.list_type {max-width:100px;}
+.mypage_list table th.list_won {max-width:100px;}
+.mypage_list table td {padding:12px 8px;border-bottom:1px solid #eee;text-align:center;color:#707070;font-size:0.75rem;line-height:1.3}
+.mypage_list table td .txt_minus {color:#e62a4a;font-weight:700;}
+.mypage_list table td .txt_plus {color:#707070;font-weight:700;}
+.mypage_list table td.txt_desc {text-align:left;}
+.mypage_list table td.txt_desc li {line-height:1.5;font-size:0.75rem;}
+.mypage_list table td.txt_desc li strong {color:#353535;}
+.mypage_list table td [class^="cptype"] {display:inline-block;min-width:60px;padding:5px 10px;border-radius:2px;color:#fff;}
+.mypage_list table td .cptype_1 {color:#353535;font-weight:bold;}
+.mypage_list table td .cptype_2 {color:#707070}
+.mypage_list table td .cptype_3 {color:#707070}
+
+/* 메시지 리스트 */
+.mymsg_list .msg_title {clear:both;overflow:hidden;padding:12px 0;border-bottom:1px solid #eee;color:#707070;}
+.mymsg_list .msg_title span {float:left;display:inline-block;}
+.mymsg_list .msg_title span.msg_no {width:80px;text-align:center;display:none;}
+.mymsg_list .msg_title.msg_header {font-size:0.9rem;font-weight:bold;color:#353535;}
+.mymsg_list .msg_title span.msg_subject {font-weight:bold;cursor:pointer;color:#353535;max-width:60%;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;overflow:hidden;padding-left:15px;}
+.mymsg_list .msg_title span.msg_date {float:right;width:100px;text-align:center;font-size:0.875rem;}
+.mymsg_list .msg_title.msg_header {border-top:2px solid #ddd;border-bottom:2px solid #ddd;}
+.mymsg_list .msg_title.msg_header span.msg_subject {padding-left:30%;cursor:default;}
+.mymsg_list .msg_cont {display:none;padding:15px 15px 15px 15px;border-bottom:1px solid #eee;background:#f5f5f5;line-height:1.5;color:#707070;font-size:0.8rem;}
+.mymsg_list .list_none {text-align:center;}
+.mymsg_list .list_none .msg_title .msg_no,
+.mymsg_list .list_none .msg_title .msg_date,
+.mymsg_list .list_none .msg_cont {display:none;}
+.mymsg_list .list_none .msg_title .msg_subject {float:none;display:block;max-width:100%;padding:100px 0;text-align:center;color:#909090;cursor:default}
+
+/* 쿠폰함 모바일 */
+.mweb .my_coupon thead {display:none;}
+.mweb .my_coupon table {border:0px;}
+.mweb .my_coupon table tr {display:block; border:1px solid #ddd; margin-bottom:5px;height:140px;position: relative;}
+.mweb .my_coupon table tr td {display:inline-block; border:0;padding:0;left:10px;}
+.mweb .my_coupon table tr .aname:before {content:'발행처 : '}
+.mweb .my_coupon table tr .aname {position: absolute;top:10px;font-weight:bold;}
+.mweb .my_coupon table tr .txt_desc {position: absolute;top:27px;font-weight:bold;}
+.mweb .my_coupon table tr .txt_desc > strong {font-size:0.9rem;color:#353535;margin-bottom:5px;display:inline-block;}
+.mweb .my_coupon table tr .txt_desc li:before {content:' - '}
+.mweb .my_coupon table tr .regdate:before {content:'발급일자 : '}
+.mweb .my_coupon table tr .regdate {position: absolute;bottom:22px;font-weight:bold;}
+.mweb .my_coupon table tr .enddate:before {content:'유효기간 : '}
+.mweb .my_coupon table tr .enddate {position: absolute;bottom:7px;font-weight:bold;}
+.mweb .my_coupon table tr .enddate p {display:inline;margin-right:3px;}
+.mweb .my_coupon table tr .state {position: absolute;right:0px;left:inherit;height:100%;}
+.mweb .my_coupon table tr .state span {font-size:1rem;font-weight:bold;border-radius:0;padding:0;height:140px;width:100px;display:table-cell; text-align:center; vertical-align:middle;}
+.mweb .my_coupon table tr.mcoupon {height:160px;}
+.mweb .my_coupon table tr.mcoupon td:last-child span {height:160px;}
+.mweb .my_coupon table tr td .cptype_1 {color:#fff;font-weight:bold;background-color:#e62a4a;}
+.mweb .my_coupon table tr td .cptype_2 {color:#fff;font-weight:bold;background-color:#ccc;}
+.mweb .my_coupon table tr td .cptype_3 {color:#fff;font-weight:bold;background-color:#353535;}
+.mweb .my_coupon table tr.noresult {height:200px;border:0px;border-top:1px solid #ccc}
+.mweb .my_coupon table tr.noresult td {position: absolute;width: 100%;top: 50%;}
+
+/* 내정보 수정 */
+.myinfo_title {clear:both;overflow:hidden;margin-bottom:20px;padding:15px;border-bottom:1px solid #ccc;}
+.myinfo_title h5 {float:left;font-size:1.25rem;color:#353535;}
+.myinfo_title span {float:right;font-size:0.875rem;color:#707070;margin-top: 1px;}
+.myinfo_table {position:relative;padding:0 10px 0 140px; font-size: 0.8rem;}
+.myinfo_table .myinfo_img {overflow:hidden;position:absolute;left:10px;top:8px;display:inline-block;width:130px;height:130px;border:1px solid #ddd;background:#eee;}
+.myinfo_table .myinfo_img img {}
+.myinfo_table .myinfo_img .my_img_change {position:absolute;left:0;bottom:0;width:100%;padding:8px 0;color:#ccc;background:#454545;text-align:center;font-size:0.75rem;cursor:pointer;}
+.myinfo_table .myinfo_img .my_img_change span {padding-left:20px;background:url('https://img.goodchoice.kr/images/web_v2/mypage/ic_img_change.png') no-repeat 0 50%;background-size:16px auto;}
+.myinfo_table .myinfo_img .btn_loading {position:relative;width:20px;height:20px;}
+.myinfo_table table {width:100%;color:#353535;text-align:left;}
+.myinfo_table table th {width:60px;padding:8px 10px;}
+.myinfo_table table td {position:relative;padding:8px 10px;}
+.myinfo_table table td a {position:absolute;right:0;top:3px;display:inline-block;min-width:60px;mrgin-top:-3px;padding:4px 5px 4px 15px;border:1px solid #757575;border-radius:3px;color:#fff;font-size:0.875rem;text-align:center;}
+.myinfo_table table td .btn_logout {border:1px solid #ccc;color:#757575;background:#fff url('https://img.goodchoice.kr/images/web_v2/mypage/ic_info_logout.png') no-repeat 5px 50%;background-size:15px auto;}
+.myinfo_table table td .btn_logout:hover {color:#353535;}
+.myinfo_table table td .btn_modify {background:#757575 url('https://img.goodchoice.kr/images/web_v2/mypage/ic_info_nick.png') no-repeat 5px 50%;background-size:13px auto;}
+.myinfo_table table td .btn_certify {background:#757575 url('https://img.goodchoice.kr/images/web_v2/mypage/ic_info_certify.png') no-repeat 5px 50%;background-size:13px auto;}
+.myinfo_table table td .btn_change_pw {background:#757575 url('https://img.goodchoice.kr/images/web_v2/mypage/ic_info_pw.png') no-repeat 5px 50%;background-size:12px auto;}
+.myinfo_table .nickname_title,
+.myinfo_table .moblie_area{display:none;}
+.myinfo_table .myinfo_img .my_img.upload .thumb_none {display:block;width:100%;height:100%;position:absolute;left:0;top:0;bottom:0;right:0;background:#e9e9e9 url('https://img.goodchoice.kr/images/web_v2/mypage/img_user_default_2.png') no-repeat;background-size:100%;}
+
+@media all and (max-width:480px) {
+	.myinfo_table {padding:55px 15px 0 15px}
+	.myinfo_table .myinfo_img {width:90%;height:40px;box-sizing:border-box;left:15px;}
+	.myinfo_table .myinfo_img img {display:none;}
+	.myinfo_table .myinfo_img .my_img_change {padding:12px 0;}
+}
+
+/* 예약내역 */
+.reserve_wrap{padding:45px 0 0 0;}
+.reserve_wrap .top{margin-bottom:27px;}
+.reserve_wrap .top h3{display:inline-block;margin-right:10px;font-size:1.25rem;color:#454545;}
+.reserve_wrap .top span{font-size:0.8125rem;}
+.reserve_wrap .top span b{color:#e62a4a;}
+.reserve_wrap .cal_wrap{float:none;border:1px solid #ccc;background:#fff;}
+.reserve_wrap .cal_wrap .clear{height:0;clear:both;}
+.reserve_wrap .cal_wrap .left{float:left;width:40%;height:76px;padding:25px 0 0 15px;font-size:0.9375rem;color:#333;box-sizing:border-box}
+.reserve_wrap .cal_wrap .left a{display:inline-block;width:55px;height:25px;margin-left:5px;border-radius:3px;background:#999;font-size:0.875rem;font-weight:normal;line-height:25px;color:#fff;text-align:center;}
+.reserve_wrap .cal_wrap .left a:hover,.reserve_wrap .cal_wrap .left a.active{background:#f62a4b;}
+.reserve_wrap .cal_wrap .left span{display:inline-block;margin-right:24px;}
+.reserve_wrap .cal_wrap .right{float:left;width:60%;height:76px;padding:19px 19px 0 0;text-align:right;box-sizing:border-box}
+.reserve_wrap .cal_wrap .right .date{display:inline-block;width:130px;height:35px;border:1px solid #ccc;border-radius:3px;background: url('https://img.goodchoice.kr/images/web_v2/mypage/icon_date.png') no-repeat 5px 50%;text-align:left;vertical-align:top;}
+.reserve_wrap .cal_wrap .right .date input{border:none;width:85px;height:35px;margin:0 0 0 30px;font-size:0.9375rem;cursor:pointer}
+.reserve_wrap .cal_wrap .right span{display:inline-block;position:relative;top:7px;width:15px;vertical-align:top;color:#333;text-align:center;}
+.reserve_wrap .cal_wrap .right a{display:inline-block;width:90px;height:35px;margin-left:10px;border:1px solid #f62a4b;border-radius:3px;font-size:0.9375rem;line-height:35px;color:#f62a4b;text-align:center;vertical-align:top;}
+.reserve_wrap .cal_wrap .right a:hover{background:#f62a4b;color:#fff;}
+.vr_table_th{overflow:hidden;height:48px;margin-top:25px;;border-top:3px solid #ccc;border-bottom:3px solid #ccc;font-size:0.875rem;color:#505050;}
+.vr_table_th span{float:left;height:48px;line-height:48px;text-align:center;}
+.vr_table_th span:nth-child(1){width:15%;}
+.vr_table_th span:nth-child(2){width:45%;}
+.vr_table_th span:nth-child(3){width:25%;}
+.vr_table_th span:nth-child(4){width:15%;}
+.vr_table_td li{overflow:hidden;margin-bottom:6px;padding:15px 0;border:1px solid #ccc;background:#fff;line-height:1.5;color:#999;}
+.vr_table_td li span{float:left;position:relative;margin-top:34px;box-sizing:border-box;}
+.vr_table_td li span:nth-child(1){width:15%;text-align:center;}
+.vr_table_td li span:nth-child(2){width:45%;padding-left:10%}
+.vr_table_td li span:nth-child(3){width:25%;text-align:center;}
+.vr_table_td li span:nth-child(4){width:15%;text-align:center;}
+.vr_table_td li span p{padding-bottom:3px;color:#000;}
+.vr_table_td li span b{display:inline-block;padding-right:10px;font-weight:normal;}
+.vr_table_td li .info{margin-top:0;}
+.reserve_wrap .empty div{margin-top:200px;padding:210px 0 100px 0;background: url('https://img.goodchoice.kr/images/web_v2/mypage/empty.png') no-repeat 50% 0;font-size:0.9375rem;color:#707070;text-align:center;}
+.reserve_wrap .empty div b{display:block;padding-bottom:5px;font-size:1.125rem;color:#555;}
+.reserve_wrap .empty div a{display:inline-block;width:201px;height:47px;margin-top:17px;border:1px solid #f62a4b;border-radius:4px;font-size:1.125rem;line-height:47px;color:#f62a4b;text-align:center;}
+.reserve_wrap .empty div a:hover{background:#f62a4b;color:#fff;}
+
+@media all and (max-width:1024px){
+	.reserve_wrap .top{margin-bottom:15px;}
+	.reserve_wrap{padding-top:25px;}
+	.reserve_wrap .cal_wrap .left{width:100%;height:50px}
+	.reserve_wrap .cal_wrap .right{width:100%;clear:both;text-align:left;padding-left:15px}
+	.reserve_wrap .empty div{margin-top:50px;padding:200px 0 50px 0;background: url('https://img.goodchoice.kr/images/web_v2/mypage/empty.png') no-repeat 50% 0;font-size:0.9375rem;color:#707070;text-align:center;}
+	.reserve_wrap .cal_wrap .right span{top:10px}
+}
+
+@media all and (max-width:768px){
+	.reserve_wrap{padding-top:15px;}
+}
+
+@media all and (max-width:490px){
+	.reserve_wrap .cal_wrap .left{padding-top:13px;}
+	.reserve_wrap .empty div{margin-top:30px;padding:180px 0 50px 0;background: url('https://img.goodchoice.kr/images/web_v2/mypage/empty.png') no-repeat 50% 0;background-size:250px auto;	}
+	.reserve_wrap .empty div a{display:inline-block;width:150px;height:37px;margin-top:17px;border:1px solid #f62a4b;border-radius:4px;font-size:1.125rem;line-height:37px;}
+
+	.reserve_wrap .cal_wrap .right{height:99px;padding-top:1px;text-align:center;}
+	.reserve_wrap .cal_wrap .right .date{width:44%;}
+	.reserve_wrap .cal_wrap .right .date input{width:70%;}
+	.reserve_wrap .cal_wrap .right a{height:30px;margin:13px 0 0 0;line-height:30px;}
+
+	.vr_table_th{height:38px;margin-top:15px;;border-top:2px solid #ccc;border-bottom:2px solid #ccc;}
+	.vr_table_th span{height:38px;line-height:38px;}
+	.vr_table_th span:nth-child(1){width:20%;}
+	.vr_table_th span:nth-child(2){width:45%;}
+	.vr_table_th span:nth-child(3){width:20%;}
+	.vr_table_th span:nth-child(4){width:15%;}
+	.vr_table_td li{font-size:0.75rem}
+	.vr_table_td li span:nth-child(1){width:20%;text-align:center;}
+	.vr_table_td li span:nth-child(2){width:45%;padding-left:5%}
+	.vr_table_td li span:nth-child(3){width:20%;text-align:center;}
+	.vr_table_td li span:nth-child(4){width:15%;text-align:center;}
+	.vr_table_td li span{margin-top:24px;}
+}
+
+/* 768 이하 */
+@media all and (max-width:768px) {
+	/* 내정보 수정 모바일 */
+	.mweb .myinfo_title {margin:15px 0 0 0;padding:0 0 5px 0;font-size:1.15rem;}
+	.mweb .myinfo_title span {clear: both;display: block;width:100%;margin-top:10px;font-size:0.7rem;}
+	.mweb .myinfo_table {padding:0;}
+	.mweb .myinfo_table .myinfo_img {position:relative;width:35%;height:100%;left:0;box-sizing:content-box;border:0;background:transparent;padding:5px;z-index:10;}
+	.mweb .myinfo_table .myinfo_img .my_img.upload {position:relative;width: 100%;height: 0;overflow: hidden;padding-bottom: 100%; }
+	.mweb .myinfo_table .myinfo_img .my_img.upload img {display:block;width:100%;height:100%;position:absolute;left:0;top:0;bottom:0;right:0;border-radius:500px;}
+	.mweb .myinfo_table .myinfo_img .my_img.upload .thumb_none {display:block;width:100%;height:100%;position:absolute;left:0;top:0;bottom:0;right:0;border-radius:500px;background:#e9e9e9 url('https://img.goodchoice.kr/images/web_v2/mypage/img_user_default_2.png') no-repeat;background-size:110%;}
+	.mweb .myinfo_table .myinfo_img .my_img.upload .btn_loading {top:5px;right:5px;left:initial;width:20px;height:20px;}
+	.mweb .myinfo_table .myinfo_img .my_img_change {height:100%;padding:0;background:transparent;}
+	.mweb .myinfo_table .myinfo_img .my_img_change span {font-size:0;padding:0;height:25%;width:25%;display:block;position:absolute;top:0px;right:0px;background: url('https://img.goodchoice.kr/images/web_v2/mypage/ic_img_mchange.png') no-repeat;background-size: 100%;}
+	.mweb .myinfo_table .info_table {position:absolute;top:0px;width:100%;height:0;padding-bottom:100%;}
+	.mweb .myinfo_table .info_table table {position: initial;top:0;left:0;width:100%;height:100%;}
+	.mweb .myinfo_table .info_table table .user_level {position:absolute;top:11%;left:40%;border:0;}
+	.mweb .myinfo_table .info_table table .user_level th {display:none;}
+	.mweb .myinfo_table .info_table table .user_level td span {padding:3px 12px 2px 12px;border:1px solid #e62a4a;border-radius:20px;color:#e62a4a;font-weight:bold;font-size:0.8rem;}
+	.mweb .myinfo_table .info_table table .user_level td .nickname_title {display:block;padding:10px 0;color:#353535;font-weight:bold;font-size:1rem;}
+	.mweb .myinfo_table .moblie_area{display:table-row;}
+	.mweb .myinfo_table .info_table table tr:first-child th,
+	.mweb .myinfo_table .info_table table tr:first-child td{padding-top:39%;border-top:0;}
+	.mweb .myinfo_table .info_table table tr a{top:10px;}
+	.mweb .myinfo_table .info_table table tr {border-bottom:1px solid #ddd;}
+	.mweb .myinfo_table .info_table table th,
+	.mweb .myinfo_table .info_table table td {padding:15px 0;font-size:0.8rem;}
+}
+
+/* 레이어 : 비밀번호/닉네임 변경 */
+.layer_allwrap .layer_cont p {color:#353535;}
+.layer_allwrap .layer_cont p strong {color:#e62a4a;}
+.layer_allwrap .layer_cont p.ipt_txt {margin:10px 0 0 0;}
+.layer_allwrap .layer_cont p.ipt_txt input {display:block;width:100%;padding:15px 20px;border:1px solid #ddd;border-radius:3px;background:#eee;box-sizing:border-box;}
+.layer_allwrap .layer_cont h4 {margin:20px 0 5px 0;font-weight:bold;font-size:1.125rem;}
+#changeNick p:first-child,
+.layer_allwrap .layer_cont h4:first-child {margin-top:20px;}
+
+/* 레이어 : 본인인증 */
+#certifyUser .layer_cont {padding:0;}
+.layer_allwrap .layer_cont .certify_info {background:#fff;}
+.layer_allwrap .layer_cont .certify_info p {display:block;text-align:center;width:90%;margin-left:auto;margin-right:auto;margin-top:20%;font-weight:bold;font-size:1.075rem;line-height:1.2;}
+.layer_allwrap .layer_cont .certify_info span {display:inline-block;}
+#certifyUser .layer_cont:after {content:'';height:50%;width:100%;display:block;z-index:-1;position:absolute;bottom:90px;background: url('https://img.goodchoice.kr/images/web_v2/mypage/layer_certify_img.png') no-repeat 50% 100%;background-size:50% auto; }
+
+/* 레이어 : 포인트 적립방법 */
+#pointInfo .layer_cont {padding:0;}
+.point_info_txt_1 {padding:15px 20px;border-bottom:2px solid #ddd;text-align:center;font-size:0.95rem;}
+.point_info_txt_1 span { display:block; }
+.point_info_list {width: 100%;}
+.point_info_list li {padding:15px 20px 15px 80px;}
+.point_info_list li strong {display:block;margin-bottom:5px;font-size:1rem;color:#353535;}
+.point_info_list li span {display:inline-block;font-size:0.775rem;}
+.point_info_list li.point_way_1 {background:url('https://img.goodchoice.kr/images/web_v2/mypage/ic_layer_point_1.png') no-repeat 20px 50%;background-size:35px auto;}
+.point_info_list li.point_way_2 {background:url('https://img.goodchoice.kr/images/web_v2/mypage/ic_layer_point_2.png') no-repeat 20px 50%;background-size:50px auto;}
+.point_info_list li.point_way_3 {background:url('https://img.goodchoice.kr/images/web_v2/mypage/ic_layer_point_3.png') no-repeat 20px 50%;background-size:35px auto;}
+.point_info_txt_2 {padding:15px 20px;border-top:1px solid #ddd;text-align:center;font-size:0.9rem;}
+.point_info_txt_2 span {display:block;}
+.point_info_txt_2 em {display:none;}
+
+/* paging */
+.svc_paging {padding:30px 0 0px 0;text-align:center;}
+.svc_paging ul {display:inline-block;border:1px solid #ccc;border-radius:5px;}
+.svc_paging ul li {float:left;display:inline-block;border-right:1px solid #ddd;box-sizing:border-box;}
+.svc_paging ul li a {display:inline-block;min-width:28px;height:38px;line-height:42px;font-weight:500;text-align:center;color:#707070;vertical-align:middle;}
+.svc_paging ul li.page_first a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_first.png') no-repeat 50% 50%;background-size:auto 10px;}
+.svc_paging ul li.page_prev a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_prev.png') no-repeat 50% 50%;background-size:auto 10px}
+.svc_paging ul li.page_next a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_next.png') no-repeat 50% 50%;background-size:auto 10px}
+.svc_paging ul li.page_last a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_last.png') no-repeat 50% 50%;background-size:auto 10px;}
+.svc_paging ul li:last-child {border-right:none;}
+.svc_paging ul li:last-child a {border-radius:0 5px 5px 0;}
+.svc_paging ul li:first-child a {border-radius:5px 0 0 5px;}
+.svc_paging ul li:hover a, .svc_paging ul li.active a {color:#e62a4a;background-color:#fff;}
+
+/* New Paging */
+.new_paging{margin-top:35px;text-align:center;}
+.new_paging span a{display:block;width:100%;height:35px;}
+.new_paging a{display:inline-block;width:38px;height:35px;margin:0 3px;border:1px solid #ccc;border-radius:3px;font-size:1rem;line-height:35px;color:#909090;text-align:center;}
+.new_paging a:hover{border:1px solid #f63050;color:#f63050;}
+.new_paging .prev{display:inline-block;position:relative;width:38px;height:35px;margin:0 12px;}
+.new_paging .prev a{background:url('https://img.goodchoice.kr/images/web_v2/common/paging_prev.gif') no-repeat 50% 50%;}
+.new_paging .next{display:inline-block;position:relative;width:38px;height:35px;margin:0 12px 0 8px;}
+.new_paging .next a{background:url('https://img.goodchoice.kr/images/web_v2/common/paging_next.gif') no-repeat 50% 50%;}
+.new_paging a,.new_paging span{vertical-align:top;}
+.new_paging .current{display:inline-block;width:38px;height:35px;margin:0 6px;border:1px solid #f63050;border-radius:3px;font-size:1rem;line-height:35px;color:#f63050;text-align:center;}
+.new_paging .first,.new_paging .last{display:none;}
+
+@media all and (max-width:768px){
+	.new_paging{margin-top:15px;}
+	.new_paging span a{height:31px;}
+	.new_paging a{width:34px;height:31px;margin:0 2px;line-height:34px;}
+	.new_paging .prev{width:34px;height:31px;margin:0 12px;}
+	.new_paging .next{width:34px;height:31px;margin:0 12px 0 6px;}
+	.new_paging .current{width:34px;height:31px;margin:0 2px;line-height:34px;}
+}
+
+/* new icon */
+.my_cont_wrap .ic_new {padding-left:6px;width:12px;height:12px;margin-top:-2px;vertical-align:middle;}
+.my_menu .ic_new {padding-left:6px;width:14px;height:14px;margin-top:-2px;vertical-align:middle;}
+
+/* 769px 이상 */
+@media all and (min-width:769px) {
+
+	/* 공통 */
+	.pcweb .my_wrap .my_menu {display:block !important;}
+	.page_navi {display:block;}
+	.page_navi p {padding:20px 20px;text-align:right;font-size:0.875rem;color:#808080;letter-spacing:0;}
+	.my_allwrap {position:relative;min-height:600px;border-top:1px solid #ccc;}
+	.my_allwrap .bg_left {display:none;}
+	.my_allwrap .bg_right {width:50%/*79.03226%*/;position:absolute;right:0;top:0;height:100%;background:#f6f6f6 url('https://img.goodchoice.kr/images/web_v2/mypage/bg_right.png') repeat-x 0 0;}
+	.my_wrap {clear:both;overflow:hidden;}	
+	.my_wrap .my_menu {position:static;float:left;width:20.96774%;}
+	.my_wrap .my_contents {float:left;width:78.902%;min-height:800px;border-left:1px solid #e7e7e7;background:#f6f6f6 url('https://img.goodchoice.kr/images/web_v2/service/bg_right.png') repeat-x 0 0;}
+	.my_menu {border-bottom:none;}
+	.my_menu h3 {display:block;padding-left:15px;color:#343434;text-align:left;font-size:2rem;line-height:128px;}
+	.my_menu ul li a {margin-bottom:50px;padding:0 15px;text-align:left;border-bottom:none;font-size:1.125rem;background:none;}
+	.my_menu ul li a:hover, .my_menu ul li a.active {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_list_arrow_web.png') no-repeat 2px 48%;}
+	.my_contents .my_title {height:124px;border-left:0px solid #e7e7e7;background:#fff url('https://img.goodchoice.kr/images/web_v2/mypage/bg_right.png') repeat-x 0 0;}
+	.my_contents .my_title h4,
+	.my_contents .my_title h4.active {display:none;visibility:hidden;text-indent:-9999px;font-size:0;background:none;}
+	.my_contents .my_cont_wrap {padding:0 20px 60px 60px;}
+
+	/* 레이어 : 본인인증 */
+	#certifyUser .layer_cont {padding:0;}
+	.layer_allwrap .layer_cont .certify_info {position:relative;height:170px;background:url('https://img.goodchoice.kr/images/web_v2/mypage/layer_certify_img.png') no-repeat 15px 100%;background-size:50% auto;}
+	.layer_allwrap .layer_cont .certify_info p {position:absolute;right:15px;top:50%;display:inline-block;width:150px;margin-top:-20px;font-weight:bold;font-size:0.875rem;line-height:1.2;}
+	.layer_allwrap .layer_cont .certify_info span {display:inline-block;}
+
+	/* 레이어 : 포인트 적립방법 */
+	.point_info_txt_1 {padding:15px 20px;border-bottom:2px solid #ddd;text-align:center;font-size:1rem;}
+	.point_info_txt_1 span {display:inline-block;}
+	.point_info_list {width: 470px; margin-left:auto; margin-right:auto;}
+	.point_info_list li strong {font-size:1.125rem;}
+	.point_info_list li span {font-size:1rem;}
+	.point_info_list li {padding:15px 20px 15px 100px;}
+	.point_info_list li.point_way_1 {background:url('https://img.goodchoice.kr/images/web_v2/mypage/ic_layer_point_1.png') no-repeat 20px 50%;background-size:50px auto;}
+	.point_info_list li.point_way_2 {background:url('https://img.goodchoice.kr/images/web_v2/mypage/ic_layer_point_2.png') no-repeat 20px 50%;background-size:65px auto;}
+	.point_info_list li.point_way_3 {background:url('https://img.goodchoice.kr/images/web_v2/mypage/ic_layer_point_3.png') no-repeat 20px 50%;background-size:50px auto;}
+	.point_info_txt_2{ font-size:1rem; }
+
+	/* 내정보 영역 */
+	.myinfo_area {padding:0 20px 0 253px;border-bottom:none; display:block;}
+	.myinfo_area .my_nick {position:absolute;left:29px;top:0;display:inline-block;width:222px;}
+	.myinfo_area .my_nick .user_img {width:70px;height:70px;margin:30px 0 0 0;}
+	.myinfo_area .my_nick .user_lv {left:85px;top:35px;font-size:1.5rem;}
+	.myinfo_area .my_nick .user_nick {position:absolute;left:85px;top:65px;display:inline-block;margin:0;font-size:1.125rem;text-overflow: ellipsis;overflow:hidden;width:60%;white-space: nowrap;}
+	.myinfo_area .my_item_info {border-right:1px solid #eee;}
+	.myinfo_area .my_item_info li {padding:20px 10px 18px 10px;border-left:1px solid #eee;height: 124px;}
+	.myinfo_area .my_item_info li a strong {margin-bottom:18px;padding:8px 0 8px 30px;color:#333;}
+	.myinfo_area .my_item_info li.item_zzim strong {background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_zzim.png') no-repeat 27px 50%;}
+	.myinfo_area .my_item_info li.item_point strong {background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_point.png') no-repeat 18px 50%;}
+	.myinfo_area .my_item_info li.item_coupon strong {background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_cp.png') no-repeat 16px 50%;}
+	.myinfo_area .my_item_info li.item_msg strong {background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_msg.png') no-repeat 18px 50%;}
+	.myinfo_area .my_item_info li.item_reserve strong {background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_reserve.png') no-repeat 20px 50%;}
+	.myinfo_area .my_item_info li a span {margin:0 13px;padding:7px 0;border:1px solid #e62a4a;border-radius:20px;color:#e62a4a;background:#fff;text-align:center;}
+
+	/* 찜 리스트 */
+	.my_zzim_list { margin: 0; }
+	.my_count {margin:25px 5px 20px 5px;}
+	.my_count p {padding:10px 15px 10px 300px;border:1px solid #ccc;border-radius:5px;background:#fff;font-size:1.25rem;}
+	.my_count p .cnt_title {position:absolute;left:1px;top:1px;width:285px;margin-bottom:0;padding:10px 0 10px 15px;background:#ddd;}
+	.my_count p .cnt_num {float:right;display:inline-block;margin-bottom:0;color:#707070;}
+	.my_count p .cnt_num em {display:inline-block;margin-right:5px;color:#353535;font-style:normal;}
+	.my_count p .txt_info {clear:both;display:block;margin:5px 0;color:#707070;font-size:0.75rem;position:absolute;left:320px;top:10px;}
+	.my_count p .txt_info.txt_point {padding-right:150px;}
+	.my_count p .pop_point_info {top:55px;padding:5px 20px 5px 10px;}
+	.my_zzim_list .srch_list li {width:50%;padding:0 5px;}
+
+	/* 테이블 리스트 */
+	.mypage_list {margin-top:50px;}
+	.mypage_list table td {font-size:0.875rem;}
+
+	/* 메시지 리스트 */
+	.mymsg_list .msg_cont {background:#fff;font-size:1rem;}
+	.mymsg_list .msg_title span.msg_subject {max-width:75%;padding-left:23px;}
+	.mymsg_list .msg_title span.msg_no {width:80px;text-align:center;display:inline-block;}
+	.msg_contitle{font-size:0.875rem !important}
+
+	/* 내정보 수정 */
+	.myinfo_title {margin-bottom:0;padding:35px 0 10px 0;border-bottom:4px solid #ccc;}
+	.myinfo_table {padding-left:270px; font-size: 1rem;}
+	.myinfo_table .myinfo_img {left:25px;top:33px;width:210px;height:210px;}
+	.myinfo_table.login_sns {padding-left:250px;}
+	.myinfo_table.login_sns .myinfo_img {left:25px;top:15px;width:190px;height:190px;}
+	.myinfo_table .myinfo_img img {border-radius:0; position: absolute; top: 0;left: 0;width: 100%;height: 100%;}
+	.myinfo_table .myinfo_img .my_img_change {padding:15px 0;font-size:1rem;}
+	.myinfo_table .myinfo_img .my_img_change span {padding-left:25px;background-size:18px auto;}
+	.myinfo_table {border-bottom:4px solid #ccc;}
+	.myinfo_table table th {width:100px;padding:18px 15px;border-bottom:1px solid #ccc;}
+	.myinfo_table table td {padding:18px 15px;border-bottom:1px solid #ccc;vertical-align:middle;}
+	.myinfo_table table tr:last-child th,
+	.myinfo_table table tr:last-child td {border-bottom:none;}
+	.myinfo_table table td a {right:10px;top:13px;min-width:80px;margin-top:0px;padding:6px 5px 6px 18px;}
+	.myinfo_table table td .btn_logout {background:#fff url('https://img.goodchoice.kr/images/web_v2/mypage/ic_info_logout.png') no-repeat 10px 50%;background-size:15px auto;}
+	.myinfo_table table td .btn_logout:hover {color:#353535;}
+	.myinfo_table table td .btn_modify {background:#757575 url('https://img.goodchoice.kr/images/web_v2/mypage/ic_info_nick.png') no-repeat 10px 50%;background-size:15px auto;}
+	.myinfo_table table td .btn_certify {background:#757575 url('https://img.goodchoice.kr/images/web_v2/mypage/ic_info_certify.png') no-repeat 10px 50%;background-size:15px auto;}
+	.myinfo_table table td .btn_change_pw {background:#757575 url('https://img.goodchoice.kr/images/web_v2/mypage/ic_info_pw.png') no-repeat 10px 50%;background-size:15px auto;}
+
+	/* 회원탈퇴 */ 
+	.withdraw_link{text-align:right;padding-right:20px;}
+	.withdraw_link a{display:inline-block;margin-top:17px;padding-left:14px;background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_gt.png') no-repeat 0 5px;background-size:auto;}
+	.withdraw_link a span{display:inline-block;padding-bottom:0;border-bottom:1px solid #888;}
+	.withdraw_link_02{display:none;}
+	.withdraw h4{height:82px;font-size:24px;color:#454545;line-height:82px;border-bottom:2px solid #ccc;}
+	.withdraw strong{display:block;padding:20px 0 18px 10px;font-size:18px;font-weight:normal;color:#353535;}
+	.withdraw strong b{font-size:14px;font-weight:normal;padding-left:25px;}
+	.withdraw .txt_top{overflow:hidden;padding:25px 30px 0 30px;background:#fff;border:1px solid #eee;box-sizing:border-box;border-radius:10px;margin-bottom:20px;}
+	.withdraw .txt_top ul li{position:relative;padding-left:14px;line-height:1.5em;margin-bottom:18px;font-size:14px}
+	.withdraw .txt_top ul li span{position:absolute;top:0;left:0;}
+	.withdraw .txt_top ul li div{background:#f5f5f5;border-radius:5px;display:block;width:217px;height:41px;line-height:41px;padding:0 24px;text-align:right;margin-top:10px;}
+	.withdraw .txt_top ul li div b{padding-right:30px;background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_right.gif') no-repeat 100% 50%;display:inline-block;float:left;}
+	.withdraw .reason{overflow:hidden;padding:18px 18px 8px 18px;background:#fff;border:1px solid #eee;box-sizing:border-box;border-radius:10px;margin-bottom:20px;}
+	.withdraw .reason ul li{margin-bottom:24px;font-size:14px;position:relative;}
+	.withdraw .reason ul li:last-child{margin-bottom:14px;}
+	.withdraw .reason ul li label{display:inline-block;cursor:pointer}
+	.withdraw .reason ul li .text_inp{position:absolute;top:-10px;left:80px;right:5px;width:auto;border:1px solid #ddd;background:#eeeeee;height:32px;border-radius:5px;padding:0 10px;}
+	.withdraw .reason ul li .text_inp input{width:100%;background:none;border:none;margin-top:7px;outline:0}
+	.reason ul li .radio_chk{width:19px;height:19px;outline:0;background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_chk.png') 0 0 no-repeat;background-size:19px auto;-webkit-appearance:none;-moz-appearance: none;appearance:none;margin-right:10px;position:relative;top:-1px}
+	.reason ul li .radio_chk:checked{background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_chk_on.png') 0 0 no-repeat;background-size:19px auto}
+	.m_pw b{display:none;}
+	.pw_box{height:43px;border:1px solid #ddd;background:#eee;border-radius:5px;position:relative;padding-left:15px;}
+	.pw_box input{width:80%;background:none;border:none;font-size:14px;color:#707070;margin-top:13px;outline:0}
+	.pw_box a{position:absolute;top:0;right:0;display:inline-block;width:124px;height:43px;text-align:center;line-height:43px;background:#909090;color:#fff;font-size:18px;border-radius:0px 5px 5px 0}
+	.withdraw .agree{font-size:18px;color:#909090;border-top:1px solid #ccc;margin-top:30px;padding-top:24px;}
+	.withdraw .agree label{display:block;cursor:pointer}
+	.withdraw .agree input{width:24px;height:24px;outline:0;background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_chk_02.png') 0 0 no-repeat;background-size:24px auto;-webkit-appearance:none;-moz-appearance: none;appearance:none;position:relative;top:-2px;margin-right:6px;}
+	.withdraw .agree input:checked{background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_chk_02on.png') 0 0 no-repeat;background-size:24px auto}
+	.withdraw .btn_center{text-align:center;}
+	.withdraw .btn_center a{font-size:16px;color:#fff;background:#757575;width:126px;height:38px;line-height:38px;display:inline-block;border-radius:5px;margin-top:35px;}
+
+	/* 레이어 : 포인트 적립방법 */
+	.point_info_txt_2 span {display:inline-block;font-size:0.875rem;}
+	.point_info_txt_2 em {display:inline-block;margin:0 2px 0 4px;font-style:normal;font-size:0.875rem;}
+
+	/* 레이어 : 본인인증 */
+	.layer_allwrap .layer_cont .certify_info {width:540px;height:230px;background:url('https://img.goodchoice.kr/images/web_v2/mypage/layer_certify_img.png') no-repeat 15px 100%;background-size:300px auto;}
+	.layer_allwrap .layer_cont .certify_info p {right:30px;top:50%;width:180px;margin-top:-40px;font-size:1rem;line-height:1.5;text-align:left;}
+	.layer_allwrap .layer_cont .certify_info span {display:block;}
+	#certifyUser .layer_cont:after {display:none;}
+
+	/* paging */
+	.svc_paging ul li a {min-width:50px}
+	.svc_paging ul li.page_first a {background-size:auto 14px;}
+	.svc_paging ul li.page_prev a {background-size:auto 14px}
+	.svc_paging ul li.page_next a {background-size:auto 14px}
+	.svc_paging ul li.page_last a {background-size:auto 14px;}
+}
+
+/* 769~1200px */
+@media all and (min-width:769px) and (max-width:1200px) {
+
+	.myinfo_area {padding-left:188px;}
+	.myinfo_area .my_nick {width:240px;}
+	.myinfo_area .my_item_info li a strong {padding:8px 0;text-align:center;}
+	.myinfo_area .my_item_info li.item_zzim strong {background:none;}
+	.myinfo_area .my_item_info li.item_point strong {background:none;}
+	.myinfo_area .my_item_info li.item_coupon strong {background:none;}
+	.myinfo_area .my_item_info li.item_msg strong {background:none;}
+	.myinfo_area .my_item_info li.item_reserve strong {background:none;}
+	.myinfo_area .my_item_info li a span {margin:0;padding:7px 0;text-align:center;}
+	.my_count p .cnt_title {width:130px;}
+	.my_count p .txt_info {left:150px;}
+	
+	/* paging */
+	.svc_paging ul li a {min-width:38px}
+}
+
+@media all and (max-width:1200px){
+	.myinfo_area .my_nick .user_img{width:50px;height:50px;margin:36px 0 0 0;}
+	.myinfo_area .my_nick .user_lv{top:38px;left:60px;font-size:1.125rem}
+	.myinfo_area .my_nick .user_nick{left:60px;font-size:0.9125rem;}
+}
+@media all and (max-width:900px){
+	.myinfo_area .my_item_info li a span{font-size:normal;font-size:0.725rem}
+}
+
+/* 틈 */
+@media all and (max-width:786px){
+	.pcweb .my_wrap .my_menu{display:none !important}
+	.my_wrap .my_contents{width:100%;}
+	.my_contents .my_cont_wrap{padding:0 20px 60px 20px !important;}
+}
+
+/* 768px 이하 */
+@media all and (max-width:768px){
+	.msg_contitle{font-size:0.875rem !important}
+
+	/* 회원탈퇴 */
+	.withdraw_wrap{background:#fff !important}
+	.withdraw{background:#fff;padding-top:20px;}
+	.withdraw_link{text-align:right;}
+	.withdraw_link a{display:inline-block;margin-top:17px;padding-left:14px;background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_gt.png') no-repeat 0 5px;background-size:auto;}
+	.withdraw_link a span{display:inline-block;padding-bottom:0;border-bottom:1px solid #888;}
+	.withdraw_link_02{display:none;}
+	.withdraw_link{display:none;} /****/
+	.withdraw_link_02{display:block;text-align:right;}/****/
+	.withdraw_link_02 a{display:inline-block;margin-top:9px;padding-left:10px;background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_gt.png') no-repeat 0 2px;background-size:auto;}/****/
+	.withdraw_link_02 a span{display:inline-block;padding-bottom:0;border-bottom:1px solid #888;}/****/
+	.withdraw h4{height:31px;font-size:20px;color:#454545;line-height:31px;border-bottom:2px solid #ccc;}
+	.withdraw strong{display:block;padding:12px 0 11px 0;font-size:14px;font-weight:normal;color:#353535;}
+	.withdraw strong b{display:none;}
+	.withdraw .txt_top{overflow:hidden;padding:15px 12px 0 12px;background:#f8f8f8;border:1px solid #eee;box-sizing:border-box;border-radius:5px;margin-bottom:13px;}
+	.withdraw .txt_top ul li{position:relative;padding-left:14px;line-height:1.5em;margin-bottom:18px;font-size:14px}
+	.withdraw .txt_top ul li:last-child{margin-bottom:12px;}
+	.withdraw .txt_top ul li span{position:absolute;top:0;left:0;}
+	.withdraw .txt_top ul li div{background:#e2e2e2;border-radius:5px;display:block;width:auto;height:41px;line-height:41px;padding:0 24px;text-align:left;margin-top:10px;}
+	.withdraw .txt_top ul li div b{padding-right:30px;background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_right_02.gif') no-repeat 70px 50%;background-size:4px auto;display:inline-block;float:none;}
+	.withdraw .reason{overflow:hidden;padding:15px 12px 0 12px;background:#f8f8f8;border:1px solid #eee;box-sizing:border-box;border-radius:5px;margin-bottom:13px;}
+	.withdraw .reason ul li .text_inp{position:absolute;top:-7px;left:70px;right:5px;width:auto;border:1px solid #ddd;background:#e2e2e2;height:28px;border-radius:3px;padding:0 5px;}
+	.withdraw .reason ul li .text_inp input{width:100%;background:none;border:none;font-size:14px;color:#707070;margin-top:6px;}
+	.withdraw .reason ul li{margin-bottom:24px;font-size:14px;position:relative;}
+	.withdraw .reason ul li:last-child{margin-bottom:15px;}
+	.withdraw .reason ul li label{display:inline-block;cursor:pointer}
+	.reason ul li .radio_chk{width:19px;height:19px;outline:0;background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_chk.png')0 0 no-repeat;background-size:19px auto;-webkit-appearance:none;-moz-appearance: none;appearance:none;position:relative;top:-1px;margin-right:10px;}
+	.reason ul li .radio_chk:checked{background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_chk_on.png') 0 0 no-repeat;background-size:19px auto}
+	.m_pw{padding:13px;background:#f8f8f8;background:#f8f8f8;border:1px solid #eee;box-sizing:border-box;border-radius:5px;margin-bottom:13px;}
+	.m_pw b{display:block;font-size:14px;font-weight:normal;color:#353535;height:28px;}
+	.pw_box{height:28px;border:none;background:#e2e2e2;border-radius:3px;position:relative;padding-left:15px;}
+	.pw_box input{width:70%;background:none;border:none;font-size:14px;color:#707070;margin-top:6px;}
+	.pw_box a{position:absolute;top:0;right:0;display:inline-block;width:88px;height:28px;text-align:center;line-height:28px;background:#909090;color:#fff;font-size:14px;border-radius:0px 5px 5px 0}
+	.withdraw .agree{font-size:14px;color:#909090;border-top:1px solid #eee;margin-top:18px;padding-top:18px;}
+	.withdraw .agree label{display:block;cursor:pointer}
+	.withdraw .agree input{width:20px;height:20px;outline:0;background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_chk_02.png') 0 0 no-repeat;background-size:20px auto;-webkit-appearance:none;-moz-appearance: none;appearance:none;position:relative;top:-2px;margin-right:5px;}
+	.withdraw .agree input:checked{background:url('https://img.goodchoice.kr/images/web_v2/mypage/icon_chk_02on.png') 0 0 no-repeat;background-size:20px auto}
+	.withdraw .btn_center{text-align:center;}
+	.withdraw .btn_center a{font-size:13px;color:#fff;background:#757575;width:147px;height:30px;line-height:30px;display:inline-block;border-radius:5px;margin-top:22px;}
+}

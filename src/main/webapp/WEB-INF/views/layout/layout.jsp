@@ -29,10 +29,15 @@
 </head>
 <body>
     <div id="wrap"> 
-        
-        <tiles:insertAttribute name="header" />
-        <tiles:insertAttribute name="body" />
-        <tiles:insertAttribute name="footer" />
+        <div id="header">
+        	<tiles:insertAttribute name="header" />
+        </div>
+        <div id="content">
+        	<tiles:insertAttribute name="content" />
+        </div>
+        <div id="footer">
+        	<tiles:insertAttribute name="footer" />
+        </div>
     </div>
     
 </body>

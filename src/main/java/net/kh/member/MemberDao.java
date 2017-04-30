@@ -9,15 +9,14 @@ public interface MemberDao {
 	public Object insertMember(MemberModel member); // 가입
 
 	public MemberModel emailFindByName(MemberModel member); // 이메일찾기
-	
+
 	public MemberModel pwFindByEmail(MemberModel member); // 비번찾기
 
 	public Object memberModify(MemberModel member); // 수정
 
 	public Object memberDelete(String email); // 탙뢰
-	
-	//
+
+	public MemberModel idFindByName(MemberModel member);
+
+	public MemberModel pwFindById(MemberModel member);
 }
-
-
-

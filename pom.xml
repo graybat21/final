@@ -13,11 +13,10 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<org.tiles-version>3.0.5</org.tiles-version>
-		<!-- <org.tiles-version>3.0.5</org.tiles-version> -->
 	</properties>
 
 	<!-- Oracle jdbc Repository -->
-	<repositories>
+	<!-- <repositories>
 
 		<repository>
 			<id>mesir-repo</id>
@@ -41,7 +40,7 @@
 
 
 	</repositories>
-
+ -->
 
 
 
@@ -67,6 +66,8 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
+
 
 		<!-- AspectJ -->
 		<dependency>
@@ -148,7 +149,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.7</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -162,7 +163,7 @@
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
-			<version>1.3</version>
+			<version>1.4</version>
 		</dependency>
 
 
@@ -207,17 +208,7 @@
 		<!-- tiles -->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-core</artifactId>
-			<version>${org.tiles-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-el</artifactId>
-			<version>${org.tiles-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-api</artifactId>
+			<artifactId>tiles-extras</artifactId>
 			<version>${org.tiles-version}</version>
 		</dependency>
 		<dependency>
@@ -230,6 +221,21 @@
 			<artifactId>tiles-servlet</artifactId>
 			<version>${org.tiles-version}</version>
 		</dependency>
+		<!-- <dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>${org.tiles-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-el</artifactId>
+			<version>${org.tiles-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-api</artifactId>
+			<version>${org.tiles-version}</version>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
