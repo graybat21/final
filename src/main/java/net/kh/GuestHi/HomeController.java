@@ -32,11 +32,7 @@ public class HomeController {
 //		
 //		model.addAttribute("serverTime", formattedDate );
 		
-<<<<<<< HEAD
 		return "main/main/GH";
-=======
-		return "guesthouse/review/Main";
->>>>>>> 45a4d7fb8888dda9b0fcb786e575ddc6e1af3b30
 	}
 	
 }
