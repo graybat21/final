@@ -4,7 +4,7 @@
 <html lang="ko"><head>
 
 	<!-- 공통 CSS  -->
-	<link rel="stylesheet" type="text/css" href="/resources/files/default.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/files/default.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/files/owl.css">
 	
 	<!-- 공통 JS  -->
@@ -118,9 +118,7 @@
 	</header>
 	<!-- //HeaderWrap -->
 	<!-- //(공통)headerWrap -->
-	
 
 
 
->>>>>>> 45a4d7fb8888dda9b0fcb786e575ddc6e1af3b30
 </body></html>
