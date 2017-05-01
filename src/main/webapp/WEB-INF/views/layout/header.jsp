@@ -61,9 +61,9 @@
 				<nav class="nav_sub">
 					<ul>
 						<li class="link_01"><a
-							href="https://www.goodchoice.kr/user/login">로그인</a></li>
+							href="${contextPath}/GuestHi/member/login.gh">로그인</a></li>
 						<li class="link_02"><a
-							href="https://www.goodchoice.kr/user/joinEmail">회원가입</a></li>
+							href="${contextPath}/GuestHi/member/member.gh">회원가입</a></li>
 						<!-- <li class="link_03"><a href="#"
 							onclick="guest_reserve_open();return false;" class="m_reserve">예약내역</a></li> -->
 						<li class="link_04"><a
