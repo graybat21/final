@@ -92,10 +92,10 @@
 
 
 		<!-- 페이지별 호출 소스 -->
-			
-		<script src="${pageContext.request.contextPath}/resources/js/user.js"></script>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user.css">
+		<script src="js/user.js"></script>
 
-		<script src="${pageContext.request.contextPath}/resources/js/check.js"></script>
+		<script src="js/check.js"></script>
 
 		<script>
 	(function($) {
@@ -441,7 +441,7 @@ else {
 	</script>
 
 
-		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/wcslog.js"> </script>
+		<script type="text/javascript" src="js/wcslog.js"> </script>
 		<script type="text/javascript"> 
 	if (!wcs_add) var wcs_add={};
 	wcs_add["wa"] = "s_4540c185467c";
