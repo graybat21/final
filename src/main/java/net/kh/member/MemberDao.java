@@ -1,22 +1,70 @@
 package net.kh.member;
 
-public interface MemberDao {
+import java.util.Date;
 
-	public MemberModel memberLogin(MemberModel member); // 로그인
+public class MemberDao {
 
-	public MemberModel getMember(String email); // email 을 통해서 전체 정보 가져오기
+	private int no;
+	private String email;
+	private String pw;
+	private String name;
+	private String phone;
+	private Date reg;
+	private Date birth;
 
-	public Object insertMember(MemberModel member); // 가입
+	public int getNo() {
+		return no;
+	}
 
-	public MemberModel emailFindByName(MemberModel member); // 이메일찾기
+	public void setNo(int no) {
+		this.no = no;
+	}
 
-	public MemberModel pwFindByEmail(MemberModel member); // 비번찾기
+	public String getEmail() {
+		return email;
+	}
 
-	public Object memberModify(MemberModel member); // 수정
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-	public Object memberDelete(String email); // 탙뢰
+	public String getPw() {
+		return pw;
+	}
 
-	public MemberModel idFindByName(MemberModel member);
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
 
-	public MemberModel pwFindById(MemberModel member);
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Date getReg() {
+		return reg;
+	}
+
+	public void setReg(Date reg) {
+		this.reg = reg;
+	}
+
+	public Date getBirth() {
+		return birth;
+	}
+
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
 }

@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-	pageEncoding="euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ page import="java.util.HashMap"%>
 
 <html>
-<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <head>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -13,25 +13,25 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <style type="text/css">
 #favorite {
-	float: left; /* ¿ŞÂÊÀ¸·Î Á¤·Ä*/
+	float: left; /* ì™¼ìª½ìœ¼ë¡œ ì •ë ¬*/
 }
 
 #menu {
-	float: right; /* ¿À¸¥ÂÊÀ¸·Î Á¤·Ä */
+	float: right; /* ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì •ë ¬ */
 }
 
 #navi ul li {
-	list-style-type: none; /* ºí¸´ ¾ø¾Ö±â */
-	display: inline; /* ¸ñ·ÏÀ» °¡·Î·Î ¿¬°áÇØ Ç¥½Ã */
-	margin: 0 10px; /* »óÇÏ°ø¹é ÁÂ¿ì°ø¹é */
-	font-family: "³ª´®°íµñ" [, "¸¼Àº°íµñ" ];
+	list-style-type: none; /* ë¸”ë¦¿ ì—†ì• ê¸° */
+	display: inline; /* ëª©ë¡ì„ ê°€ë¡œë¡œ ì—°ê²°í•´ í‘œì‹œ */
+	margin: 0 10px; /* ìƒí•˜ê³µë°± ì¢Œìš°ê³µë°± */
+	font-family: "ë‚˜ëˆ”ê³ ë”•" [, "ë§‘ì€ê³ ë”•" ];
 	font-size: 13px;
 	font-weight: 800;
 	color: #000000;
 }
 
 #navi ul li a {
-	font-family: "³ª´®°íµñ" [, "¸¼Àº°íµñ" ];
+	font-family: "ë‚˜ëˆ”ê³ ë”•" [, "ë§‘ì€ê³ ë”•" ];
 	font-size: 13px;
 	font-weight: 800;
 	color: #000000;
@@ -66,8 +66,8 @@
 </style>
 </head>
 <body>
-	<!-- »ó´ÜÀÌ¹ÌÁö -->
-		<!-- »ó´Ü¸Ş´º -->
+	<!-- ìƒë‹¨ì´ë¯¸ì§€ -->
+		<!-- ìƒë‹¨ë©”ë‰´ -->
 		<br>
 		<br>
 		<br>
@@ -79,12 +79,12 @@
 		<br>
 		
 	
-							<li>    	<a href="#layer" class="layer_trigger">·Î±×ÀÎ</a></li>
+							<li>    	<a href="#layer" class="layer_trigger">ë¡œê·¸ì¸</a></li>
 					
 			
 			
 			
-		<!-- ·Î°í -->
+		<!-- ë¡œê³  -->
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <style>
 .mw_layer{display:none;position:fixed;_position:absolute;top:0;left:0;z-index:10000;width:100%;height:100%}
@@ -146,10 +146,10 @@ jQuery(function($){
 	
 function loginCheck() {
 	if($("#member_id").val() == "") {
-		alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		return;
 	} else if($("#member_pwd").val() == "") {
-		alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		return;
 	}
 	
@@ -164,20 +164,20 @@ function loginCheck() {
 	 	<h2 style="border-bottom:1px solid black;">LOGIN</h2>
 		 <div class="login_line">
 		 	<div class="box_in">
-		 		<input type="text" name="id" id="member_id"  size="23" placeholder="¾ÆÀÌµğ">
-				<input type="password" name="password" id="member_pwd" size="23" placeholder="ºñ¹Ğ¹øÈ£">
+		 		<input type="text" name="id" id="member_id"  size="23" placeholder="ì•„ì´ë””">
+				<input type="password" name="password" id="member_pwd" size="23" placeholder="ë¹„ë°€ë²ˆí˜¸">
 			</div>
-			<%-- <span class="btn_login" onclick="loginCheck();">LOGIN</span> --%>
+		
 			<input type="submit" class="btn_login" onclick="loginCheck()" value="LOGIN">
 		 </div>
 	    
 	    <div class="close" >
 		    <table width="100%" id="loginTbl" >
 		    	<tr>
-		    		<td width="30%" align="left" onclick="loginForm.action">È¸¿ø°¡ÀÔ</td>
-		    		<td width="50%;" align="left">¾ÆÀÌµğ/ºñ¹Ğ¹øÈ£ Ã£±â</td>
+		    		<td width="30%" align="left" onclick="loginForm.action">íšŒì›ê°€ì…</td>
+		    		<td width="50%;" align="left">ì•„ì´ë””/ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</td>
 		    		<td width="20%" align="right">
-		    		 	<a href="#layer_anchor" title="·¹ÀÌ¾î ´İ±â" class="close">´İ±â</a>
+		    		 	<a href="#layer_anchor" title="ë ˆì´ì–´ ë‹«ê¸°" class="close">ë‹«ê¸°</a>
 		    		</td>
 		    	</tr>
 		    </table>

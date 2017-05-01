@@ -16,35 +16,18 @@
 	</properties>
 
 	<!-- Oracle jdbc Repository -->
-	<!-- <repositories>
-
-		<repository>
-			<id>mesir-repo</id>
-			<url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url>
-		</repository>
-		<repository>
-			<id>mvn2</id>
-			<url>http://repo1.maven.org/maven2/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>oracle</id>
-			<name>ORACLE JDBC Repository</name>
-			<url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url>
-	    </repository>
-
-
-	</repositories>
- -->
+	<!-- <repositories> <repository> <id>mesir-repo</id> <url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url> 
+		</repository> <repository> <id>mvn2</id> <url>http://repo1.maven.org/maven2/</url> 
+		<releases> <enabled>true</enabled> </releases> <snapshots> <enabled>true</enabled> 
+		</snapshots> </repository> <repository> <id>oracle</id> <name>ORACLE JDBC 
+		Repository</name> <url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url> 
+		</repository> </repositories> -->
 
 
 	<dependencies>
 		<!-- Spring -->
+
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -171,7 +154,7 @@
 			<artifactId>commons-validator</artifactId>
 			<version>1.4.0</version>
 		</dependency>
-		
+
 		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -183,7 +166,7 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.2.3</version>
 		</dependency>
-		
+
 		<!-- upload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -195,7 +178,7 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.0.1</version>
 		</dependency>
-		
+
 		<!-- tiles -->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
@@ -212,21 +195,11 @@
 			<artifactId>tiles-servlet</artifactId>
 			<version>${org.tiles-version}</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-core</artifactId>
-			<version>${org.tiles-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-el</artifactId>
-			<version>${org.tiles-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-api</artifactId>
-			<version>${org.tiles-version}</version>
-		</dependency>-->
+		<!-- <dependency> <groupId>org.apache.tiles</groupId> <artifactId>tiles-core</artifactId> 
+			<version>${org.tiles-version}</version> </dependency> <dependency> <groupId>org.apache.tiles</groupId> 
+			<artifactId>tiles-el</artifactId> <version>${org.tiles-version}</version> 
+			</dependency> <dependency> <groupId>org.apache.tiles</groupId> <artifactId>tiles-api</artifactId> 
+			<version>${org.tiles-version}</version> </dependency> -->
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
