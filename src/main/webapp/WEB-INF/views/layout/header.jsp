@@ -1,11 +1,10 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko"><head>
 
 	<!-- 공통 CSS  -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/files/default.css">
+	<link rel="stylesheet" type="text/css" href="/resources/files/default.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/files/owl.css">
 	
 	<!-- 공통 JS  -->
