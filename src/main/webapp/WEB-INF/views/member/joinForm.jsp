@@ -92,7 +92,7 @@
 
 
 		<!-- 페이지별 호출 소스 -->
-			
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user.css">
 		<script src="${pageContext.request.contextPath}/resources/js/user.js"></script>
 
 		<script src="${pageContext.request.contextPath}/resources/js/check.js"></script>
