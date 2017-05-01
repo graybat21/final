@@ -291,7 +291,7 @@
 	var google_remarketing_only = false;
 	/* ]]> */
 	</script>
-	<script type="text/javascript" src="./css/conversion.js"></script><img alt="" src="./css/a.gif" style="display:none" width="1" height="1" border="0">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/conversion.js"></script><img alt="" src="${pageContext.request.contextPath}/resources/js/a.gif" style="display:none" width="1" height="1" border="0">
 
 	<noscript>
 	<div style="display:inline;">
