@@ -1,4 +1,6 @@
-package net.kh.member;
+package net.kh.dao;
+
+import net.kh.member.MemberVO;
 
 public interface MemberDao {
 
