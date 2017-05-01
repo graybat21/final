@@ -3,11 +3,6 @@
 <!DOCTYPE html>
 <html lang="ko"><head>
 
-	
-	
-	<title>찜 : 여기어때 - 국내 1위 숙박어플!</title>
-
-	
 	<!-- 공통 CSS  -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/files/default.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/files/owl.css">
@@ -16,10 +11,9 @@
 	<script src="${pageContext.request.contextPath}/resources/files/1602931226643913.js" async=""></script>
 	<script async="" src="${pageContext.request.contextPath}/resources/files/fbevents.js"></script>
 	<script async="" src="${pageContext.request.contextPath}/resources/files/analytics.js"></script>
-	
 	<script src="${pageContext.request.contextPath}/resources/files/jquery-1.js"></script>
-
-	<script src="${pageContext.request.contextPath}/resources/files/common.js"></script>	
+	<script src="${pageContext.request.contextPath}/resources/files/common.js"></script>
+		
 </head>
 
 

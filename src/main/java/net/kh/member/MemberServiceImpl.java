@@ -1,55 +1,60 @@
 package net.kh.member;
-//package net.kh.member;
-//
-//
-//
-//import javax.annotation.Resource;
-//
-//import org.mybatis.spring.SqlSessionTemplate;
-//import org.springframework.stereotype.Service;
-//
-//
-//
-//@Service
-//public class MemberService implements MemberDao{
-//
-//	@Resource(name="sqlSessionTemplate")
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service("memberService")
+public class MemberServiceImpl implements MemberService {
+
+//	@Resource(name = "sqlSessionTemplate")
 //	private SqlSessionTemplate sqlSessionTemplate;
-//	
-//	@Override
-//    public MemberModel memberLogin(MemberModel mem) {
-//	    return sqlSessionTemplate.selectOne("member.login", mem);
-//    }
 //
 //	@Override
-//	public MemberModel getMember(String id) {
-//		return sqlSessionTemplate.selectOne("member.getMember", id);
+//	public MemberVO memberLogin(MemberVO mem) {
+//		return sqlSessionTemplate.selectOne("member.login", mem);
 //	}
-//
-//	@Override
-//	public Object insertMember(MemberModel mem) {
-//		return sqlSessionTemplate.insert("member.insertMember", mem);
-//	}
-//	
-//	@Override
-//	public MemberModel idFindByName(MemberModel member) {
-//		return sqlSessionTemplate.selectOne("member.idfind", member);
-//    }
-//	
-//	@Override
-//	public MemberModel pwFindById(MemberModel member) {
-//		return sqlSessionTemplate.selectOne("member.pwfind", member);
-//    }
-//    
-//	@Override
-//	public Object memberModify(MemberModel member) {
-//		return sqlSessionTemplate.update("member.updateMember", member);
-//	}
-//	
-//	@Override
-//	public Object memberDelete(String id) {
-//		return sqlSessionTemplate.delete("member.deleteMember", id);
-//    }
-//	
-//	
-//}
+
+	@Autowired
+    private MemberDao memberMapper;
+
+    @Override
+    @Transactional
+    public MemberVO memberLogin(MemberVO member) throws Exception{
+        return memberMapper.memberLogin(member);
+    }
+
+
+	
+	
+	// @Override
+	// public MemberVO getMember(String id) {
+	// return sqlSessionTemplate.selectOne("member.getMember", id);
+	// }
+	//
+	// @Override
+	// public Object insertMember(MemberVO mem) {
+	// return sqlSessionTemplate.insert("member.insertMember", mem);
+	// }
+	//
+	// @Override
+	// public MemberVO idFindByName(MemberVO member) {
+	// return sqlSessionTemplate.selectOne("member.idfind", member);
+	// }
+	//
+	// @Override
+	// public MemberVO pwFindById(MemberVO member) {
+	// return sqlSessionTemplate.selectOne("member.pwfind", member);
+	// }
+	//
+	// @Override
+	// public Object memberModify(MemberVO member) {
+	// return sqlSessionTemplate.update("member.updateMember", member);
+	// }
+	//
+	// @Override
+	// public Object memberDelete(String id) {
+	// return sqlSessionTemplate.delete("member.deleteMember", id);
+	// }
+
+}
