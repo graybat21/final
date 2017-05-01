@@ -430,7 +430,7 @@ header .btn_m_srch{display:none}
 	.mweb_myinfo .myinfo_item .item_msg{background:#fff url('https://img.goodchoice.kr/images/web_v2/common/ic_my_msg_n.png') no-repeat 50% 13px;background-size:20px auto}
 	.mweb_myinfo .myinfo_item a {display:table-cell;float:left;width:25%;margin:0;padding:45px 0 13px 0;border-right:1px solid #ddd;box-sizing:border-box;text-align:center;font-size:12px;color:#999}
 	.mweb_myinfo .myinfo_item a:last-child {border-right:0}
-	.mweb_myinfo .myinfo_item a img {display:block;max-width:40%;margin:0 auto 10px auto}
+
 	#gnb .nav_main .menu_1depth li span {display:block;padding:15px 20px 15px 49px;border-bottom:1px solid #ddd;font-size:15px;color:#333}
 	#gnb .nav_main .menu_1depth li span.menu_srch {background:#f8f8f8 url('https://img.goodchoice.kr/images/web_v2/common/ic_menu_srch_n.png') no-repeat 23px 50%;background-size:13px auto}
 	#gnb .nav_main .menu_1depth li span.menu_talk {background:#e8e8e8 url('https://img.goodchoice.kr/images/web_v2/common/ic_menu_talk.png') no-repeat 10px 50%;background-size:22px auto}

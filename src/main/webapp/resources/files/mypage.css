@@ -334,7 +334,7 @@
 	.my_allwrap .bg_right {width:50%/*79.03226%*/;position:absolute;right:0;top:0;height:100%;background:#f6f6f6 url('https://img.goodchoice.kr/images/web_v2/mypage/bg_right.png') repeat-x 0 0;}
 	.my_wrap {clear:both;overflow:hidden;}	
 	.my_wrap .my_menu {position:static;float:left;width:20.96774%;}
-	.my_wrap .my_contents {float:left;width:78.902%;min-height:800px;border-left:1px solid #e7e7e7;background:#f6f6f6 url('https://img.goodchoice.kr/images/web_v2/service/bg_right.png') repeat-x 0 0;}
+	.my_wrap .my_contents {float:left;width:78.902%;min-height:800px;border-left:1px;}
 	.my_menu {border-bottom:none;}
 	.my_menu h3 {display:block;padding-left:15px;color:#343434;text-align:left;font-size:2rem;line-height:128px;}
 	.my_menu ul li a {margin-bottom:50px;padding:0 15px;text-align:left;border-bottom:none;font-size:1.125rem;background:none;}
