@@ -167,7 +167,7 @@ function loginCheck() {
 		 		<input type="text" name="id" id="member_id"  size="23" placeholder="아이디">
 				<input type="password" name="password" id="member_pwd" size="23" placeholder="비밀번호">
 			</div>
-			<%-- <span class="btn_login" onclick="loginCheck();">LOGIN</span> --%>
+		
 			<input type="submit" class="btn_login" onclick="loginCheck()" value="LOGIN">
 		 </div>
 	    
