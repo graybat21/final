@@ -26,7 +26,7 @@ public class MemberController {
 	// 로그인 폼
 	@RequestMapping(value = "/login.gh", method = RequestMethod.GET)
 	public String loginForm(MemberVO member) {
-		return "member/loginForm2/LOGIN";
+		return "member/loginForm/LOGIN";
 	}
 
 	// 로그인동작 및 세션 생성
