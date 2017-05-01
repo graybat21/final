@@ -34,6 +34,6 @@
 		</beans:property>
 	</beans:bean>
 	
-	<context:component-scan base-package="net.kh.member" />
+	<context:component-scan base-package="net.kh" />
 
 </beans:beans>
