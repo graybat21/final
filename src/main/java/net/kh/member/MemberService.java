@@ -1,54 +1,22 @@
-//package net.kh.member;
-//
-//
-//
-//import javax.annotation.Resource;
-//
-//import org.mybatis.spring.SqlSessionTemplate;
-//import org.springframework.stereotype.Service;
-//
-//
-//
-//@Service
-//public class MemberService implements MemberDao{
-//
-//	@Resource(name="sqlSessionTemplate")
-//	private SqlSessionTemplate sqlSessionTemplate;
-//	
-//	@Override
-//    public MemberModel memberLogin(MemberModel mem) {
-//	    return sqlSessionTemplate.selectOne("member.login", mem);
-//    }
-//
-//	@Override
-//	public MemberModel getMember(String id) {
-//		return sqlSessionTemplate.selectOne("member.getMember", id);
-//	}
-//
-//	@Override
-//	public Object insertMember(MemberModel mem) {
-//		return sqlSessionTemplate.insert("member.insertMember", mem);
-//	}
-//	
-//	@Override
-//	public MemberModel idFindByName(MemberModel member) {
-//		return sqlSessionTemplate.selectOne("member.idfind", member);
-//    }
-//	
-//	@Override
-//	public MemberModel pwFindById(MemberModel member) {
-//		return sqlSessionTemplate.selectOne("member.pwfind", member);
-//    }
-//    
-//	@Override
-//	public Object memberModify(MemberModel member) {
-//		return sqlSessionTemplate.update("member.updateMember", member);
-//	}
-//	
-//	@Override
-//	public Object memberDelete(String id) {
-//		return sqlSessionTemplate.delete("member.deleteMember", id);
-//    }
-//	
-//	
-//}
+package net.kh.member;
+
+public interface MemberService {
+
+	public MemberDao memberLogin(MemberDao member); // 로그인
+
+	public MemberDao getMember(String email); // email 을 통해서 전체 정보 가져오기
+
+	public Object insertMember(MemberDao member); // 가입
+
+	public MemberDao emailFindByName(MemberDao member); // 이메일찾기
+
+	public MemberDao pwFindByEmail(MemberDao member); // 비번찾기
+
+	public Object memberModify(MemberDao member); // 수정
+
+	public Object memberDelete(String email); // 탙뢰
+
+	public MemberDao idFindByName(MemberDao member);
+
+	public MemberDao pwFindById(MemberDao member);
+}
