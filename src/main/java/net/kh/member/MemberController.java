@@ -1,11 +1,18 @@
 package net.kh.member;
 
+import java.util.Random;
+
 import javax.annotation.Resource;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage.RecipientType;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +24,9 @@ import net.kh.common.LoginController;
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
+	@Autowired
+	private JavaMailSenderImpl javaMailSenderImpl;
 
 	@Resource(name = "memberService")
 	private MemberService memberService;
@@ -73,6 +83,41 @@ public class MemberController {
 		// ModelAndView mav = new ModelAndView();
 		mav.setViewName("main/main/LOGOUT");
 		return mav;
+	}
+
+	@RequestMapping("/sendmail.gh")
+	public String sendmailform() {
+		return "member/joinmail/sendmailform";
+	}
+
+	// 회원가입 이메일 인증
+	@RequestMapping(value = "/sendmail2.gh")
+	public String sendMailAuth(HttpSession session, MemberVO member) throws Exception {
+		MimeMessage mimeMessage = javaMailSenderImpl.createMimeMessage();
+
+		mimeMessage.setFrom(new InternetAddress("guesthi1111@gmail.com"));
+		mimeMessage.addRecipient(RecipientType.TO, new InternetAddress(member.getEmail()));
+
+		String subject = "GuestHi - 회원가입 인증 코드 발급 안내 입니다.";
+		mimeMessage.setSubject(subject);
+
+		int ran = new Random().nextInt(90000) + 10000; // 10000 ~ 99999
+		String joinCode = String.valueOf(ran);
+		session.setAttribute("joinCode", joinCode);
+		StringBuilder sb = new StringBuilder();
+		String uri = "http://localhost:8080/GuestHi/";
+		sb.append("<h1><a href='" + uri + "'>");
+		sb.append("<img src='http://i.imgur.com/Jo4vPeX.png'></a></h1>");
+		sb.append("<h1>Welcome GuestHi</h1>");
+		sb.append("<hr><br>");
+		sb.append("<a href='" + uri + "auth/" + member.getNo() + "/" + joinCode + "'>");
+		/*http://localhost:8083/GuestHi/auth/{member.no}/joinCode*/
+		sb.append("귀하의 인증 코드는 " + joinCode + " 입니다. 링크를 클릭하시면 인증됩니다.</a>");
+		mimeMessage.setText(sb.toString(), "UTF-8", "html");
+
+		javaMailSenderImpl.send(mimeMessage);
+
+		return "member/joinmail2/sendmailsuccess";
 	}
 
 	// joinStep1()
