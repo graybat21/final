@@ -94,6 +94,7 @@
 		<!-- 페이지별 호출 소스 -->
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user.css">
 		<script src="js/user.js"></script>
+
 		<script src="js/check.js"></script>
 
 		<script>
@@ -288,6 +289,55 @@
 	})(jQuery);
 	</script>
 		<!-- //페이지별 호출 소스 -->
+		
+		<!-- 다음 우편번호  -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    fullAddr = data.roadAddress;
+
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    fullAddr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                if(data.userSelectedType === 'R'){
+                    //법정동명이 있을 경우 추가한다.
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있을 경우 추가한다.
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('sample6_address').value = fullAddr;
+
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById('sample6_address2').focus();
+            }
+        }).open();
+    }
+</script>
+
+		<!--// 다음 우편번호  -->
+
 
 		<!-- (공통)contentsWrap -->
 		<article id="contentsWrap">
@@ -295,39 +345,125 @@
 
 			<!-- user wrap -->
 			<div class="user_wrap row row_cont">
-				<br><br>
+
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
-						<center>
-<<<<<<< .merge_file_a07828
-						<a href="개인가입">
-=======
-						<a href="일반가입폼">
->>>>>>> .merge_file_a07028
-						<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif"></a>
-						&emsp;&emsp;&emsp;&emsp;
-						<img alt="" src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
-						&emsp;&emsp;&emsp;&emsp;
-<<<<<<< .merge_file_a07828
-						<a href="기업가입폼 ">
-=======
-						<a href="기업가입폼">
->>>>>>> .merge_file_a07028
-						<img alt="" src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif"></a>
-						<br><br>
-						</center>
-						
-								<div class="btn_area">
-									<a href="" onclick="이전"; return false;" class="btn_confirm">이전으로</a>
+					<form action="https://www.goodchoice.kr/user/userJoinInput"
+						method="post" accept-charset="utf-8" id="joinform">
+
+						<input name="step" value="3" type="hidden"> <input
+							name="utype" value="1" type="hidden"> <input
+							name="duplidchk" value="" type="hidden"> <input
+							name="duplnickchk" value="" type="hidden">
+
+						<!-- 회원가입 입력 -->
+						<div class="join_email">
+							<p class="join_item item_1">
+								<label>이메일</label> <input class="ipt ipt_email" size="50"
+									maxlength="50" placeholder="이메일 입력" name="uid"
+									onkeypress="$.duplidreset()" type="email"> <a
+									onclick="return false;" class="btn_overlap_chk" id="chkid">중복확인</a>
+							</p>
+							<p class="join_item item_2">
+								<label>비밀번호</label> 
+								<input class="ipt ipt_password"	placeholder="영문,숫자 포함 6~20자" name=hpw" maxlength="20" type="password">
+							</p>
+							<p class="join_item item_3">
+								<label>비밀번호 확인</label> 
+								<input class="ipt ipt_password" placeholder="비밀번호 확인" name="hpwchk" maxlength="20" type="password">
+							</p>
+							<p class="join_item item_5">
+								<label>업체명</label> <input class="ipt ipt_nick"
+									placeholder="한글,영문,숫자 포함 2~10자" name="hnick" maxlength="10"
+									onkeypress="$.duplnickreset()" type="text"> 
+									<!-- <a class="btn_overlap_chk" id="chknick" onclick="return false;">중복확인</a> -->
+							</p>
+							<p class="join_item item_6">
+								<label>사업자번호</label> <input class="ipt ipt_bizno"
+									placeholder="사업자 등록번호" name="hbizno" maxlength="10" onkeypress="$.duplnickreset()" type="text"> 
+									<a class="btn_overlap_chk" id="chkbizno" onclick="return false;">중복확인</a>
+							</p>
+							<p class="join_item item_7">
+								<label>우편번호</label> 
+								<input class="ipt ipt_add" placeholder="우편번호" id="sample6_postcode" name="sample6_postcode" type="text" readonly="readonly"> 
+									 <a class="btn_overlap_chk" id="chkzip" onclick="sample6_execDaumPostcode()">우편번호 찾기</a>
+							</p>
+							<p class="join_item item_7">
+								<label>주소</label> 
+								<input class="ipt ipt_add" type="text" id="sample6_address" placeholder="주소" readonly="readonly"> 
+							</p>
+							<p class="join_item item_7">
+								<label>상세주소</label> 
+								<input class="ipt ipt_add" type="text" id="sample6_address2" placeholder="상세주소"> 
+							</p>
+
+							<!-- Agree Area -->
+							<div class="agree_area">
+								<!-- 서비스 이용약관 동의 -->
+								<label class="agree_chk"> <input class="ipt_chk"
+									name="rolechk" id="rolechk" type="checkbox"> <strong>서비스
+										이용약관</strong> 동의
+								</label>
+								<div class="agree_txt">
+									<div class="ag_wrap">
+										<!-- 3.0 약관 -->
+
+
+
+
+										<script type="text/javascript">
+$(function(){
+
+	$('.last_policy').each(function(e){
+		$(this).click(function(){
+			if ($(this).hasClass('on')){
+				$(this).removeClass('on');
+				$('.agree_section').eq(e).hide();
+				$('span',this).html('보기');
+			}else{
+				$(this).addClass('on');
+				$('.agree_section').eq(e).show();
+				$('span',this).html('닫기');
+			}
+			console.log(e);
+		});
+	});
+
+});
+</script>
+									</div>
+
+									<p class="join_info">
+										<span>14세 미만 아동은 서비스 사용이 불가합니다</span>
+									</p>
 								</div>
+								<!-- //Agree Area -->
+
+								<div class="btn_area">
+									<a href="" onclick="$.joinok(); return false;"
+										class="btn_confirm">가입완료</a>
+								</div>
+								<p class="join_info">
+									<span>비밀번호 분실시 이메일을 통해 확인하므로,</span> <span>정확하게 입력해주세요.</span>
+								</p>
 							</div>
+							<!-- 회원가입 입력 -->
+					</form>
 				</div>
 				<!-- //user_cont_wrap -->
+
+
 			</div>
 			<!-- //user wrap -->
 
+
+
 		</article>
 		<!-- //(공통)contentsWrap -->
+
+
+
+
 
 		<!-- //레이어 : 내위치 재설정(지도) -->
 
@@ -355,6 +491,9 @@ else {
 } 
 </script>
 		<!-- //웹 노출 경고창 -->
+
+
+
 
 		<script>
 	 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

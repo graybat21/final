@@ -54,6 +54,12 @@
 .join_email .join_item.item_2 label {background:#fff url('https://img.goodchoice.kr/images/web_v2/user/ic_pw_change.png') no-repeat 7px 50%;background-size:12px auto;}
 .join_email .join_item.item_3 label {background:#fff url('https://img.goodchoice.kr/images/web_v2/user/ic_pw_chk.png') no-repeat 7px 50%;background-size:12px auto;}
 .join_email .join_item.item_4 label {background:#fff url('https://img.goodchoice.kr/images/web_v2/user/ic_user_nick.png') no-repeat 5px 50%;background-size:15px auto;}
+<<<<<<< .merge_file_a12204
+=======
+.join_email .join_item.item_5 label {background:#fff url('../folder/ic_user_hotel.png') no-repeat 5px 50%;background-size:15px auto;}
+.join_email .join_item.item_6 label {background:#fff url('../folder/ic_user_bizno.png') no-repeat 5px 50%;background-size:15px auto;}
+.join_email .join_item.item_7 label {background:#fff url('../folder/ic_user_add.png') no-repeat 5px 50%;background-size:15px auto;}
+>>>>>>> .merge_file_a01848
 .join_email .join_item .btn_overlap_chk {position:absolute;right:0px;top:1px;display:inline-block;padding:12px 15px;border-radius:0 2px 2px 0;background:#aaa;color:#fff;}
 .join_email .agree_chk {display:block;margin:0 0 10px 0;color:#909090;}
 .join_email .join_info {padding-left:20px;color:#707070;font-size:0.775rem;background:url('https://img.goodchoice.kr/images/web_v2/user/ic_info_chk.png') no-repeat 0 50%;background-size:16px auto;background-position: 0 2px;}
