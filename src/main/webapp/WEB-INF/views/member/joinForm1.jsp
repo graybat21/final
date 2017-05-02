@@ -306,33 +306,31 @@
 
 			<!-- user wrap -->
 			<div class="user_wrap row row_cont">
-				<br>
-				<br>
+				<br> <br>
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
 					<center>
 
 
-						<a href="${contextPath}/GuestHi/member/joinForm1.gh">
-						
-						<%--  <a
-							href="${contextPath}/GuestHi/member/member.gh">일반가입폼</a> --%>
-						 
-						
-						
-						 
-						<img
+						<a href="${contextPath}/GuestHi/member/joinForm1.gh"> <%--  <a
+							href="${contextPath}/GuestHi/member/member.gh">일반가입폼</a> --%> <img
 							src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif"></a>
 						&emsp;&emsp;&emsp;&emsp; <img alt=""
 							src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
-						&emsp;&emsp;&emsp;&emsp; <!-- <a href="기업가입폼 "> --><a href="${contextPath}/GuestHi/member/joinForm2.gh"> <img alt=""
+						&emsp;&emsp;&emsp;&emsp;
+						<!-- <a href="기업가입폼 "> -->
+						<a href="${contextPath}/GuestHi/member/joinForm2.gh"> <img
+							alt=""
 							src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif"></a>
-						<br>
-						<br>
+						<br> <br>
 					</center>
 
 					<div class="btn_area">
-						<a href="" onclick="이전" ; return false;" class="btn_confirm">이전으로</a>
+
+
+
+						<a href="javascript:clickon=history.go(-1)" class="btn_confirm">이전으로</a>
+						<!-- <a href="" onclick="이전" ;  class="btn_confirm">이전으로</a> -->
 					</div>
 				</div>
 			</div>
