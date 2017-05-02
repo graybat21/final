@@ -59,6 +59,20 @@ public class MemberController {
 		return mav;
 
 	}
+	
+    @RequestMapping("/member/member.gh")
+    public ModelAndView memberStep1(){
+       
+  	 ModelAndView mav = new ModelAndView();
+  	  
+       mav.setViewName("member/joinForm/joinForm");
+       return mav;
+    }
+    
+    
+    
+    
+    
 	//
 	// @RequestMapping("/logout.dog")
 	// public ModelAndView memberLogout(HttpServletRequest request, MemberModel

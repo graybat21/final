@@ -26,6 +26,12 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.memberLogin(member);
     }
 
+	@Override
+	public Object insertMember(MemberVO member){
+		// TODO Auto-generated method stub
+		return memberMapper.memberJoin(member);
+	}
+
 
 	
 	
