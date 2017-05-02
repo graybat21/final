@@ -14,25 +14,25 @@
 
 
 <!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css" href="resources/css/default.css">
-<link rel="stylesheet" type="text/css" href="resources/css/owl.css">
-<link rel="stylesheet" type="text/css" href="resources/css/user.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/owl.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user.css">
 
 <!-- 공통 JS  -->
-<script src="resources/js/js.joinForm/1602931226643913.js" async=""></script>
-<script src="resources/js/js.joinForm/fbevents.js"></script>
-<script src="resources/js/js.joinForm/analytics.js"></script>
-<script src="resources/js/js.joinForm/jquery-1.js"></script>
-<script src="resources/js/js.joinForm/jquery.js"></script>
-<script src="resources/js/js.joinForm/owl.js"></script>
-<script src="resources/js/js.joinForm/masonry.js"></script>
-<script src="resources/js/js.joinForm/jquery_002.js"></script>
-<script src="resources/js/js.joinForm/imgliquid.js"></script>
-<script src="resources/js/js.joinForm/iscroll.js"></script>
-<script src="resources/js/js.joinForm/jquery_003.js"></script>
-<script src="resources/js/js.joinForm/common.js"></script>
-<script src="resources/js/js.joinForm/user.js"></script>
-<script src="resources/js/js.joinForm/check.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/1602931226643913.js" async=""></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/fbevents.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/analytics.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/jquery-1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/owl.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/masonry.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/jquery_002.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/imgliquid.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/iscroll.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/jquery_003.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/common.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/user.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/check.js"></script>
 <script type="text/javascript">
 
 	function get_version_of_IE () {

@@ -65,11 +65,29 @@ public class MemberController {
        
   	 ModelAndView mav = new ModelAndView();
   	  
-       mav.setViewName("member/joinForm/joinForm");
+       mav.setViewName("member/joinForm1/joinForm1");
        return mav;
     }
     
     
+    @RequestMapping("/member/joinForm1.gh")
+    public ModelAndView memberStep2(){
+       
+  	 ModelAndView mav = new ModelAndView();
+  	  
+       mav.setViewName("member/joinForm2/joinForm2");
+       return mav;
+    }
+    
+    
+    @RequestMapping("/member/joinForm2.gh")
+    public ModelAndView memberStep3(){
+       
+  	 ModelAndView mav = new ModelAndView();
+  	  
+       mav.setViewName("member/joinForm3/joinForm3");
+       return mav;
+    }
     
     
     

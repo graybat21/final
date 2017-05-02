@@ -32,13 +32,19 @@
 
 
 <!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/default.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/owl.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/default.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/owl.css">
 
 <!-- 공통 JS  -->
-<script src="${pageContext.request.contextPath}/resources/js/1602931226643913.js" async=""></script>
-<script async="" src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
-<script async="" src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/1602931226643913.js"
+	async=""></script>
+<script async=""
+	src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
+<script async=""
+	src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
 <script type="text/javascript">
 	function get_version_of_IE () {
 
@@ -73,14 +79,18 @@
 		} 
 	}*/
 	</script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/owl.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/masonry.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery_002.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/imgliquid.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery_002.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/imgliquid.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/iscroll.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery_003.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/jquery_003.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
 </head>
 
@@ -92,7 +102,8 @@
 
 
 		<!-- 페이지별 호출 소스 -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user.css">
+		<link rel="stylesheet" type="text/css"
+			href="${pageContext.request.contextPath}/resources/css/user.css">
 		<script src="js/user.js"></script>
 		<script src="js/check.js"></script>
 
@@ -291,49 +302,52 @@
 
 		<!-- (공통)contentsWrap -->
 		<article id="contentsWrap">
-	
+
 
 			<!-- user wrap -->
 			<div class="user_wrap row row_cont">
-				<br><br>
+				<br>
+				<br>
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
-						<center>
-<<<<<<< .merge_file_a07828
-						<a href="개인가입">
-=======
-						<a href="일반가입폼">
->>>>>>> .merge_file_a07028
-						<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif"></a>
-						&emsp;&emsp;&emsp;&emsp;
-						<img alt="" src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
-						&emsp;&emsp;&emsp;&emsp;
-<<<<<<< .merge_file_a07828
-						<a href="기업가입폼 ">
-=======
-						<a href="기업가입폼">
->>>>>>> .merge_file_a07028
-						<img alt="" src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif"></a>
-						<br><br>
-						</center>
+					<center>
+
+
+						<a href="${contextPath}/GuestHi/member/joinForm1.gh">
 						
-								<div class="btn_area">
-									<a href="" onclick="이전"; return false;" class="btn_confirm">이전으로</a>
-								</div>
-							</div>
+						<%--  <a
+							href="${contextPath}/GuestHi/member/member.gh">일반가입폼</a> --%>
+						 
+						
+						
+						 
+						<img
+							src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif"></a>
+						&emsp;&emsp;&emsp;&emsp; <img alt=""
+							src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
+						&emsp;&emsp;&emsp;&emsp; <!-- <a href="기업가입폼 "> --><a href="${contextPath}/GuestHi/member/joinForm2.gh"> <img alt=""
+							src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif"></a>
+						<br>
+						<br>
+					</center>
+
+					<div class="btn_area">
+						<a href="" onclick="이전" ; return false;" class="btn_confirm">이전으로</a>
+					</div>
 				</div>
-				<!-- //user_cont_wrap -->
 			</div>
-			<!-- //user wrap -->
+			<!-- //user_cont_wrap -->
+	</div>
+	<!-- //user wrap -->
 
-		</article>
-		<!-- //(공통)contentsWrap -->
+	</article>
+	<!-- //(공통)contentsWrap -->
 
-		<!-- //레이어 : 내위치 재설정(지도) -->
+	<!-- //레이어 : 내위치 재설정(지도) -->
 
-		<!-- 비회원 예약조회 -->
+	<!-- 비회원 예약조회 -->
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 function setCookie( name, value, expiredays ) { 
 	var todayDate = new Date(); 
 	todayDate.setDate( todayDate.getDate() + expiredays ); 
@@ -354,9 +368,9 @@ else {
 	$('.web_adppdown').hide();
 } 
 </script>
-		<!-- //웹 노출 경고창 -->
+	<!-- //웹 노출 경고창 -->
 
-		<script>
+	<script>
 	 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -367,8 +381,8 @@ else {
 	</script>
 
 
-		<script type="text/javascript" src="js/wcslog.js"> </script>
-		<script type="text/javascript"> 
+	<script type="text/javascript" src="js/wcslog.js"> </script>
+	<script type="text/javascript"> 
 	if (!wcs_add) var wcs_add={};
 	wcs_add["wa"] = "s_4540c185467c";
 	if (!_nasa) var _nasa={};
@@ -377,7 +391,7 @@ else {
 	</script>
 
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 	/* <![CDATA[ */
 	var google_conversion_id = 964418007;
 	var google_conversion_language = "en";
