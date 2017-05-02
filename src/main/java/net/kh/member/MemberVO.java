@@ -11,6 +11,15 @@ public class MemberVO {
 	private String phone;
 	private Date reg;
 	private Date birth;
+	private int auth;
+
+	public int getAuth() {
+		return auth;
+	}
+
+	public void setAuth(int auth) {
+		this.auth = auth;
+	}
 
 	public int getNo() {
 		return no;

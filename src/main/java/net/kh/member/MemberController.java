@@ -93,8 +93,9 @@ public class MemberController {
 	// 회원가입 이메일 인증
 	@RequestMapping(value = "/sendmail2.gh")
 	public String sendMailAuth(HttpSession session, MemberVO member) throws Exception {
-		MimeMessage mimeMessage = javaMailSenderImpl.createMimeMessage();
 
+		MimeMessage mimeMessage = javaMailSenderImpl.createMimeMessage();
+		
 		mimeMessage.setFrom(new InternetAddress("guesthi1111@gmail.com"));
 		mimeMessage.addRecipient(RecipientType.TO, new InternetAddress(member.getEmail()));
 
@@ -102,6 +103,7 @@ public class MemberController {
 		mimeMessage.setSubject(subject);
 
 		int ran = new Random().nextInt(90000) + 10000; // 10000 ~ 99999
+		member.setAuth(ran);
 		String joinCode = String.valueOf(ran);
 		session.setAttribute("joinCode", joinCode);
 		StringBuilder sb = new StringBuilder();
@@ -111,14 +113,23 @@ public class MemberController {
 		sb.append("<h1>Welcome GuestHi</h1>");
 		sb.append("<hr><br>");
 		sb.append("<a href='" + uri + "auth/" + member.getNo() + "/" + joinCode + "'>");
-		/*http://localhost:8083/GuestHi/auth/{member.no}/joinCode*/
+		/*http://localhost:8083/GuestHi/auth/{member.no}/{auth}*/
 		sb.append("귀하의 인증 코드는 " + joinCode + " 입니다. 링크를 클릭하시면 인증됩니다.</a>");
 		mimeMessage.setText(sb.toString(), "UTF-8", "html");
 
 		javaMailSenderImpl.send(mimeMessage);
-
+		
+		boolean insertSuccess =memberService.memberInsert(member);
+		System.out.println(insertSuccess);
+		
 		return "member/joinmail2/sendmailsuccess";
 	}
+	
+	// 인증
+//	@RequestMapping(value="/auth/{no}/{auth}")
+//	public ModelAndView authOk(MemberVO member)throws Exception{
+//		
+//	}
 
 	// joinStep1()
 	// joinStep2()
