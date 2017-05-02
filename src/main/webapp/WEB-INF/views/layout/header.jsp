@@ -110,7 +110,7 @@
 
 
 			<!-- 로그인전 -->
-			<%-- <c:if test="${session_email == null }"> --%>
+			<c:if test="${session_member_email == null }">
 				<nav class="nav_sub">
 					<ul>
 						<li class="link_01">
@@ -120,30 +120,31 @@
 							href="${contextPath}/GuestHi/member/member.gh">회원가입</a></li>
 						<!-- <li class="link_03"><a href="#"
                      onclick="guest_reserve_open();return false;" class="m_reserve">예약내역</a></li> -->
-						<li class="link_04"><a
-							href="">고객센터</a></li>
+						<li class="link_04"><a href="">고객센터</a></li>
 					</ul>
 				</nav>
-
+			</c:if>
 
 			<!-- 로그인후 -->
-			<%-- <c:if test="${session_email == null }">
-            <nav class="nav_sub">
-               <ul>
-                  <li class="nav_nick">
-                     <div class="my_info">
-
-                        <span class="my_nick nickname">${session_email}&nbsp;님</span> <span
-                           class="my_img"><img
-                           src="${pageContext.request.contextPath}/resources/files/ic_menu_user_default.png"
-                           alt=""></span>
-                     </div>
-                  </li>
-                  <li class="link_04"><a
-                     href="https://www.goodchoice.kr/service/noticeList">고객센터</a></li>
-               </ul>
-            </nav>
-         </c:if> --%>
+			<c:if test="${session_member_email != null }">
+				<nav class="nav_sub">
+					<ul>
+						<li class="nav_nick">
+							<div class="my_info">
+								<span class="my_nick nickname">${session_member_name}&nbsp;님</span> <span
+									class="my_img"><img
+									src="${pageContext.request.contextPath}/resources/files/ic_menu_user_default.png"
+									alt=""></span>
+							</div>
+							
+						</li>
+						<li class="link_01">
+							<a href="logout.gh" class="layer_trigger">로그아웃</a>
+						</li>
+						<li class="link_04"><a href="">고객센터</a></li>
+					</ul>
+				</nav>
+			</c:if>
 			<!-- 헤더의 닉네임 누르면 나타나는 팝업 창 -->
 
 			<!-- 마이페이지 플로팅 팝업 -->
