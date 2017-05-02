@@ -299,12 +299,12 @@
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
 						<center>
-						<a href="개인가입">
+						<a href="일반가입폼">
 						<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif"></a>
 						&emsp;&emsp;&emsp;&emsp;
 						<img alt="" src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
 						&emsp;&emsp;&emsp;&emsp;
-						<a href="기업가입폼 ">
+						<a href="기업가입폼">
 						<img alt="" src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif"></a>
 						<br><br>
 						</center>
