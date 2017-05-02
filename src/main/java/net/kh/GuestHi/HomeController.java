@@ -32,7 +32,9 @@ public class HomeController {
 //		
 //		model.addAttribute("serverTime", formattedDate );
 		
+
 		return "member/joinForm3/GH";
+
 	}
 	
 }
