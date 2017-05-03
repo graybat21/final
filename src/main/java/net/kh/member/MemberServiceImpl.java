@@ -9,54 +9,34 @@ import net.kh.dao.MemberDao;
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
 
-//	@Resource(name = "sqlSessionTemplate")
-//	private SqlSessionTemplate sqlSessionTemplate;
-//
-//	@Override
-//	public MemberVO memberLogin(MemberVO mem) {
-//		return sqlSessionTemplate.selectOne("member.login", mem);
-//	}
+	// @Resource(name = "sqlSessionTemplate")
+	// private SqlSessionTemplate sqlSessionTemplate;
+	//
+	// @Override
+	// public MemberVO memberLogin(MemberVO mem) {
+	// return sqlSessionTemplate.selectOne("member.login", mem);
+	// }
 
 	@Autowired
-    private MemberDao memberMapper;
-
-    @Override
-    @Transactional
-    public MemberVO memberLogin(MemberVO member) throws Exception{
-        return memberMapper.memberLogin(member);
-    }
+	private MemberDao memberMapper;
 
 	@Override
-	public Object insertMember(MemberVO member){
-		// TODO Auto-generated method stub
-		return memberMapper.memberJoin(member);
+	@Transactional
+	public MemberVO memberLogin(MemberVO member) throws Exception {
+		return memberMapper.memberLogin(member);
 	}
 
-	@Override
-	public Object insertMember2(MemberVO member) {
-		// TODO Auto-generated method stub
-		return memberMapper.memberJoin2(member);
-	}
-
-	@Override
-	public Object insertMember3(MemberVO member) {
-		// TODO Auto-generated method stub
-		return memberMapper.memberJoin3(member);
-	}
-
-
-	
-	
 	// @Override
 	// public MemberVO getMember(String id) {
 	// return sqlSessionTemplate.selectOne("member.getMember", id);
 	// }
 	//
-	// @Override
-	// public Object insertMember(MemberVO mem) {
-	// return sqlSessionTemplate.insert("member.insertMember", mem);
-	// }
-	//
+	@Override
+	@Transactional
+	public boolean memberInsert(MemberVO member) throws Exception {
+		return memberMapper.memberInsert(member);
+	}
+
 	// @Override
 	// public MemberVO idFindByName(MemberVO member) {
 	// return sqlSessionTemplate.selectOne("member.idfind", member);

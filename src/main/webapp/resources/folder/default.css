@@ -274,21 +274,34 @@ header .btn_m_srch{display:none}
 #footerWrap {overflow:hidden;position:relative;width:100%;background:#353535}
 #footerWrap .foot_mobile{display:none}
 #footerWrap .btn_gotop {position:absolute;right:17px;bottom:17px;display:inline-block;width:40px;height:38px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') no-repeat -99px -12px;background-size:140px auto;cursor:pointer;z-index:10;position:fixed}
+/*
+#footerWrap .btn_gotop {position:fixed;right:20px;bottom:30px;width:58px;height:58px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') no-repeat -158px -20px;background-size:220px auto}
+*/
+
 #footerWrap .foot_desktop{position:relative;overflow:hidden;padding:0 15px}
+#footerWrap .foot_desktop .logo{position:absolute;top:54px;left:17px;width:197px;height:36px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 0 no-repeat;background-size:290px auto;text-indent:-9999px}
 #footerWrap .foot_desktop .left_cont{float:left;width:37%;padding-top:120px;color:#909090;font-size:13px;line-height:1.6}
 #footerWrap .foot_desktop .left_cont .padding_r{padding-right:20px}
 #footerWrap .foot_desktop .left_cont .address{padding-bottom:79px;letter-spacing:-1px}
 #footerWrap .foot_desktop .left_cont b{display:block;padding-bottom:8px;font-size:17px}
 #footerWrap .foot_desktop .left_cont ul li{display:inline-block;padding-bottom:30px;margin:0 27px 10px 0;text-indent:-9999px}
+#footerWrap .foot_desktop .left_cont .mark_01{width:54px;height:50px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -135px no-repeat;background-size:350px auto}
+#footerWrap .foot_desktop .left_cont .mark_02{width:102px;height:56px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -63px -135px no-repeat;background-size:350px auto}
+#footerWrap .foot_desktop .left_cont .mark_03{width:100px;height:56px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -156px -120px no-repeat;background-size:316px auto}
 #footerWrap .foot_desktop .left_cont .mark_04{width:46px;height:64px;margin-right:0;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -264px -120px no-repeat;background-size:314px auto}
 #footerWrap .foot_desktop .right_cont{float:right;width:63%;background:url('https://img.goodchoice.kr/images/web_v2/common/footer_line.gif') no-repeat 0 56px}
 #footerWrap .foot_desktop .right_cont div{position:relative;padding:120px 0 0 60px;font-size:13px;color:#909090;line-height:1.6}
+#footerWrap .foot_desktop .right_cont div:after{content:"";display:inline-block;position:absolute;top:55px;right:0;width:278px;height:80px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -70px no-repeat}
 #footerWrap .foot_desktop .right_cont div ol li{margin-bottom:2px}
 #footerWrap .foot_desktop .right_cont div ol li span{font-size:12px}
 #footerWrap .foot_desktop .right_cont .icon_cont{display:block;position:relative;padding:0 0 10px 43px;font-size:17px} 
+#footerWrap .foot_desktop .right_cont .icon_cont:after{content:"";display:inline-block;position:absolute;top:-3px;left:0;width:30px;height:31px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -330px 0 no-repeat}
 #footerWrap .foot_desktop .right_cont ul{margin-top:54px;text-align:right}
 #footerWrap .foot_desktop .right_cont ul li{display:inline-block;margin-left:5px}
 #footerWrap .foot_desktop .right_cont ul li a{display:block;width:47px;height:46px;text-align:left;text-indent:-9999px}
+#footerWrap .foot_desktop .right_cont .link_01{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -280px no-repeat}
+#footerWrap .foot_desktop .right_cont .link_02{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -57px -280px no-repeat}
+#footerWrap .foot_desktop .right_cont .link_03{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -116px -280px no-repeat}
 #footerWrap .foot_desktop .intro_link{clear:left;padding-bottom:30px;text-align:center;font-size:13px;color:#707070}
 #footerWrap .foot_desktop .intro_link a{display:inline-block;font-weight:bold;padding-bottom:20px;color:#707070}
 #footerWrap .foot_desktop .intro_link span{display:inline-block;width:34px;text-align:center;color:#454545}
@@ -296,9 +309,46 @@ header .btn_m_srch{display:none}
 
 @media all and (max-width:1080px){
 	#footerWrap .foot_desktop .right_cont div{padding:120px 0 0 20px;font-size:14px}
+	#footerWrap .foot_desktop .right_cont div:after{top:30px}
 }
 @media all and (max-width:768px){
 	#footerWrap .foot_desktop{display:none}
+	#footerWrap .foot_mobile{display:block;padding:20px 10px;font-size:12px;color:#909090;line-height:1.4}
+	#footerWrap .foot_mobile .top{position:relative;padding:20px 0 35px 0;border-bottom:1px solid #545454}
+	#footerWrap .foot_mobile .top:after{content:"";display:inline-block;position:absolute;top:0;left:0;width:252px;height:71px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -63px no-repeat;background-size:390px auto}
+	#footerWrap .foot_mobile .top ul{text-align:right}
+	#footerWrap .foot_mobile .top ul li{display:inline-block;width:36px;margin-left:5px}
+	#footerWrap .foot_mobile .mid{padding:55px 0 10px 0;border-bottom:1px solid #545454;background:url('https://img.goodchoice.kr/images/web_v2/common/img_logo_footer.png') 0 15px no-repeat;background-size:106px auto;letter-spacing:-1px}
+	#footerWrap .foot_mobile .mid b{display:block;padding-bottom:7px}
+	#footerWrap .foot_mobile .mid .icon_cont{display:block;position:relative;padding:17px 0 10px 19px}
+	#footerWrap .foot_mobile .mid .icon_cont:after{content:"";display:inline-block;position:absolute;top:18px;left:0;width:15px;height:15px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -134px 0 no-repeat;background-size:180px auto}
+	#footerWrap .foot_mobile .mid ul{margin:15px 0;text-align:center}
+	#footerWrap .foot_mobile .mid ul li{display:inline-block;margin:0 5px;text-indent:-9999px}
+	#footerWrap .foot_mobile .mid ol li{line-height:1.6}
+	#footerWrap .foot_mobile .mid ol li span{font-size:10px}
+	#footerWrap .foot_mobile .mid .mark_01{width:37px;height:54px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -94px no-repeat;background-size:254px auto}
+	#footerWrap .foot_mobile .mid .mark_02{width:61px;height:45px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -39px -82px no-repeat;background-size:215px auto}
+	#footerWrap .foot_mobile .mid .mark_03{width:60px;height:45px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -97px -70px no-repeat;background-size:195px auto}
+	#footerWrap .foot_mobile .mid .mark_04{width:33px;height:45px;margin-right:0;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -163px -70px no-repeat;background-size:195px auto}
+	#footerWrap .foot_mobile .top ul li a{display:block;width:36px;height:36px;text-align:left;text-indent:-9999px}
+	#footerWrap .foot_mobile .top .link_01{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -209px no-repeat;background-size:330px auto}
+	#footerWrap .foot_mobile .top .link_02{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -43px -209px no-repeat;background-size:330px auto}
+	#footerWrap .foot_mobile .top .link_03{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -86px -209px no-repeat;background-size:330px auto}
+	#footerWrap .foot_mobile .bot{padding:12px 0 0 0;text-align:center;font-size:11px}
+	#footerWrap .foot_mobile .bot p{padding-bottom:7px}
+	#footerWrap .foot_mobile .bot p a{color:#909090}
+	#footerWrap .foot_mobile .bot p span{display:inline-block;width:20px;color:#646464}
+	#footerWrap .foot_mobile .bot div{padding-top:5px}
+	#footerWrap .foot_mobile .bot div b{color:#ccc;font-weight:normal}
+}
+@media all and (max-width:480px){
+	#footerWrap .foot_mobile .top{padding:10px 0 25px 0;border-bottom:1px solid #545454}
+	#footerWrap .foot_mobile .top:after{width:182px;height:57px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -44px no-repeat;background-size:282px auto}
+}
+
+@media all and (max-width:320px){
+	#footerWrap .foot_mobile .top{padding:7px 0 15px 0}
+	#footerWrap .foot_mobile .top:after{width:155px;height:47px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -39px no-repeat;background-size:246px auto}
 }
 
 /* layer */
@@ -647,21 +697,34 @@ header .btn_m_srch{display:none}
 #footerWrap {overflow:hidden;position:relative;width:100%;background:#353535}
 #footerWrap .foot_mobile{display:none}
 #footerWrap .btn_gotop {position:absolute;right:17px;bottom:17px;display:inline-block;width:40px;height:38px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') no-repeat -99px -12px;background-size:140px auto;cursor:pointer;z-index:10;position:fixed}
+/*
+#footerWrap .btn_gotop {position:fixed;right:20px;bottom:30px;width:58px;height:58px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') no-repeat -158px -20px;background-size:220px auto}
+*/
+
 #footerWrap .foot_desktop{position:relative;overflow:hidden;padding:0 15px}
+#footerWrap .foot_desktop .logo{position:absolute;top:54px;left:17px;width:197px;height:36px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 0 no-repeat;background-size:290px auto;text-indent:-9999px}
 #footerWrap .foot_desktop .left_cont{float:left;width:37%;padding-top:120px;color:#909090;font-size:13px;line-height:1.6}
 #footerWrap .foot_desktop .left_cont .padding_r{padding-right:20px}
 #footerWrap .foot_desktop .left_cont .address{padding-bottom:30px;letter-spacing:-1px}
 #footerWrap .foot_desktop .left_cont b{display:block;padding-bottom:8px;font-size:17px}
 #footerWrap .foot_desktop .left_cont ul li{display:inline-block;padding-bottom:30px;margin:0 27px 10px 0;text-indent:-9999px}
+#footerWrap .foot_desktop .left_cont .mark_01{width:54px;height:50px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -135px no-repeat;background-size:350px auto}
+#footerWrap .foot_desktop .left_cont .mark_02{width:102px;height:56px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -63px -135px no-repeat;background-size:350px auto}
+#footerWrap .foot_desktop .left_cont .mark_03{width:100px;height:56px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -156px -120px no-repeat;background-size:316px auto}
 #footerWrap .foot_desktop .left_cont .mark_04{width:46px;height:64px;margin-right:0;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -264px -120px no-repeat;background-size:314px auto}
 #footerWrap .foot_desktop .right_cont{float:right;width:63%;background:url('https://img.goodchoice.kr/images/web_v2/common/footer_line.gif') no-repeat 0 56px}
 #footerWrap .foot_desktop .right_cont div{position:relative;padding:120px 0 0 60px;font-size:13px;color:#909090;line-height:1.6}
+#footerWrap .foot_desktop .right_cont div:after{content:"";display:inline-block;position:absolute;top:55px;right:0;width:278px;height:80px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -70px no-repeat}
 #footerWrap .foot_desktop .right_cont div ol li{margin-bottom:2px}
 #footerWrap .foot_desktop .right_cont div ol li span{font-size:12px}
 #footerWrap .foot_desktop .right_cont .icon_cont{display:block;position:relative;padding:0 0 10px 43px;font-size:17px} 
+#footerWrap .foot_desktop .right_cont .icon_cont:after{content:"";display:inline-block;position:absolute;top:-3px;left:0;width:30px;height:31px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -330px 0 no-repeat}
 #footerWrap .foot_desktop .right_cont ul{margin-top:54px;text-align:right}
 #footerWrap .foot_desktop .right_cont ul li{display:inline-block;margin-left:5px}
 #footerWrap .foot_desktop .right_cont ul li a{display:block;width:47px;height:46px;text-align:left;text-indent:-9999px}
+#footerWrap .foot_desktop .right_cont .link_01{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -280px no-repeat}
+#footerWrap .foot_desktop .right_cont .link_02{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -57px -280px no-repeat}
+#footerWrap .foot_desktop .right_cont .link_03{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -116px -280px no-repeat}
 #footerWrap .foot_desktop .intro_link{clear:left;padding-bottom:30px;text-align:center;font-size:13px;color:#707070}
 #footerWrap .foot_desktop .intro_link a{display:inline-block;font-weight:bold;padding-bottom:20px;color:#707070}
 #footerWrap .foot_desktop .intro_link span{display:inline-block;width:34px;text-align:center;color:#454545}
@@ -669,9 +732,46 @@ header .btn_m_srch{display:none}
 
 @media all and (max-width:1080px){
 	#footerWrap .foot_desktop .right_cont div{padding:120px 0 0 20px;font-size:14px}
+	#footerWrap .foot_desktop .right_cont div:after{top:30px}
 }
 @media all and (max-width:768px){
 	#footerWrap .foot_desktop{display:none}
+	#footerWrap .foot_mobile{display:block;padding:20px 10px;font-size:12px;color:#909090;line-height:1.4}
+	#footerWrap .foot_mobile .top{position:relative;padding:20px 0 35px 0;border-bottom:1px solid #545454}
+	#footerWrap .foot_mobile .top:after{content:"";display:inline-block;position:absolute;top:0;left:0;width:252px;height:71px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -63px no-repeat;background-size:390px auto}
+	#footerWrap .foot_mobile .top ul{text-align:right}
+	#footerWrap .foot_mobile .top ul li{display:inline-block;width:36px;margin-left:5px}
+	#footerWrap .foot_mobile .mid{padding:55px 0 10px 0;border-bottom:1px solid #545454;background:url('https://img.goodchoice.kr/images/web_v2/common/img_logo_footer.png') 0 15px no-repeat;background-size:106px auto;letter-spacing:-1px}
+	#footerWrap .foot_mobile .mid b{display:block;padding-bottom:7px}
+	#footerWrap .foot_mobile .mid .icon_cont{display:block;position:relative;padding:17px 0 10px 19px}
+	#footerWrap .foot_mobile .mid .icon_cont:after{content:"";display:inline-block;position:absolute;top:18px;left:0;width:15px;height:15px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -134px 0 no-repeat;background-size:180px auto}
+	#footerWrap .foot_mobile .mid ul{margin:15px 0;text-align:center}
+	#footerWrap .foot_mobile .mid ul li{display:inline-block;margin:0 5px;text-indent:-9999px}
+	#footerWrap .foot_mobile .mid ol li{line-height:1.6}
+	#footerWrap .foot_mobile .mid ol li span{font-size:10px}
+	#footerWrap .foot_mobile .mid .mark_01{width:37px;height:54px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -94px no-repeat;background-size:254px auto}
+	#footerWrap .foot_mobile .mid .mark_02{width:61px;height:45px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -39px -82px no-repeat;background-size:215px auto}
+	#footerWrap .foot_mobile .mid .mark_03{width:60px;height:45px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -97px -70px no-repeat;background-size:195px auto}
+	#footerWrap .foot_mobile .mid .mark_04{width:33px;height:45px;margin-right:0;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -163px -70px no-repeat;background-size:195px auto}
+	#footerWrap .foot_mobile .top ul li a{display:block;width:36px;height:36px;text-align:left;text-indent:-9999px}
+	#footerWrap .foot_mobile .top .link_01{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -209px no-repeat;background-size:330px auto}
+	#footerWrap .foot_mobile .top .link_02{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -43px -209px no-repeat;background-size:330px auto}
+	#footerWrap .foot_mobile .top .link_03{background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -86px -209px no-repeat;background-size:330px auto}
+	#footerWrap .foot_mobile .bot{padding:12px 0 0 0;text-align:center;font-size:11px}
+	#footerWrap .foot_mobile .bot p{padding-bottom:7px}
+	#footerWrap .foot_mobile .bot p a{color:#909090}
+	#footerWrap .foot_mobile .bot p span{display:inline-block;width:20px;color:#646464}
+	#footerWrap .foot_mobile .bot div{padding-top:5px}
+	#footerWrap .foot_mobile .bot div b{color:#ccc;font-weight:normal}
+}
+@media all and (max-width:480px){
+	#footerWrap .foot_mobile .top{padding:10px 0 25px 0;border-bottom:1px solid #545454}
+	#footerWrap .foot_mobile .top:after{width:182px;height:57px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -44px no-repeat;background-size:282px auto}
+}
+
+@media all and (max-width:320px){
+	#footerWrap .foot_mobile .top{padding:7px 0 15px 0}
+	#footerWrap .foot_mobile .top:after{width:155px;height:47px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -39px no-repeat;background-size:246px auto}
 }
 
 /* layer */

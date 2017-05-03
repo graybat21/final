@@ -6,9 +6,7 @@ public interface MemberService {
 //
 //	public MemberVO getMember(String email); // email 을 통해서 전체 정보 가져오기
 //
-	public Object insertMember(MemberVO member); // 가입
-	public Object insertMember2(MemberVO member); //가입->일반
-	public Object insertMember3(MemberVO member); //가입->기업
+	public boolean memberInsert(MemberVO member) throws Exception; // 가입
 //
 //	public MemberVO emailFindByName(MemberVO member); // 이메일찾기
 //

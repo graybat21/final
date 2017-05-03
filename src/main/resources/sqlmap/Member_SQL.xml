@@ -14,6 +14,26 @@
 		AND pw = #{pw} 
 	</select>
 	
+	<insert id="memberInsert" parameterType="memberVO">
+		INSERT INTO MEMBER (
+			no, 
+			email, 
+			pw, 
+			name, 
+			phone, 
+			reg, 
+			auth
+		)
+		VALUES (
+			SEQ_MEMBER_NO.NEXTVAL,
+			#{email},
+			#{pw},
+			#{name},
+			#{phone},
+			sysdate,
+			#{auth}
+		)
+	</insert>
 	
 </mapper>
 
