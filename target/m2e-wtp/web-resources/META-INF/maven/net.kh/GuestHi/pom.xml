@@ -26,8 +26,6 @@
 
 	<dependencies>
 		<!-- Spring -->
-
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -45,7 +43,6 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-
 
 		<!-- AspectJ -->
 		<dependency>

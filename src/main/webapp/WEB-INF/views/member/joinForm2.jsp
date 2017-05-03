@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type">
 
 
-<title>게하(Guest Hi)</title>
+<title>개인회원가입폼</title>
 
 <link rel="canonical" href="https://goodchoice.kr/">
 
@@ -324,6 +324,9 @@ $(function(){
 									onkeypress="$.duplnickreset()" type="text"> <a
 									class="btn_overlap_chk" id="chknick" onclick="return false;">중복확인!</a>
 							</p>
+							
+							<!-- 휴대폰 입력폼 필요 -->
+							
 
 							<!-- Agree Area -->
 							<div class="agree_area">

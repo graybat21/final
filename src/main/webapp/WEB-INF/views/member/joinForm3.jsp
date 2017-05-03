@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type">
 
 
-<title>게하(Guest Hi)</title>
+<title>기업회원가입폼</title>
 
 <meta name="keywords" content="여기어때,회원가입,회원혜택">
 <meta name="description"
@@ -397,6 +397,9 @@
 								<input class="ipt ipt_add" type="text" id="sample6_address2" placeholder="상세주소"> 
 							</p>
 
+							<!-- 휴대폰 입력폼 필요 -->
+							
+							
 							<!-- Agree Area -->
 							<div class="agree_area">
 								<!-- 서비스 이용약관 동의 -->
@@ -411,7 +414,7 @@
 
 
 
-										<script type="text/javascript">
+<script type="text/javascript">
 $(function(){
 
 	$('.last_policy').each(function(e){

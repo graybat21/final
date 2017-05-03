@@ -104,63 +104,53 @@
 </script>
 
 </head>
+<body>
+	<div id="allWrap">
+		<!-- HeaderWrap -->
+		<header id="headerWrap">
+			<input id="resizeurl" value="https://img.goodchoice.kr" type="hidden">
+			<section class="row header_area">
+				<!-- 헤더 로고 -->
+				<h1 class="header_logo">
+					<a href="/GuestHi/" class="btn_home">
+					<img src="${pageContext.request.contextPath}/resources/files/img_logo.png"></a>
+				</h1>
+				<a href="#" class="btn_menu">메뉴</a> <a href="#" class="btn_m_srch">검색</a>
 
-<div id="allWrap">
-	<!-- HeaderWrap -->
-	<header id="headerWrap">
-		<input id="resizeurl" value="https://img.goodchoice.kr" type="hidden">
-		<section class="row header_area">
-			<!-- 헤더 로고 -->
-			<h1 class="header_logo">
-
-				<a href="/GuestHi/" class="btn_home"><img
-					src="${pageContext.request.contextPath}/resources/files/img_logo.png"
-					alt=""></a>
-			</h1>
-			<a href="#" class="btn_menu">메뉴</a> <a href="#" class="btn_m_srch">검색</a>
-
-			<!-- PC -->
-
-
-			<!-- 로그인전 -->
-			<%-- <c:if test="${session_email == null }"> --%>
+				<!-- 로그인전 -->
+				<c:if test="${session_member_email == null }">
 				<nav class="nav_sub">
 					<ul>
-						<li class="link_01">
-							<a href="#layer" class="layer_trigger">로그인</a>
-							</li>
-						<li class="link_02"><a
-							href="${contextPath}/GuestHi/member/member.gh">회원가입</a></li>
+						<li class="link_01"><a href="#layer" class="layer_trigger">로그인</a></li>
+						<li class="link_02"><a href="${contextPath}/GuestHi/member/member.gh">회원가입</a></li>
 						<!-- <li class="link_03"><a href="#"
                      onclick="guest_reserve_open();return false;" class="m_reserve">예약내역</a></li> -->
-						<li class="link_04"><a
-							href="">고객센터</a></li>
+						<li class="link_04"><a href="">고객센터</a></li>
 					</ul>
 				</nav>
+				</c:if>
 
+				<!-- 로그인후 -->
+				<c:if test="${session_member_email != null }">
+					<nav class="nav_sub">
+						<ul>
+							<li class="nav_nick">
+								<div class="my_info">
+									<span class="my_nick nickname">${session_member_name}&nbsp;님</span> 
+									<span class="my_img">
+									<img src="${pageContext.request.contextPath}/resources/files/ic_menu_user_default.png">
+									</span>
+								</div>
+							</li>
+							<li class="link_04">
+							<a href="https://www.goodchoice.kr/service/noticeList">고객센터</a></li>
+						</ul>
+					</nav>
+				</c:if>
+				<!-- 헤더의 닉네임 누르면 나타나는 팝업 창 -->
 
-			<!-- 로그인후 -->
-			<%-- <c:if test="${session_email == null }">
-            <nav class="nav_sub">
-               <ul>
-                  <li class="nav_nick">
-                     <div class="my_info">
-
-                        <span class="my_nick nickname">${session_email}&nbsp;님</span> <span
-                           class="my_img"><img
-                           src="${pageContext.request.contextPath}/resources/files/ic_menu_user_default.png"
-                           alt=""></span>
-                     </div>
-                  </li>
-                  <li class="link_04"><a
-                     href="https://www.goodchoice.kr/service/noticeList">고객센터</a></li>
-               </ul>
-            </nav>
-         </c:if> --%>
-			<!-- 헤더의 닉네임 누르면 나타나는 팝업 창 -->
-
-			<!-- 마이페이지 플로팅 팝업 -->
-			<%-- <div class="my_info_detail_wrap">
+				<!-- 마이페이지 플로팅 팝업 -->
+				<%-- <div class="my_info_detail_wrap">
             <div class="pop_bg"></div>
             <div class="pop_cont">
                <div class="my_info_detail">
@@ -202,49 +192,48 @@
             </div>
          </div> --%>
 
-<!-- 로그인 jquery폼 -->
-<form method="post" action="login.gh" name="loginForm">
-		<div class="mw_layer">
-			<div class="bg"></div>
-			<div id="layer">
-				<h2 style="border-bottom: 1px solid black;">LOGIN</h2>
-				<div class="login_line">
-					<div class="box_in">
-						<input type="text" name="email" id="email" size="23"
-							placeholder="이메일" value="a@a"> <!-- 이메일 자동입력 -->
-						<input type="password" name="pw"
-							id="pw" size="23" placeholder="비밀번호" value="1"><!-- 비번 자동입력 -->
+				<!-- 로그인 jquery폼 -->
+				<form method="post" action="login.gh" name="loginForm">
+					<div class="mw_layer">
+						<div class="bg"></div>
+						<div id="layer">
+							<h2 style="border-bottom: 1px solid black;">LOGIN</h2>
+							<div class="login_line">
+								<div class="box_in">
+									<input type="text" name="email" id="email" size="23"
+										placeholder="이메일" value="">
+									<input type="password" name="pw" id="pw" size="23"
+										placeholder="비밀번호" value="">
+								</div>
+								<input type="submit" class="btn_login" onclick="loginCheck()"
+									value="LOGIN">
+							</div>
+							<div class="close">
+								<table width="100%" id="loginTbl">
+									<tr>
+										<td onclick="" width="20%" align="center">회원가입</td>
+										<td width="30%;" align="center">아이디/비밀번호 찾기</td>
+										<td width="10%" align="center"><a href="#layer_anchor"
+											title="레이어 닫기" class="close">닫기</a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
 					</div>
-
-					<input type="submit" class="btn_login" onclick="loginCheck()"
-						value="LOGIN">
-				</div>
-
-				<div class="close">
-					<table width="100%" id="loginTbl">
-						<tr>
-							<td onclick="" width="20%" align="center">회원가입</td>
-							<td width="30%;" align="center">아이디/비밀번호 찾기</td>
-							<td width="10%" align="center"><a href="#layer_anchor" title="레이어 닫기" class="close">닫기</a></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div>
-	</form>
-<!-- 검색 -->
-<!-- <div class="srch_top_area pc_srch">
+				</form>
+				<!-- 검색 -->
+				<!-- <div class="srch_top_area pc_srch">
 	<div>
 		<input class="ipt_srch" placeholder="업체/지역/테마 검색 가능합니다." type="text">
 		<a class="btn_srch">검색</a>
 	</div>
 </div> -->
-<!-- //검색 -->
+				<!-- //검색 -->
 
-</section>
-</header>
-<!-- //HeaderWrap -->
-<!-- //(공통)headerWrap -->
-</div>
+			</section>
+		</header>
+		<!-- //HeaderWrap -->
+		<!-- //(공통)headerWrap -->
+	</div>
 </body>
 </html>

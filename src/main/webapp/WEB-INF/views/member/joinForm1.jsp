@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type">
 
 
-<title>게하(Guest Hi)</title>
+<title>회원가입선택</title>
 
 <meta name="keywords" content="여기어때,회원가입,회원혜택">
 <meta name="description"
@@ -38,19 +38,13 @@
 	href="${pageContext.request.contextPath}/resources/css/owl.css">
 
 <!-- 공통 JS  -->
-<script
-	src="${pageContext.request.contextPath}/resources/js/1602931226643913.js"
-	async=""></script>
-<script async=""
-	src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
-<script async=""
-	src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/1602931226643913.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
 <script type="text/javascript">
 	function get_version_of_IE () {
-
 		 var word;
 		 var version = "N/A";
-
 		 var agent = navigator.userAgent.toLowerCase();
 		 var name = navigator.appName;
 
@@ -79,27 +73,21 @@
 		} 
 	}*/
 	</script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/owl.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/masonry.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery_002.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/imgliquid.js"></script>
+<script	src="${pageContext.request.contextPath}/resources/js/jquery_002.js"></script>
+<script	src="${pageContext.request.contextPath}/resources/js/imgliquid.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/iscroll.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery_003.js"></script>
+<script	src="${pageContext.request.contextPath}/resources/js/jquery_003.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
 </head>
 
-<body class="pcweb" oncontextmenu="return false"
-	ondragstart="return false">
+<body class="pcweb" oncontextmenu="return false" ondragstart="return false">
 	<!-- //주메뉴 영역(mWeb용) -->
 
 	<div id="allWrap">
-
 
 		<!-- 페이지별 호출 소스 -->
 		<link rel="stylesheet" type="text/css"
@@ -345,7 +333,7 @@
 
 	<!-- 비회원 예약조회 -->
 
-	<script type="text/javascript">
+<script type="text/javascript">
 function setCookie( name, value, expiredays ) { 
 	var todayDate = new Date(); 
 	todayDate.setDate( todayDate.getDate() + expiredays ); 
