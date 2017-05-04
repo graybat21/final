@@ -297,13 +297,13 @@
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
 
-					<a href="${contextPath}/GuestHi/member/joinFormA.gh"> 
+					<a href="${contextPath}/GuestHi/join/joinFormA.gh"> 
 					<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif">
 					</a>&emsp;&emsp;&emsp;&emsp; 
 					<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
 					&emsp;&emsp;&emsp;&emsp;
 					<!-- <a href="기업가입폼 "> -->
-					<a href="${contextPath}/GuestHi/member/joinFormB.gh"> 
+					<a href="${contextPath}/GuestHi/join/joinFormB.gh"> 
 					<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif">
 					</a>
 					<br><br>

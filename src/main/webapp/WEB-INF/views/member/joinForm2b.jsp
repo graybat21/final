@@ -348,7 +348,7 @@
 
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
-					<form action="${pageContext.request.contextPath}/member/joinB.gh"
+					<form action="${pageContext.request.contextPath}/join/joinB.gh"
 						method="post" accept-charset="utf-8" id="joinform">
 
 						<!-- 회원가입 입력 -->
@@ -396,9 +396,9 @@
 								<input class="ipt ipt_add" type="text" name="tel" id="tel" placeholder="업체번호"> 
 							</p>
 
-							<!-- image 입력폼 필요 -->
-							<input name="imagename" type="hidden">
-							<input name="imagesize" type="hidden">
+							<!-- image 입력폼 필요, 임시로 값을 넣음. -->
+							<input name="imagename" type="hidden" value="imagename">
+							<input name="imagesize" type="hidden" value="imagesize">
 							
 							<!-- Agree Area -->
 							<div class="agree_area">

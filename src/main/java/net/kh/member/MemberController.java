@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,64 +40,71 @@ public class MemberController {
 	ModelAndView mav = new ModelAndView();
 
 	// 회원가입 선택
-	@RequestMapping("/member/joinChoice.gh")
-	public String memberStep1() {
+	@RequestMapping("/joinChoice.gh")
+	public String joinStep1() {
+		logger.info("회원가입 선택");
 		return "member/joinForm1/회원가입선택";
 	}
 
 	// 개인회원가입폼
-	@RequestMapping("/member/joinFormA.gh")
-	public String memberStep2a() {
+	@RequestMapping("/join/joinFormA.gh")
+	public String joinStep2a() {
+		logger.info("개인회원가입폼");
 		return "member/joinForm2a/개인회원가입";
 	}
 
 	// 기업회원가입폼
-	@RequestMapping("/member/joinFormB.gh")
-	public String memberStep2b() {
+	@RequestMapping("/join/joinFormB.gh")
+	public String joinStep2b() {
+		logger.info("기업회원가입폼");
 		return "member/joinForm2b/기업회원가입";
 	}
 
 	// 개인회원가입성공
-	@RequestMapping("/member/joinA.gh")
-	public String memberStep3a(HttpSession session, MemberVO member) throws Exception {
+	@RequestMapping("/join/joinA.gh")
+	public String joinStep3a(HttpSession session, MemberVO member) throws Exception {
 
 		// 인증코드 만들어서 메일보낼때 쓰고, 테이블에 입력할때도 넣는다.
-		int ran = new Random().nextInt(90000) + 10000; // 10000 ~ 99999
+		int ran = new Random().nextInt(900000) + 100000; // 100000 ~ 999999 :
+															// 6자리
 		member.setAuth(ran);
 		String joinCode = String.valueOf(ran);
-		String MemOrHost = "개인"; // 이정보도 넘김.
-		// session.setAttribute("joinCode", joinCode);// 없어도 될듯.
-
-		/* http://localhost:8083/GuestHi/auth/{member.no}/{auth} */
-
-		sendMail(member.getNo(), member.getEmail(), joinCode, MemOrHost);
-
+		String MemOrHost = "개인";
+		
+		int no = memberService.memberGetCurrentNo();
+		sendMail(no, member.getEmail(), joinCode, MemOrHost);
+		
+		member.setNo(no);
 		boolean insertSuccess = memberService.memberInsert(member);
-		System.out.println(insertSuccess);
-		return "member/loginSuccess/개인회원가입성공";
+		
+		logger.info("개인회원 db insert? " + insertSuccess);
+		return "member/joinSuccess/개인회원가입성공";
 	}
 
 	// 기업회원가입성공
-	@RequestMapping("/member/joinB.gh")
-	public String memberStep3b(HttpSession session, HostVO host) throws Exception {
+	@RequestMapping("/join/joinB.gh")
+	public String joinStep3b(HttpSession session, HostVO host) throws Exception {
 
-		int ran = new Random().nextInt(90000) + 10000; // 10000 ~ 99999
+		int ran = new Random().nextInt(90000) + 10000; // 10000 ~ 99999 : 5자리
+		
 		host.setAuth(ran);
 		String joinCode = String.valueOf(ran);
 		String MemOrHost = "기업";
 
-		sendMail(host.getNo(), host.getEmail(), joinCode, MemOrHost);
+		int no = hostService.hostGetCurrentNo();
+		sendMail(no, host.getEmail(), joinCode, MemOrHost);
 		
+		host.setNo(no);
 		boolean insertSuccess = hostService.hostInsert(host);
-		System.out.println(insertSuccess);
 
-		return "member/joinmail2/기업회원가입성공";
+		logger.info("기업회원 db insert? " + insertSuccess);
+		return "member/joinSuccess/기업회원가입성공";
 	}
 
 	private void sendMail(int no, String email, String joinCode, String MemOrHost) throws Exception {
 
 		MimeMessage mimeMessage = javaMailSenderImpl.createMimeMessage();
-		System.out.println(email);
+
 		// from, to 입력
 		mimeMessage.setFrom(new InternetAddress("guesthi1111@gmail.com"));
 		mimeMessage.addRecipient(RecipientType.TO, new InternetAddress(email));
@@ -121,13 +129,35 @@ public class MemberController {
 		mimeMessage.setText(sb.toString(), "UTF-8", "html");
 
 		javaMailSenderImpl.send(mimeMessage);
-		System.out.println("메일 성공");
+		logger.info("메일 보내기 성공");
 	}
-	// 인증
-	// @RequestMapping(value="/auth/{no}/{auth}")
-	// public ModelAndView authOk(MemberVO member)throws Exception{
-	//
-	// }
+
+	// 이메일을 통한 인증
+	@RequestMapping(value = "/auth/{no}/{auth}")
+	public ModelAndView authOk(@PathVariable String no, @PathVariable String auth) throws Exception {
+		
+		if (auth.length() == 5) {
+			HostVO host = new HostVO();
+			host.setAuth(Integer.parseInt(auth));
+			host.setNo(Integer.parseInt(no));
+			
+			hostService.hostAuthOk(host);
+			
+			mav.setViewName("member/authSuccess/기업회원 인증 성공");
+		} else if (auth.length() == 6) {
+			MemberVO member = new MemberVO();
+			member.setAuth(Integer.parseInt(auth));
+			member.setNo(Integer.parseInt(no));
+			
+			memberService.memberAuthOk(member);
+			mav.setViewName("member/authSuccess/개인회원 인증 성공");
+		} else {
+			// 둘다 예외 : auth error 인증실패
+			mav.setViewName("member/authError/인증 에러");
+		}
+
+		return mav;
+	}
 
 	// joinStep1()
 	// joinStep2()

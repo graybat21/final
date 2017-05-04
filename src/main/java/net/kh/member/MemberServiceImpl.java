@@ -37,6 +37,18 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.memberInsert(member);
 	}
 
+	@Override
+	@Transactional
+	public boolean memberAuthOk(MemberVO member) throws Exception {
+		return memberMapper.memberAuthOk(member);
+	}
+
+	@Override
+	public int memberGetCurrentNo() throws Exception {
+		return memberMapper.memberGetCurrentNo();
+	}
+
+	
 	// @Override
 	// public MemberVO idFindByName(MemberVO member) {
 	// return sqlSessionTemplate.selectOne("member.idfind", member);

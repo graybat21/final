@@ -25,5 +25,26 @@
 		)
 	</insert>
 	
+	<update id="memberAuthOk" parameterType="memberVO">
+		UPDATE (
+			SELECT 
+				no, auth 
+			FROM MEMBER 
+			WHERE 
+				auth = #{auth}
+		)
+		SET auth = '101'
+		WHERE no = #{no}
+	</update>
+	
+	<select id="memberGetCurrentNo" resultType="int">
+		SELECT 
+			LAST_NUMBER 
+		FROM
+			USER_SEQUENCES 
+		WHERE 
+			SEQUENCE_NAME='SEQ_MEMBER_NO'	
+	</select>
+	
 </mapper>
 

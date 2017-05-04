@@ -27,5 +27,27 @@
 		)
 	</insert>
 	
+	<update id="hostAuthOk" parameterType="hostVO">
+		UPDATE (
+			SELECT 
+				no, auth 
+			FROM HOST 
+			WHERE 
+				auth = #{auth}
+		)
+		SET auth = '11'
+		WHERE no = #{no}
+	</update>
+	
+	<select id="hostGetCurrentNo" resultType="int">
+		SELECT 
+			LAST_NUMBER 
+		FROM
+			USER_SEQUENCES 
+		WHERE 
+			SEQUENCE_NAME='SEQ_HOST_NO'	
+	</select>
+	
+	
 </mapper>
 

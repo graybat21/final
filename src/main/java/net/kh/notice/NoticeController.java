@@ -18,7 +18,7 @@ public class NoticeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/NoticeList.gh", method = RequestMethod.GET)
+	@RequestMapping("/NoticeList.gh")
 	public String noticeList(Model model) {
 		logger.info("NoticeController - NoticeList.gh");
 		return "notice/noticeList/NOTICE";

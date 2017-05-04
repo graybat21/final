@@ -326,7 +326,7 @@ $(function(){
 
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
-					<form action="${pageContext.request.contextPath}/member/joinA.gh"
+					<form action="${pageContext.request.contextPath}/join/joinA.gh"
 						method="post" accept-charset="utf-8" id="joinform">
 
 						<!-- <input name="step" value="3" type="hidden"> <input

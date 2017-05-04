@@ -118,32 +118,36 @@
 				<a href="#" class="btn_menu">메뉴</a> <a href="#" class="btn_m_srch">검색</a>
 
 				<!-- 로그인전 -->
-				<c:if test="${session_member_email == null }">
+				<c:if test="${session_email == null }">
 				<nav class="nav_sub">
 					<ul>
 						<li class="link_01"><a href="#layer" class="layer_trigger">로그인</a></li>
-						<li class="link_02"><a href="${contextPath}/GuestHi/member/member.gh">회원가입</a></li>
+						<li class="link_02"><a href="${contextPath}/GuestHi/joinChoice.gh">회원가입</a></li>
 						<!-- <li class="link_03"><a href="#"
                      onclick="guest_reserve_open();return false;" class="m_reserve">예약내역</a></li> -->
-						<li class="link_04"><a href="">고객센터</a></li>
+						<li class="link_04"><a href="${contextPath}/GuestHi/NoticeList.gh">고객센터</a></li>
 					</ul>
 				</nav>
 				</c:if>
 
 				<!-- 로그인후 -->
-				<c:if test="${session_member_email != null }">
+				<c:if test="${session_email != null }">
 					<nav class="nav_sub">
 						<ul>
 							<li class="nav_nick">
 								<div class="my_info">
-									<span class="my_nick nickname">${session_member_name}&nbsp;님</span> 
+									<span class="my_nick nickname">
+									<a href="${contextPath}/GuestHi/logout.gh">${session_name}&nbsp;님</a></span>
 									<span class="my_img">
 									<img src="${pageContext.request.contextPath}/resources/files/ic_menu_user_default.png">
 									</span>
 								</div>
 							</li>
+							<!-- 마이페이지 연결 아직 안함. -->
+							<li class="link_02"><a href="${contextPath}/GuestHi/myPage.gh">마이페이지</a></li>
+							
 							<li class="link_04">
-							<a href="https://www.goodchoice.kr/service/noticeList">고객센터</a></li>
+							<a href="${contextPath}/GuestHi/NoticeList.gh">고객센터</a></li>
 						</ul>
 					</nav>
 				</c:if>
@@ -193,7 +197,7 @@
          </div> --%>
 
 				<!-- 로그인 jquery폼 -->
-				<form method="post" action="login.gh" name="loginForm">
+				<form method="post" action="${contextPath}/GuestHi/login.gh" name="loginForm">
 					<div class="mw_layer">
 						<div class="bg"></div>
 						<div id="layer">
