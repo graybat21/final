@@ -291,45 +291,34 @@
 		<!-- (공통)contentsWrap -->
 		<article id="contentsWrap">
 
-
 			<!-- user wrap -->
 			<div class="user_wrap row row_cont">
 				<br> <br>
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
-					<center>
 
-
-						<a href="${contextPath}/GuestHi/member/joinForm1.gh"> <%--  <a
-							href="${contextPath}/GuestHi/member/member.gh">일반가입폼</a> --%> <img
-							src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif"></a>
-						&emsp;&emsp;&emsp;&emsp; <img alt=""
-							src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
-						&emsp;&emsp;&emsp;&emsp;
-						<!-- <a href="기업가입폼 "> -->
-						<a href="${contextPath}/GuestHi/member/joinForm2.gh"> <img
-							alt=""
-							src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif"></a>
-						<br> <br>
-					</center>
+					<a href="${contextPath}/GuestHi/member/joinFormA.gh"> 
+					<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif">
+					</a>&emsp;&emsp;&emsp;&emsp; 
+					<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
+					&emsp;&emsp;&emsp;&emsp;
+					<!-- <a href="기업가입폼 "> -->
+					<a href="${contextPath}/GuestHi/member/joinFormB.gh"> 
+					<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif">
+					</a>
+					<br><br>
 
 					<div class="btn_area">
-
-
-
 						<a href="javascript:clickon=history.go(-1)" class="btn_confirm">이전으로</a>
 						<!-- <a href="" onclick="이전" ;  class="btn_confirm">이전으로</a> -->
 					</div>
 				</div>
+				<!-- //user_cont_wrap -->
 			</div>
-			<!-- //user_cont_wrap -->
-	</div>
-	<!-- //user wrap -->
+			<!-- //user wrap -->
 
-	</article>
-	<!-- //(공통)contentsWrap -->
-
-	<!-- //레이어 : 내위치 재설정(지도) -->
+		</article>
+		<!-- //(공통)contentsWrap -->
 
 	<!-- 비회원 예약조회 -->
 

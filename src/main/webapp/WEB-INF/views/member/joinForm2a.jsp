@@ -274,7 +274,41 @@ $(function(){
 
 });
 </script>
-
+<!-- 핸드폰번호 입력 관련 -->
+<script>
+	function pressKey() {
+		var _val = document.getElementById('phone').value.trim();
+		document.getElementById('phone').value = autoHypenPhone(_val);
+	}
+	function autoHypenPhone(str) {
+		str = str.replace(/[^0-9]/g, '');
+		var tmp = '';
+		if (str.length < 4) {
+			return str;
+		} else if (str.length < 7) {
+			tmp += str.substr(0, 3);
+			tmp += '-';
+			tmp += str.substr(3);
+			return tmp;
+		} else if (str.length < 11) {
+			tmp += str.substr(0, 3);
+			tmp += '-';
+			tmp += str.substr(3, 3);
+			tmp += '-';
+			tmp += str.substr(6);
+			return tmp;
+		} else {
+			tmp += str.substr(0, 3);
+			tmp += '-';
+			tmp += str.substr(3, 4);
+			tmp += '-';
+			tmp += str.substr(7);
+			return tmp;
+		}
+		return str;
+	}
+</script>
+		
 
 </head>
 
@@ -292,25 +326,25 @@ $(function(){
 
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
-					<form action="https://www.goodchoice.kr/user/userJoinInput"
+					<form action="${pageContext.request.contextPath}/member/joinA.gh"
 						method="post" accept-charset="utf-8" id="joinform">
 
-						<input name="step" value="3" type="hidden"> <input
+						<!-- <input name="step" value="3" type="hidden"> <input
 							name="utype" value="1" type="hidden"> <input
 							name="duplidchk" value="" type="hidden"> <input
-							name="duplnickchk" value="" type="hidden">
+							name="duplnickchk" value="" type="hidden"> -->
 
 						<!-- 회원가입 입력 -->
 						<div class="join_email">
 							<p class="join_item item_1">
 								<label>이메일</label> <input class="ipt ipt_email" size="50"
-									maxlength="50" placeholder="이메일 입력" name="uid"
+									maxlength="50" placeholder="이메일 입력" id="email" name="email"
 									onkeypress="$.duplidreset()" type="email"> <a
 									onclick="return false;" class="btn_overlap_chk" id="chkid">중복확인!</a>
 							</p>
 							<p class="join_item item_2">
 								<label>비밀번호</label> <input class="ipt ipt_password"
-									placeholder="영문,숫자 포함 6~20자" name="upw" maxlength="20"
+									placeholder="영문,숫자 포함 6~20자" id="pw" name="pw" maxlength="20"
 									type="password">
 							</p>
 							<p class="join_item item_3">
@@ -320,9 +354,14 @@ $(function(){
 							</p>
 							<p class="join_item item_4">
 								<label>닉네임</label> <input class="ipt ipt_nick"
-									placeholder="한글,영문,숫자 포함 2~10자" name="unick" maxlength="10"
-									onkeypress="$.duplnickreset()" type="text"> <a
+									placeholder="한글,영문,숫자 포함 2~10자" name="name" maxlength="10"
+									onkeypress="$.duplnickreset()" id="name" type="text"> <a
 									class="btn_overlap_chk" id="chknick" onclick="return false;">중복확인!</a>
+							</p>
+							<p class="join_item item_4">
+								<label>핸드폰</label> <input class="ipt ipt_phone"
+									placeholder="" id="phone" name="phone" maxlength="13"
+									onkeyup="pressKey()" type="text">
 							</p>
 							
 							<!-- 휴대폰 입력폼 필요 -->
@@ -342,8 +381,9 @@ $(function(){
 									</p>
 								</div>
 								<div class="btn_area">
-									<a href="" onclick="$.joinok(); return false;"
-										class="btn_confirm">회원가입!</a>
+									<!-- <a href="" onclick="$.joinok(); return false;"
+										class="btn_confirm">회원가입!</a> -->
+									<input class="btn_confirm" type="submit" value="JOIN">
 								</div>
 								<p class="join_info">
 									<span>비밀번호 분실시 이메일을 통해 확인하므로,</span> <span>정확하게 입력해주세요.</span>
