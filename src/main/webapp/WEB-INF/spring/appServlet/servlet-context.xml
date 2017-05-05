@@ -16,7 +16,13 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-
+	<resources mapping="/css/**" location="/resources/css/" />
+	<resources mapping="/files/**" location="/resources/files/" />
+	<resources mapping="/folder/**" location="/resources/folder/" />
+	<resources mapping="/image/**" location="/resources/image/" />
+	<resources mapping="/js/**" location="/resources/js/" />
+	<resources mapping="/mypage_files/**" location="/resources/mypage_files/" />
+	<resources mapping="/qna_files/**" location="/resources/qna_files/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<!-- <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 

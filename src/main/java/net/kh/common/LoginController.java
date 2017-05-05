@@ -43,13 +43,12 @@ public class LoginController {
 	public ModelAndView login(HttpServletRequest request, MemberVO member) throws Exception {
 
 		MemberVO resultMember = memberService.memberLogin(member);
-		// ModelAndView mav = new ModelAndView();
-		// System.out.println(result.getEmail());
-		// System.out.println(result.getPw());
-
+		
+		
 		if (resultMember != null) {
-			if(resultMember.getAuth() == 100){
+			if(resultMember.getAuth() > 99999){
 				mav.setViewName("member/authNotYet/인증 대기중");
+				logger.info(resultMember.toString());
 				return mav;
 			}
 
@@ -63,31 +62,38 @@ public class LoginController {
 			session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
 
 			mav.setViewName("member/loginSuccess/개인회원 로그인");
-
+			logger.info(resultMember.toString());
 			return mav;
-		} else {
-			HostVO host = new HostVO();
-			host.setEmail(member.getEmail());
-			host.setPw(member.getPw());
-			HostVO resultHost = hostService.hostLogin(host);
-			if (resultHost != null) {
-
-				HttpSession session = request.getSession();
-
-				session.setAttribute("host", resultHost);
-				session.setAttribute("session_email", resultHost.getEmail());
-				session.setAttribute("session_name", resultHost.getName());
-				session.setAttribute("session_no", resultHost.getNo());
-
-				session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
-
-				mav.setViewName("member/loginSuccess/GH회원 로그인");
-
+		} 
+		
+		HostVO host = new HostVO();
+		host.setEmail(member.getEmail());
+		host.setPw(member.getPw());
+		HostVO resultHost = hostService.hostLogin(host);
+		
+		
+		if(resultHost != null){
+			if(resultHost.getAuth() > 9999){
+				mav.setViewName("member/authNotYet/인증 대기중");
+				logger.info(resultHost.toString());
 				return mav;
 			}
-		}
-		mav.setViewName("member/loginError/로그인 실패");
+			HttpSession session = request.getSession();
 
+			session.setAttribute("host", resultHost);
+			session.setAttribute("session_email", resultHost.getEmail());
+			session.setAttribute("session_name", resultHost.getName());
+			session.setAttribute("session_no", resultHost.getNo());
+
+			session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
+
+			mav.setViewName("member/loginSuccess/GH회원 로그인");
+			logger.info(resultHost.toString());
+			return mav;
+		}
+		
+		// resultMember, resultHost 둘다 null - 잘못된 email, 가입 X
+		mav.setViewName("member/loginError/로그인 실패");
 		return mav;
 	}
 

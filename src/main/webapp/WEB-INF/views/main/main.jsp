@@ -8,9 +8,6 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-/* element.style {
-    background: url("/webapp/resources/image/plane-beach.jpg");
-} */
 .container {
 	padding-right: 15px;
 	padding-left: 15px;
@@ -34,7 +31,6 @@
 	url:
 }
 
-
 body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
@@ -47,52 +43,63 @@ body {
 	width: 100%;
 	position: relative;
 }
+
 .slick-slider {
-    padding: 0;
-    position: relative;
-    text-align: center;
-    padding: 10px 0px;
-    display: block;
-    box-sizing: border-box;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -ms-touch-action: pan-y;
-    touch-action: pan-y;
-    -webkit-tap-highlight-color: transparent;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	padding: 10px 0px;
+	display: block;
+	box-sizing: border-box;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+	-khtml-user-select: none;
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;
+	-webkit-tap-highlight-color: transparent;
 }
+
 .slick-slider .slick-track, .slick-slider .slick-list {
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 }
+
 .slick-track {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: block;
+	position: relative;
+	top: 0;
+	left: 0;
+	display: block;
 }
+
 .slick-list {
-    width: 95%;
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+	width: 95%;
+	position: relative;
+	display: block;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
 }
-@media (max-width: 767px)
-.hidden-xs {
-    display: none!important;
+
+@media ( max-width : 767px) .hidden-xs {
+	display
+	:
+	 
+	none
+	!important;
+
 }
+
 .row {
-    margin-right: -15px;
-    margin-left: -15px;
+	margin-right: -15px;
+	margin-left: -15px;
 }
+
 .wrapper-inner .main-fill {
 	text-align: center;
 }
@@ -228,38 +235,36 @@ button, input, optgroup, select, textarea {
 <body>
 	<div class="inner-body">
 		<!-- <div class="wrapper-index"> -->
-		<img class="wrapper-index"
-			src="${pageContext.request.contextPath}/resources/image/plane-beach.jpg">
+		<img class="wrapper-index" src="image/plane-beach.jpg">
 		<div class="wrapper-inner">
-		<div class="row scroll-text hidden-xs">
-                <div class="col-sm-12">
-                    <div class="text-box">
-                        <h3>
-                            <i class="fa fa-plane"></i> <span>Flights</span>  <br>
-                            WHERE YOU WANT TO GO? <br>
-                            Fly With Us
-                        </h3>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="text-box hidden-xs">
-                        <h3>
-                            <span>Travel</span>  <br>
-                            THE WORLD YOU <br> NEVER SEEN <i class="fa fa-car"></i> <br>
+			<div class="row scroll-text hidden-xs">
+				<div class="col-sm-12">
+					<div class="text-box">
+						<h3>
+							<i class="fa fa-plane"></i> <span>Flights</span> <br> WHERE
+							YOU WANT TO GO? <br> Fly With Us
+						</h3>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="text-box hidden-xs">
+						<h3>
+							<span>Travel</span> <br> THE WORLD YOU <br> NEVER SEEN
+							<i class="fa fa-car"></i> <br>
 
-                        </h3>
+						</h3>
 
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="text-box">
-                        <h3>
-                             <span>Hotels</span> <br>
-                            We Provide best    <span><i class="fa fa-globe"></i> </span> quality?
-                        </h3>
-                    </div>
-                </div>
-            </div>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="text-box">
+						<h3>
+							<span>Hotels</span> <br> We Provide best <span><i
+								class="fa fa-globe"></i> </span> quality?
+						</h3>
+					</div>
+				</div>
+			</div>
 			<div class="container">
 				<div class="main-fill">
 					<div class="panel">
@@ -282,8 +287,8 @@ button, input, optgroup, select, textarea {
 												<input type="text" class="form-control hasDatepicker"
 													placeholder="Check In" id="datepicker3" required="">
 												<img class="ui-datepicker-trigger"
-													src="${pageContext.request.contextPath}/resources/image/search/icon-calendar.png"
-													alt="Select date" title="Select date">
+													src="image/search/icon-calendar.png" alt="Select date"
+													title="Select date">
 											</div>
 										</li>
 										<li>
@@ -291,8 +296,8 @@ button, input, optgroup, select, textarea {
 												<input type="text" class="form-control hasDatepicker"
 													placeholder="Check Off" id="datepicker4" required="">
 												<img class="ui-datepicker-trigger"
-													src="${pageContext.request.contextPath}/resources/image/search/icon-calendar.png"
-													alt="Select date" title="Select date">
+													src="image/search/icon-calendar.png" alt="Select date"
+													title="Select date">
 											</div>
 										</li>
 										<li><select class="select-one">

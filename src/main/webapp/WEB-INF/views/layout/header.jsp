@@ -6,16 +6,14 @@
 <head>
 
 <!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/files/default.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/files/owl.css">
+<link rel="stylesheet" type="text/css" href="files/default.css">
+<link rel="stylesheet" type="text/css" href="files/owl.css">
 <!-- 공통 JS  -->
-<script	src="${pageContext.request.contextPath}/resources/files/1602931226643913.js"></script>
-<script src="${pageContext.request.contextPath}/resources/files/fbevents.js"></script>
-<script src="${pageContext.request.contextPath}/resources/files/analytics.js"></script>
-<script	src="${pageContext.request.contextPath}/resources/files/jquery-1.js"></script>
-<script	src="${pageContext.request.contextPath}/resources/files/common.js"></script>
+<script src="files/1602931226643913.js"></script>
+<script src="files/fbevents.js"></script>
+<script src="files/analytics.js"></script>
+<script src="files/jquery-1.js"></script>
+<script src="files/common.js"></script>
 
 <!-- <script src="//code.jquery.com/jquery-1.12.4.js"></script> -->
 <!-- <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
@@ -25,41 +23,98 @@
 <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
 
 <style>
-.mw_layer{display:none;position:fixed;_position:absolute;top:0;left:0;z-index:10000;width:100%;height:100%}
-.mw_layer.open{display:block}
-.mw_layer .bg{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:.5;filter:alpha(opacity=50)}
-#layer{
-	position:absolute;width:250px;top:25%;left:40%;margin:0px auto;padding:0px 28px 0 28px;
-	border:1px solid #e32e4e; background:#fff;font-size:12px;font-family:Tahoma, Geneva, sans-serif;
-	color:#767676;line-height:normal;white-space:normal; 
+.mw_layer {
+	display: none;
+	position: fixed;
+	_position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	width: 100%;
+	height: 100%
 }
-.login_line{margin:10px 0 0;height:80px;}
-.box_in{float:left;margin:0 10px 0; }
+
+.mw_layer.open {
+	display: block
+}
+
+.mw_layer .bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: .5;
+	filter: alpha(opacity = 50)
+}
+
+#layer {
+	position: absolute;
+	width: 250px;
+	top: 25%;
+	left: 40%;
+	margin: 0px auto;
+	padding: 0px 28px 0 28px;
+	border: 1px solid #e32e4e;
+	background: #fff;
+	font-size: 12px;
+	font-family: Tahoma, Geneva, sans-serif;
+	color: #767676;
+	line-height: normal;
+	white-space: normal;
+}
+
+.login_line {
+	margin: 10px 0 0;
+	height: 80px;
+}
+
+.box_in {
+	float: left;
+	margin: 0 10px 0;
+}
+
 .box_in input {
-    width: 150px;
-    height: 24px;
-    display: block;
-    margin: 3px 0 0;
+	width: 150px;
+	height: 24px;
+	display: block;
+	margin: 3px 0 0;
 }
+
 .btn_login {
-    width: 72px;
-    height: 50px;
-    background: #e32e4e;
-    color: #ffffff;
-    float: left;
-    text-align: center;
-    margin-top: 3px;
-    font-size: medium;
-    cursor: pointer;
+	width: 72px;
+	height: 50px;
+	background: #e32e4e;
+	color: #ffffff;
+	float: left;
+	text-align: center;
+	margin-top: 3px;
+	font-size: medium;
+	cursor: pointer;
 }
-#layer h2{color:#e32e4e;font-size:24px;line-height:40px;}
-.close { margin-bottom:10px; text-decoration: none; width:100%; text-align:right; cursor: pointer}
+
+#layer h2 {
+	color: #e32e4e;
+	font-size: 24px;
+	line-height: 40px;
+}
+
+.close {
+	margin-bottom: 10px;
+	text-decoration: none;
+	width: 100%;
+	text-align: right;
+	cursor: pointer
+}
+
 .close a {
-    color: #000;
+	color: #000;
 }
-#loginTbl tr td{
-	font-size:11px;
-	font-family : 'NanumGothic';
+
+#loginTbl tr td {
+	font-size: 11px;
+	font-family: 'NanumGothic';
 }
 </style>
 
@@ -108,26 +163,28 @@
 	<div id="allWrap">
 		<!-- HeaderWrap -->
 		<header id="headerWrap">
-			<input id="resizeurl" value="https://img.goodchoice.kr" type="hidden">
+			<!-- <input id="resizeurl" value="https://img.goodchoice.kr" type="hidden"> -->
 			<section class="row header_area">
 				<!-- 헤더 로고 -->
 				<h1 class="header_logo">
-					<a href="/GuestHi/" class="btn_home">
-					<img src="${pageContext.request.contextPath}/resources/files/img_logo.png"></a>
+					<a href="/GuestHi/" class="btn_home"> <img
+						src="files/img_logo.png"></a>
 				</h1>
 				<a href="#" class="btn_menu">메뉴</a> <a href="#" class="btn_m_srch">검색</a>
 
 				<!-- 로그인전 -->
 				<c:if test="${session_email == null }">
-				<nav class="nav_sub">
-					<ul>
-						<li class="link_01"><a href="#layer" class="layer_trigger">로그인</a></li>
-						<li class="link_02"><a href="${contextPath}/GuestHi/joinChoice.gh">회원가입</a></li>
-						<!-- <li class="link_03"><a href="#"
+					<nav class="nav_sub">
+						<ul>
+							<li class="link_01"><a href="#layer" class="layer_trigger">로그인</a></li>
+							<li class="link_02"><a
+								href="joinChoice.gh">회원가입</a></li>
+							<!-- <li class="link_03"><a href="#"
                      onclick="guest_reserve_open();return false;" class="m_reserve">예약내역</a></li> -->
-						<li class="link_04"><a href="${contextPath}/GuestHi/NoticeList.gh">고객센터</a></li>
-					</ul>
-				</nav>
+							<li class="link_04"><a
+								href="NoticeList.gh">고객센터</a></li>
+						</ul>
+					</nav>
 				</c:if>
 
 				<!-- 로그인후 -->
@@ -136,18 +193,18 @@
 						<ul>
 							<li class="nav_nick">
 								<div class="my_info">
-									<span class="my_nick nickname">
-									<a href="${contextPath}/GuestHi/logout.gh">${session_name}&nbsp;님</a></span>
-									<span class="my_img">
-									<img src="${pageContext.request.contextPath}/resources/files/ic_menu_user_default.png">
+									<span class="nickname"> <a href="logout.gh">${session_name}&nbsp;님</a></span>
+									<span class="my_img"> <img
+										src="files/ic_menu_user_default.png">
 									</span>
 								</div>
 							</li>
 							<!-- 마이페이지 연결 아직 안함. -->
-							<li class="link_02"><a href="${contextPath}/GuestHi/myPage.gh">마이페이지</a></li>
-							
-							<li class="link_04">
-							<a href="${contextPath}/GuestHi/NoticeList.gh">고객센터</a></li>
+							<li class="link_02"><a
+								href="myPage.gh">마이페이지</a></li>
+
+							<li class="link_04"><a
+								href="NoticeList.gh">고객센터</a></li>
 						</ul>
 					</nav>
 				</c:if>
@@ -160,14 +217,14 @@
                <div class="my_info_detail">
                   <div class="info_detail">
                      <span class="my_img"><img
-                        src="${pageContext.request.contextPath}/resources/files/epilp_24.png"
+                        src="files/epilp_24.png"
                         class="profile_150x150" alt="user_profile"
                         style="border-radius: 150px;"
                         onerror="this.src = 'https://img.goodchoice.kr/images/web_v2/mypage/img_user_default.png'"></span>
                      <span class="my_lv">LV 0</span> <span class="my_nick nickname">이미있는닉넴혜진</span>
                      <!-- span class="my_nick nickname">이미있는닉넴혜진</span -->
                      <span class="btn_ly_close"><img
-                        src="${pageContext.request.contextPath}/resources/files/icon_gnb_clse.gif"
+                        src="files/icon_gnb_clse.gif"
                         alt="닫기"></span>
                   </div>
                   <ul class="info_list">
@@ -197,7 +254,8 @@
          </div> --%>
 
 				<!-- 로그인 jquery폼 -->
-				<form method="post" action="${contextPath}/GuestHi/login.gh" name="loginForm">
+				<form method="post" action="login.gh"
+					name="loginForm">
 					<div class="mw_layer">
 						<div class="bg"></div>
 						<div id="layer">
@@ -205,9 +263,8 @@
 							<div class="login_line">
 								<div class="box_in">
 									<input type="text" name="email" id="email" size="23"
-										placeholder="이메일" value="">
-									<input type="password" name="pw" id="pw" size="23"
-										placeholder="비밀번호" value="">
+										placeholder="이메일" value=""> <input type="password"
+										name="pw" id="pw" size="23" placeholder="비밀번호" value="">
 								</div>
 								<input type="submit" class="btn_login" onclick="loginCheck()"
 									value="LOGIN">

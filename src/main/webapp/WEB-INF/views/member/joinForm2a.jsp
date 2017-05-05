@@ -19,20 +19,20 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user.css">
 
 <!-- 공통 JS  -->
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/1602931226643913.js" async=""></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/fbevents.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/analytics.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/jquery-1.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/jquery.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/owl.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/masonry.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/jquery_002.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/imgliquid.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/iscroll.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/jquery_003.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/common.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/user.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/js.joinForm/check.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/1602931226643913.js" async=""></script>
+<script src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/owl.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/masonry.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery_002.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/imgliquid.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/iscroll.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery_003.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/user.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/check.js"></script>
 <script type="text/javascript">
 
 	function get_version_of_IE () {

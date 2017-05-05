@@ -13,6 +13,12 @@ public class MemberVO {
 	private Date birth;
 	private int auth;
 
+	@Override
+	public String toString() {
+		return "MemberVO [no=" + no + ", email=" + email + ", pw=" + pw + ", name=" + name + ", phone=" + phone
+				+ ", reg=" + reg + ", birth=" + birth + ", auth=" + auth + "]";
+	}
+
 	public int getAuth() {
 		return auth;
 	}
@@ -76,4 +82,6 @@ public class MemberVO {
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
+	
+	
 }

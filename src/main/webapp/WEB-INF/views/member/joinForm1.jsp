@@ -28,19 +28,14 @@
 <meta name="naver-site-verification"
 	content="27e1bd094d2f12af942addbf4afdb3f479ad0273">
 
-<link rel="canonical" href="https://goodchoice.kr/">
-
-
 <!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/default.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/owl.css">
+<link rel="stylesheet" type="text/css" href="css/default.css">
+<link rel="stylesheet" type="text/css" href="css/owl.css">
 
 <!-- 공통 JS  -->
-<script src="${pageContext.request.contextPath}/resources/js/1602931226643913.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
+<script src="js/1602931226643913.js"></script>
+<script src="js/fbevents.js"></script>
+<script src="js/analytics.js"></script>
 <script type="text/javascript">
 	function get_version_of_IE () {
 		 var word;
@@ -73,25 +68,25 @@
 		} 
 	}*/
 	</script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/owl.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/masonry.js"></script>
-<script	src="${pageContext.request.contextPath}/resources/js/jquery_002.js"></script>
-<script	src="${pageContext.request.contextPath}/resources/js/imgliquid.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/iscroll.js"></script>
-<script	src="${pageContext.request.contextPath}/resources/js/jquery_003.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+<script src="js/jquery-1.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/masonry.js"></script>
+<script src="js/jquery_002.js"></script>
+<script src="js/imgliquid.js"></script>
+<script src="js/iscroll.js"></script>
+<script src="js/jquery_003.js"></script>
+<script src="js/common.js"></script>
 </head>
 
-<body class="pcweb" oncontextmenu="return false" ondragstart="return false">
+<body class="pcweb" oncontextmenu="return false"
+	ondragstart="return false">
 	<!-- //주메뉴 영역(mWeb용) -->
 
 	<div id="allWrap">
 
 		<!-- 페이지별 호출 소스 -->
-		<link rel="stylesheet" type="text/css"
-			href="${pageContext.request.contextPath}/resources/css/user.css">
+		<link rel="stylesheet" type="text/css" href="css/user.css">
 		<script src="js/user.js"></script>
 		<script src="js/check.js"></script>
 
@@ -297,16 +292,16 @@
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
 
-					<a href="${contextPath}/GuestHi/join/joinFormA.gh"> 
-					<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif">
-					</a>&emsp;&emsp;&emsp;&emsp; 
-					<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
+					<a href="join/joinFormA.gh"> <img
+						src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif">
+					</a>&emsp;&emsp;&emsp;&emsp; <img
+						src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
 					&emsp;&emsp;&emsp;&emsp;
 					<!-- <a href="기업가입폼 "> -->
-					<a href="${contextPath}/GuestHi/join/joinFormB.gh"> 
-					<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif">
-					</a>
-					<br><br>
+					<a href="join/joinFormB.gh"> <img
+						src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif">
+					</a> <br>
+					<br>
 
 					<div class="btn_area">
 						<a href="javascript:clickon=history.go(-1)" class="btn_confirm">이전으로</a>
@@ -320,9 +315,9 @@
 		</article>
 		<!-- //(공통)contentsWrap -->
 
-	<!-- 비회원 예약조회 -->
+		<!-- 비회원 예약조회 -->
 
-<script type="text/javascript">
+		<script type="text/javascript">
 function setCookie( name, value, expiredays ) { 
 	var todayDate = new Date(); 
 	todayDate.setDate( todayDate.getDate() + expiredays ); 
@@ -343,9 +338,9 @@ else {
 	$('.web_adppdown').hide();
 } 
 </script>
-	<!-- //웹 노출 경고창 -->
+		<!-- //웹 노출 경고창 -->
 
-	<script>
+		<script>
 	 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -356,8 +351,8 @@ else {
 	</script>
 
 
-	<script type="text/javascript" src="js/wcslog.js"> </script>
-	<script type="text/javascript"> 
+		<script type="text/javascript" src="js/wcslog.js"> </script>
+		<script type="text/javascript"> 
 	if (!wcs_add) var wcs_add={};
 	wcs_add["wa"] = "s_4540c185467c";
 	if (!_nasa) var _nasa={};
@@ -366,7 +361,7 @@ else {
 	</script>
 
 
-	<script type="text/javascript">
+		<script type="text/javascript">
 	/* <![CDATA[ */
 	var google_conversion_id = 964418007;
 	var google_conversion_language = "en";

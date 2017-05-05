@@ -42,21 +42,18 @@ public class MemberController {
 	// 회원가입 선택
 	@RequestMapping("/joinChoice.gh")
 	public String joinStep1() {
-		logger.info("회원가입 선택");
 		return "member/joinForm1/회원가입선택";
 	}
 
 	// 개인회원가입폼
 	@RequestMapping("/join/joinFormA.gh")
 	public String joinStep2a() {
-		logger.info("개인회원가입폼");
 		return "member/joinForm2a/개인회원가입";
 	}
 
 	// 기업회원가입폼
 	@RequestMapping("/join/joinFormB.gh")
 	public String joinStep2b() {
-		logger.info("기업회원가입폼");
 		return "member/joinForm2b/기업회원가입";
 	}
 
@@ -65,8 +62,7 @@ public class MemberController {
 	public String joinStep3a(HttpSession session, MemberVO member) throws Exception {
 
 		// 인증코드 만들어서 메일보낼때 쓰고, 테이블에 입력할때도 넣는다.
-		int ran = new Random().nextInt(900000) + 100000; // 100000 ~ 999999 :
-															// 6자리
+		int ran = new Random().nextInt(900000) + 100000; // 100000 ~ 999999 : 6자리
 		member.setAuth(ran);
 		String joinCode = String.valueOf(ran);
 		String MemOrHost = "개인";
@@ -76,7 +72,7 @@ public class MemberController {
 		
 		member.setNo(no);
 		boolean insertSuccess = memberService.memberInsert(member);
-		
+		logger.info(member.toString());
 		logger.info("개인회원 db insert? " + insertSuccess);
 		return "member/joinSuccess/개인회원가입성공";
 	}
@@ -96,7 +92,7 @@ public class MemberController {
 		
 		host.setNo(no);
 		boolean insertSuccess = hostService.hostInsert(host);
-
+		logger.info(host.toString());
 		logger.info("기업회원 db insert? " + insertSuccess);
 		return "member/joinSuccess/기업회원가입성공";
 	}
@@ -129,7 +125,7 @@ public class MemberController {
 		mimeMessage.setText(sb.toString(), "UTF-8", "html");
 
 		javaMailSenderImpl.send(mimeMessage);
-		logger.info("메일 보내기 성공");
+		logger.info(mimeMessage.toString());
 	}
 
 	// 이메일을 통한 인증
@@ -155,7 +151,7 @@ public class MemberController {
 			// 둘다 예외 : auth error 인증실패
 			mav.setViewName("member/authError/인증 에러");
 		}
-
+		
 		return mav;
 	}
 

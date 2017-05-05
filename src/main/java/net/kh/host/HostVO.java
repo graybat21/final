@@ -18,6 +18,13 @@ public class HostVO {
 	private String imagesize;
 	private int auth;
 
+	@Override
+	public String toString() {
+		return "HostVO [no=" + no + ", email=" + email + ", pw=" + pw + ", name=" + name + ", tel=" + tel + ", reg="
+				+ reg + ", biz_no=" + biz_no + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zip=" + zip + ", imagename="
+				+ imagename + ", imagesize=" + imagesize + ", auth=" + auth + "]";
+	}
+
 	public int getNo() {
 		return no;
 	}
