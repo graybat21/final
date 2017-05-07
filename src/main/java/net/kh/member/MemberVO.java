@@ -11,20 +11,12 @@ public class MemberVO {
 	private String phone;
 	private Date reg;
 	private Date birth;
-	private int auth;
+	private String auth;
 
 	@Override
 	public String toString() {
 		return "MemberVO [no=" + no + ", email=" + email + ", pw=" + pw + ", name=" + name + ", phone=" + phone
 				+ ", reg=" + reg + ", birth=" + birth + ", auth=" + auth + "]";
-	}
-
-	public int getAuth() {
-		return auth;
-	}
-
-	public void setAuth(int auth) {
-		this.auth = auth;
 	}
 
 	public int getNo() {
@@ -82,6 +74,13 @@ public class MemberVO {
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
-	
-	
+
+	public String getAuth() {
+		return auth;
+	}
+
+	public void setAuth(String auth) {
+		this.auth = auth;
+	}
+
 }

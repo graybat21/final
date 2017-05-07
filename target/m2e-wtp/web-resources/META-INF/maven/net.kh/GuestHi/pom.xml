@@ -205,6 +205,23 @@
 			<artifactId>tiles-servlet</artifactId>
 			<version>${org.tiles-version}</version>
 		</dependency>
+		
+		<!-- security -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
 		<!-- <dependency> <groupId>org.apache.tiles</groupId> <artifactId>tiles-core</artifactId> 
 			<version>${org.tiles-version}</version> </dependency> <dependency> <groupId>org.apache.tiles</groupId> 
 			<artifactId>tiles-el</artifactId> <version>${org.tiles-version}</version> 

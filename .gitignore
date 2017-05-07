@@ -1,6 +1,7 @@
-/target/
+
 *.log
 *.class
 *.log
 *.MF
 pom.properties
+/target/

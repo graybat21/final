@@ -1,166 +1,129 @@
 package net.kh.member;
 
-import java.util.Random;
+import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import net.kh.common.LoginController;
-import net.kh.host.HostService;
-import net.kh.host.HostVO;
 
 @Controller
 public class MemberController {
 
-	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
-	@Autowired
+	@Inject
 	private JavaMailSenderImpl javaMailSenderImpl;
 
 	@Resource(name = "memberService")
 	private MemberService memberService;
 
-	@Resource(name = "hostService")
-	private HostService hostService;
+	@Inject
+	BCryptPasswordEncoder passwordEncoder;
 
 	ModelAndView mav = new ModelAndView();
 
-	// È¸¿ø°¡ÀÔ ¼±ÅÃ
 	@RequestMapping("/joinChoice.gh")
 	public String joinStep1() {
-		return "member/joinForm1/È¸¿ø°¡ÀÔ¼±ÅÃ";
+		return "member/joinForm1/íšŒì›ê°€ì… ì„ íƒ";
 	}
 
-	// °³ÀÎÈ¸¿ø°¡ÀÔÆû
 	@RequestMapping("/join/joinFormA.gh")
 	public String joinStep2a() {
-		return "member/joinForm2a/°³ÀÎÈ¸¿ø°¡ÀÔ";
+		return "member/joinForm2a/ê°œì¸íšŒì› ê°€ì…í¼";
 	}
 
-	// ±â¾÷È¸¿ø°¡ÀÔÆû
-	@RequestMapping("/join/joinFormB.gh")
-	public String joinStep2b() {
-		return "member/joinForm2b/±â¾÷È¸¿ø°¡ÀÔ";
-	}
-
-	// °³ÀÎÈ¸¿ø°¡ÀÔ¼º°ø
 	@RequestMapping("/join/joinA.gh")
 	public String joinStep3a(HttpSession session, MemberVO member) throws Exception {
 
-		// ÀÎÁõÄÚµå ¸¸µé¾î¼­ ¸ŞÀÏº¸³¾¶§ ¾²°í, Å×ÀÌºí¿¡ ÀÔ·ÂÇÒ¶§µµ ³Ö´Â´Ù.
-		int ran = new Random().nextInt(900000) + 100000; // 100000 ~ 999999 : 6ÀÚ¸®
-		member.setAuth(ran);
-		String joinCode = String.valueOf(ran);
-		String MemOrHost = "°³ÀÎ";
-		
+		String encryptPassword = passwordEncoder.encode(member.getPw());
+		member.setPw(encryptPassword);
+
+		String joinCode = getUuid();
+		member.setAuth(joinCode);
+		String MemOrHost = "ê°œì¸";
 		int no = memberService.memberGetCurrentNo();
 		sendMail(no, member.getEmail(), joinCode, MemOrHost);
-		
+
 		member.setNo(no);
 		boolean insertSuccess = memberService.memberInsert(member);
+
+		session.setAttribute("mem", member);
+		mav.addObject(member);
+
 		logger.info(member.toString());
-		logger.info("°³ÀÎÈ¸¿ø db insert? " + insertSuccess);
-		return "member/joinSuccess/°³ÀÎÈ¸¿ø°¡ÀÔ¼º°ø";
+		return "member/joinSuccess/ê°œì¸íšŒì›ê°€ì… ì„±ê³µ";
 	}
 
-	// ±â¾÷È¸¿ø°¡ÀÔ¼º°ø
-	@RequestMapping("/join/joinB.gh")
-	public String joinStep3b(HttpSession session, HostVO host) throws Exception {
+	// @RequestMapping("/join/joinB.gh")
+	// public String joinStep3b(HttpSession session, HostVO host) throws
+	// Exception {
+	//
+	// int ran = new Random().nextInt(90000) + 10000; // 10000 ~ 99999 : 5ï¿½Ú¸ï¿½
+	//
+	// host.setAuth(ran);
+	// String joinCode = String.valueOf(ran);
+	// String MemOrHost = "ï¿½ï¿½ï¿½";
+	//
+	// int no = hostService.hostGetCurrentNo();
+	// sendMail(no, host.getEmail(), joinCode, MemOrHost);
+	//
+	// host.setNo(no);
+	// boolean insertSuccess = hostService.hostInsert(host);
+	// logger.info(host.toString());
+	// return "member/joinSuccess/ê¸°ì—…íšŒì›ê°€ì… ì„±ê³µ";
+	// }
 
-		int ran = new Random().nextInt(90000) + 10000; // 10000 ~ 99999 : 5ÀÚ¸®
-		
-		host.setAuth(ran);
-		String joinCode = String.valueOf(ran);
-		String MemOrHost = "±â¾÷";
+	@RequestMapping(value = "/auth-m/{no}/{auth}")
+	public ModelAndView authOk(@PathVariable String no, @PathVariable String auth) throws Exception {
 
-		int no = hostService.hostGetCurrentNo();
-		sendMail(no, host.getEmail(), joinCode, MemOrHost);
-		
-		host.setNo(no);
-		boolean insertSuccess = hostService.hostInsert(host);
-		logger.info(host.toString());
-		logger.info("±â¾÷È¸¿ø db insert? " + insertSuccess);
-		return "member/joinSuccess/±â¾÷È¸¿ø°¡ÀÔ¼º°ø";
+		MemberVO member = new MemberVO();
+		member.setAuth(auth);
+		member.setNo(Integer.parseInt(no));
+
+		memberService.memberAuthOk(member);
+		mav.setViewName("member/authSuccess/ì¸ì¦ì„±ê³µ");
+		// mav.setViewName("member/authError/ì¸ì¦ì‹¤íŒ¨");
+
+		return mav;
 	}
 
-	private void sendMail(int no, String email, String joinCode, String MemOrHost) throws Exception {
+	public void sendMail(int no, String email, String joinCode, String MemOrHost) throws Exception {
 
 		MimeMessage mimeMessage = javaMailSenderImpl.createMimeMessage();
 
-		// from, to ÀÔ·Â
 		mimeMessage.setFrom(new InternetAddress("guesthi1111@gmail.com"));
 		mimeMessage.addRecipient(RecipientType.TO, new InternetAddress(email));
+		mimeMessage.setSubject("GuestHi - íšŒì›ê°€ì… ì¸ì¦ìš”ì²­ë©”ì¼ ì…ë‹ˆë‹¤.");
 
-		// Á¦¸ñ ÀÔ·Â
-		String subject = "GuestHi - È¸¿ø°¡ÀÔ ÀÎÁõ ÄÚµå ¹ß±Ş ¾È³» ÀÔ´Ï´Ù.";
-		mimeMessage.setSubject(subject);
-
-		// ³»¿ë ÀÔ·Â
 		StringBuilder sb = new StringBuilder();
 		String uri = "http://localhost:8080/GuestHi/";
 		sb.append("<h1><a href='" + uri + "'>");
 		sb.append("<img src='http://i.imgur.com/Jo4vPeX.png'></a></h1>");
 		sb.append("<h1>Welcome GuestHi</h1>");
-		sb.append("ÀúÈñ GuestHi¸¦ °¡ÀÔÇØ ÁÖ¼Å¼­ °¨»çµå¸³´Ï´Ù.<br>");
-		sb.append("È¸¿ø´ÔÀº " + MemOrHost + "À¸·Î °¡ÀÔÇÏ¼Ì½À´Ï´Ù.<br>");
-		sb.append("¾Æ·¡ ¸µÅ©¸¦ Å¬¸¯ÇÏ½Ã¸é »çÀÌÆ®¸¦ Á¤»óÀûÀ¸·Î ÀÌ¿ë°¡´ÉÇÏ½Ê´Ï´Ù.<br>");
+		sb.append("ì €í¬ GuestHiì— ê°€ì…í•´ ì£¼ì…”ì„œ ì§„ì‹¬ìœ¼ë¡œ ê°ì‚¬ë“œë¦½ë‹ˆë‹¤.<br>");
+		sb.append("íšŒì›ë‹˜ì€ " + MemOrHost + " ìœ¼ë¡œ ê°€ì…í•˜ì…¨ìŠµë‹ˆë‹¤.<br>");
+		sb.append("ì‚¬ì´íŠ¸ ì´ìš©ì€ ì•„ë˜ ë§í¬ë¥¼ í†µí•´ ì¸ì¦í•˜ì‹ í›„ ê°€ëŠ¥í•©ë‹ˆë‹¤.<br>");
 		sb.append("<hr><br>");
-		sb.append("<a href='" + uri + "auth/" + no + "/" + joinCode + "'>");
-		/* http://localhost:8083/GuestHi/auth/{member.no}/{auth} */
-		sb.append("±ÍÇÏÀÇ ÀÎÁõ ÄÚµå´Â " + joinCode + " ÀÔ´Ï´Ù. ¸µÅ©¸¦ Å¬¸¯ÇÏ½Ã¸é ÀÎÁõµË´Ï´Ù.</a>");
+		sb.append("<a href='" + uri + "auth-m/" + no + "/" + joinCode + "'>");
+		sb.append("ë§í¬ë¥¼ í´ë¦­í•˜ì‹œë©´ ì¸ì¦ì´ ì™¼ë£Œë©ë‹ˆë‹¤.</a>");
 		mimeMessage.setText(sb.toString(), "UTF-8", "html");
 
 		javaMailSenderImpl.send(mimeMessage);
-		logger.info(mimeMessage.toString());
 	}
 
-	// ÀÌ¸ŞÀÏÀ» ÅëÇÑ ÀÎÁõ
-	@RequestMapping(value = "/auth/{no}/{auth}")
-	public ModelAndView authOk(@PathVariable String no, @PathVariable String auth) throws Exception {
-		
-		if (auth.length() == 5) {
-			HostVO host = new HostVO();
-			host.setAuth(Integer.parseInt(auth));
-			host.setNo(Integer.parseInt(no));
-			
-			hostService.hostAuthOk(host);
-			
-			mav.setViewName("member/authSuccess/±â¾÷È¸¿ø ÀÎÁõ ¼º°ø");
-		} else if (auth.length() == 6) {
-			MemberVO member = new MemberVO();
-			member.setAuth(Integer.parseInt(auth));
-			member.setNo(Integer.parseInt(no));
-			
-			memberService.memberAuthOk(member);
-			mav.setViewName("member/authSuccess/°³ÀÎÈ¸¿ø ÀÎÁõ ¼º°ø");
-		} else {
-			// µÑ´Ù ¿¹¿Ü : auth error ÀÎÁõ½ÇÆĞ
-			mav.setViewName("member/authError/ÀÎÁõ ¿¡·¯");
-		}
-		
-		return mav;
+	private String getUuid() {
+		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
-
-	// joinStep1()
-	// joinStep2()
-	// joinStep3()
-	// joinStep4()
-	// memberFindEmailForm()
-	// memberFindEmailOk()
-	// memberFindPwForm()
-	// memberFindPwOk()
 }

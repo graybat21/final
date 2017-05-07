@@ -7,11 +7,11 @@
 	<!-- id 속성은 DAO 의 메소드와 같아야 한다. 여기의 boardVO 는 mybatis-confg.xml 에 Alias 되어 있습니다. -->
 	<select id="memberLogin" resultType="memberVO"> 
 		SELECT
-			*
+			no, email, pw, name, phone, reg, auth
 		FROM MEMBER 
 		WHERE 
 			email = #{email} 
-		AND pw = #{pw} 
+		 
 	</select>
 	
 	<insert id="memberInsert" parameterType="memberVO">
@@ -33,7 +33,7 @@
 			WHERE 
 				auth = #{auth}
 		)
-		SET auth = '101'
+		SET auth = 'y'
 		WHERE no = #{no}
 	</update>
 	

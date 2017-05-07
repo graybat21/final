@@ -11,7 +11,6 @@
 		FROM HOST 
 		WHERE 
 			email = #{email} 
-		AND pw = #{pw} 
 	</select>
 	
 	<insert id="hostInsert" parameterType="hostVO">
@@ -35,7 +34,7 @@
 			WHERE 
 				auth = #{auth}
 		)
-		SET auth = '11'
+		SET auth = 'y'
 		WHERE no = #{no}
 	</update>
 	

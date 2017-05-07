@@ -16,14 +16,7 @@ public class HostVO {
 	private String zip;
 	private String imagename;
 	private String imagesize;
-	private int auth;
-
-	@Override
-	public String toString() {
-		return "HostVO [no=" + no + ", email=" + email + ", pw=" + pw + ", name=" + name + ", tel=" + tel + ", reg="
-				+ reg + ", biz_no=" + biz_no + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zip=" + zip + ", imagename="
-				+ imagename + ", imagesize=" + imagesize + ", auth=" + auth + "]";
-	}
+	private String auth;
 
 	public int getNo() {
 		return no;
@@ -121,12 +114,19 @@ public class HostVO {
 		this.imagesize = imagesize;
 	}
 
-	public int getAuth() {
+	public String getAuth() {
 		return auth;
 	}
 
-	public void setAuth(int auth) {
+	public void setAuth(String auth) {
 		this.auth = auth;
+	}
+
+	@Override
+	public String toString() {
+		return "HostVO [no=" + no + ", email=" + email + ", pw=" + pw + ", name=" + name + ", tel=" + tel + ", reg="
+				+ reg + ", biz_no=" + biz_no + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zip=" + zip + ", imagename="
+				+ imagename + ", imagesize=" + imagesize + ", auth=" + auth + "]";
 	}
 
 }
