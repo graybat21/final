@@ -2,19 +2,19 @@ package net.kh.member;
 
 public interface MemberService {
 
-	public MemberVO memberLogin(MemberVO member) throws Exception; // ·Î±×ÀÎ
+	public MemberVO memberLogin(MemberVO member) throws Exception; // ï¿½Î±ï¿½ï¿½ï¿½
 //
-//	public MemberVO getMember(String email); // email À» ÅëÇØ¼­ ÀüÃ¼ Á¤º¸ °¡Á®¿À±â
+//	public MemberVO getMember(String email); // email ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //
-//	public Object insertMember(MemberVO member); // °¡ÀÔ
+//	public Object insertMember(MemberVO member); // ï¿½ï¿½ï¿½ï¿½
 //
-//	public MemberVO emailFindByName(MemberVO member); // ÀÌ¸ÞÀÏÃ£±â
+//	public MemberVO emailFindByName(MemberVO member); // ï¿½Ì¸ï¿½ï¿½ï¿½Ã£ï¿½ï¿½
 //
-//	public MemberVO pwFindByEmail(MemberVO member); // ºñ¹øÃ£±â
+//	public MemberVO pwFindByEmail(MemberVO member); // ï¿½ï¿½ï¿½Ã£ï¿½ï¿½
 //
-//	public Object memberModify(MemberVO member); // ¼öÁ¤
+//	public Object memberModify(MemberVO member); // ï¿½ï¿½ï¿½ï¿½
 //
-//	public Object memberDelete(String email); // µy·Ú
+//	public Object memberDelete(String email); // ï¿½yï¿½ï¿½
 //
 //	public MemberVO idFindByName(MemberVO member);
 //

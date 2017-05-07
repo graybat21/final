@@ -1,6 +1,10 @@
 package net.kh.qna;
 
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.logging.Logger;
+
+import javax.annotation.Resource;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,16 +16,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class QnaController {
+	@Resource(name = "qnaService")
+	private QnaService qnaService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(QnaController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	private static final Logger logger = (Logger) LoggerFactory.getLogger(QnaController.class);
+
 	@RequestMapping(value = "/QnaList.gh", method = RequestMethod.GET)
-	public String QnaList(Model model) {
-		logger.info("QnaController - QnaList.gh");
-		return "qna/qnaList/QNA";
+	public String QnaList(Model model) throws Exception{
+		List list = qnaService.qnaList();
+		logger.info(list.toString());
+	
+		model.addAttribute("list",list);
+	
+		return "qnaList";
 	}
 	
 }
