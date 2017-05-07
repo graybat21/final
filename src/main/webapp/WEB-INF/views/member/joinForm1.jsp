@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type">
 
 
-<title>게하(Guest Hi)</title>
+<title>회원가입선택</title>
 
 <meta name="keywords" content="여기어때,회원가입,회원혜택">
 <meta name="description"
@@ -28,23 +28,18 @@
 <meta name="naver-site-verification"
 	content="27e1bd094d2f12af942addbf4afdb3f479ad0273">
 
-<link rel="canonical" href="https://goodchoice.kr/">
-
-
 <!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/default.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/owl.css">
+<link rel="stylesheet" type="text/css" href="css/default.css">
+<link rel="stylesheet" type="text/css" href="css/owl.css">
 
 <!-- 공통 JS  -->
-<script src="${pageContext.request.contextPath}/resources/js/1602931226643913.js" async=""></script>
-<script async="" src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
-<script async="" src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
+<script src="js/1602931226643913.js"></script>
+<script src="js/fbevents.js"></script>
+<script src="js/analytics.js"></script>
 <script type="text/javascript">
 	function get_version_of_IE () {
-
 		 var word;
 		 var version = "N/A";
-
 		 var agent = navigator.userAgent.toLowerCase();
 		 var name = navigator.appName;
 
@@ -73,15 +68,15 @@
 		} 
 	}*/
 	</script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/owl.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/masonry.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery_002.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/imgliquid.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/iscroll.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery_003.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+<script src="js/jquery-1.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/masonry.js"></script>
+<script src="js/jquery_002.js"></script>
+<script src="js/imgliquid.js"></script>
+<script src="js/iscroll.js"></script>
+<script src="js/jquery_003.js"></script>
+<script src="js/common.js"></script>
 </head>
 
 <body class="pcweb" oncontextmenu="return false"
@@ -90,9 +85,8 @@
 
 	<div id="allWrap">
 
-
 		<!-- 페이지별 호출 소스 -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user.css">
+		<link rel="stylesheet" type="text/css" href="css/user.css">
 		<script src="js/user.js"></script>
 		<script src="js/check.js"></script>
 
@@ -291,28 +285,28 @@
 
 		<!-- (공통)contentsWrap -->
 		<article id="contentsWrap">
-	
 
 			<!-- user wrap -->
 			<div class="user_wrap row row_cont">
-				<br><br>
+				<br> <br>
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
-						<center>
-						<a href="일반가입폼">
-						<img src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif"></a>
-						&emsp;&emsp;&emsp;&emsp;
-						<img alt="" src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
-						&emsp;&emsp;&emsp;&emsp;
-						<a href="기업가입폼">
-						<img alt="" src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif"></a>
-						<br><br>
-						</center>
-						
-								<div class="btn_area">
-									<a href="" onclick="이전"; return false;" class="btn_confirm">이전으로</a>
-								</div>
-							</div>
+
+					<a href="join/joinFormA.gh"> <img
+						src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join.gif">
+					</a>&emsp;&emsp;&emsp;&emsp; <img
+						src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/join_line.gif">
+					&emsp;&emsp;&emsp;&emsp;
+					<!-- <a href="기업가입폼 "> -->
+					<a href="join/joinFormB.gh"> <img
+						src="https://www.powermall.kr:14032/shop/data/skin/apple_tree_2/imgs/btn_join2.gif">
+					</a> <br>
+					<br>
+
+					<div class="btn_area">
+						<a href="javascript:clickon=history.go(-1)" class="btn_confirm">이전으로</a>
+						<!-- <a href="" onclick="이전" ;  class="btn_confirm">이전으로</a> -->
+					</div>
 				</div>
 				<!-- //user_cont_wrap -->
 			</div>
@@ -320,8 +314,6 @@
 
 		</article>
 		<!-- //(공통)contentsWrap -->
-
-		<!-- //레이어 : 내위치 재설정(지도) -->
 
 		<!-- 비회원 예약조회 -->
 
