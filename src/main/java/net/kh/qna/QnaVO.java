@@ -11,7 +11,6 @@ private Date reg;
 private int ref;
 private int restep;
 
-
 public String getSubject() {
 	return subject;
 }

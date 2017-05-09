@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type">
 
 
-<title>게하(Guest Hi)</title>
+<title>기업회원가입폼</title>
 
 <meta name="keywords" content="여기어때,회원가입,회원혜택">
 <meta name="description"
@@ -289,6 +289,55 @@
 	})(jQuery);
 	</script>
 		<!-- //페이지별 호출 소스 -->
+		
+		<!-- 다음 우편번호  -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    fullAddr = data.roadAddress;
+
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    fullAddr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                if(data.userSelectedType === 'R'){
+                    //법정동명이 있을 경우 추가한다.
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있을 경우 추가한다.
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('address1').value = fullAddr;
+
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById('address2').focus();
+            }
+        }).open();
+    }
+</script>
+
+		<!--// 다음 우편번호  -->
+
 
 		<!-- (공통)contentsWrap -->
 		<article id="contentsWrap">
@@ -299,39 +348,58 @@
 
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
-					<form action="https://www.goodchoice.kr/user/userJoinInput"
+					<form action="${pageContext.request.contextPath}/join/joinB.gh"
 						method="post" accept-charset="utf-8" id="joinform">
-
-						<input name="step" value="3" type="hidden"> <input
-							name="utype" value="1" type="hidden"> <input
-							name="duplidchk" value="" type="hidden"> <input
-							name="duplnickchk" value="" type="hidden">
 
 						<!-- 회원가입 입력 -->
 						<div class="join_email">
 							<p class="join_item item_1">
 								<label>이메일</label> <input class="ipt ipt_email" size="50"
-									maxlength="50" placeholder="이메일 입력" name="uid"
+									maxlength="50" placeholder="이메일 입력" name="email"
 									onkeypress="$.duplidreset()" type="email"> <a
 									onclick="return false;" class="btn_overlap_chk" id="chkid">중복확인</a>
 							</p>
 							<p class="join_item item_2">
-								<label>비밀번호</label> <input class="ipt ipt_password"
-									placeholder="영문,숫자 포함 6~20자" name="upw" maxlength="20"
-									type="password">
+								<label>비밀번호</label> 
+								<input class="ipt ipt_password"	placeholder="영문,숫자 포함 6~20자" name="pw" maxlength="20" type="password">
 							</p>
 							<p class="join_item item_3">
-								<label>비밀번호 확인</label> <input class="ipt ipt_password"
-									placeholder="비밀번호 확인" name="upwchk" maxlength="20"
-									type="password">
+								<label>비밀번호 확인</label> 
+								<input class="ipt ipt_password" placeholder="비밀번호 확인" name="hpwchk" maxlength="20" type="password">
 							</p>
-							<p class="join_item item_4">
-								<label>닉네임</label> <input class="ipt ipt_nick"
-									placeholder="한글,영문,숫자 포함 2~10자" name="unick" maxlength="10"
-									onkeypress="$.duplnickreset()" type="text"> <a
-									class="btn_overlap_chk" id="chknick" onclick="return false;">중복확인</a>
+							<p class="join_item item_5">
+								<label>업체명</label> <input class="ipt ipt_nick"
+									placeholder="한글,영문,숫자 포함 2~10자" name="name" maxlength="10"
+									onkeypress="$.duplnickreset()" type="text"> 
+									<!-- <a class="btn_overlap_chk" id="chknick" onclick="return false;">중복확인</a> -->
+							</p>
+							<p class="join_item item_6">
+								<label>사업자번호</label> <input class="ipt ipt_bizno"
+									placeholder="사업자 등록번호" name="biz_no" maxlength="10" onkeypress="$.duplnickreset()" type="text"> 
+									<a class="btn_overlap_chk" id="chkbizno" onclick="return false;">중복확인</a>
+							</p>
+							<p class="join_item item_7">
+								<label>우편번호</label> 
+								<input class="ipt ipt_add" placeholder="우편번호" id="postcode" name="zip" type="text" readonly="readonly"> 
+									 <a class="btn_overlap_chk" id="chkzip" onclick="execDaumPostcode()">우편번호 찾기</a>
+							</p>
+							<p class="join_item item_7">
+								<label>주소</label> 
+								<input class="ipt ipt_add" type="text" name="addr1" id="address1" placeholder="주소" readonly="readonly"> 
+							</p>
+							<p class="join_item item_7">
+								<label>상세주소</label> 
+								<input class="ipt ipt_add" type="text" name="addr2" id="address2" placeholder="상세주소"> 
+							</p>
+							<p class="join_item item_7">
+								<label>업체번호</label> 
+								<input class="ipt ipt_add" type="text" name="tel" id="tel" placeholder="업체번호"> 
 							</p>
 
+							<!-- image 입력폼 필요, 임시로 값을 넣음. -->
+							<input name="imagename" type="hidden" value="imagename">
+							<input name="imagesize" type="hidden" value="imagesize">
+							
 							<!-- Agree Area -->
 							<div class="agree_area">
 								<!-- 서비스 이용약관 동의 -->
@@ -343,10 +411,7 @@
 									<div class="ag_wrap">
 										<!-- 3.0 약관 -->
 
-
-
-
-										<script type="text/javascript">
+<script type="text/javascript">
 $(function(){
 
 	$('.last_policy').each(function(e){
@@ -375,14 +440,16 @@ $(function(){
 								<!-- //Agree Area -->
 
 								<div class="btn_area">
-									<a href="" onclick="$.joinok(); return false;"
-										class="btn_confirm">가입완료</a>
+									<!-- <a href="" onclick="$.joinok(); return false;"
+										class="btn_confirm">가입완료</a> -->
+										<input class="btn_confirm" type="submit" value="JOIN">
 								</div>
 								<p class="join_info">
 									<span>비밀번호 분실시 이메일을 통해 확인하므로,</span> <span>정확하게 입력해주세요.</span>
 								</p>
 							</div>
 							<!-- 회원가입 입력 -->
+						</div>
 					</form>
 				</div>
 				<!-- //user_cont_wrap -->
@@ -426,9 +493,6 @@ else {
 } 
 </script>
 		<!-- //웹 노출 경고창 -->
-
-
-
 
 		<script>
 	 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

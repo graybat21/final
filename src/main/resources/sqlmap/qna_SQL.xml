@@ -3,7 +3,7 @@
 <mapper namespace="net.kh.dao.QnaDao">
 
 <!-- 글 리스트 -->
-<select id="QnaList" resultType="QnaVO">
+<select id="qnaList" resultType="qnaVO">
 SELECT no,
 	   subject,
 	   writer,
@@ -14,6 +14,17 @@ SELECT no,
 FROM QNA ORDER BY reg DESC, restep ASC
 	   
 </select>
+
+<!-- 글쓰기 -->
+<insert id="qnaWrite" parameterType="qnaVO">
+insert into QNA values(SEQ_QNA_NO.NEXTVAL, #{writer}, #{content}, sysdate, #{ref}, #{restep}, #{subject})
+</insert>
+
+<!--글 상세보기 -->
+<select id="qnaView" resultType="qnaVO" parameterType="int">
+select * from QNA where no = #{no}
+</select>
+
 
 
 </mapper>

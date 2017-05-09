@@ -154,7 +154,7 @@
 						<div class="svc_inquiry_reg">
 							<div class="inq_cate_sel">
 								<label>
-									<span>문의유형</span>
+									<span>작성자</span>
 									<select id="inq_type" name="uiqcate">
 										<option value="" selected="selected">선택하세요</option>
 																				<option value="1">이용문의</option>

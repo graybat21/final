@@ -20,9 +20,25 @@ public class QnaServiceImpl implements QnaService {
 
 	@Override
 	@Transactional
-	public List qnaList() throws Exception{
+	public List<QnaVO> qnaList() throws Exception{
 		// TODO Auto-generated method stub
-		return qnaDao.QnaList();
+		return qnaDao.qnaList();
+	}
+
+
+	@Override
+	@Transactional
+	public int qnaWrite(QnaVO qnaVO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDao.qnaWrite(qnaVO);
+	}
+
+
+	@Override
+	@Transactional
+	public QnaVO qnaView(int no) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDao.qnaView(no);
 	}
 	
 

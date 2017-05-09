@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="net.kh.GuestHi">
+	<logger name="net.kh">
 		<level value="info" />
 	</logger>
 	
