@@ -12,7 +12,6 @@ public class MemberVO {
 	private Date reg;
 	private Date birth;
 	private String auth;
-
 	@Override
 	public String toString() {
 		return "MemberVO [no=" + no + ", email=" + email + ", pw=" + pw + ", name=" + name + ", phone=" + phone

@@ -272,7 +272,7 @@
 							<div class="close">
 								<table width="100%" id="loginTbl">
 									<tr>
-										<td onclick="" width="20%" align="center">회원가입</td>
+										<td onclick="joinchoice.gh" width="20%" align="center">회원가입</td>
 										<td width="30%;" align="center">아이디/비밀번호 찾기</td>
 										<td width="10%" align="center"><a href="#layer_anchor"
 											title="레이어 닫기" class="close">닫기</a></td>

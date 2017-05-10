@@ -10,13 +10,13 @@
 <title><tiles:getAsString name="title" /></title>
 
 <style>
-* {
+/* * {
 	vertical-align: top;
 }
 #wrap {
 	margin: 0 auto;
 	width: 1200px;
-}
+}*/ 
 #content {
 	text-align: center;
 	min-height: 700px;

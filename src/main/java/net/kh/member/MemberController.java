@@ -14,9 +14,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import net.kh.utils.MemberEntryValidator;
+
 
 @Controller
 public class MemberController {
@@ -45,8 +53,13 @@ public class MemberController {
 	}
 
 	@RequestMapping("/join/joinA.gh")
-	public String joinStep3a(HttpSession session, MemberVO member) throws Exception {
+	public ModelAndView joinStep3a(HttpSession session, @ModelAttribute("MemberVO") MemberVO member, BindingResult result) throws Exception {
 
+		new MemberEntryValidator().validate(member, result);
+		if (result.hasErrors()) {
+			mav.setViewName("redirect:/joinChoice.gh");
+			return mav;
+		}
 		String encryptPassword = passwordEncoder.encode(member.getPw());
 		member.setPw(encryptPassword);
 
@@ -63,28 +76,49 @@ public class MemberController {
 		mav.addObject(member);
 
 		logger.info(member.toString());
-		return "member/joinSuccess/개인회원가입 성공";
+		mav.setViewName("member/joinSuccess/개인회원가입 성공");
+		return mav;
 	}
+	
+//	public ModelAndView register(@ModelAttribute @Valid User user, BindingResult bindingResult, HttpSession session)
+//			throws Exception {
+//
+//		logger.info(user.toString());
+//		userEntryValidator.validate(user, bindingResult);
+//
+//		String encryptPassword = passwordEncoder.encode(user.getPassword());
+//		user.setPassword(encryptPassword);
+//
+//		ModelAndView mav = new ModelAndView("user/joinSuccess/JoinSuccess");
+//
+//		if (bindingResult.hasErrors()) {
+//			mav.getModel().putAll(bindingResult.getModel());
+//			mav.setViewName("user/register/Register");
+//			return mav;
+//		}
+//
+//		String joinCode = getUuid();
+//		user.setAuth(joinCode);
+//		sendMail(user.getUsername(), user.getEmail(), joinCode);
+//
+//		service.insert(user);
+//		session.setAttribute("USER", user);
+//		mav.addObject(user);
+//
+//		return mav;
+//	}
+	
+	
+	
 
-	// @RequestMapping("/join/joinB.gh")
-	// public String joinStep3b(HttpSession session, HostVO host) throws
-	// Exception {
-	//
-	// int ran = new Random().nextInt(90000) + 10000; // 10000 ~ 99999 : 5�ڸ�
-	//
-	// host.setAuth(ran);
-	// String joinCode = String.valueOf(ran);
-	// String MemOrHost = "���";
-	//
-	// int no = hostService.hostGetCurrentNo();
-	// sendMail(no, host.getEmail(), joinCode, MemOrHost);
-	//
-	// host.setNo(no);
-	// boolean insertSuccess = hostService.hostInsert(host);
-	// logger.info(host.toString());
-	// return "member/joinSuccess/기업회원가입 성공";
-	// }
-
+	@RequestMapping(value = "emailCheck.gh", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean emailCheck(@RequestBody String email) throws Exception {
+		logger.info(email);
+		boolean isEmailExist = !memberService.emailCheck(email);
+		return isEmailExist;// false 이면 중복이 있음.
+	}
+	
 	@RequestMapping(value = "/auth-m/{no}/{auth}")
 	public ModelAndView authOk(@PathVariable String no, @PathVariable String auth) throws Exception {
 

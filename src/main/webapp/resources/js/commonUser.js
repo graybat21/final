@@ -185,15 +185,16 @@ function verifyOK()
 		return true;
 }
 
-function isExistUser()		// use keyup event -> To check id
+function isExistEmail()		// use keyup event -> To check id
 {
 	var idReg = /^[a-z]+[a-z0-9]{5,19}$/g;	
-	
-	$("#username").keyup(function() {
-		if ( $("#username").val().length >= 6 )
+	var emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+	$("#email").keyup(function() {
+		if ( $("#email").val().length >= 3 )
 		{	
 			$.ajax({
-			  url : "/duplicationCheck.do",
+			  url : "/emailCheck.do",
 			  type : "post",
 			  contentType : 'application/json; charset=utf-8',
 			  //data : JSON.stringify({ username : $("#username").val() }),
@@ -211,9 +212,6 @@ function isExistUser()		// use keyup event -> To check id
 			    alert(error.statusText);  
 			  }
 			});
-		}
-		else {
-	    	$("#duplicateResult").text("아이디를 6자 이상 입력해주세요."); 
 		}
 	  	return false;
 	});

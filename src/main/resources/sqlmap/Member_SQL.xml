@@ -46,5 +46,13 @@
 			SEQUENCE_NAME='SEQ_MEMBER_NO'	
 	</select>
 	
+	<select id="emailCheck" resultType="boolean" parameterType="String">
+		SELECT 
+			count(email) 
+		FROM 
+			(SELECT email FROM member UNION SELECT email FROM host) 
+		where 
+			email = #{email};
+	</select>
 </mapper>
 
