@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 
-<title>1:1문의 : 여기어때 - 국내 1위 숙박어플!</title>
+<title>QnA문의 게'하!</title>
 
 <!-- 공통 CSS  -->
 <link rel="stylesheet" type="text/css"
@@ -46,7 +46,6 @@
 	ondragstart="return false">
 
 	<div id="allWrap">
-
 		<!-- 페이지별 화면 load -->
 		<!-- 페이지별 호출 소스 -->
 		<link rel="stylesheet" type="text/css"
@@ -57,16 +56,7 @@
 
 		<script>
 			$(document)
-					.ready(
-							function() {
-								//시간, 가격 타입 숫자만 필터링
-								$('.numOnly').on(
-										'keyup',
-										function() {
-											$(this).val(
-													$(this).val().replace(
-															/[^0-9]/gi, ""));
-										});
+
 
 								$(".inq_btn .btn_inq_reg")
 										.click(
@@ -92,11 +82,7 @@
 														return false;
 													}
 
-													if ($('#rolechk').prop(
-															'checked') != true) {
-														alert("[서비스 이용약관]에 동의해 주세요.");
-														return false;
-													}
+										
 
 													$
 															.ajax({
@@ -174,18 +160,16 @@
 					<!-- 서비스 콘텐츠 -->
 					<div class="svc_contents">
 						<div class="svc_title svc_inquiry">
-							<h4>문의하기</h4>
+							<h4>QnA</h4>
 						</div>
-
-
 						<!-- svc_cont_wrap -->
 						<div class="svc_cont_wrap">
 							<div class="svc_tab svc_inquiry svc_inq_reg">
-
 								<form action="qnaWrite.gh" method="post" accept-charset="utf-8">
 									<div class="svc_inquiry_reg">
 										<div class="inq_cate_sel">
-											<label> <span>작성자</span>
+											<label> 
+											<span>작성자:</span>
 												<td>${session_name }<input type="hidden" name="writer"
 													value="${session_name }" /></td>
 											</label>
@@ -193,20 +177,20 @@
 										<div class="inq_tel">
 											<p>
 
-												<label> <span>제목</span> <input
+												<label><input
 													class="ipt_inq_tel numOnly" name="subject"
 													placeholder="제목을 입력해주세요" maxlength="11">
 												</label>
 										</div>
-
 										<div class="inq_input">
 											<textarea name="content" placeholder="문의하실 내용을 입력해주세요."></textarea>
 										</div>
 
 
+
 										<div class="inq_btn">
-											<a href="qnaList.gh" class="btn_inq_reg">문의하기</a> <input
-												type="reset" class="btn_inq_reg">다시입력</a>
+											<input type="submit" class="btn_inq_reg" value="문의하기">
+											<input type="reset" class="btn_inq_reg" value="다시입력">
 										</div>
 
 									</div>

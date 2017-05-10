@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration> 
+<configuration>
 
 	<!-- 여러가지 기본 옵션을 지정합니다. -->
 	<settings> 
@@ -10,9 +10,16 @@
 	
 	<typeAliases>
 		<typeAlias alias="memberVO" type="net.kh.member.MemberVO" />
+
+ 	    <typeAlias alias="qnaVO" type="net.kh.qna.QnaVO" /> 
+
 		<typeAlias alias="hostVO" type="net.kh.host.HostVO" />
+
 	</typeAliases>
 	
-	
+
+
 </configuration>
+
+
 
