@@ -1,9 +1,11 @@
-package net.kh.admin;
+package net.kh.dao;
 
 import java.util.List;
 
-public interface AdminService {
-	
+import net.kh.admin.AdminVO;
+
+public interface AdminDao {
+
 	List<AdminVO> memberList(AdminVO admin) throws Exception;
 	
 	void deleteMember(AdminVO admin) throws Exception;

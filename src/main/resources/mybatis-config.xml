@@ -11,6 +11,7 @@
 	<typeAliases>
 		<typeAlias alias="memberVO" type="net.kh.member.MemberVO" />
 		<typeAlias alias="hostVO" type="net.kh.host.HostVO" />
+		<typeAlias alias="adminVO" type="net.kh.admin.AdminVO" />
 	</typeAliases>
 	
 	
