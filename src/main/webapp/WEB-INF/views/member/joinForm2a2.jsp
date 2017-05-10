@@ -12,6 +12,18 @@
 <meta http-equiv="Content-Type">
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script type="text/javascript" src="http://dev.jquery.com/view/trunk/plugins/validate/jquery.validate.js"></script>
+  <script type="text/javascript" src="js/log.js"></script>
+	<script type="text/javascript">
+	function loadList() {
+		log("loadList 시작");
+		// 알맞은 작업
+		log("loadList 종료");
+	}
+	window.onload = function() {
+		log("window.onload 호출");
+		loadList();
+	}
+	</script>
 <!-- <script src="/resources/js/commonUser.js"></script> -->
 <script>
 function verifynotify(field1, field2, result_id, match_html, nomatch_html) 
@@ -165,6 +177,8 @@ span.error {
 			<input type="reset" value="재작성" class="submitBt"/><br><br>
 		</fieldset>
 </form>
+		
+<div id="debugConsole" style="border: 1px solid #000"></div>
 	
 	<%-- <div class="wrapper">
 

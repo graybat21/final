@@ -7,9 +7,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type">
 
-
-<title>회원가입선택</title>
-
 <meta name="keywords" content="여기어때,회원가입,회원혜택">
 <meta name="description"
 	content="숙박 어플 이용자 및 제휴점 1위! 숙박 검색 및 예약, 할인, 적립 제공 ">
@@ -28,14 +25,7 @@
 <meta name="naver-site-verification"
 	content="27e1bd094d2f12af942addbf4afdb3f479ad0273">
 
-<!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css" href="css/default.css">
-<link rel="stylesheet" type="text/css" href="css/owl.css">
-
 <!-- 공통 JS  -->
-<script src="js/1602931226643913.js"></script>
-<script src="js/fbevents.js"></script>
-<script src="js/analytics.js"></script>
 <script type="text/javascript">
 	function get_version_of_IE () {
 		 var word;
@@ -68,15 +58,6 @@
 		} 
 	}*/
 	</script>
-<script src="js/jquery-1.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/owl.js"></script>
-<script src="js/masonry.js"></script>
-<script src="js/jquery_002.js"></script>
-<script src="js/imgliquid.js"></script>
-<script src="js/iscroll.js"></script>
-<script src="js/jquery_003.js"></script>
-<script src="js/common.js"></script>
 </head>
 
 <body class="pcweb" oncontextmenu="return false"

@@ -168,7 +168,7 @@
 				<!-- 헤더 로고 -->
 				<h1 class="header_logo">
 					<a href="/GuestHi/" class="btn_home"> <img
-						src="files/img_logo.png"></a>
+						src="${pageContext.request.contextPath}/resources/image/img_logo.png"></a>
 				</h1>
 				<a href="#" class="btn_menu">메뉴</a> <a href="#" class="btn_m_srch">검색</a>
 
@@ -195,7 +195,7 @@
 								<div class="my_info">
 									<span class="nickname"> <a href="logout.gh">${session_name}&nbsp;님</a></span>
 									<span class="my_img"> <img
-										src="files/ic_menu_user_default.png">
+										src="${pageContext.request.contextPath}/resources/image/ic_menu_user_default.png">
 									</span>
 								</div>
 							</li>

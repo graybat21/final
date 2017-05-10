@@ -8,7 +8,30 @@
 <head>
 <meta charset="UTF-8" />
 <title><tiles:getAsString name="title" /></title>
+<script src="${pageContext.request.contextPath}/resources/js/1602931226643913.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-ui-1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery_002.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery_003.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery_004.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery_005.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/owl.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/masonry.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/imgliquid.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/iscroll.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>	
+<script src="${pageContext.request.contextPath}/resources/js/user.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/check.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/mypage.js"></script>
 
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/owl.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/mypage.css">
+	
 <style>
 /* * {
 	vertical-align: top;
