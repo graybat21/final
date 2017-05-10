@@ -25,6 +25,14 @@ insert into QNA values(SEQ_QNA_NO.NEXTVAL, #{writer}, #{content}, sysdate, #{ref
 select * from QNA where no = #{no}
 </select>
 
+<!-- 수정하기 -->
+<update id="qnaModify" parameterType="qnaVO">
+update QNA set  subject =#{subject}, content =#{content} where no =#{no}
+</update>
 
+<!-- 글 삭제 -->
+<delete id="qnaDelete" parameterType="int">
+delete from QNA where no=#{no}
+</delete>
 
 </mapper>

@@ -40,6 +40,22 @@ public class QnaServiceImpl implements QnaService {
 		// TODO Auto-generated method stub
 		return qnaDao.qnaView(no);
 	}
+
+
+	@Override
+	@Transactional
+	public int qnaModify(QnaVO qnaVO) throws Exception {
+		// TODO Auto-generated method stub
+	 return qnaDao.qnaModify(qnaVO);
+	}
+
+
+	@Override
+	@Transactional
+	public int qnaDelete(int no) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDao.qnaDelete(no);
+	}
 	
 
 }

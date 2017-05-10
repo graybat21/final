@@ -110,9 +110,8 @@
 						</table>
 					</div>
 					<div class="">
-			<a href="qnaWrite.gh" class=""><strong>글쓰기</strong>
-			</a>
-		</div>
+						<a href="qnaWrite.gh" class=""><strong>글쓰기</strong> </a>
+					</div>
 					<!-- 페이징 -->
 					<div class="svc_paging">
 						<ul>
@@ -136,6 +135,5 @@
 		</div>
 	</div>
 	<!-- //서비스 wrap -->
-</article>
 </body>
 </html>

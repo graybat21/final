@@ -14,4 +14,10 @@ int qnaWrite(QnaVO qnaVO) throws Exception;
 
 //글 상세보기
 QnaVO qnaView(int no) throws Exception;
+
+//글 수정
+int qnaModify(QnaVO qnaVO) throws Exception;
+
+//글삭제
+int qnaDelete(int no) throws Exception;
 }
