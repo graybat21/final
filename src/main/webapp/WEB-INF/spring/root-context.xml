@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
-<!-- xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd" -->
+	<!-- xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd 
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd" -->
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
@@ -22,10 +23,11 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@istudy.iptime.org:7000:ORCL" />
+		<property name="url"
+			value="jdbc:oracle:thin:@istudy.iptime.org:7000:ORCL" />
 		<property name="username" value="KH0502" />
 		<property name="password" value="oracle" />
-	</bean> 
+	</bean>
 	<!-- SqlSession -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" /> <!-- MyBatis 설정 파일의 위치를 지정합니다. -->
@@ -36,16 +38,16 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
 		destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean> 
+	</bean>
 	<!-- 지정된 베이스 패키지에서 DAO(Mapper) 를 검색하여 등록합니다. -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> 
-		<property name="basePackage" value="net.kh.dao" /> 
-	</bean> 
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="net.kh.dao" />
+	</bean>
 	<!-- 트랜잭션 매니저 bean 을 등록합니다. -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
-	</bean> 
+	</bean>
 	<!-- 아노테이션 기반의 트랜잭션을 사용합니다. -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
@@ -67,4 +69,9 @@
 			</props>
 		</property>
 	</bean>
+	 	<bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	<property name="maxUploadSize" value="10000000"></property>    
+	</bean>
+
+ 
 </beans>
