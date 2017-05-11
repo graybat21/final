@@ -46,17 +46,17 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/search.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/lightgallery.css">
 <style>
-/* * {
+* {
 	vertical-align: top;
 }
 #wrap {
 	margin: 0 auto;
 	width: 1200px;
-}*/ 
+}
 #content {
 	text-align: center;
 	min-height: 700px;
-	padding-top: 100px;
+	padding-top: 90px;
 }
 </style>
 

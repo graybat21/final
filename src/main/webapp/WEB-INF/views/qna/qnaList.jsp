@@ -11,40 +11,14 @@
 <meta http-equiv="X-UA-Compatible">
 <meta http-equiv="Content-Type">
 
-
 </head>
-
-
+<body>
 <!-- (공통)contentsWrap -->
-<article id="contentsWrap">
-	<h2 class="hide">QnA</h2>
-
-	<!-- 페이지 navi -->
-
-	<script src="js/jquery.js"></script>
-
-	<script>
-		$(document).ready(function() {
-			$('.bxslider').bxSlider({
-				mode : 'vertical',
-				auto : true,
-				controls : false,
-				pager : false
-
-			});
-		});
-	</script>
-	<!-- 네비게이션 -->
-	홈 &gt; 마이페이지 &gt; <strong>QnA</strong>
-	<!-- //페이지 navi -->
 	<!-- 서비스 wrap -->
 	<div class="svc_allwrap">
-		<div class="bg_left"></div>
-		<div class="bg_right"></div>
 		<div class="svc_wrap row row_cont">
 			<!-- 서비스 메뉴 -->
-			<div class="svc_menu" style="display: none; min-height: 1530px;">
-			</div>
+			<%@ include file="/WEB-INF/views/layout/mypage.jsp" %>
 			<!-- //서비스 메뉴 -->
 
 			<!-- 서비스 콘텐츠 -->

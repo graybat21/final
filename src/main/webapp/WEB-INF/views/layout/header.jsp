@@ -177,7 +177,7 @@
 						<ul>
 							<li class="nav_nick">
 								<div class="my_info">
-									<span class="nickname"> <a href="logout.gh">${session_name}&nbsp;님</a></span>
+									<span class="nickname"> <a href="${pageContext.request.contextPath}/logout.gh">${session_name}&nbsp;님</a></span>
 									<span class="my_img"> <img
 										src="${pageContext.request.contextPath}/resources/image/ic_menu_user_default.png">
 									</span>
@@ -185,7 +185,7 @@
 							</li>
 							<!-- 마이페이지 연결 아직 안함. -->
 							<li class="link_02"><a
-								href="myPage.gh">마이페이지</a></li>
+								href="qnaList.gh">마이페이지</a></li>
 
 							<li class="link_04"><a
 								href="NoticeList.gh">고객센터</a></li>
@@ -238,7 +238,7 @@
          </div> --%>
 
 				<!-- 로그인 jquery폼 -->
-				<form method="post" action="login.gh"
+				<form method="post" action="${pageContext.request.contextPath}/login.gh"
 					name="loginForm">
 					<div class="mw_layer">
 						<div class="bg"></div>

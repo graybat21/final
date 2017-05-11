@@ -26,13 +26,13 @@
 		<span>EVENT</span>
 		<div class="bx-wrapper" style="max-width: 100%; margin: 0px auto;"><div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 19px;"><ul class="bxslider" style="width: auto; position: relative; transition-duration: 0.5s; transform: translate3d(0px, -58px, 0px);"><li style="float: none; list-style: outside none none; position: relative; width: 1140px;" class="bx-clone"><a href="https://www.goodchoice.kr/service/eventView/227">4월 특급호텔 무료숙박권 </a></li>
 			<!-- 이벤트 롤링 -->
-											<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/234">매일할인쿠폰 이벤트 </a></li>
-												<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/239">5월 국민카드 결제 이벤트 </a></li>
-												<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/233">알프레도 추천 이벤트 </a></li>
-												<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/185">오늘부터 5박하면 1박 무료! </a></li>
-												<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/235">4월 페이코 결제 할인 </a></li>
-												<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/227">4월 특급호텔 무료숙박권 </a></li>
-												<li style="float: none; list-style: outside none none; position: relative; width: 1140px;" class="bx-clone"><a href="https://www.goodchoice.kr/service/eventView/234">매일할인쿠폰 이벤트 </a></li></ul></div></div>
+			<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/234">매일할인쿠폰 이벤트 </a></li>
+			<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/239">5월 국민카드 결제 이벤트 </a></li>
+			<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/233">알프레도 추천 이벤트 </a></li>
+			<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/185">오늘부터 5박하면 1박 무료! </a></li>
+			<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/235">4월 페이코 결제 할인 </a></li>
+			<li style="float: none; list-style: outside none none; position: relative; width: 1140px;"><a href="https://www.goodchoice.kr/service/eventView/227">4월 특급호텔 무료숙박권 </a></li>
+			<li style="float: none; list-style: outside none none; position: relative; width: 1140px;" class="bx-clone"><a href="https://www.goodchoice.kr/service/eventView/234">매일할인쿠폰 이벤트 </a></li></ul></div></div>
 	</div>
 	<p>
 		<!-- 네비게이션 -->
