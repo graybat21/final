@@ -3,34 +3,12 @@
 <!DOCTYPE html>
 <html lang="ko"><head>
 	
-	<!-- 공통 CSS  -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage_files/default.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage_files/owl.css">
-	
-	<!-- 공통 JS  -->
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/1602931226643913.js" async=""></script><script async="" src="${pageContext.request.contextPath}/resources/mypage_files/fbevents.js"></script><script async="" src="${pageContext.request.contextPath}/resources/mypage_files/analytics.js"></script>
-	
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/jquery-1.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/jquery_004.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/owl.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/masonry.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/jquery.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/imgliquid.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/iscroll.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/jquery_003.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/common.js"></script>	
 </head>
 
 <body class="pcweb" oncontextmenu="return false" ondragstart="return false">
 
 
 <div id="allWrap">
-	
-	<!-- 페이지별 화면 load -->
-		<!-- 페이지별 호출 소스 -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage_files/mypage.css">
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/mypage.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/jquery-ui-1.js"></script>
 
 	<script type="text/javascript">
 	$(document).ready(function(){

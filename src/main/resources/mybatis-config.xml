@@ -10,6 +10,10 @@
 	
 	<typeAliases>
 		<typeAlias alias="memberVO" type="net.kh.member.MemberVO" />
+		<typeAlias alias="hostVO" type="net.kh.host.HostVO" />
+		<typeAlias alias="qnaVO" type="net.kh.qna.QnaVO"/>
+		<typeAlias alias="roomVO" type="net.kh.room.RoomVO" />
+		<typeAlias alias="imageVO" type="net.kh.room.ImageVO" />
 	</typeAliases>
 	
 	

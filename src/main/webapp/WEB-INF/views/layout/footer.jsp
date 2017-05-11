@@ -3,10 +3,8 @@
 <html lang="ko">
 <head>
 <!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css"
-	href="/resources/folder/default.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/folder/owl_003.css">
+<link rel="stylesheet" type="text/css" href="folder/default.css">
+<link rel="stylesheet" type="text/css" href="folder/owl_003.css">
 </head>
 <body class="pcweb" oncontextmenu="return false"
 	ondragstart="return false">
@@ -16,16 +14,13 @@
 			<!-- Desktop -->
 			<div class="foot_desktop">
 				<div class="left_cont">
-					<img src="${pageContext.request.contextPath}/resources/files/img_logo2.png" width="170" />
+					<img src="${pageContext.request.contextPath}/resources/image/img_logo2.png" width="170" />
 					<div class="padding_r">
 						<!-- <b>(주)게스트하이 </b> -->
 						<div class="address">
-							주소 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, 3F, 4F<br> 
-							대표이사 : 윤대명<br>
-							사업자등록번호 : 123-45-678910<br> 
-							통신판매번호 : 제 2017-서울강남-1234 호<br>
-							관광사업자 등록번호 : 제 1234-56 호<br> 
-							전화번호: 02-345-9876<br>
+							주소 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, 3F, 4F<br> 대표이사 : 윤대명<br>
+							사업자등록번호 : 123-45-678910<br> 통신판매번호 : 제 2017-서울강남-1234 호<br>
+							관광사업자 등록번호 : 제 1234-56 호<br> 전화번호: 02-345-9876<br>
 							전자우편주소: help@guesthi.kr
 						</div>
 					</div>
