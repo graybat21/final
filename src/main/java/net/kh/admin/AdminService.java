@@ -6,5 +6,5 @@ public interface AdminService {
 	
 	List<AdminVO> memberList(AdminVO admin) throws Exception;
 	
-	void deleteMember(AdminVO admin) throws Exception;
+	void deleteMember(int no) throws Exception;
 }

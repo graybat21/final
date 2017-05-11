@@ -36,11 +36,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminmemberDelete.gh")
-	public ModelAndView deleteMember(AdminVO admin) throws Exception {
+	public ModelAndView deleteMember(int no) throws Exception {
 		
 		ModelAndView mav = new ModelAndView("redirect:admin/memList/멤버삭제");
 		
-		adminService.deleteMember(admin);
+		adminService.deleteMember(no);
 		
 		return mav;
 		
