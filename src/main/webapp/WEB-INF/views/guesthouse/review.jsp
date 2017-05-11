@@ -158,8 +158,7 @@
 									<!--리얼리뷰 일때... 2016-03-04 by.심정우-->
 									<p>
 										<img
-											src="${pageContext.request.contextPath}/resources/folder/epilp_21.png"
-											alt=""
+											src="${pageContext.request.contextPath}/resources/image/epilp_21.png"
 											onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_user_default.png'">
 									</p>
 									<span>리얼리뷰</span>
@@ -182,7 +181,7 @@
 							<li class="review_oner">
 								<div class="review_user_img">
 									<img
-										src="${pageContext.request.contextPath}/resources/folder/owner_defaultprofile_20160414.png"
+										src="${pageContext.request.contextPath}/resources/image/owner_defaultprofile_20160414.png"
 										alt="">
 								</div>
 								<div class="review_user_info">

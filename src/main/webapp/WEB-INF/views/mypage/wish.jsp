@@ -146,7 +146,7 @@
 											<div class="ad_thumb">
 												<div class="img_wrap imgLiquidFill" style="overflow: hidden; background-image: none;">
 																										<span class="top1000">Top1000</span><!-- TOP 1000 --> 													<span class="thumb_none"></span>
-													<img src="${pageContext.request.contextPath}/resources/mypage_files/00e2fd6aac7074a4a9fd019bf26de81a.jpg" alt="HOTEL 여기어때 - 잠실" onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'" style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
+													<img src="${pageContext.request.contextPath}/resources/image/00e2fd6aac7074a4a9fd019bf26de81a.jpg" alt="HOTEL 여기어때 - 잠실" onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'" style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
 													<span class="opacity"></span><!-- 그라데이션 배경 -->
 												</div>
 											</div>
@@ -179,7 +179,7 @@
 											<div class="ad_thumb">
 												<div class="img_wrap imgLiquidFill" style="overflow: hidden; background-image: none;">
 																																							<span class="thumb_none"></span>
-													<img src="${pageContext.request.contextPath}/resources/mypage_files/02.jpg" alt="신촌 파르페" onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'" style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
+													<img src="${pageContext.request.contextPath}/resources/image/02.jpg" alt="신촌 파르페" onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'" style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
 													<span class="opacity"></span><!-- 그라데이션 배경 -->
 												</div>
 											</div>
@@ -213,7 +213,7 @@
 											<div class="ad_thumb">
 												<div class="img_wrap imgLiquidFill" style="overflow: hidden; background-image: none;">
 													<span class="ad_img">50%쿠폰</span><!-- 50프로쿠폰 --> 													<span class="top1000">Top1000</span><!-- TOP 1000 --> 													<span class="thumb_none"></span>
-													<img src="${pageContext.request.contextPath}/resources/mypage_files/650ddac45f0cd66c9fea33778dceadf2.jpg" alt="태릉 마가렛" onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'" style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
+													<img src="${pageContext.request.contextPath}/resources/image/650ddac45f0cd66c9fea33778dceadf2.jpg" alt="태릉 마가렛" onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'" style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
 													<span class="opacity"></span><!-- 그라데이션 배경 -->
 												</div>
 											</div>

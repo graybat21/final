@@ -14,7 +14,7 @@
 			<!-- Desktop -->
 			<div class="foot_desktop">
 				<div class="left_cont">
-					<img src="files/img_logo2.png" width="170" />
+					<img src="${pageContext.request.contextPath}/resources/image/img_logo2.png" width="170" />
 					<div class="padding_r">
 						<!-- <b>(주)게스트하이 </b> -->
 						<div class="address">

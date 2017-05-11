@@ -116,7 +116,7 @@
 				<!-- 서비스 콘텐츠 -->
 				<div class="svc_contents">
 					<div class="svc_title svc_inquiry">
-						<h4>1:1 문의</h4>
+						<h4>QNA</h4>
 					</div>
 					
 					<!-- svc_cont_wrap -->
@@ -131,7 +131,7 @@
 						<div class="svc_inquiry_list">
 							<ul>
 																<li class="list_none">
-									<strong>여기어때에 궁금한 모든 질문을 1:1문의로 해결하세요.</strong> <br><br>
+									<strong>게스트하이에 궁금한 모든 질문을 QNA문의로 해결하세요.</strong> <br><br>
 									신속하고 정확하게 답변해드리겠습니다.
 								</li>
 								

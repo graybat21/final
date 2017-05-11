@@ -3,25 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko"><head>
 
-	<title>내정보수정 : 여기어때 - 국내 1위 숙박어플!</title>
-	<!-- 공통 CSS  -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage_files/default.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage_files/owl.css">
 	
-	<!-- 공통 JS  -->
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/1602931226643913.js" async=""></script><script async="" src="${pageContext.request.contextPath}/resources/mypage_files/fbevents.js"></script><script async="" src="${pageContext.request.contextPath}/resources/mypage_files/analytics.js"></script><script type="text/javascript">
-
-
-	</script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/jquery-1.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/jquery_005.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/owl.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/masonry.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/jquery_002.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/imgliquid.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/iscroll.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/jquery_004.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/common.js"></script>	
 </head>
 
 <body class="pcweb" oncontextmenu="return false" ondragstart="return false"> <!--<![endif]-->

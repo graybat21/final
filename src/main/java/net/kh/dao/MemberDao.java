@@ -12,4 +12,6 @@ public interface MemberDao {
 
 	int memberGetCurrentNo() throws Exception;
 
+	boolean emailCheck(String email) throws Exception;
+
 }

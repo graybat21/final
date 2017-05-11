@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="net.kh.dao.ImageDao">
+	<!-- <select id="memberLogin" resultType="memberVO"> SELECT no, email, pw, 
+		name, phone, reg, auth FROM MEMBER WHERE email = #{email} </select> -->
+
+	<insert id="imageInsert" parameterType="imageVO"> <!-- 하나씩들어가는거 -->   <!-- 결과값이 VO로 가는거 -->
+		INSERT INTO IMAGE (
+		no, room_no, filename, filesize
+		)
+		VALUES
+		(SEQ_IMAGE_NO.NEXTVAL, #{room_no},
+		#{filename},
+		#{filesize}
+		)
+	</insert>
+</mapper>
+	

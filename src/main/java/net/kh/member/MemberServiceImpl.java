@@ -35,4 +35,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.memberGetCurrentNo();
 	}
 
+	@Override
+	public boolean emailCheck(String email) throws Exception {
+		return memberMapper.emailCheck(email);
+	}
+
 }
