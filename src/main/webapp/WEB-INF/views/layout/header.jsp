@@ -5,22 +5,6 @@
 <html lang="ko">
 <head>
 
-<!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css" href="files/default.css">
-<link rel="stylesheet" type="text/css" href="files/owl.css">
-<!-- 공통 JS  -->
-<script src="files/1602931226643913.js"></script>
-<script src="files/fbevents.js"></script>
-<script src="files/analytics.js"></script>
-<script src="files/jquery-1.js"></script>
-<script src="files/common.js"></script>
-
-<!-- <script src="//code.jquery.com/jquery-1.12.4.js"></script> -->
-<!-- <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-<!-- <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> -->
-<!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
-<!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
-<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
 
 <style>
 .mw_layer {
@@ -168,7 +152,7 @@
 				<!-- 헤더 로고 -->
 				<h1 class="header_logo">
 					<a href="/GuestHi/" class="btn_home"> <img
-						src="files/img_logo.png"></a>
+						src="${pageContext.request.contextPath}/resources/image/img_logo.png"></a>
 				</h1>
 				<a href="#" class="btn_menu">메뉴</a> <a href="#" class="btn_m_srch">검색</a>
 
@@ -178,11 +162,11 @@
 						<ul>
 							<li class="link_01"><a href="#layer" class="layer_trigger">로그인</a></li>
 							<li class="link_02"><a
-								href="joinChoice.gh">회원가입</a></li>
+								href="${pageContext.request.contextPath}/joinChoice.gh">회원가입</a></li>
 							<!-- <li class="link_03"><a href="#"
                      onclick="guest_reserve_open();return false;" class="m_reserve">예약내역</a></li> -->
 							<li class="link_04"><a
-								href="NoticeList.gh">고객센터</a></li>
+								href="${pageContext.request.contextPath}/NoticeList.gh">고객센터</a></li>
 						</ul>
 					</nav>
 				</c:if>
@@ -193,15 +177,15 @@
 						<ul>
 							<li class="nav_nick">
 								<div class="my_info">
-									<span class="nickname"> <a href="logout.gh">${session_name}&nbsp;님</a></span>
+									<span class="nickname"> <a href="${pageContext.request.contextPath}/logout.gh">${session_name}&nbsp;님</a></span>
 									<span class="my_img"> <img
-										src="files/ic_menu_user_default.png">
+										src="${pageContext.request.contextPath}/resources/image/ic_menu_user_default.png">
 									</span>
 								</div>
 							</li>
 							<!-- 마이페이지 연결 아직 안함. -->
 							<li class="link_02"><a
-								href="myPage.gh">마이페이지</a></li>
+								href="qnaList.gh">마이페이지</a></li>
 
 							<li class="link_04"><a
 								href="NoticeList.gh">고객센터</a></li>
@@ -254,7 +238,7 @@
          </div> --%>
 
 				<!-- 로그인 jquery폼 -->
-				<form method="post" action="login.gh"
+				<form method="post" action="${pageContext.request.contextPath}/login.gh"
 					name="loginForm">
 					<div class="mw_layer">
 						<div class="bg"></div>
@@ -272,7 +256,7 @@
 							<div class="close">
 								<table width="100%" id="loginTbl">
 									<tr>
-										<td onclick="" width="20%" align="center">회원가입</td>
+										<td onclick="joinchoice.gh" width="20%" align="center">회원가입</td>
 										<td width="30%;" align="center">아이디/비밀번호 찾기</td>
 										<td width="10%" align="center"><a href="#layer_anchor"
 											title="레이어 닫기" class="close">닫기</a></td>

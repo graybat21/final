@@ -233,9 +233,10 @@ button, input, optgroup, select, textarea {
 }
 </style>
 <body>
+<a href="${pageContext.request.contextPath}/roomInsertForm.gh">하하</a>
 	<div class="inner-body">
 		<!-- <div class="wrapper-index"> -->
-		<img class="wrapper-index" src="image/plane-beach.jpg">
+		<img class="wrapper-index" src="${pageContext.request.contextPath}/resources/image/plane-beach.jpg">
 		<div class="wrapper-inner">
 			<div class="row scroll-text hidden-xs">
 				<div class="col-sm-12">
@@ -287,7 +288,7 @@ button, input, optgroup, select, textarea {
 												<input type="text" class="form-control hasDatepicker"
 													placeholder="Check In" id="datepicker3" required="">
 												<img class="ui-datepicker-trigger"
-													src="image/search/icon-calendar.png" alt="Select date"
+													src="${pageContext.request.contextPath}/resources/image/search/icon-calendar.png" alt="Select date"
 													title="Select date">
 											</div>
 										</li>
@@ -296,7 +297,7 @@ button, input, optgroup, select, textarea {
 												<input type="text" class="form-control hasDatepicker"
 													placeholder="Check Off" id="datepicker4" required="">
 												<img class="ui-datepicker-trigger"
-													src="image/search/icon-calendar.png" alt="Select date"
+													src="${pageContext.request.contextPath}/resources/image/search/icon-calendar.png" alt="Select date"
 													title="Select date">
 											</div>
 										</li>

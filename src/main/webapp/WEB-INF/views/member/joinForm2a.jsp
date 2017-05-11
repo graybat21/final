@@ -7,19 +7,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type">
 
-
-<title>개인회원가입폼</title>
-
-<link rel="canonical" href="https://goodchoice.kr/">
-
-
 <!-- 공통 CSS  -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/default.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/owl.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user.css">
 
 <!-- 공통 JS  -->
-<script src="${pageContext.request.contextPath}/resources/js/1602931226643913.js" async=""></script>
+<script src="${pageContext.request.contextPath}/resources/js/1602931226643913.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
@@ -33,192 +27,53 @@
 <script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/user.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/check.js"></script>
-<script type="text/javascript">
 
-	function get_version_of_IE () {
-
-		 var word;
-		 var version = "N/A";
-
-		 var agent = navigator.userAgent.toLowerCase();
-		 var name = navigator.appName;
-
-		 // IE old version ( IE 10 or Lower )
-		 if ( name == "Microsoft Internet Explorer" ) word = "msie ";
-
-		 else {
-			 // IE 11
-			 if ( agent.search("trident") > -1 ) word = "trident/.*rv:";
-
-			 // IE 12  ( Microsoft Edge )
-			 else if ( agent.search("edge/") > -1 ) word = "edge/";
-		 }
-
-		 var reg = new RegExp( word + "([0-9]{1,})(\\.{0,}[0-9]{0,1})" );
-
-		 if (  reg.exec( agent ) != null  ) version = RegExp.$1 + RegExp.$2;
-
-		 return version;
-	}
-	
-	</script>
 <script>
-	(function($) {
-		$(document).ready(function() {
-			$('#chkid').click(function() {
-				if ( $('input[name="uid"]').val() == '' )
-				{
-					alert(confirm_msg['joinEmail']['email_chk']);
-					$('input[name="uid"]').focus();
-					return;
-				}
-
-				if ( ! email_chk($('input[name="uid"]').val()))
-				{
-					$('input[name="uid"]').select();
-					return;
-				}
-			
-				$.ajax({
-					type: 'POST',
-					async: false,
-					cache: false,
-					url: '/user/userIdDuplChk',
-					dataType: 'json',
-					data: { 'uid': $('input[name="uid"]').val() },
-					success: function(data) {
-						console.log(data);
-						if ( data.result == 'ok' )
-						{
-							alert(confirm_msg['joinEmail']['email_ok']);
-							$('input[name="duplidchk"]').val('Y');
-							$('input[name="upw"]').focus();
-						}
-						else if ( data.result == 'fail' )
-						{
-							alert(confirm_msg['joinEmail']['email_used']);
-							return;
-						}
-					},
-					error: function() {
-						alert(confirm_msg['ajax_fail']);
-						location.reload(true);
-					}
-				});
-			});
-
-			$('#chknick').click(function() {
-
-				if ( $('input[name="unick"]').val() == '' )
-				{
-					alert(confirm_msg['nickname']['null']);
-					$('input[name="unick"]').focus();
-					return;
-				}
-				
-				if ( ! nick_chk($('input[name="unick"]').val()) )
-				{
-					$('input[name="unick"]').focus();
-					return;
-				}
-
-				$.ajax({
-					type: 'POST',
-					async: false,
-					cache: false,
-					url: '/user/userNickDuplChk',
-					dataType: 'json',
-					data: { 'unick': $('input[name="unick"]').val() },
-					success: function(data) {
-						if ( data.result == 'ok' )
-						{
-							alert(confirm_msg['joinEmail']['nick_ok']);
-							$('input[name="duplnickchk"]').val('Y');
-						}
-						else if ( data.result == 'fail' )
-						{
-							alert(confirm_msg['joinEmail']['nick_used']);
-						}
-					},
-					error: function() {
-						alert(confirm_msg['ajax_fail']);
-						location.reload(true);
-					}
-				});
-			});
-
-			$('.body_wrapper').css({'margin-bottom': '0'});
-			$('.login_wrap').css({'height': $(document).height()-48});
-
-
-//			$('input[name=uid]').focus();
-			$('.join_email input').keydown(function(e){
-				if (e.keyCode == 13) $('.btn_confirm').click();
-			});
-
-			$('.agree_btn').click(function(){
-				layer_open('agree_layer');
-			
-			});
-
-			$('.private_btn').click(function(){
-				layer_open('private_layer');
-			
-			});
-		});
-
-		$.duplidreset = function () {
-			$('input[name="duplidchk"]').val('');
-		};
-		$.duplnickreset = function () {
-			$('input[name="duplnickchk"]').val('');
-		};
-
-		$.joinok = function () {
-
+(function($) {
+	$(document).ready(function() {
+		$('#chkid').click(function() {
 			if ( $('input[name="uid"]').val() == '' )
 			{
 				alert(confirm_msg['joinEmail']['email_chk']);
 				$('input[name="uid"]').focus();
 				return;
 			}
-			if ( $('input[name="duplidchk"]').val() == '' )
-			{
-				alert(confirm_msg['joinEmail']['duplidchk']);
-				return;
-			}
-			
+
 			if ( ! email_chk($('input[name="uid"]').val()))
 			{
 				$('input[name="uid"]').select();
 				return;
 			}
 		
-			if ( $('input[name="upw"]').val() == '' )
-			{
-				alert(confirm_msg['joinEmail']['pw_null']);
-				$('input[name="upw"]').focus();
-				return;			
-			}
-			if ( ! password_chk($('input[name="upw"]').val()) )
-			{				
-				$('input[name="upw"]').focus();
-				return;
-			}
-			
-			if ( $('input[name="upwchk"]').val() == '' )
-			{
-				alert(confirm_msg['joinEmail']['pwchk_null']);
-				$('input[name="upwchk"]').focus();
-				return;
-			}
+			$.ajax({
+				type: 'POST',
+				async: false,
+				cache: false,
+				url: '/user/userIdDuplChk',
+				dataType: 'json',
+				data: { 'uid': $('input[name="uid"]').val() },
+				success: function(data) {
+					console.log(data);
+					if ( data.result == 'ok' )
+					{
+						alert(confirm_msg['joinEmail']['email_ok']);
+						$('input[name="duplidchk"]').val('Y');
+						$('input[name="upw"]').focus();
+					}
+					else if ( data.result == 'fail' )
+					{
+						alert(confirm_msg['joinEmail']['email_used']);
+						return;
+					}
+				},
+				error: function() {
+					alert(confirm_msg['ajax_fail']);
+					location.reload(true);
+				}
+			});
+		});
 
-			if ( $('input[name="upw"]').val() != $('input[name="upwchk"]').val() )
-			{
-				alert(confirm_msg['joinEmail']['pwmissmatch']);
-				$('input[name="upwchk"]').focus();
-				return;
-			}
+		$('#chknick').click(function() {
 
 			if ( $('input[name="unick"]').val() == '' )
 			{
@@ -226,54 +81,146 @@
 				$('input[name="unick"]').focus();
 				return;
 			}
-
+			
 			if ( ! nick_chk($('input[name="unick"]').val()) )
 			{
 				$('input[name="unick"]').focus();
 				return;
 			}
 
-			if ( $('input[name="duplnickchk"]').val() == '' )
-			{
-				alert(confirm_msg['joinEmail']['duplnickchk']);
-				return;
-			}
-			if ( $('#rolechk').prop('checked') != true ) 
-			{
-				alert(confirm_msg['joinEmail']['rolechk']);
-				return 
-			}
-			if ( $('#rolechk2').prop('checked') != true ) 
-			{
-				alert(confirm_msg['joinEmail']['rolechk2']);
-				return 
-			}
+			$.ajax({
+				type: 'POST',
+				async: false,
+				cache: false,
+				url: '/user/userNickDuplChk',
+				dataType: 'json',
+				data: { 'unick': $('input[name="unick"]').val() },
+				success: function(data) {
+					if ( data.result == 'ok' )
+					{
+						alert(confirm_msg['joinEmail']['nick_ok']);
+						$('input[name="duplnickchk"]').val('Y');
+					}
+					else if ( data.result == 'fail' )
+					{
+						alert(confirm_msg['joinEmail']['nick_used']);
+					}
+				},
+				error: function() {
+					alert(confirm_msg['ajax_fail']);
+					location.reload(true);
+				}
+			});
+		});
 
-			$('#joinform').submit();
-		};
-	})(jQuery);
-	</script>
+		$('.body_wrapper').css({'margin-bottom': '0'});
+		$('.login_wrap').css({'height': $(document).height()-48});
 
-<script type="text/javascript">
-$(function(){
 
-	$('.last_policy').each(function(e){
-		$(this).click(function(){
-			if ($(this).hasClass('on')){
-				$(this).removeClass('on');
-				$('.agree_section').eq(e).hide();
-				$('span',this).html('보기');
-			}else{
-				$(this).addClass('on');
-				$('.agree_section').eq(e).show();
-				$('span',this).html('닫기');
-			}
-			console.log(e);
+//		$('input[name=uid]').focus();
+		$('.join_email input').keydown(function(e){
+			if (e.keyCode == 13) $('.btn_confirm').click();
+		});
+
+		$('.agree_btn').click(function(){
+			layer_open('agree_layer');
+		
+		});
+
+		$('.private_btn').click(function(){
+			layer_open('private_layer');
+		
 		});
 	});
 
-});
+	$.duplidreset = function () {
+		$('input[name="duplidchk"]').val('');
+	};
+	$.duplnickreset = function () {
+		$('input[name="duplnickchk"]').val('');
+	};
+
+	$.joinok = function () {
+
+		if ( $('input[name="uid"]').val() == '' )
+		{
+			alert(confirm_msg['joinEmail']['email_chk']);
+			$('input[name="uid"]').focus();
+			return;
+		}
+		if ( $('input[name="duplidchk"]').val() == '' )
+		{
+			alert(confirm_msg['joinEmail']['duplidchk']);
+			return;
+		}
+		
+		if ( ! email_chk($('input[name="uid"]').val()))
+		{
+			$('input[name="uid"]').select();
+			return;
+		}
+	
+		if ( $('input[name="upw"]').val() == '' )
+		{
+			alert(confirm_msg['joinEmail']['pw_null']);
+			$('input[name="upw"]').focus();
+			return;			
+		}
+		if ( ! password_chk($('input[name="upw"]').val()) )
+		{				
+			$('input[name="upw"]').focus();
+			return;
+		}
+		
+		if ( $('input[name="upwchk"]').val() == '' )
+		{
+			alert(confirm_msg['joinEmail']['pwchk_null']);
+			$('input[name="upwchk"]').focus();
+			return;
+		}
+
+		if ( $('input[name="upw"]').val() != $('input[name="upwchk"]').val() )
+		{
+			alert(confirm_msg['joinEmail']['pwmissmatch']);
+			$('input[name="upwchk"]').focus();
+			return;
+		}
+
+		if ( $('input[name="unick"]').val() == '' )
+		{
+			alert(confirm_msg['nickname']['null']);
+			$('input[name="unick"]').focus();
+			return;
+		}
+
+		if ( ! nick_chk($('input[name="unick"]').val()) )
+		{
+			$('input[name="unick"]').focus();
+			return;
+		}
+
+		if ( $('input[name="duplnickchk"]').val() == '' )
+		{
+			alert(confirm_msg['joinEmail']['duplnickchk']);
+			return;
+		}
+		if ( $('#rolechk').prop('checked') != true ) 
+		{
+			alert(confirm_msg['joinEmail']['rolechk']);
+			return 
+		}
+		if ( $('#rolechk2').prop('checked') != true ) 
+		{
+			alert(confirm_msg['joinEmail']['rolechk2']);
+			return 
+		}
+
+		$('#joinform').submit();
+	};
+})(jQuery);
 </script>
+
+
 <!-- 핸드폰번호 입력 관련 -->
 <script>
 	function pressKey() {
@@ -307,6 +254,7 @@ $(function(){
 		}
 		return str;
 	}
+	
 </script>
 		
 
@@ -329,10 +277,10 @@ $(function(){
 					<form action="${pageContext.request.contextPath}/join/joinA.gh"
 						method="post" accept-charset="utf-8" id="joinform">
 
-						<!-- <input name="step" value="3" type="hidden"> <input
+						<input name="step" value="3" type="hidden"> <input
 							name="utype" value="1" type="hidden"> <input
 							name="duplidchk" value="" type="hidden"> <input
-							name="duplnickchk" value="" type="hidden"> -->
+							name="duplnickchk" value="" type="hidden">
 
 						<!-- 회원가입 입력 -->
 						<div class="join_email">
@@ -390,6 +338,7 @@ $(function(){
 								</p>
 							</div>
 							<!-- 회원가입 입력 -->
+						</div>
 					</form>
 				</div>
 			</div>
