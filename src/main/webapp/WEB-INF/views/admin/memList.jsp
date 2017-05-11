@@ -31,7 +31,12 @@
 							<td>${row.phone }</td>
 							<td><fmt:formatDate value="${row.reg }" pattern="yyyy.MM.dd"/></td>
 							<td>${row.auth }</td>
-							<td><a href="#this" id="delete">삭제</a></td>
+							<td>
+								<c:url var="deleteMem" value="/adminmemberDelete.gh">
+									<c:param name="no" value="${row.no }" />
+								</c:url>
+								
+							<a href="${deleteMem }"><input type="button" value="삭 제" onclick="return deleteMem()"></a></td>
 						</tr>
 					</c:forEach>
 
@@ -39,7 +44,7 @@
 	</table>
 	
 	<script type="text/javascript">	
-	$(document).ready(function(){
+/* 	$(document).ready(function(){
 		
 		$("#delete").on("click", function(e){ //삭제하기 버튼
 			e.preventDefault();
@@ -55,6 +60,10 @@
 		comSubmit.addParam("no", $("#no").val());
 		comSubmit.submit();
 		
+	} */
+	
+	function deleteMem() {
+		return confirm("선택한 회원을 탈퇴시키겠습니까?");
 	}
 </script>	
 </body>

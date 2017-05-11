@@ -23,9 +23,9 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Override
 	@Transactional
-	public void deleteMember(int no) throws Exception {
+	public int deleteMember(String no) throws Exception {
 		
-		adminMapper.deleteMember(no);
+		return adminMapper.deleteMember(no);
 	}
 
 }

@@ -4,8 +4,9 @@ import java.util.Date;
 
 public class AdminVO {
 	
-	private int no;
+	private String no;
 	private String email;
+	private String pw;
 	private String name;
 	private String phone;
 	private Date reg;
@@ -13,10 +14,11 @@ public class AdminVO {
 	private String auth;
 	
 	
-	public int getNo() {
+
+	public String getNo() {
 		return no;
 	}
-	public void setNo(int no) {
+	public void setNo(String no) {
 		this.no = no;
 	}
 	public String getEmail() {
@@ -54,6 +56,12 @@ public class AdminVO {
 	}
 	public void setAuth(String auth) {
 		this.auth = auth;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ public class AdminController {
 
 	@Resource(name="adminService")
 	private AdminService adminService;
+	
 	
 	
 
@@ -36,12 +38,12 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminmemberDelete.gh")
-	public ModelAndView deleteMember(int no) throws Exception {
+	public ModelAndView deleteMember(HttpServletRequest request) throws Exception {
 		
-		ModelAndView mav = new ModelAndView("redirect:admin/memList/멤버삭제");
-		
+		ModelAndView mav = new ModelAndView();
+		String no = request.getParameter("no");
 		adminService.deleteMember(no);
-		
+		mav.setViewName("redirect:/adminmemberList.gh");
 		return mav;
 		
 	}
