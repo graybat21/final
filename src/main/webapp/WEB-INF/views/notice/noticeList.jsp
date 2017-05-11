@@ -6,35 +6,9 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" >
 	<meta http-equiv="Content-Type">
-<title>게하 공지사항</title>
-	<!-- 공통 CSS  -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/default.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/owl.css">
-			<!-- 페이지별 호출 소스 -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/service.css">
-	
-	<!-- 공통 JS  -->
-	<script src="${pageContext.request.contextPath}/resources/js/1602931226643913.js" async=""></script>
-	<script async="" src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
-	<script async="" src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
-	<script type="text/javascript"></script>
-	
-	<script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery_004.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/owl.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/masonry.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery_002.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/imgliquid.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/iscroll.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery_003.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>	
-	
-	
 </head>
 	<!-- //페이지별 호출 소스 -->
 	
-<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-
 <script>
 	$(document).ready(function(){
 		$('.bxslider').bxSlider({

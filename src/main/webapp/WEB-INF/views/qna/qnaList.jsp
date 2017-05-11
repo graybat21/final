@@ -12,34 +12,8 @@
 <meta http-equiv="Content-Type">
 
 
-<title>게하 공지사항</title>
-<!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css" href="css/default.css">
-<link rel="stylesheet" type="text/css" href="css/owl.css">
-
-<!-- 공통 JS  -->
-<script src="js/1602931226643913.js" async=""></script>
-<script async="" src="../js/fbevents.js"></script>
-<script async="" src="../js/analytics.js"></script>
-<script type="text/javascript"></script>
-
-<script src="js/jquery-1.js"></script>
-<script src="js/jquery_004.js"></script>
-<script src="js/owl.js"></script>
-<script src="js/masonry.js"></script>
-<script src="js/jquery_002.js"></script>
-<script src="js/imgliquid.js"></script>
-<script src="js/iscroll.js"></script>
-<script src="js/jquery_003.js"></script>
-<script src="js/common.js"></script>
-
 </head>
 
-<!-- 페이지별 화면 load -->
-<!-- 페이지별 호출 소스 -->
-<link rel="stylesheet" type="text/css" href="css/service.css">
-<script src="../js/service.js"></script>
-<!-- //페이지별 호출 소스 -->
 
 <!-- (공통)contentsWrap -->
 <article id="contentsWrap">

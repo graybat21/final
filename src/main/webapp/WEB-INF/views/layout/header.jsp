@@ -5,22 +5,6 @@
 <html lang="ko">
 <head>
 
-<!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css" href="files/default.css">
-<link rel="stylesheet" type="text/css" href="files/owl.css">
-<!-- 공통 JS  -->
-<script src="files/1602931226643913.js"></script>
-<script src="files/fbevents.js"></script>
-<script src="files/analytics.js"></script>
-<script src="files/jquery-1.js"></script>
-<script src="files/common.js"></script>
-
-<!-- <script src="//code.jquery.com/jquery-1.12.4.js"></script> -->
-<!-- <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-<!-- <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> -->
-<!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
-<!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
-<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
 
 <style>
 .mw_layer {
@@ -178,11 +162,11 @@
 						<ul>
 							<li class="link_01"><a href="#layer" class="layer_trigger">로그인</a></li>
 							<li class="link_02"><a
-								href="joinChoice.gh">회원가입</a></li>
+								href="${pageContext.request.contextPath}/joinChoice.gh">회원가입</a></li>
 							<!-- <li class="link_03"><a href="#"
                      onclick="guest_reserve_open();return false;" class="m_reserve">예약내역</a></li> -->
 							<li class="link_04"><a
-								href="NoticeList.gh">고객센터</a></li>
+								href="${pageContext.request.contextPath}/NoticeList.gh">고객센터</a></li>
 						</ul>
 					</nav>
 				</c:if>

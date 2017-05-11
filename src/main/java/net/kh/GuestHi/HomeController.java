@@ -32,7 +32,7 @@ public class HomeController {
 //		
 //		model.addAttribute("serverTime", formattedDate );
 		
-		return "member/joinForm2a2/개인회원가입폼 개정";
+		return "redirect:/qnaList.gh";
 
 	}
 	
