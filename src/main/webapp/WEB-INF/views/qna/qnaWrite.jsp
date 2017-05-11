@@ -5,43 +5,7 @@
 <head>
 
 <title>QnA문의 게'하!</title>
-
-<!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/qna_files/default.css">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/qna_files/owl.css">
-
-<!-- 공통 JS  -->
-<script
-	src="${pageContext.request.contextPath}/resources/qna_files/1602931226643913.js"
-	async=""></script>
-<script async=""
-	src="${pageContext.request.contextPath}/resources/qna_files/fbevents.js"></script>
-<script async=""
-	src="${pageContext.request.contextPath}/resources/qna_files/analytics.js"></script>
-
-
-<script
-	src="${pageContext.request.contextPath}/resources/qna_files/jquery-1.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/qna_files/jquery_004.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/qna_files/owl.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/qna_files/masonry.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/qna_files/jquery_002.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/qna_files/imgliquid.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/qna_files/iscroll.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/qna_files/jquery_003.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/qna_files/common.js"></script>
 </head>
-
 <body class="pcweb" oncontextmenu="return false"
 	ondragstart="return false">
 
@@ -170,8 +134,8 @@
 										<div class="inq_cate_sel">
 											<label> 
 											<span>작성자:</span>
-												<td>${session_name }<input type="hidden" name="writer"
-													value="${session_name }" /></td>
+												<td>${session_name }
+												<input type="hidden" name="writer" value="${session_name }" /></td>
 											</label>
 										</div>
 										<div class="inq_tel">
