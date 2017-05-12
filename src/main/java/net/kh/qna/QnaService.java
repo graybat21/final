@@ -18,4 +18,7 @@ public interface QnaService {
 
 	// 글 삭제
 	int qnaDelete(int no) throws Exception;
+	
+	//답변글쓰기
+	int qnaRepl(QnaVO qnaVO) throws Exception;
 }

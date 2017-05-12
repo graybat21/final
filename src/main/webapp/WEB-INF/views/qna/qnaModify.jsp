@@ -1,65 +1,169 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>수정하기</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+<title>문의내용 수정</title>
 
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymosus">
+<body class="pcweb" oncontextmenu="return false"
+	ondragstart="return false">
 
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
-</head>
-</head>
-<body>
-	<table>
-		<div class="container">
-			<table class="table table-bordered">
-				<thead>
-				<caption>글쓰기</caption>
-				</thead>
-				<tbody>
-					<form action="qnaModify.gh" method="post">
-						<input type="hidden" name="no" value="${qnaVO.no }" />
-						<tr>
-							<th>작성자:</th>
-
-							<td><input type="text" name="writer"
-								value="${qnaVO.writer }" readonly /></td>
-						</tr>
-						<tr>
-							<th>제목:</th>
-							<td><input type="text" name="subject"
-								value="${qnaVO.subject }" /></td>
-						</tr>
-						<tr>
-							<th>내용:</th>
-							<td><textarea cols="40" name="content">${qnaVO.content }</textarea></td>
-						</tr>
+	<div id="allWrap">
+		<script>
+			$(document)
 
 
-						<tr>
-							<td colspan="2"><input type="submit" value="글작성" /> <input
-								type="button" value="다시입력" /> <input type="button" value="취소 " />
-							</td>
-						</tr>
-					</form>
-				</tbody>
-			</table>
-		</div>
+								$(".inq_btn .btn_inq_reg")
+										.click(
+												function() {
+
+													if ($(
+															"select[name='uiqcate']")
+															.val() == "") {
+														alert("문의 유형을 선택해 주세요.");
+														$(
+																"select[name='uiqcate']")
+																.focus();
+														return false;
+													}
+
+													if ($(
+															"textarea[name='uiqcont']")
+															.val() == "") {
+														alert("문의 내용을 입력해 주세요.");
+														$(
+																"textarea[name='uiqcont']")
+																.focus();
+														return false;
+													}
+
+										
+
+													$
+															.ajax({
+																type : 'POST',
+																async : false,
+																cache : false,
+																url : '/service/setInquiryRegData',
+																dataType : 'json',
+																data : $(
+																		'#inquiryform')
+																		.serialize(),
+																success : function(
+																		result) {
+																	//						console.log(result);
+																	if (result == -1) {
+																		alert("유형유형 및 내용을 입력해주세요.");
+																	} else if (result == true) {
+																		alert("문의하신 내용이 접수되었습니다.\n빠른 시일내 답변드리겠습니다.\n감사합니다.");
+																		location.href = "/qnaList.gh";
+																		//							dataClean();
+																	} else if (result == false) {
+																		alert("문의하신 내용이 접수되지 않았습니다.\n관리자에게 문의하세요.");
+																	}
+																},
+																complete : function(
+																		e) {
+																	//						console.log('end ==>> '+e);
+																},
+																error : function(
+																		e) {
+																	console
+																			.log(e);
+																	alert('다시 시도하여 주세요.');
+																}
+															});
+
+												});
+							});
+
+			function dataClean() {
+				$("select[name='uiqcate']").val('');
+				$("textarea[name='uiqcont']").val('');
+				$("input[name='uiqcontac']").val('');
+			}
+		</script>
+
+		<!-- (공통)contentsWrap -->
+		<article id="contentsWrap">
+			<h2 class="hide">문의사항</h2>
+
+			<!-- 서비스 wrap -->
+			<div class="svc_allwrap">
+
+
+				<!-- <div class="bg_left"></div>
+			<div class="bg_right"></div> -->
+
+				<div class="svc_wrap row row_cont">
+					<!-- 서비스 메뉴 -->
+					<div class="svc_menu" style="display: none">
+						<h3>마이페이지</h3>
+						<ul>
+							<li><a href="https://www.goodchoice.kr/mypage/myZzim">찜</a></li>
+
+							<li><a href="https://www.goodchoice.kr/mypage/myReserve">예약내역</a></li>
+
+							<li><a href="https://www.goodchoice.kr/mypage/myInfo"
+								class="active">내정보수정</a></li>
+
+							<li><a href="https://www.goodchoice.kr/mypage/myInfo">문의사항</a></li>
+						</ul>
+					</div>
+					<!-- //서비스 메뉴 -->
+
+					<!-- 서비스 콘텐츠 -->
+					<div class="svc_contents">
+						<div class="svc_title svc_inquiry">
+							<h4>QnA</h4>
+						</div>
+						<!-- svc_cont_wrap -->
+						<div class="svc_cont_wrap">
+							<div class="svc_tab svc_inquiry svc_inq_reg">
+								<form action="qnaModify.gh" method="post" accept-charset="utf-8">
+									<div class="svc_inquiry_reg">
+										<div class="inq_cate_sel">
+											<label> 
+											<span>작성자:</span>
+												<td>${qnaVO.writer }
+											</label>
+										</div>
+										<div class="inq_tel">
+											<p>
+
+												<label>
+												<input
+													class="ipt_inq_tel numOnly" name="subject"
+													value="${qnaVO.subject }" maxlength="11">
+												</label>
+										</div>
+										<div class="inq_input">
+											<textarea name="content" >${qnaVO.content }</textarea>
+										</div>
+
+
+
+										<div class="inq_btn">
+											<input type="submit" class="btn_inq_reg" value="수정">
+											<input type="reset" class="btn_inq_reg" value="다시입력">
+										</div>
+
+									</div>
+
+								</form>
+							</div>
+							<!-- //svc_cont_wrap -->
+
+
+						</div>
+						<!-- //서비스 콘텐츠 -->
+					</div>
+
+				</div>
+				<!-- //서비스 wrap -->
+		</article>
+		<!-- //(공통)contentsWrap -->
+
+		<!-- //페이지별 화면 load -->
 </body>
 </html>

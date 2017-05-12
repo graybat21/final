@@ -24,7 +24,7 @@
 			<!-- 서비스 콘텐츠 -->
 			<div class="svc_contents">
 				<div class="svc_title svc_notice">
-					<h4>QnA</h4>
+				<h4>QnA</h4>
 				</div>
 
 				<!-- svc_cont_wrap -->
@@ -40,8 +40,8 @@
 										<ul>
 											<li>
 												<p class="list_title">
-													${list.no }
-													<c:if test="${list.restep==1}">&nbsp;<img src="">
+													${list.no }<br/>
+													<c:if test="${list.restep==1}">&nbsp;<img src="https://www.google.co.kr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjPsYv94efTAhVIvbwKHVZyDQkQjRwIBw&url=http%3A%2F%2Fwww.applebeebook.co.kr%2Fm%2Fgoods%2Fview.php%3Fgoodsno%3D1043&psig=AFQjCNF890lFQ5VPiPi_r2rP7EvAjRSOiQ&ust=1494589515835847">
 													</c:if>
 													<a href="${viewURL }"><span>${list.subject }</span>
 														${list.writer }</a>

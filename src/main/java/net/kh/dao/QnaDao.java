@@ -20,4 +20,7 @@ public interface QnaDao {
 
 	// 글삭제
 	int qnaDelete(int no) throws Exception;
+	
+	//답변글쓰기
+	int qnaRepl(QnaVO qnaVO) throws Exception;
 }
