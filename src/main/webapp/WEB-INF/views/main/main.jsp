@@ -1,6 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<head>
+
+
+
+<link href="${pageContext.request.contextPath}/css/font-awesome.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/jqx.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/animate.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/select2.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/slick.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/style.css"
+	rel="stylesheet">
+
+<script src="${pageContext.request.contextPath}/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/js/date-picker.js"></script>
+<script src="${pageContext.request.contextPath}/js/isotope-docs.js"></script>
+<script src="${pageContext.request.contextPath}/js/select2.js"></script>
+<script src="${pageContext.request.contextPath}/js/slick.js"></script>
+<script src="${pageContext.request.contextPath}/js/parallax.js"></script>
+<script src="${pageContext.request.contextPath}/js/scrollreveal.js"></script>
+<script src="${pageContext.request.contextPath}/js/custom.js"></script>
+
+
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
+	type="text/css" />
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script>
+	$(function() {
+		// 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
+		// 종료일(toDate)은 시작일(fromDate) 이전 날짜 선택 불가
+		//시작일.
+		$('#datepicker1').datepicker(
+				{
+					dateFormat : "yy-mm-dd", // 날짜의 형식
+					changeMonth : false, // 월을 이동하기 위한 선택상자 표시여부
+					minDate : 0, // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+					onClose : function(selectedDate) {
+						// 시작일(fromDate) datepicker가 닫힐때
+						// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+						$("#datepicker2").datepicker("option", "minDate",
+								selectedDate);
+					}
+				});
+		//종료일
+		$('#datepicker2').datepicker(
+				{
+					dateFormat : "yy-mm-dd",
+					changeMonth : false,
+					minDate : 1, // 오늘 이전 날짜 선택 불가
+					onClose : function(selectedDate) {
+						// 종료일(toDate) datepicker가 닫힐때
+						// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+						$("#datepicker1").datepicker("option", "maxDate",
+								selectedDate);
+					}
+				});
+		//날짜포맷 
+		$("#datepicker1, #datepicker2").datepicker({
+			dateFormat : 'yy-mm-dd'
+		});
+		//(디폴트 ) 시작일-오늘/종료일-내일
+		$("#datepicker1").datepicker().datepicker("setDate", new Date());
+		$("#datepicker2").datepicker().datepicker("setDate",
+				new Date().valueOf() + (24 * 60 * 60 * 1000));
+
+	});
+</script>
+
 
 <style>
 * {
@@ -8,6 +86,7 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
 .container {
 	padding-right: 15px;
 	padding-left: 15px;
@@ -20,7 +99,7 @@
 	background-position: center !important;
 	background-size: cover !important;
 	background-attachment: fixed !important;
-	height: 100vh;
+	height: 400px;
 	width: 100%;
 	margin-bottom: 30px;
 	align-items: center;
@@ -84,15 +163,6 @@ body {
 	overflow: hidden;
 	margin: 0;
 	padding: 0;
-}
-
-@media ( max-width : 767px) .hidden-xs {
-	display
-	:
-	 
-	none
-	!important;
-
 }
 
 .row {
@@ -231,13 +301,32 @@ button, input, optgroup, select, textarea {
 	padding-right: 5px;
 	padding-left: 5px;
 }
+
+.inner-body {
+	position: relative;
+	float: left; /* optional */
+}
+
+.inner-body .wrapper-inner {
+	position: absolute;
+	top: 10px;
+	/* in conjunction with left property, decides the text position */
+	left: 10px;
+	width: 300px; /* optional, though better have one */
+}
 </style>
+
+
+</head>
 <body>
-<a href="${pageContext.request.contextPath}/roomInsertForm.gh">하하</a>
+
+	<a href="${pageContext.request.contextPath}/roomInsertForm.gh">하하</a>
 	<div class="inner-body">
 		<!-- <div class="wrapper-index"> -->
-		<img class="wrapper-index" src="${pageContext.request.contextPath}/resources/image/plane-beach.jpg">
-		<div class="wrapper-inner">
+		<img class="wrapper-index"
+			src="${pageContext.request.contextPath}/resources/image/plane-beach.jpg">
+		<!-- 좌우로 넘기는 스크립트?.? -->
+		<!-- <div class="wrapper-inner">
 			<div class="row scroll-text hidden-xs">
 				<div class="col-sm-12">
 					<div class="text-box">
@@ -266,39 +355,126 @@ button, input, optgroup, select, textarea {
 					</div>
 				</div>
 			</div>
+
+
+
+
+		</div> -->
+
+
+		<!-- 추가: 검색 -->
+		<!-- 	<div class="wrapper-index"
+			style="background: transparent url(&quot;image/plane-beach.jpg&quot;) repeat scroll 0% 0%;"> -->
+		<div class="wrapper-inner">
+			<!--text-box-->
+
+			<br /> <br /> <br /> <br /> <br />
+			<div class="row scroll-text hidden-xs slick-initialized slick-slider">
+				<div aria-live="polite" class="slick-list draggable">
+					<!-- <div class="slick-track"
+							style="opacity: 1; width: 4360px; transform: translate3d(-1472px, 0px, 0px);"
+							role="listbox">
+							<div class="col-sm-12 slick-slide slick-cloned"
+								data-slick-index="-1" aria-hidden="true" style="width: 472px;"
+								tabindex="-1">
+								<div class="text-box">
+									<h3>
+										<span>Hotels</span> <br> We Provide best <span><i
+											class="fa fa-globe"></i> </span> quality?
+									</h3>
+								</div>
+							</div>
+							<div class="col-sm-12 slick-slide slick-current slick-active"
+								data-slick-index="0" aria-hidden="false" style="width: 472px;"
+								tabindex="-1" role="option" aria-describedby="slick-slide00">
+
+							</div>
+							<div class="col-sm-12 slick-slide" data-slick-index="1"
+								aria-hidden="true" style="width: 472px;" tabindex="-1"
+								role="option" aria-describedby="slick-slide01">
+								<div class="text-box hidden-xs">
+									<h3>
+										<span>Travel</span> <br> THE WORLD YOU <br> NEVER
+										SEEN <i class="fa fa-car"></i> <br>
+
+									</h3>
+
+								</div>
+							</div>
+							<div class="col-sm-12 slick-slide" data-slick-index="2"
+								aria-hidden="true" style="width: 472px;" tabindex="-1"
+								role="option" aria-describedby="slick-slide02">
+								<div class="text-box">
+									<h3>
+										<span>Hotels</span> <br> We Provide best <span><i
+											class="fa fa-globe"></i> </span> quality?
+									</h3>
+								</div>
+							</div>
+							<div class="col-sm-12 slick-slide slick-cloned"
+								data-slick-index="3" aria-hidden="true" style="width: 472px;"
+								tabindex="-1">
+								<div class="text-box">
+									<h3>
+										<i class="fa fa-plane"></i> <span>Flights</span> <br>
+										WHERE YOU WANT TO GO? <br> Fly With Us
+									</h3>
+								</div>
+							</div>
+						</div> -->
+				</div>
+
+
+			</div>
 			<div class="container">
-				<div class="main-fill">
+				<!--main-fill-->
+				<div class="main-fill ">
+					<!--tabs-->
 					<div class="panel">
+						<div class="panel-heading">
+							<ul class="nav nav-tabs">
+
+								<li><a href="#tabhotel" data-toggle="tab"> <i
+										class="fa fa-hotel"></i> Hotel
+								</a></li>
+
+							</ul>
+						</div>
+						<!--panel-body-->
 						<div class="panel-body">
 							<!--tab-content-->
 							<div class="tab-content">
 
 								<!--tabhotel-->
 								<div class="tab-pane fade in" id="tabhotel">
-									<h3>Search and Book GuestHouse</h3>
+									<h3>Search and Book Hotels</h3>
 									<ul class="list-inline list-unstyled">
 										<li>
 											<div class="form-group">
-												<input type="text" class="form-control"
-													placeholder="Enter Your Hotel Name?" required="">
+												<input class="form-control" placeholder="GuestHi!"
+													type="text">
 											</div>
 										</li>
 										<li>
 											<div class="form-group">
-												<input type="text" class="form-control hasDatepicker"
-													placeholder="Check In" id="datepicker3" required="">
-												<img class="ui-datepicker-trigger"
-													src="${pageContext.request.contextPath}/resources/image/search/icon-calendar.png" alt="Select date"
-													title="Select date">
+												<input class="form-control hasDatepicker"
+													placeholder="Check In" id="datepicker1" type="text">
+
+
+												<!-- 
+													<img
+													class="ui-datepicker-trigger" src="image/icon-calendar.png"
+													alt="Select date" title="Select date"> -->
 											</div>
 										</li>
 										<li>
 											<div class="form-group">
-												<input type="text" class="form-control hasDatepicker"
-													placeholder="Check Off" id="datepicker4" required="">
-												<img class="ui-datepicker-trigger"
-													src="${pageContext.request.contextPath}/resources/image/search/icon-calendar.png" alt="Select date"
-													title="Select date">
+												<input class="form-control hasDatepicker"
+													placeholder="Check Off" id="datepicker2" type="text">
+												<!-- 	<input type="text" id="datepicker4"> -->
+												<!-- <img
+													class="ui-datepicker-trigger" src="image/icon-calendar.png"
+													alt="Select date" title="Select date"> -->
 											</div>
 										</li>
 										<li><select class="select-one">
@@ -316,34 +492,107 @@ button, input, optgroup, select, textarea {
 												<option>No One</option>
 
 										</select></li>
-										<!-- <li>
-					<select class="select-one">
-						<option selected="selected">1 Children</option>
-						<option>1 Children</option>
-						<option>2 Children</option>
-						<option>3 Children</option>
-						<option>No One</option>
 
-					</select>
-				</li> -->
 										<li>
 											<div class="form-group">
-												<input type="text" class="form-control"
-													placeholder="Max budget (Optional)">
+												<input class="form-control"
+													placeholder="Max budget (Optional)" type="text">
 											</div>
 										</li>
+										<!--   search now -->
 										<li><a
-											href="html/hotel/hotels_list_one/left_sidebar.html"
-											class="btn btn-search-travel">Search Now</a></li>
+											href="http://teamworktec.com/demo/travel-gateway/html/hotel/hotels_list_one/left_sidebar.html"
+											class="btn btn-search-travel">Search Now!!!!!</a></li>
 									</ul>
 								</div>
 
 
 							</div>
 						</div>
+						<!--end panel body-->
 					</div>
+					<!--end tabs-->
 				</div>
 			</div>
 		</div>
 	</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- 
+
+
+<div class="image">
+  <img alt="" src="http://www.kavoir.com/img/text-over-image.jpg" />
+  <div class="text">
+    <p>This lovely image gladly demonstrates how I (this text) can be flying over her face.</p>
+    <p>It's very kind of her but don't you agree that this place needs a camp fire and a little love?</p>
+  </div>
+</div>
+
+	
+ -->
+	<!-- 가로 16 세로 7 -->
+	<table border=1>
+		<tr height="200px" >
+			<td width="300px">특가상품1</td>
+			<td width="1px"></td>
+			<td width="300px">특가상품1</td>
+			<td width="300px">특가상품3</td>
+			<td width="300px">특가상품4424444</td>
+		</tr>
+		<tr height="200px">
+			<td width="300px">특가상품5</td>
+			<td width="1px"></td>
+			<td width="300px">특가상품6</td>
+			<td width="300px">특가상품73</td>
+			<td width="300px">특가상품8</td>
+		</tr>
+
+
+
+	</table>
+
+
+	<br />
+
+	<table border=1>
+		<tr height="200">
+			<td width="300">게하1</td>
+			<td width="300">게하2</td>
+			<td width="300">게하3</td>
+			<td width="300">게하4</td>
+		</tr>
+		<tr height="200">
+			<td width="300">게하5</td>
+			<td width="300">게하6</td>
+			<td width="300">게하7</td>
+			<td width="300">게하8</td>
+		</tr>
+
+
+
+	</table>
+
+
+
+
+
+
+
+
+
 </body>
