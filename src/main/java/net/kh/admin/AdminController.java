@@ -12,8 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import net.kh.host.HostService;
 import net.kh.host.HostVO;
+import net.kh.room.RoomVO;
 
 @Controller
 public class AdminController {
@@ -23,10 +23,6 @@ public class AdminController {
 	@Resource(name="adminService")
 	private AdminService adminService;
 	
-	
-	
-	
-
 	
 	// 관리자의 회원관리 - 회원 목록
 	@RequestMapping("/adminmemberList.gh")
@@ -76,5 +72,16 @@ public class AdminController {
 		
 		return mav;
 	}
-
+	
+	// 관리자의 게하 방 관리
+	@RequestMapping("/adminRoomList.gh")
+	public ModelAndView adminRoomList(RoomVO room) throws Exception {
+		
+		ModelAndView mav = new ModelAndView("admin/roomList/게스트하우스 방 목록");
+		
+		List<RoomVO> adminRoomList = adminService.adminRoomList(room);
+		mav.addObject("roomList", adminRoomList);
+		
+		return mav;
+	}
 }

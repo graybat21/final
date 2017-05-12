@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import net.kh.dao.AdminDao;
 import net.kh.host.HostVO;
+import net.kh.room.RoomVO;
 
 @Service("adminService")
 public class AdminServiceImpl implements AdminService {
@@ -42,6 +43,13 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteHost(int no) throws Exception {
 		
 		return adminMapper.deleteHost(no);
+	}
+	
+	@Override
+	@Transactional
+	public List<RoomVO> adminRoomList(RoomVO room) throws Exception {
+		
+		return adminMapper.adminRoomList(room);
 	}
 
 }
