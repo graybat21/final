@@ -5,15 +5,11 @@
 <head>
 
 <title>QnA문의 게'하!</title>
-
-<!-- 공통 CSS  -->
 </head>
-
 <body class="pcweb" oncontextmenu="return false"
 	ondragstart="return false">
 
 	<div id="allWrap">
-
 		<script>
 			$(document)
 			 $(".inq_btn .btn_inq_reg").click(
@@ -105,8 +101,8 @@
 										<div class="inq_cate_sel">
 											<label> 
 											<span>작성자:</span>
-												<td>${session_name }<input type="hidden" name="writer"
-													value="${session_name }" /></td>
+												<td>${session_name }
+												<input type="hidden" name="writer" value="${session_name }" /></td>
 											</label>
 										</div>
 										<div class="inq_tel">
@@ -143,8 +139,6 @@
 				</div>
 				<!-- //서비스 wrap -->
 		</article>
-		<!-- //(공통)contentsWrap -->
-
-		<!-- //페이지별 화면 load -->
+		<!-- //(공통)contentsWrap -->s
 </body>
 </html>

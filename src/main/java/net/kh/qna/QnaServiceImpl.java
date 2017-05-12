@@ -16,7 +16,7 @@ public class QnaServiceImpl implements QnaService {
 
 	@Override
 	@Transactional
-	public List<QnaVO> qnaList(HashMap<String,Object> map) throws Exception {
+	public List<QnaVO> qnaList(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return qnaDao.qnaList(map);
 	}
@@ -50,8 +50,15 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
+	@Transactional
 	public int selectListCnt() throws Exception {
 		return qnaDao.selectListCnt();
+	}
+
+	@Override
+	@Transactional
+	public int qnaRepl(QnaVO qnaVO) throws Exception {
+		return qnaDao.qnaRepl(qnaVO);
 	}
 
 }

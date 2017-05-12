@@ -22,6 +22,9 @@ public interface QnaDao {
 	// 글삭제
 	int qnaDelete(int no) throws Exception;
 
-	
+	// 글 전체 개수
 	int selectListCnt() throws Exception;
+
+	// 답변글쓰기
+	int qnaRepl(QnaVO qnaVO) throws Exception;
 }

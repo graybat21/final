@@ -24,7 +24,7 @@
 			<!-- 서비스 콘텐츠 -->
 			<div class="svc_contents">
 				<div class="svc_title svc_notice">
-					<h4>QnA</h4>
+				<h4>QnA</h4>
 				</div>
 
 				<!-- svc_cont_wrap -->
@@ -40,8 +40,8 @@
 										<ul>
 											<li>
 												<p class="list_title">
-													${list.no }
-													<c:if test="${list.restep==1}">&nbsp;<img src="">
+													${list.no }<br/>
+													<c:if test="${list.restep==1}">&nbsp;<img src="https://www.google.co.kr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjPsYv94efTAhVIvbwKHVZyDQkQjRwIBw&url=http%3A%2F%2Fwww.applebeebook.co.kr%2Fm%2Fgoods%2Fview.php%3Fgoodsno%3D1043&psig=AFQjCNF890lFQ5VPiPi_r2rP7EvAjRSOiQ&ust=1494589515835847">
 													</c:if>
 													<a href="${viewURL }"><span>${list.subject }</span>
 														${list.writer }</a>
@@ -63,18 +63,18 @@
 					<!-- 페이징 -->
 					<div class="svc_paging">
 					<ul class="pageUL">
-						<c:if test="${pageMaker.prev }">
-							<li><a href='qnaList.gh?page=${pageMaker.start -1}'>이전</a></li>
+						<c:if test="${qnaPageMaker.prev }">
+							<li><a href='qnaList.gh?page=${qnaPageMaker.start -1}'>이전</a></li>
 						</c:if>
-						<c:forEach begin="${pageMaker.start }" end="${pageMaker.end}"
+						<c:forEach begin="${qnaPageMaker.start }" end="${qnaPageMaker.end}"
 							var="idx">
 							<li
-								class='<c:out value="${idx == pageMaker.page?'current':''}"/>'>
+								class='<c:out value="${idx == qnaPageMaker.page?'current':''}"/>'>
 								<a href='qnaList.gh?page=${idx}'>${idx}</a>
 							</li>
 						</c:forEach>
-						<c:if test="${pageMaker.next }">
-							<li><a href='qnaList.gh?page=${pageMaker.end +1}'>다음</a></li>
+						<c:if test="${qnaPageMaker.next }">
+							<li><a href='qnaList.gh?page=${qnaPageMaker.end +1}'>다음</a></li>
 						</c:if>
 					</ul>
 					</div>
