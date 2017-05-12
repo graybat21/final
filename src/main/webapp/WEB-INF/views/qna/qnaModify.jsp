@@ -9,14 +9,6 @@
 	ondragstart="return false">
 
 	<div id="allWrap">
-		<!-- 페이지별 화면 load -->
-		<!-- 페이지별 호출 소스 -->
-		<link rel="stylesheet" type="text/css"
-			href="${pageContext.request.contextPath}/resources/qna_files/service.css">
-		<script
-			src="${pageContext.request.contextPath}/resources/qna_files/service.js"></script>
-		<!-- //페이지별 호출 소스 -->
-
 		<script>
 			$(document)
 
@@ -140,14 +132,13 @@
 											<p>
 
 												<label>
-												<td>${qnaVO.subject }
 												<input
 													class="ipt_inq_tel numOnly" name="subject"
-													placeholder="제목을 입력해주세요" maxlength="11">
+													value="${qnaVO.subject }" maxlength="11">
 												</label>
 										</div>
 										<div class="inq_input">
-											<textarea name="content" placeholder="문의하실 내용을 입력해주세요.">${qnaVO.content }</textarea>
+											<textarea name="content" >${qnaVO.content }</textarea>
 										</div>
 
 

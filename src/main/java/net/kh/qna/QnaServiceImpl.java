@@ -2,13 +2,9 @@ package net.kh.qna;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import net.kh.dao.QnaDao;
 
@@ -17,14 +13,12 @@ public class QnaServiceImpl implements QnaService {
 	@Autowired
 	private QnaDao qnaDao;
 
-
 	@Override
 	@Transactional
-	public List<QnaVO> qnaList() throws Exception{
+	public List<QnaVO> qnaList() throws Exception {
 		// TODO Auto-generated method stub
 		return qnaDao.qnaList();
 	}
-
 
 	@Override
 	@Transactional
@@ -33,7 +27,6 @@ public class QnaServiceImpl implements QnaService {
 		return qnaDao.qnaWrite(qnaVO);
 	}
 
-
 	@Override
 	@Transactional
 	public QnaVO qnaView(int no) throws Exception {
@@ -41,14 +34,12 @@ public class QnaServiceImpl implements QnaService {
 		return qnaDao.qnaView(no);
 	}
 
-
 	@Override
 	@Transactional
 	public int qnaModify(QnaVO qnaVO) throws Exception {
 		// TODO Auto-generated method stub
-	 return qnaDao.qnaModify(qnaVO);
+		return qnaDao.qnaModify(qnaVO);
 	}
-
 
 	@Override
 	@Transactional
@@ -56,6 +47,12 @@ public class QnaServiceImpl implements QnaService {
 		// TODO Auto-generated method stub
 		return qnaDao.qnaDelete(no);
 	}
-	
+
+	@Override
+	@Transactional
+	public int qnaRepl(QnaVO qnaVO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDao.qnaRepl(qnaVO);
+	}
 
 }

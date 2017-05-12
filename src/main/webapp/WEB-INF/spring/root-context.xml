@@ -41,6 +41,22 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> 
 		<property name="basePackage" value="net.kh.dao" /> 
 	</bean> 
+	
+	<!-- messageSource -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+				<value>ApplicationResource</value>
+			</list>
+		</property>
+	</bean>
+	<!-- Form 검증 관련 Bean 등록 -->
+	<!-- <bean id="loginValidator" class="net.kh.utils.LoginValidator" /> -->
+	<bean id="memberEntryValidator" class="net.kh.utils.MemberEntryValidator" />
+	
+	
 	<!-- 트랜잭션 매니저 bean 을 등록합니다. -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

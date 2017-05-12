@@ -10,81 +10,49 @@
 	ondragstart="return false">
 
 	<div id="allWrap">
-		<!-- 페이지별 화면 load -->
-		<!-- 페이지별 호출 소스 -->
-		<link rel="stylesheet" type="text/css"
-			href="${pageContext.request.contextPath}/resources/qna_files/service.css">
-		<script
-			src="${pageContext.request.contextPath}/resources/qna_files/service.js"></script>
-		<!-- //페이지별 호출 소스 -->
-
 		<script>
 			$(document)
-
-
-								$(".inq_btn .btn_inq_reg")
-										.click(
-												function() {
-
-													if ($(
-															"select[name='uiqcate']")
-															.val() == "") {
-														alert("문의 유형을 선택해 주세요.");
-														$(
-																"select[name='uiqcate']")
-																.focus();
-														return false;
-													}
-
-													if ($(
-															"textarea[name='uiqcont']")
-															.val() == "") {
-														alert("문의 내용을 입력해 주세요.");
-														$(
-																"textarea[name='uiqcont']")
-																.focus();
-														return false;
-													}
-
-										
-
-													$
-															.ajax({
-																type : 'POST',
-																async : false,
-																cache : false,
-																url : '/service/setInquiryRegData',
-																dataType : 'json',
-																data : $(
-																		'#inquiryform')
-																		.serialize(),
-																success : function(
-																		result) {
-																	//						console.log(result);
-																	if (result == -1) {
-																		alert("유형유형 및 내용을 입력해주세요.");
-																	} else if (result == true) {
-																		alert("문의하신 내용이 접수되었습니다.\n빠른 시일내 답변드리겠습니다.\n감사합니다.");
-																		location.href = "/qnaList.gh";
-																		//							dataClean();
-																	} else if (result == false) {
-																		alert("문의하신 내용이 접수되지 않았습니다.\n관리자에게 문의하세요.");
-																	}
-																},
-																complete : function(
-																		e) {
-																	//						console.log('end ==>> '+e);
-																},
-																error : function(
-																		e) {
-																	console
-																			.log(e);
-																	alert('다시 시도하여 주세요.');
-																}
-															});
-
-												});
-							});
+			 $(".inq_btn .btn_inq_reg").click(
+					function() {
+						if ($("select[name='uiqcate']").val() == "") {
+							alert("문의 유형을 선택해 주세요.");
+							$("select[name='uiqcate']").focus();
+							return false;
+						}
+						if ($("textarea[name='uiqcont']").val() == "") {
+							alert("문의 내용을 입력해 주세요.");
+							$("textarea[name='uiqcont']").focus();
+							return false;
+						}
+					$.ajax({
+						type : 'POST',
+						async : false,
+						cache : false,
+						url : '/service/setInquiryRegData',
+						dataType : 'json',
+						data : $('#inquiryform').serialize(),
+						success : function(result) {
+							//						console.log(result);
+							if (result == -1) {
+								alert("유형유형 및 내용을 입력해주세요.");
+							} else if (result == true) {
+								alert("문의하신 내용이 접수되었습니다.\n빠른 시일내 답변드리겠습니다.\n감사합니다.");
+								location.href = "/qnaList.gh";
+								//							dataClean();
+							} else if (result == false) {
+								alert("문의하신 내용이 접수되지 않았습니다.\n관리자에게 문의하세요.");
+							}
+						},
+						complete : function(e) {
+							//						console.log('end ==>> '+e);
+						},
+						error : function(e) {
+							console.log(e);
+							alert('다시 시도하여 주세요.');
+						}
+					});
+				});
+			});
 
 			function dataClean() {
 				$("select[name='uiqcate']").val('');
@@ -109,14 +77,13 @@
 					<div class="svc_menu" style="display: none">
 						<h3>마이페이지</h3>
 						<ul>
-							<li><a href="https://www.goodchoice.kr/mypage/myZzim">찜</a></li>
+							<li><a href="">찜</a></li>
 
-							<li><a href="https://www.goodchoice.kr/mypage/myReserve">예약내역</a></li>
+							<li><a href="">예약내역</a></li>
 
-							<li><a href="https://www.goodchoice.kr/mypage/myInfo"
-								class="active">내정보수정</a></li>
+							<li><a href="" class="active">내정보수정</a></li>
 
-							<li><a href="https://www.goodchoice.kr/mypage/myInfo">문의사항</a></li>
+							<li><a href="qnaList.gh">문의사항</a></li>
 						</ul>
 					</div>
 					<!-- //서비스 메뉴 -->
@@ -161,6 +128,7 @@
 
 								</form>
 							</div>
+							</div>
 							<!-- //svc_cont_wrap -->
 
 
@@ -171,8 +139,6 @@
 				</div>
 				<!-- //서비스 wrap -->
 		</article>
-		<!-- //(공통)contentsWrap -->
-
-		<!-- //페이지별 화면 load -->
+		<!-- //(공통)contentsWrap -->s
 </body>
 </html>

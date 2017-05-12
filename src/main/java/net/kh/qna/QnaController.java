@@ -3,7 +3,6 @@ package net.kh.qna;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -22,6 +21,7 @@ public class QnaController {
 	@Resource(name = "qnaService")
 	private QnaService qnaService;
 	ModelAndView mav = new ModelAndView();
+	QnaVO qnaVOO = new QnaVO(); 
 
 	private static final Logger logger = LoggerFactory.getLogger(QnaController.class);
 
@@ -29,7 +29,7 @@ public class QnaController {
 	@RequestMapping(value = "/qnaList.gh")
 	public String qnaListMan(Model model) throws Exception {
 		List<QnaVO> list = qnaService.qnaList();
-		logger.info(list.toString());
+	/*	logger.info(list.toString());*/
 
 		model.addAttribute("list", list);
 
@@ -38,20 +38,19 @@ public class QnaController {
 
 	// 글쓰기
 	@RequestMapping(value = "/qnaWrite.gh", method = RequestMethod.GET)
-	public ModelAndView qnaWriteBoy(HttpSession session, QnaVO qnaVo) throws Exception {
+	public ModelAndView qnaWriteBoy(QnaVO qnaVo) throws Exception {
 		mav.setViewName("qna/qnaWrite/게'하 QnA문의하기");
 		return mav;
 	}
 
 	@RequestMapping(value = "/qnaWrite.gh", method = RequestMethod.POST)
 	public String qnaWriteMan(QnaVO qnaVO) throws Exception {
-		qnaVO.setRestep(0);
 		qnaService.qnaWrite(qnaVO);
 		return "redirect:/qnaList.gh";
 	}
 
 	// 상세보기
-	@RequestMapping(value = "/qnaView.gh", method = RequestMethod.GET)
+	@RequestMapping("/qnaView.gh")
 	public ModelAndView qnaViewGirl(int no) throws Exception {
 		QnaVO qnaVO = qnaService.qnaView(no);
 		mav.addObject("no", no);
@@ -87,4 +86,26 @@ public class QnaController {
 		mav.setViewName("redirect:/qnaList.gh");
 		return mav;
 	}
+	
+	//답변글쓰기
+	@RequestMapping(value="qnaRepl.gh",method=RequestMethod.GET)
+	public ModelAndView qnaReplBrother(QnaVO qnaVO,int no) throws Exception{
+		qnaService.qnaView(no);
+		qnaVO.getSubject();
+		qnaVO.setRestep(1);
+		mav.addObject("QnaVO",qnaVO);
+		mav.setViewName("qna/qnaRepl/답글작성");
+		return mav;
+	}
+	@RequestMapping(value="qnaRepl.gh",method=RequestMethod.POST)
+	public ModelAndView qnaReplSister(QnaVO qnaVO,int no ) throws Exception{
+		qnaVO.setRef(no);
+		qnaVO.setRestep(1);
+		qnaVO.getSubject().replaceAll("\r\n", "<br />");
+		logger.info(qnaVO.toString());
+		qnaService.qnaRepl(qnaVO);
+		mav.setViewName("redirect:/qnaList.gh");
+		return mav;
+	}
+
 }

@@ -2,9 +2,6 @@ package net.kh.member;
 
 public interface MemberService {
 
-
-
-
 	public MemberVO memberLogin(MemberVO member) throws Exception; // �α���
 
 	public boolean memberInsert(MemberVO member) throws Exception; // ����
@@ -12,6 +9,8 @@ public interface MemberService {
 	public boolean memberAuthOk(MemberVO member) throws Exception;
 
 	public int memberGetCurrentNo() throws Exception;
+
+	public boolean emailCheck(String email) throws Exception;
 	// public MemberVO emailFindByName(MemberVO member); // �̸���ã��
 	//
 	// public MemberVO pwFindByEmail(MemberVO member); // ���ã��
@@ -23,6 +22,5 @@ public interface MemberService {
 	// public MemberVO idFindByName(MemberVO member);
 	//
 	// public MemberVO pwFindById(MemberVO member);
-
 
 }

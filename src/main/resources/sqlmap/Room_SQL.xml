@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="net.kh.dao.RoomDao">
+	<!-- <select id="memberLogin" resultType="memberVO"> SELECT no, email, pw, 
+		name, phone, reg, auth FROM MEMBER WHERE email = #{email} </select> -->
+
+	<insert id="roomInsert2" parameterType="roomVO"> <!-- 하나씩들어가는거 -->   <!-- 결과값이 VO로 가는거 -->
+		INSERT INTO ROOM (
+		no,
+		name, max,
+		price, host_no, reg
+		)
+		VALUES (
+		SEQ_ROOM_NO.NEXTVAL, #{name},
+		#{max},
+		#{price}, #{host_no}, sysdate
+		)
+	</insert>
+	<select id="roomGetCurrentNo" resultType="int">
+		SELECT
+		LAST_NUMBER
+		FROM
+		USER_SEQUENCES
+		WHERE
+		SEQUENCE_NAME='SEQ_ROOM_NO'
+	</select>
+</mapper>
+	
