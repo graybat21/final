@@ -1,29 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
-<title>QnA</title>
-</head>
-
+<title>문의내용 수정</title>
 <body class="pcweb" oncontextmenu="return false"
 	ondragstart="return false">
-
 	<div id="allWrap">
 		<script>
 			$(document)
-					.ready(
-							function() {
-								//시간, 가격 타입 숫자만 필터링
-								$('.numOnly').on(
-										'keyup',
-										function() {
-											$(this).val(
-													$(this).val().replace(
-															/[^0-9]/gi, ""));
-										});
-
 								$(".inq_btn .btn_inq_reg")
 										.click(
 												function() {
@@ -48,11 +34,7 @@
 														return false;
 													}
 
-													if ($('#rolechk').prop(
-															'checked') != true) {
-														alert("[서비스 이용약관]에 동의해 주세요.");
-														return false;
-													}
+										
 
 													$
 															.ajax({
@@ -130,39 +112,42 @@
 					<!-- 서비스 콘텐츠 -->
 					<div class="svc_contents">
 						<div class="svc_title svc_inquiry">
-							<h4>문의하기</h4>
+							<h4>문의글 답변</h4>
 						</div>
-
-
 						<!-- svc_cont_wrap -->
 						<div class="svc_cont_wrap">
 							<div class="svc_tab svc_inquiry svc_inq_reg">
-
-								<form action="qnaWrite.gh" method="post" accept-charset="utf-8">
+								<form action="qnaRepl.gh" method="post" accept-charset="utf-8">
+								<input type="hidden" name="no" value="${qnaVO.no}" /> 
 									<div class="svc_inquiry_reg">
 										<div class="inq_cate_sel">
-											<label> <span>작성자</span>
-												<td>${session_name }<input type="hidden" name="writer"
-													value="${session_name }" /></td>
+											<label> 
+											<span>작성자:</span>
+												<td>${session_name }
+												<input type="hidden" name="writer" value="${session_name }">
 											</label>
 										</div>
 										<div class="inq_tel">
 											<p>
 
-												<label> <span>제목</span> <input
+												<label>
+												<input
 													class="ipt_inq_tel numOnly" name="subject"
-													placeholder="제목을 입력해주세요" maxlength="11">
+													value="[답변]${qnaVO.subject }" maxlength="11">
 												</label>
 										</div>
-
 										<div class="inq_input">
-											<textarea name="content" placeholder="문의하실 내용을 입력해주세요."></textarea>
+											<textarea name="content" >${qnaVO.content }
+===========================================답변======================================================
+											
+											</textarea>
 										</div>
+
 
 
 										<div class="inq_btn">
-											<a href="qnaList.gh" class="btn_inq_reg">문의하기</a> <input
-												type="reset" class="btn_inq_reg">다시입력</a>
+											<input type="submit" class="btn_inq_reg" value="작성">
+											<input type="reset" class="btn_inq_reg" value="다시입력">
 										</div>
 
 									</div>

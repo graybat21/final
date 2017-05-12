@@ -1,5 +1,6 @@
 package net.kh.qna;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,9 @@ public class QnaServiceImpl implements QnaService {
 
 	@Override
 	@Transactional
-	public List<QnaVO> qnaList() throws Exception {
+	public List<QnaVO> qnaList(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return qnaDao.qnaList();
+		return qnaDao.qnaList(map);
 	}
 
 	@Override
@@ -46,6 +47,18 @@ public class QnaServiceImpl implements QnaService {
 	public int qnaDelete(int no) throws Exception {
 		// TODO Auto-generated method stub
 		return qnaDao.qnaDelete(no);
+	}
+
+	@Override
+	@Transactional
+	public int selectListCnt() throws Exception {
+		return qnaDao.selectListCnt();
+	}
+
+	@Override
+	@Transactional
+	public int qnaRepl(QnaVO qnaVO) throws Exception {
+		return qnaDao.qnaRepl(qnaVO);
 	}
 
 }

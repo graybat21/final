@@ -1,11 +1,12 @@
 package net.kh.qna;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface QnaService {
 
 	// 글 리스트
-	List<QnaVO> qnaList() throws Exception;
+	List<QnaVO> qnaList(HashMap<String, Object> map) throws Exception;
 
 	// 글쓰기
 	int qnaWrite(QnaVO qnaVO) throws Exception;
@@ -18,4 +19,8 @@ public interface QnaService {
 
 	// 글 삭제
 	int qnaDelete(int no) throws Exception;
+	// 글 전체 개수
+	int selectListCnt() throws Exception;
+	//답변글쓰기
+	int qnaRepl(QnaVO qnaVO) throws Exception;
 }
