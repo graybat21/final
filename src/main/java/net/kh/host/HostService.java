@@ -1,10 +1,12 @@
 package net.kh.host;
 
+
 public interface HostService {
 
 	public HostVO hostLogin(HostVO host) throws Exception;
-	public boolean hostInsert(HostVO host) throws Exception; // °¡ÀÔ
-	public boolean hostAuthOk(HostVO host) throws Exception; // ÀÎÁõ
-	public int hostGetCurrentNo() throws Exception; // ÇöÀç no ¹øÈ£ ±¸ÇÏ±â
+	public boolean hostInsert(HostVO host) throws Exception; // ï¿½ï¿½ï¿½ï¿½
+	public boolean hostAuthOk(HostVO host) throws Exception; // ï¿½ï¿½ï¿½ï¿½
+	public int hostGetCurrentNo() throws Exception; // ï¿½ï¿½ï¿½ï¿½ no ï¿½ï¿½È£ ï¿½ï¿½ï¿½Ï±ï¿½
+	
 	
 }
