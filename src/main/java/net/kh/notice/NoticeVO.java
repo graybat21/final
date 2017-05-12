@@ -9,12 +9,13 @@ public class NoticeVO {
 	private String subject;
 	private String content;	
 	private Date reg;
-	private int readcount;
+	
+	
 	
 	@Override
 	public String toString() {
 		return "NoticeVO [no=" + no + ", name=" + name + ", subject=" + subject + ", content=" + content + ", reg="
-				+ reg + ", readcount=" + readcount + "]";
+				+ reg + "]";
 	}
 	public int getNo() {
 		return no;
@@ -48,10 +49,5 @@ public class NoticeVO {
 	public void setReg(Date reg) {
 		this.reg = reg;
 	}
-	public int getReadcount() {
-		return readcount;
-	}
-	public void setReadhit(int readcount) {
-		this.readcount = readcount;
-	}
+	
 }

@@ -20,12 +20,6 @@
 	.viewForm{margin: 20px 0 0 0;}
 </style>
 
-<script type="text/javascript">
-function noticeDelete() {
-	alert("삭제하겠습니까?");
-	location.href='noticeDelete.dog?no=${noticeModel.no}';
-}
-</script>
 </head>
 
 <body>
@@ -56,29 +50,28 @@ function noticeDelete() {
 								id="dataTables-example">
 								<thead>
 									<tr class="danger">
-										<th> ${noticeModel.subject }</th>
+										<th> ${noticeVO.subject }</th>
 										
 									</tr>
 								</thead>
 								<tbody>
 
+							
 									<tr>
-										<td align=right><strong>${noticeModel.name }</strong>&nbsp;&nbsp;|&nbsp;&nbsp;<fmt:formatDate
-												value="${noticeModel.regdate }" pattern="yyyy-MM-dd" /></td>
-									</tr>
-									<tr>
-										<td>${noticeModel.content }</td>
+										<td>${noticeVO.content }</td>
 
 									</tr>
 
 								</tbody>
 							</table>
 						</div>
-																			<form class="viewForm" method="post">
-			<input type="hidden" name="${noticeModel.no }" />
+			<form class="viewForm" method="post">
+			<input type="hidden" name="${noticeVO.no }" />
 			<%-- <input type="hidden" name="seq" value="${item.seq }" /> --%>
-			<c:if test="${session_member_id == 'admin' }">	
-			<button type="button" onclick="onModify(${noticeModel.no })" class="btn btn-primary">수정</button>
+
+			<c:if test="${session_name == '탱자' }">
+			<a href="noticeModify.gh?no=${noticeVO.no }"><span>수정</span></a>
+			<a href="noticeDelete.gh?no=${noticeVO.no }"><span>삭제</span></a>
 			</c:if>
 			<button type="button" onclick="onList()" class="btn btn-primary">목록</button>
 		</form>	
@@ -94,7 +87,6 @@ function noticeDelete() {
 
 
 
-
 </div>
 
 
@@ -102,16 +94,9 @@ function noticeDelete() {
 	
 </body>
 <script type="text/javascript">
-	var onModify = function(no){
-		var form = $('.viewForm')[0];
-		form.action = 'noticeModify.dog?no='+no;
-		form.submit();
-	};
-	
+
 	var onList = function(){
-		location.href='noticeList.dog';
+		location.href='noticeList.gh';
 	};
 </script>
 </html>
-
-

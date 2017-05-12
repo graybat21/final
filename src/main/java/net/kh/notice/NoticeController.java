@@ -14,99 +14,77 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kh.qna.QnaVO;
+
 @Controller
 public class NoticeController {
 
-	@Resource
+	@Resource(name = "noticeService")
 	private NoticeService noticeService;
+	ModelAndView mav = new ModelAndView();
 
 	//리스트
-	@RequestMapping(value="/notice/noticeList.gh", method=RequestMethod.GET)
+	@RequestMapping(value="/noticeList.gh")
 	public String noticeList(Model model) throws Exception{
 		
-		List list = noticeService.noticeList();
+		List<NoticeVO> list = noticeService.noticeList();
 
-	    model.addAttribute("noticeList", list);
+	    model.addAttribute("list", list);
 
 		return "notice/noticeList/공지사항";
 	}
 
 	//공지사항글쓰기폼
-	@RequestMapping(value="/notice/noticeWrite.gh", method=RequestMethod.GET)
-	public ModelAndView noticeForm(HttpServletRequest request) {
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("noticeVO", new NoticeVO());
+	@RequestMapping(value="/noticeWrite.gh", method=RequestMethod.GET)
+	public ModelAndView noticeForm(HttpSession session, NoticeVO noticeVO) throws Exception {
+
 		mav.setViewName("notice/noticeForm/글쓰기폼");
 		return mav;
 	}
 	
-	//怨듭��궗�빆 湲��벐湲�
-	@RequestMapping(value="/notice/noticeWrite.gh", method=RequestMethod.POST)
-	public ModelAndView noticeWrite(@ModelAttribute("noticeVO") NoticeVO noticeVO, BindingResult result, 
-			HttpServletRequest request, HttpSession session) throws Exception {
-		
-		ModelAndView mav = new ModelAndView();
-		
-		new NoticeValidator().validate(noticeVO, result);
-		
-		if(result.hasErrors()) {
-			mav.setViewName("notice/noticeForm/123213");
-			return mav;
-		}
-		
-		String content = noticeVO.getContent().replaceAll("\r\n", "<br />");
-		noticeVO.setContent(content);
-		
+	//공지작성
+	@RequestMapping(value = "/noticeWrite.gh", method = RequestMethod.POST)
+	public String noticeWrite(NoticeVO noticeVO) throws Exception {
+
 		noticeService.noticeWrite(noticeVO);
-		
+		return "redirect:/noticeList.gh";
+	}
+	
+	// 상세보기
+	@RequestMapping(value = "/noticeView.gh", method = RequestMethod.GET)
+	public ModelAndView noticeView(int no) throws Exception {
+		NoticeVO noticeVO = noticeService.noticeView(no);
+		mav.addObject("no", no);
 		mav.addObject("noticeVO", noticeVO);
-		mav.setViewName("redirect:notice/noticeList/124213123");
-		
+		mav.setViewName("notice/noticeView/공지상세");
+		return mav;
+
+	}
+	
+	// 수정하기
+	@RequestMapping(value = "/noticeModify.gh", method = RequestMethod.GET)
+	public ModelAndView noticeModify(int no) throws Exception {
+		NoticeVO noticeVO = noticeService.noticeView(no);
+		mav.addObject("no", no);
+		mav.addObject("noticeVO", noticeVO);
+		mav.setViewName("notice/noticeModify/공지수정");
 		return mav;
 	}
-/*	
-	//怨듭��궗�빆 �궘�젣
-	@RequestMapping("/notice/noticeDelete.gh")
-	public ModelAndView noticeDelete(HttpServletRequest request){
-		
-		ModelAndView mav = new ModelAndView();
-		int no = Integer.parseInt(request.getParameter("no"));
-		noticeService.noticeDelete(no);
-		mav.setViewName("redirect:notice/noticeList/怨듭��궗�빆");
-		
-		return mav;	
-	}
 	
-	//怨듭��궗�빆 �닔�젙�뤌
-	@RequestMapping("/notice/noticeModify.gh")
-	public ModelAndView noticeModifyForm(@ModelAttribute("noticeVO") NoticeVO noticeVO, BindingResult result, HttpServletRequest request){
-		
-		ModelAndView mav = new ModelAndView();
-		noticeVO = noticeService.noticeView(noticeVO.getNo());
-		
-		String content = noticeVO.getContent().replaceAll("<br />", "\r\n");
-		noticeVO.setContent(content);
-		
-		mav.addObject("noticeVO", noticeVO);
-		mav.setViewName("notice/noticeModify/怨듭��닔�젙");
-		
-		return mav;	
-	}
-	
-	//怨듭��궗�빆 �닔�젙
-	@RequestMapping("/notice/noticeModifySuccess.gh")
-	public ModelAndView noticeModify(@ModelAttribute("noticeVO") NoticeVO noticeVO, HttpServletRequest request){
-		
-		ModelAndView mav = new ModelAndView("redirect:notice/noticeView/怨듭��긽�꽭");
-		
-		String content = noticeVO.getContent().replaceAll("\r\n", "<br />");
-		noticeVO.setContent(content);
+	@RequestMapping(value = "/noticeModify.gh", method = RequestMethod.POST)
+	public ModelAndView noticeModifySuccess(NoticeVO noticeVO) throws Exception {
 		
 		noticeService.noticeModify(noticeVO);
-		
-		mav.addObject("no", noticeVO.getNo());
-		
-		return mav;	
-	}*/
+		mav.addObject("noticeVO", noticeVO);
+		mav.setViewName("redirect:/noticeList.gh");
+		return mav;
+	}
+	
+	// 글 삭제
+	@RequestMapping("noticeDelete.gh")
+	public ModelAndView noticeDelete(int no) throws Exception {
+		noticeService.noticeDelete(no);
+		mav.setViewName("redirect:/noticeList.gh");
+		return mav;
+	}
 }

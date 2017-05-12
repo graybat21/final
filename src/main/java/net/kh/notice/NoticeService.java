@@ -5,26 +5,18 @@ import java.util.List;
 public interface NoticeService {
 
 	//글목록
-	 List noticeList() throws Exception;
+	List<NoticeVO> noticeList() throws Exception;
 
 	//글쓰기
-	public int noticeWrite(NoticeVO notice) throws Exception;
+	int noticeWrite(NoticeVO noticeVO) throws Exception;
 
 	//글 상세보기
-//	NoticeVO noticeView(int no);
-	
-	//조회수 증가
-//	int noticeUpdateReadcount(int no);
-
-	//검색 (0=제목, 1=내용, 2=이름)
-//	List<NoticeVO> noticeSearch0(String search);
-//	List<NoticeVO> noticeSearch1(String search);
-//	List<NoticeVO> noticeSearch2(String search);
+	NoticeVO noticeView(int no) throws Exception;
 	
 	//글수정
-//	int noticeModify(NoticeVO noticeVO);
+	int noticeModify(NoticeVO noticeVO) throws Exception;
 
 	//글삭제
-//	int noticeDelete(int no);
+	int noticeDelete(int no) throws Exception;
 	
 }

@@ -26,7 +26,6 @@
 </head>
 </head>
 <body>
-	<table>
 		<div class="container">
 			<table class="table table-bordered">
 				<thead>

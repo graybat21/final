@@ -2,13 +2,23 @@ package net.kh.dao;
 
 import java.util.List;
 
-import net.kh.member.MemberVO;
 import net.kh.notice.NoticeVO;
+import net.kh.qna.QnaVO;
 
 public interface NoticeDao {
 	
-	List noticeList() throws Exception;
+	//list
+	List<NoticeVO> noticeList() throws Exception;
 	
-	int noticeWrite(NoticeVO notice) throws Exception;
+	//쓰기
+	int noticeWrite(NoticeVO noticeVO) throws Exception;
+	
+	// 글 상세보기
+	NoticeVO noticeView(int no) throws Exception;
+	
+	// 글 수정
+	int noticeModify(NoticeVO noticeVO) throws Exception;
 
+	// 글삭제
+	int noticeDelete(int no) throws Exception;
 }

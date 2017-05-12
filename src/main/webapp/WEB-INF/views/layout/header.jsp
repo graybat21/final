@@ -166,7 +166,7 @@
 							<!-- <li class="link_03"><a href="#"
                      onclick="guest_reserve_open();return false;" class="m_reserve">예약내역</a></li> -->
 							<li class="link_04"><a
-								href="${pageContext.request.contextPath}/NoticeList.gh">고객센터</a></li>
+								href="${pageContext.request.contextPath}/noticeList.gh">고객센터</a></li>
 						</ul>
 					</nav>
 				</c:if>
@@ -188,7 +188,7 @@
 								href="qnaList.gh">마이페이지</a></li>
 
 							<li class="link_04"><a
-								href="NoticeList.gh">고객센터</a></li>
+								href="noticeList.gh">고객센터</a></li>
 						</ul>
 					</nav>
 				</c:if>

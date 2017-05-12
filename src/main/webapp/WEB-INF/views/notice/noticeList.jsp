@@ -28,17 +28,39 @@
 					<div class="svc_cont_wrap" style="min-height: 1127px;">
 						<div class="svc_list">
 
+<table>
+							<tbody>
+								<c:forEach var="list" items="${list}">
+									<c:url var="viewURL" value="noticeView.gh">
+										<c:param name="no" value="${list.no }" />
+									</c:url>
+									<tr>
+										<ul>
+											<li>
+												<p class="list_title">
+													${list.no }
+													<a href="${viewURL }"><span>${list.subject }</span>
+														${list.name }</a>
+												</p>
+												<p class="list_date">
+													<fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" />
+												</p>
 
-<table border="1"> 
-<thead> <tr> <th>번호</th> <th>이름</th> <th>제목</th> <th>조회</th> <th>작성일</th> </tr> </thead> 
-<tbody> 
-<c:forEach var="item" items="${noticeList}">
- <tr>
-  <td>${item.no}</td> <td>${item.name}</td> <td>${item.subject}</td> <td>${item.readCount}</td> <td>${item.reg}</td> </tr> </c:forEach> </tbody> </table>
+											</li>
+										</ul>
+									</tr>
+								</c:forEach>
+							</tbody>
+</table>
 
-
-	
 						</div>
+						
+<div class="">
+			<c:if test="${session_name == '탱자' }">
+						<a href="noticeWrite.gh" class=""><strong>글쓰기</strong> </a>
+			</c:if>
+</div>
+						
 					</div>
 					<!-- //svc_cont_wrap -->	
 				</div>

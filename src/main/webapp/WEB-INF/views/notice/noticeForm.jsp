@@ -1,107 +1,84 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-<script type="text/javascript">
 
-function reviewList() {
-	if(confirm("목록으로 가시겠습니까?") == true){
-		location.href='noticeList.gh';
-	}else {
-		return;
-	}
-}
+<title>공지</title>
 
-</script>
-
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
-<link href="/pet/resources/admincss/bootstrap.min.css" rel="stylesheet">
-<link href="/pet/resources/css/reset.css" rel="stylesheet">
-<link href="/pet/resources/admincss/sb-admin-2.css" rel="stylesheet">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style type="text/css"> 
-
-   .contents-wrap{margin:30px 0 0 0;min-height: 500px;}
-   .contents{ margin: 60px 0 0 0;}
-   .recode-wrap{text-align: right; color: #888;}
-   .hit-wrap{color:#888; margin: 10px 0;}
-   .viewForm{margin: 20px 0 0 0;}
-</style>
-<title>NOTICE</title> 
+<!-- 공통 CSS  -->
 </head>
-<body>
 
-<div id="wrapper">
-<form:form commandName="noticeVO" action="noticeWrite.gh" enctype="multipart/form-data"	method="post">
-      <div id="page-wrapper">
-         <div class="row">
-            <div class="col-lg-12">
-				<h3 class="page-header">NOTICE 글쓰기</h3>
-				<table class="table table-striped table-bordered table-hover"  id="dataTables-example">
-					<caption>번호,제목,글쓴이,날짜,조회를 나타내는 공지사항 표</caption>
-					
-					<thead>
-						<tr class="danger" >
-							<th width="100">글제목</th>
-							<td colspan=3>
-								<input type="textarea" name="subject" value="${noticeVO.subject}"/>
-								<font color="red"><form:errors path="subject" /></font>
-							</td>
-						</tr>
-					</thead>
-					
-					<tbody>
-						<tr><!-- 사용자 -->
-							<th>사용자 ID</th>
-							<td colspan=3>
-								<strong>
-									${session_name}
-								</strong>
-							</td>
-							<input type="hidden" name="name" value="${session_name }"/>
-						</tr>
-						
-						<tr><!-- 글내용 -->
-							<th>글내용</th>
-							<td colspan=3 height=600 style="padding: 0px !important;">
-							   <textarea  name="content" style=" padding:3px; margin: 1px; width: 100%; height: 98%;"></textarea>
-							   <font color="red"><form:errors path="content" /></font>
-							</td>
-						</tr>
-					</tbody>
-					
-				</table>
-			</div>
-		</div>
-	</div>
-		<!-- 취소 작성완료 버튼 -->
-				<div class="menu-wrap">
-					<button type="button" onclick="this.form.submit();" class="btn btn-primary">작성완료</button>
-					<button type="button" onclick="reviewList();" class="btn btn-primary">목록</button>
+<body class="pcweb" oncontextmenu="return false"
+	ondragstart="return false">
+
+	<div id="allWrap">
+
+
+		<!-- (공통)contentsWrap -->
+		<article id="contentsWrap">
+			<h2 class="hide">공지사항</h2>
+
+			<!-- 서비스 wrap -->
+			<div class="svc_allwrap">
+
+
+				<div class="svc_wrap row row_cont">
+
+
+					<!-- 서비스 콘텐츠 -->
+					<div class="svc_contents">
+						<div class="svc_title svc_inquiry">
+							<h4>공지</h4>
+						</div>
+						<!-- svc_cont_wrap -->
+						<div class="svc_cont_wrap">
+							<div class="svc_tab svc_inquiry svc_inq_reg">
+								<form action="noticeWrite.gh" method="post" accept-charset="utf-8">
+									<div class="svc_inquiry_reg">
+										<div class="inq_cate_sel">
+											<label> 
+											<span>작성자:</span>
+												<td>${session_name}<input type="hidden" name="name"
+													value="${session_name}" /></td>
+											</label>
+										</div>
+										<div class="inq_tel">
+											<p>
+
+												<label><input
+													class="ipt_inq_tel numOnly" name="subject"
+													placeholder="제목을 입력해주세요" maxlength="11">
+												</label>
+										</div>
+										<div class="inq_input">
+											<textarea name="content" placeholder="문의하실 내용을 입력해주세요."></textarea>
+										</div>
+
+
+
+										<div class="inq_btn">
+											<input type="submit" class="btn_inq_reg" value="완료">
+											<span  onclick="history.go(-1);"><input type="button" class="btn_inq_reg" value="취소"></span>
+										</div>
+
+									</div>
+
+								</form>
+							</div>
+							</div>
+							<!-- //svc_cont_wrap -->
+
+
+						</div>
+						<!-- //서비스 콘텐츠 -->
+					</div>
+
 				</div>
-		<!-- 취소 작성완료 버튼 -->
-		<div class="row">
-            <div class="col-lg-12">
-            	<div class="panel panel-default">	
+				<!-- //서비스 wrap -->
+		</article>
+		<!-- //(공통)contentsWrap -->
 
-
-				
-				</div>
-				</div></div>
-			 </form:form>
-				
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				</div>
-		
-
+		<!-- //페이지별 화면 load -->
 </body>
 </html>

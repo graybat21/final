@@ -1,81 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-
-<!-- 맵핑될 DAO 인터페이스의 Full name 을 줍니다. -->
 <mapper namespace="net.kh.dao.NoticeDao">
 
-	<!-- id 속성은 DAO 의 메소드와 같아야 한다. 여기의 boardVO 는 mybatis-confg.xml 에 Alias 되어 있습니다. -->
 	<!-- 글목록  -->
 	<select id="noticeList" resultType="noticeVO">
-			SELECT * FROM NOTICE 
-			ORDER BY no DESC
+		SELECT no, content,reg,
+		subject,
+		name
+		FROM NOTICE ORDER BY no DESC
 	</select>
 
 	<!-- 글쓰기 -->
-	<insert id="noticeWrite" parameterType="Integer">
+	<insert id="noticeWrite" parameterType="noticeVO">
 			INSERT INTO NOTICE
-			(NO, SUBJECT, CONTENT, REG, NAME)
+			(NO, CONTENT, REG, SUBJECT, NAME)
 			VALUES
-			(SEQ_NOTICE_NO.NEXTVAL, #{subject}, #{content}, SYSDATE, #{name})
+			(SEQ_NOTICE_NO.NEXTVAL, #{content}, SYSDATE, #{subject}, #{name})
 	</insert>
-
-<!-- 
-
-	조회수 1증가
-	<update id="noticeUpdateReadcount" parameterType="Integer">
-			UPDATE NOTICE 
-			SET
-				READCOUNT = READCOUNT + 1
-			WHERE
-				NO = #{no}	
-	</update>
 	
-	글 상세보기
-	<select id="noticeView" resultMap="noticeModelRes" parameterType="Integer">
-			SELECT * FROM NOTICE 
-			WHERE NO = #{no}
-	</select>
-
-	글 하나 불러오기
-	<select id="noticeSelect" resultMap="noticeModelRes" parameterType="Integer">
-			SELECT * FROM NOTICE 
-			WHERE NO = #{no}
+		<!--글 상세보기 -->
+	<select id="noticeView" resultType="noticeVO" parameterType="int">
+		select * from NOTICE where no = #{no}
 	</select>
 	
-	글수정
-	<update id="noticeModify" parameterType="noticeModel">
-			UPDATE NOTICE
-			SET
-				NAME = #{name},
-				SUBJECT = #{subject},
-				CONTENT = #{content}
-			WHERE
-				NO = #{no}	
+	<!-- 수정하기 -->
+	<update id="noticeModify" parameterType="noticeVO">
+		update NOTICE set subject =#{subject}, content =#{content} where no =#{no}
 	</update>
-
-	글삭제
-	<delete id="noticeDelete" parameterType="Integer">
-			DELETE FROM NOTICE WHERE NO=#{no}
+	
+	<!-- 글 삭제 -->
+	<delete id="noticeDelete" parameterType="int">
+		delete from NOTICE where no=#{no}
 	</delete>
-
-	제목검색
-	<select id="noticeSearch0" resultMap="noticeModelRes" parameterType="String">
-		SELECT * FROM NOTICE
-		 WHERE subject like #{search}
-		 ORDER BY no DESC
-	</select>
-	
-	내용검색
-	<select id="noticeSearch1" resultMap="noticeModelRes" parameterType="String">
-		SELECT * FROM NOTICE
-		WHERE content like #{search}
-		ORDER BY no DESC
-	</select>
-
-	작성자검색
-	<select id="noticeSearch2" resultMap="noticeModelRes" parameterType="String">
-		SELECT * FROM NOTICE
-		WHERE name like #{search}
-		ORDER BY no DESC
-	</select>  -->
 </mapper>

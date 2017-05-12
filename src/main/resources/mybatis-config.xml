@@ -15,6 +15,7 @@
 		<typeAlias alias="qnaVO" type="net.kh.qna.QnaVO"/>
 		<typeAlias alias="roomVO" type="net.kh.room.RoomVO" />
 		<typeAlias alias="imageVO" type="net.kh.room.ImageVO" />
+		
 	</typeAliases>
 	
 	

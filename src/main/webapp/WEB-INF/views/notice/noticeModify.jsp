@@ -7,12 +7,6 @@
 <html>
 <head>	
 
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
-<link href="/pet/resources/admincss/bootstrap.min.css" rel="stylesheet">
-<link href="/pet/resources/css/reset.css" rel="stylesheet">
-<link href="/pet/resources/admincss/sb-admin-2.css" rel="stylesheet">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 #boardWriteForm{margin: 30px 0;}
 .menu-wrap{text-align: right; margin-right:50px;}
@@ -26,12 +20,10 @@
 </head>
 <body>
 <div class="category_top">
-	<ul>
-	 	<li class="post1">커뮤니티</li><li>></li><li class="post2">NOTICE</li>			
-	</ul>
+
 </div>		
 	<div id="wrapper">
-		<form:form commandName="noticeModel" action="/pet/notice/noticeModifySuccess.dog" method="post"> 
+		<form action="noticeModify.gh" method="post"> 
 			<div id="page-wrapper">
         		 <div class="row">
            			 <div class="col-lg-12">
@@ -41,30 +33,28 @@
 				<thead>
 					<tr class="danger">
 							<th width="15%" align="center">글제목</th>
-							<td colspan=5><form:input  path="subject" theme="simple" value="${noticeModel.subject}" />
+							<td colspan=5><input type="text" name="subject" value="${noticeVO.subject }" />
 							</td>
 							</tr>
 							</thead>
-						<tr>		
+								
 				<tbody>
 				
-					<form:input type="hidden" path="no" value="${noticeModel.no}" />
+					<input type="hidden" name="no" value="${noticeVO.no }" />
 					<tr>
-						 <th>작성날짜</th>
-						 <td><fmt:formatDate value="${noticeModel.regdate}" pattern="yyyy.MM.dd, hh:mm"/>
-						</td>
+						 
 						 <th >사용자 ID</th>
 						 	<td>
-							${session_member_name}
-							<input type="hidden" name="name" value="${session_member_name}" />
+							<input type="text" name="name"
+								value="${noticeVO.name }" readonly />
 							</td>
 							</tr>
 							<tr>
-								<th colspan=6>글내용<font color="red">(제목이나 내용 중 하나라도 입력하지 않으면 수정할 수 없습니다.)</font></th>
+								<th colspan=6>글내용</th>
 							</tr>
 							<tr>
 								<td colspan=6 height=300 style="padding: 0px !important;">
-									<form:textarea path="content" theme="simple" value="${noticeModel.content}"style="padding:3px; margin:0px; width: 100%; height: 100%;"/>
+									<textarea cols="40" name="content">${noticeVO.content } </textarea>
 								</td>
 							</tr>
 					</tbody>
@@ -84,7 +74,7 @@
 				<br/>
 				<br/>
 				<br/>
-		</form:form>
+		</form>
 	</div>
 </body>
 </html>
