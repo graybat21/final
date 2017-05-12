@@ -1,5 +1,6 @@
 package net.kh.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import net.kh.qna.QnaVO;
@@ -7,7 +8,7 @@ import net.kh.qna.QnaVO;
 public interface QnaDao {
 
 	// 글 목록
-	List<QnaVO> qnaList() throws Exception;
+	List<QnaVO> qnaList(HashMap<String, Object> map) throws Exception;
 
 	// 글쓰기
 	int qnaWrite(QnaVO qnaVO) throws Exception;
@@ -20,4 +21,7 @@ public interface QnaDao {
 
 	// 글삭제
 	int qnaDelete(int no) throws Exception;
+
+	
+	int selectListCnt() throws Exception;
 }

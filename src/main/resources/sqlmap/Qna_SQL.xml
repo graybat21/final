@@ -3,17 +3,22 @@
 <mapper namespace="net.kh.dao.QnaDao">
 
 	<!-- 글 리스트 -->
-	<select id="qnaList" resultType="qnaVO">
-		SELECT no,
-		subject,
-		writer,
-		content,
-		reg,
-		ref,
-		restep
-		FROM QNA ORDER BY reg DESC, restep ASC
-
+	<select id="qnaList" resultType="qnaVO" parameterType="hashmap">
+		select * from
+			(SELECT ROW_NUMBER() OVER(ORDER BY no DESC) RNUM,
+					no,
+					subject,
+					writer,
+					content,
+					reg,
+					ref,
+					restep
+				FROM QNA
+			) X 
+		where X.RNUM between #{first} and #{last}
+		<!-- FROM QNA ORDER BY reg DESC, restep ASC -->
 	</select>
+	
 
 	<!-- 글쓰기 -->
 	<insert id="qnaWrite" parameterType="qnaVO">
@@ -35,5 +40,9 @@
 	<delete id="qnaDelete" parameterType="int">
 		delete from QNA where no=#{no}
 	</delete>
+	
+	<select id="selectListCnt" resultType="int">
+		select count(*) from QNA
+	</select>
 
 </mapper>
