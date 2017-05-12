@@ -411,14 +411,13 @@
 		<div class="list_inp bd_none">
 			<h5>은행 및 예금주</h5>
 			<div>
-				<input class="inp_txt" name="do_from_name" placeholder="신한은행 / 예금주" maxlength="20" value="" type="text" readonly="readonly">
+				<input class="inp_txt" name="do_from_name" placeholder="은행 / 예금주" maxlength="20" value="" type="text" readonly="readonly">
 			</div>
 		</div>
 	</div>
     
 	<!-- 입실구분,시간,가격,결제 -->
 	<div class="wrap_div info">
-
 		<!-- 앱 HTML 그대로 가져옴 by.KYH -->
 		<div class="info_txt">
 			<p class="first_pd">총 주문금액<span class="total_price">0원</span></p>
