@@ -74,7 +74,7 @@ label.chk-label{
 .fix_quick{position:fixed;top:121px;left:50%;z-index:5090;margin-left:-606px;}
 .fix_quick_m{position:fixed;top:57px;left:0;z-index:5090;}
 .link_tab ul li:nth-child(3),.link_tab ul li:nth-child(4){width:17%;}
-.search_menu{position:relative;z-index:100;height:60px;margin:0 auto 20px auto;background:#999;}
+.search_menu{position:relative;z-index:0;height:60px;margin:0 auto 20px auto;background:#999;}
 .search_menu ul{width:1210px;margin:0 auto;text-align:center;}
 .search_menu ul li{display:inline-block;width:16%;}
 .search_menu ul li a{display:block;height:60px;font-size:16px;line-height:60px;color:#fff;}
