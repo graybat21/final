@@ -20,8 +20,7 @@
 	<resources mapping="/folder/**" location="/resources/folder/" />
 	<resources mapping="/image/**" location="/resources/image/" />
 	<resources mapping="/js/**" location="/resources/js/" />
-	<resources mapping="/mypage_files/**" location="/resources/mypage_files/" />
-	<resources mapping="/qna_files/**" location="/resources/qna_files/" />
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<!-- <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
@@ -32,18 +31,23 @@
 		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
 	<beans:bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+
 		<beans:property name="definitions">
 			<beans:list>
 				<beans:value>/WEB-INF/tiles.xml</beans:value>
 			</beans:list>
+			
 		</beans:property>
+	
 	</beans:bean>
 
 	<beans:bean id="jsonView"
 		class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		
 		<beans:property name="contentType" value="text/plain;charset=UTF-8" />
-	</beans:bean>
 
+	</beans:bean>
+	
 	<context:component-scan base-package="net.kh" />
 
 

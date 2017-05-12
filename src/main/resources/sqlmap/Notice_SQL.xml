@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="net.kh.dao.NoticeDao">
+
+	<!-- 글목록  -->
+	<select id="noticeList" resultType="noticeVO">
+		SELECT no, content,reg,
+		subject,
+		name
+		FROM NOTICE ORDER BY no DESC
+	</select>
+
+	<!-- 글쓰기 -->
+	<insert id="noticeWrite" parameterType="noticeVO">
+			INSERT INTO NOTICE
+			(NO, CONTENT, REG, SUBJECT, NAME)
+			VALUES
+			(SEQ_NOTICE_NO.NEXTVAL, #{content}, SYSDATE, #{subject}, #{name})
+	</insert>
+	
+		<!--글 상세보기 -->
+	<select id="noticeView" resultType="noticeVO" parameterType="int">
+		select * from NOTICE where no = #{no}
+	</select>
+	
+	<!-- 수정하기 -->
+	<update id="noticeModify" parameterType="noticeVO">
+		update NOTICE set subject =#{subject}, content =#{content} where no =#{no}
+	</update>
+	
+	<!-- 글 삭제 -->
+	<delete id="noticeDelete" parameterType="int">
+		delete from NOTICE where no=#{no}
+	</delete>
+</mapper>
