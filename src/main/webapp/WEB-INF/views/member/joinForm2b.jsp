@@ -30,15 +30,6 @@
 
 <link rel="canonical" href="https://goodchoice.kr/">
 
-
-<!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/default.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/owl.css">
-
-<!-- 공통 JS  -->
-<script src="${pageContext.request.contextPath}/resources/js/1602931226643913.js" async=""></script>
-<script async="" src="${pageContext.request.contextPath}/resources/js/fbevents.js"></script>
-<script async="" src="${pageContext.request.contextPath}/resources/js/analytics.js"></script>
 <script type="text/javascript">
 	function get_version_of_IE () {
 
@@ -72,16 +63,32 @@
 			window.open("about:blank","_self").close();
 		} 
 	}*/
+	//<![CDATA[
+	$(function() {
+		$("#btn-upload").on("click", function() {
+			if (($("#file1").val() == "" || $("#file1").val() == null)) {
+				alert("파일이 없습니다.");
+			}
+				var form = new FormData(document.getElementById('uploadForm'));
+				$.ajax({
+					url : "${pageContext.request.contextPath}/joinB.gh", //컨트롤러 URL
+					data : form,
+					dataType : 'json',
+					processData : false,
+					contentType : false,
+					type : 'POST',
+					success : function(response) {
+						alert("success");
+						console.log(response);
+					},
+					error : function(jqXHR) {
+						alert(jqXHR.responseText);
+					}
+				});
+			}
+		});
+	//]]>
 	</script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery-1.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/owl.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/masonry.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery_002.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/imgliquid.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/iscroll.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery_003.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
 </head>
 
 <body class="pcweb" oncontextmenu="return false"
@@ -89,14 +96,6 @@
 	<!-- //주메뉴 영역(mWeb용) -->
 
 	<div id="allWrap">
-
-
-		<!-- 페이지별 호출 소스 -->
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/user.css">
-		<script src="js/user.js"></script>
-
-		<script src="js/check.js"></script>
-
 		<script>
 	(function($) {
 		$(document).ready(function() {
@@ -349,7 +348,7 @@
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
 					<form action="${pageContext.request.contextPath}/join/joinB.gh"
-						method="post" accept-charset="utf-8" id="joinform">
+						method="post" enctype="multipart/form-data" accept-charset="utf-8" id="joinform">
 
 						<!-- 회원가입 입력 -->
 						<div class="join_email">
@@ -399,7 +398,10 @@
 							<!-- image 입력폼 필요, 임시로 값을 넣음. -->
 							<input name="imagename" type="hidden" value="imagename">
 							<input name="imagesize" type="hidden" value="imagesize">
-							
+								<p class="join_item item_7">
+								<label>메인이미지</label> 
+								<input class="ipt ipt_add" type="text" name="filename" id="filename" > 
+							</p>
 							<!-- Agree Area -->
 							<div class="agree_area">
 								<!-- 서비스 이용약관 동의 -->

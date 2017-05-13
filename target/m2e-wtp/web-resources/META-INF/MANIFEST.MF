@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: dhdpt
-=======
-Built-By: grayb
->>>>>>> ecfe44d65dc2a8c5c9e73eb5a72c51c091225be7
 Build-Jdk: 1.8.0_121
 Created-By: Maven Integration for Eclipse
 

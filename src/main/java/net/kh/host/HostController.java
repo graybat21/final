@@ -1,5 +1,8 @@
 package net.kh.host;
 
+import java.io.File;
+import java.util.Iterator;
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -9,14 +12,19 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 /**
  * Handles requests for the application home page.
@@ -25,7 +33,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class HostController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HostController.class);
-
 	@Inject
 	private JavaMailSenderImpl javaMailSenderImpl;
 
@@ -34,7 +41,7 @@ public class HostController {
 	
 	@Inject
 	BCryptPasswordEncoder passwordEncoder;
-
+@Resource
 	ModelAndView mav = new ModelAndView();
 
 	@RequestMapping("/join/joinFormB.gh")
@@ -43,19 +50,20 @@ public class HostController {
 	}
 
 	@RequestMapping("/join/joinB.gh")
-	public String joinStep3a(HttpSession session, HostVO host) throws Exception {
+	public String joinStep3a(HttpSession session, HostVO host, MultipartHttpServletRequest request) throws Exception {
 
 		String encryptPassword = passwordEncoder.encode(host.getPw());
 		host.setPw(encryptPassword);
 
 		String joinCode = getUuid();
 		host.setAuth(joinCode);
-		String MemOrHost = "기업";
-		int no = hostService.hostGetCurrentNo();
-		sendMail(no, host.getEmail(), joinCode, MemOrHost);
+		
 
-		host.setNo(no);
-		boolean insertSuccess = hostService.hostInsert(host);
+		private String getUUID() {
+
+			return UUID.randomUUID().toString().replaceAll("-", "");
+		}
+	
 
 		session.setAttribute("host", host);
 		mav.addObject(host);
