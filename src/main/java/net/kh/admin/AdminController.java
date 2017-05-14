@@ -27,8 +27,8 @@ public class AdminController {
 	// 관리자의 회원관리 - 회원 목록
 	@RequestMapping("/adminmemberList.gh")
 	public ModelAndView memberList(AdminVO admin) throws Exception {
-		
-		ModelAndView mav = new ModelAndView("admin/memList/멤버목록");
+											// memList.jsp 의미
+		ModelAndView mav = new ModelAndView("memList");
 		
 		List<AdminVO> memberList = adminService.memberList(admin);
 		mav.addObject("memberList", memberList);
@@ -52,10 +52,10 @@ public class AdminController {
 	// 관리자의 호스트관리 - 호스트 목록
 	@RequestMapping("/adminhostList.gh")
 	public ModelAndView hostList(HostVO host) throws Exception {
-		
-		ModelAndView mav = new ModelAndView("admin/hostList/호스트목록");
-		
+											//hostList.jsp 의미
+		ModelAndView mav = new ModelAndView("hostList");
 		List<HostVO> hostList = adminService.hostList(host);
+		logger.info(hostList.toString());
 		mav.addObject("hostList", hostList);
 		
 		return mav;

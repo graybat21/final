@@ -6,7 +6,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        404 Error Page
+        왼편의 메뉴를 클릭하세요.
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,7 +18,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="error-page">
-        <h2 class="headline text-yellow"> 404</h2>
+        <h2 class="headline text-yellow"> 메뉴 클릭</h2>
 
         <div class="error-content">
           <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>

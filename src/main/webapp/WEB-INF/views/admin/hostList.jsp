@@ -6,23 +6,54 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<style type="text/css">
+
+table {
+	width: 100%;
+	margin: auto;
+}
+
+th {
+	text-align: center;
+	border-bottom: 1px solid #e32e4e;
+	border-top: 1px solid #e32e4e;
+	padding: 15px;
+}
+
+td {
+	text-align: center;
+	padding-top: 15px;
+}
+</style>
 </head>
+
 <body>
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        	기업 회원 목록
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+    
 <table>
 		<thead>
 			<tr height="30px">
-				<th width="10%">회원번호</th>
-				<th width="10%">이메일</th>
-				<th width="10%">이름</th>
-				<th width="15%">연락처</th>
-				<th width="5%">가입일</th>
-				<th width="10%">사업자번호</th>
-				<th width="15%">주소1</th>
-				<th width="5%">주소2</th>
-				<th width="5%">우편번호</th>
-				<th width="5%">인증여부</th>
-				<th width="10%">강제탈퇴</th>
+				<th>회원번호</th>
+				<th>이메일</th>
+				<th>이름</th>
+				<th>연락처</th>
+				<th>가입일</th>
+				<th>사업자번호</th>
+				<th>주소1</th>
+				<th>주소2</th>
+				<th>우편번호</th>
+				<th>인증여부</th>
+				<th>강제탈퇴</th>
 				
 			</tr>
 		</thead>
@@ -53,27 +84,16 @@
 	</table>
 	
 	<script type="text/javascript">	
-/* 	$(document).ready(function(){
-		
-		$("#delete").on("click", function(e){ //삭제하기 버튼
-			e.preventDefault();
-			fn_deleteBoard();
-		});
-		
-	});
-	
-	
-	function fn_deleteBoard(){
-		var comSubmit = new ComSubmit();
-		comSubmit.setUrl("<c:url value='/adminmemberDelete.gh' />");
-		comSubmit.addParam("no", $("#no").val());
-		comSubmit.submit();
-		
-	} */
 	
 	function deleteMem() {
 		return confirm("선택한 기업 회원을 탈퇴시키겠습니까?");
 	}
 </script>	
+ 
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
 </body>
-</html>
+</html> 
