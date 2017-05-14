@@ -936,7 +936,7 @@ label.chk-label{
 .ad_info_room .info_title .room_detail {color:#505050}
 .ad_info_room .info_title .txt_user {color:#e62a4a}
 .ad_info_room .info_title .txt_spacial {color:#009aea}
-.ad_info_room .info_cont {padding:0}
+.ad_info_room .info_cont {padding: 10px 15px 10px 15px}
 .ad_info_room .info_cont .room_list{border-bottom:none}
 .ad_info_room .info_cont .room_list li {overflow:hidden;position:relative;height:95px;padding:14px 15px 0 145px;border-top:1px solid #d3d3d3;background:#fff;}
 .ad_info_room .info_cont .room_list li a {display:block}
