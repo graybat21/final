@@ -12,28 +12,37 @@
 <table>
 		<thead>
 			<tr height="30px">
-				<th width="15%">회원번호</th>
-				<th width="20%">이메일</th>
+				<th width="10%">회원번호</th>
+				<th width="10%">이메일</th>
 				<th width="10%">이름</th>
 				<th width="15%">연락처</th>
-				<th width="15%">가입일</th>
-				<th width="10%">인증여부</th>
-				<th width="15%">강제 탈퇴</th>
+				<th width="5%">가입일</th>
+				<th width="10%">사업자번호</th>
+				<th width="15%">주소1</th>
+				<th width="5%">주소2</th>
+				<th width="5%">우편번호</th>
+				<th width="5%">인증여부</th>
+				<th width="10%">강제탈퇴</th>
+				
 			</tr>
 		</thead>
 		
 		<tbody>
-					<c:forEach items="${memberList }" var="mem">
-						<tr height="40px">
-							<td>${mem.no }</td>
-							<td>${mem.email }</td>
-							<td>${mem.name }</td>
-							<td>${mem.phone }</td>
-							<td><fmt:formatDate value="${mem.reg }" pattern="yyyy.MM.dd"/></td>
-							<td>${mem.auth }</td>
+					<c:forEach items="${hostList }" var="host">
+						<tr height="50px">
+							<td>${host.no }</td>
+							<td>${host.email }</td>
+							<td>${host.name }</td>
+							<td>${host.tel }</td>
+							<td><fmt:formatDate value="${host.reg }" pattern="yyyy.MM.dd"/></td>
+							<td>${host.biz_no}</td>
+							<td>${host.addr1 }</td>
+							<td>${host.addr2 }</td>
+							<td>${host.zip }</td>
+							<td>${host.auth }</td>
 							<td>
-								<c:url var="deleteMem" value="/adminmemberDelete.gh">
-									<c:param name="no" value="${mem.no }" />
+								<c:url var="deleteMem" value="/adminhostDelete.gh">
+									<c:param name="no" value="${host.no }" />
 								</c:url>
 								
 							<a href="${deleteMem }"><input type="button" value="탈 퇴" onclick="return deleteMem()"></a></td>
@@ -63,7 +72,7 @@
 	} */
 	
 	function deleteMem() {
-		return confirm("선택한 회원을 탈퇴시키겠습니까?");
+		return confirm("선택한 기업 회원을 탈퇴시키겠습니까?");
 	}
 </script>	
 </body>

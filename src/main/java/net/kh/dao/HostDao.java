@@ -1,5 +1,7 @@
 package net.kh.dao;
 
+import java.util.List;
+
 import net.kh.host.HostVO;
 
 public interface HostDao {
@@ -11,4 +13,5 @@ public interface HostDao {
 	boolean hostAuthOk(HostVO host) throws Exception;
 	
 	int hostGetCurrentNo()throws Exception;
+	
 }

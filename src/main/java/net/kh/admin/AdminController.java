@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kh.host.HostService;
+import net.kh.host.HostVO;
+
 @Controller
 public class AdminController {
 	
@@ -22,13 +25,14 @@ public class AdminController {
 	
 	
 	
+	
 
 	
-	
+	// 관리자의 회원관리 - 회원 목록
 	@RequestMapping("/adminmemberList.gh")
 	public ModelAndView memberList(AdminVO admin) throws Exception {
 		
-		ModelAndView mav = new ModelAndView("admin/memList/멤버리스트");
+		ModelAndView mav = new ModelAndView("admin/memList/멤버목록");
 		
 		List<AdminVO> memberList = adminService.memberList(admin);
 		mav.addObject("memberList", memberList);
@@ -37,6 +41,7 @@ public class AdminController {
 		
 	}
 	
+	// 관리자의 회원관리 - 회원 강제 탈퇴
 	@RequestMapping("/adminmemberDelete.gh")
 	public ModelAndView deleteMember(HttpServletRequest request) throws Exception {
 		
@@ -46,6 +51,30 @@ public class AdminController {
 		mav.setViewName("redirect:/adminmemberList.gh");
 		return mav;
 		
+	}
+	
+	// 관리자의 호스트관리 - 호스트 목록
+	@RequestMapping("/adminhostList.gh")
+	public ModelAndView hostList(HostVO host) throws Exception {
+		
+		ModelAndView mav = new ModelAndView("admin/hostList/호스트목록");
+		
+		List<HostVO> hostList = adminService.hostList(host);
+		mav.addObject("hostList", hostList);
+		
+		return mav;
+	}
+	
+	//관리자의 호스트관리 - 호스트 강제 탈퇴
+	@RequestMapping("/adminhostDelete.gh")
+	public ModelAndView deleteHost(HttpServletRequest request) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		String no = request.getParameter("no");
+		adminService.deleteHost(Integer.parseInt(no));
+		mav.setViewName("redirect:/adminhostList.gh");
+		
+		return mav;
 	}
 
 }
