@@ -69,7 +69,7 @@
 			<input type="hidden" name="${noticeVO.no }" />
 			<%-- <input type="hidden" name="seq" value="${item.seq }" /> --%>
 
-			<c:if test="${session_name == '탱자' }">
+			<c:if test="${session_name != null }">
 			<a href="noticeModify.gh?no=${noticeVO.no }"><span>수정</span></a>
 			<a href="noticeDelete.gh?no=${noticeVO.no }"><span>삭제</span></a>
 			</c:if>

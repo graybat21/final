@@ -3,11 +3,17 @@
 <mapper namespace="net.kh.dao.NoticeDao">
 
 	<!-- 글목록  -->
-	<select id="noticeList" resultType="noticeVO">
-		SELECT no, content,reg,
-		subject,
-		name
-		FROM NOTICE ORDER BY no DESC
+	<select id="noticeList" resultType="noticeVO" parameterType="hashmap">
+		select * from
+			(SELECT ROW_NUMBER() OVER(ORDER BY no DESC) RNUM,
+					no,
+					content,
+					subject,
+					name,
+					reg
+				FROM NOTICE
+			) X 
+		where X.RNUM between #{first} and #{last}
 	</select>
 
 	<!-- 글쓰기 -->
@@ -32,4 +38,8 @@
 	<delete id="noticeDelete" parameterType="int">
 		delete from NOTICE where no=#{no}
 	</delete>
+	
+	<select id="selectListCnt" resultType="int">
+		select count(*) from NOTICE
+	</select>
 </mapper>
