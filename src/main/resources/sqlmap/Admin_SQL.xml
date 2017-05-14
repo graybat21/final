@@ -26,5 +26,10 @@
 		DELETE FROM host WHERE no=#{no}
 	</update>
 	
+	<!-- 관리자 게하 룸 관리 목록 -->
+	<select id="adminRoomList" resultType="roomVO">
+		SELECT * FROM room ORDER BY no DESC
+	</select>
+	
 	
 </mapper>

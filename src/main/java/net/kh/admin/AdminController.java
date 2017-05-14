@@ -80,7 +80,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView("admin/roomList/게스트하우스 방 목록");
 		
 		List<RoomVO> adminRoomList = adminService.adminRoomList(room);
-		mav.addObject("roomList", adminRoomList);
+		mav.addObject("adminRoomList", adminRoomList);
 		
 		return mav;
 	}
