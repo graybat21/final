@@ -166,7 +166,7 @@
 							<!-- <li class="link_03"><a href="#"
                      onclick="guest_reserve_open();return false;" class="m_reserve">예약내역</a></li> -->
 							<li class="link_04"><a
-								href="${pageContext.request.contextPath}/NoticeList.gh">고객센터</a></li>
+								href="${pageContext.request.contextPath}/noticeList.gh">고객센터</a></li>
 						</ul>
 					</nav>
 				</c:if>
@@ -188,7 +188,7 @@
 								href="qnaList.gh">마이페이지</a></li>
 
 							<li class="link_04"><a
-								href="NoticeList.gh">고객센터</a></li>
+								href="noticeList.gh">고객센터</a></li>
 						</ul>
 					</nav>
 				</c:if>
@@ -258,7 +258,9 @@
 									<tr>
 										<td onclick="joinchoice.gh" width="20%" align="center">회원가입</td>
 										<td width="30%;" align="center">아이디/비밀번호 찾기</td>
-										<td width="10%" align="center"><a href="#layer_anchor"
+									</tr>
+									<tr>
+										<td width="20%" align="right"><a href="#layer_anchor"
 											title="레이어 닫기" class="close">닫기</a></td>
 									</tr>
 								</table>

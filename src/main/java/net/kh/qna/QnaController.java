@@ -1,5 +1,6 @@
 package net.kh.qna;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import net.kh.utils.PageMaker;
 
 /**
  * Handles requests for the application home page.
@@ -27,11 +30,29 @@ public class QnaController {
 
 	// 리스트
 	@RequestMapping(value = "/qnaList.gh")
-	public String qnaListMan(Model model) throws Exception {
-		List<QnaVO> list = qnaService.qnaList();
-	/*	logger.info(list.toString());*/
+	public String qnaListMan(PageMaker pagemaker, Model model) throws Exception {
 
-		model.addAttribute("list", list);
+		int page = 1;
+		int totalCnt = 0;
+		int countPerPage = 5;
+		int countPerPaging = 5;
+		
+		page = pagemaker.getPage() != null ? pagemaker.getPage() : 1;
+		pagemaker.setPage(page);
+
+		totalCnt = qnaService.selectListCnt(); // DB연동_ 총 갯수 구해오기
+		pagemaker.setCount(totalCnt, countPerPaging);
+
+		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
+		int last = first + countPerPage - 1;
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("first", first);
+		map.put("last", last);
+		List<QnaVO> list = qnaService.qnaList(map);
+
+		model.addAttribute("qnaList", list);
+		model.addAttribute("qnaPageMaker", pagemaker);
 
 		return "qna/qnaList/QNA";
 	}
