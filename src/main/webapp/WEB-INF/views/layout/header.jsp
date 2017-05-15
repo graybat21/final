@@ -256,7 +256,7 @@
 							<div class="close">
 								<table width="100%" id="loginTbl">
 									<tr>
-										<td onclick="joinchoice.gh" width="20%" align="center"><a href="${pageContext.request.contextPath}/joinChoice.gh">회원가입</a></td>
+										<td onclick="joinchoice.gh" width="20%" align="center"><a href="href="${pageContext.request.contextPath}/joinChoice.gh">회원가입</a></td>
 										<td width="30%;" align="center">아이디/비밀번호 찾기</td>
 									</tr>
 									<tr>
