@@ -33,44 +33,46 @@ td {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        	게스트하우스 방 목록
+        	게스트하우스 특가 목록
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
     
-    <c:if test="${adminRoomList.size()<=0}">
-    	<h3 align="center">등록된 방이 없습니다.</h3>
+    <c:if test="${adminDiscountList.size()<=0}">
+    	<h3 align="center">등록된 특가 상품이 없습니다.</h3>
     </c:if>
-    <br><br>
+    <br /> <br>
     
 <table>
 		<thead>
 			<tr height="30px">
+				<th>특가 번호</th>
 				<th>방 번호</th>
-				<th>호스트 번호</th>
-				<th>방 이름</th>
-				<th>최대 인원</th>
-				<th>가격</th>				
+				<th>등록 시간</th>
+				<th>시작 시간</th>
+				<th>종료 시간</th>
+				<th>특 가</th>				
 				<th>강제 삭제</th>				
 			</tr>
 		</thead>
 		
 		<tbody>
-					<c:forEach items="${adminRoomList }" var="room">
+					<c:forEach items="${adminDiscountList }" var="discount">
 						<tr height="50px">
-							<td>${room.no }</td>
-							<td>${room.host_no }</td>
-							<td>${room.name }</td>
-							<td>${room.max }</td>
-							<td>${room.price}</td>
+							<td>${discount.no }</td>
+							<td>${discount.room_no }</td>
+							<td><fmt:formatDate value="${discount.reg }" pattern="yy.MM.dd kk:mm:ss"/></td>
+							<td><fmt:formatDate value="${discount.starttime }" pattern="yy.MM.dd kk:mm:ss"/></td>
+							<td><fmt:formatDate value="${discount.endtime }" pattern="yy.MM.dd kk:mm:ss"/></td>
+							<td>${discount.newprice}</td>
 							<td>
-								<c:url var="deleteRoom" value="/adminRoomDelete.gh">
-									<c:param name="no" value="${room.no }" />
+								<c:url var="deletediscount" value="/adminDiscountDelete.gh">
+									<c:param name="no" value="${discount.no }" />
 								</c:url>
 								
-							<a href="${deleteRoom }"><input type="button" value="삭 제" onclick="return deleteRoom()"></a></td>
+							<a href="${deletediscount }"><input type="button" value="삭 제" onclick="return deletediscount()"></a></td>
 						</tr>
 					</c:forEach>
 
@@ -79,8 +81,8 @@ td {
 	
 	<script type="text/javascript">	
 	
-	function deleteRoom() {
-		return confirm("선택한 방을 삭제시키겠습니까?");
+	function deletediscount() {
+		return confirm("선택한 특가 방을 삭제시키겠습니까?");
 	}
 </script>	
  

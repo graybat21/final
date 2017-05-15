@@ -53,7 +53,11 @@ td {
 
     <!-- Main content -->
     <section class="content">
-    
+        
+    <c:if test="${hostList.size()<=0}">
+    	<h3 align="center">가입한 호스트가 없습니다.</h3>
+    </c:if>
+    <br /> <br>
 <table>
 		<thead>
 			<tr height="30px">

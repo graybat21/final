@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import net.kh.dao.AdminDao;
+import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
 import net.kh.room.RoomVO;
 
@@ -61,6 +62,20 @@ public class AdminServiceImpl implements AdminService {
 	public List<RoomVO> adminRoomList(RoomVO room) throws Exception {
 
 		return adminMapper.adminRoomList(room);
+	}
+	
+	@Override
+	@Transactional
+	public int deleteRoom(int no) throws Exception {
+		
+		return adminMapper.deleteRoom(no);
+	}
+	
+	@Override
+	@Transactional
+	public List<DiscountVO> adminDiscountList(DiscountVO discount) throws Exception {
+		
+		return adminMapper.adminDiscountList(discount);
 	}
 
 }

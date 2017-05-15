@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import net.kh.admin.AdminVO;
+import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
 import net.kh.room.RoomVO;
 
@@ -25,4 +26,9 @@ public interface AdminDao {
 
 	// 방관리
 	List<RoomVO> adminRoomList(RoomVO room) throws Exception;
+	
+	int deleteRoom(int no) throws Exception;
+	
+	//특가관리
+	List<DiscountVO> adminDiscountList(DiscountVO discount) throws Exception;
 }
