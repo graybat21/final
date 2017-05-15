@@ -74,7 +74,7 @@ label.chk-label{
 .fix_quick{position:fixed;top:121px;left:50%;z-index:5090;margin-left:-606px;}
 .fix_quick_m{position:fixed;top:57px;left:0;z-index:5090;}
 .link_tab ul li:nth-child(3),.link_tab ul li:nth-child(4){width:17%;}
-.search_menu{position:relative;z-index:100;height:60px;margin:0 auto 20px auto;background:#999;}
+.search_menu{position:relative;z-index:0;height:60px;margin:0 auto 20px auto;background:#999;}
 .search_menu ul{width:1210px;margin:0 auto;text-align:center;}
 .search_menu ul li{display:inline-block;width:16%;}
 .search_menu ul li a{display:block;height:60px;font-size:16px;line-height:60px;color:#fff;}
@@ -936,7 +936,7 @@ label.chk-label{
 .ad_info_room .info_title .room_detail {color:#505050}
 .ad_info_room .info_title .txt_user {color:#e62a4a}
 .ad_info_room .info_title .txt_spacial {color:#009aea}
-.ad_info_room .info_cont {padding:0}
+.ad_info_room .info_cont {padding: 10px 15px 10px 15px}
 .ad_info_room .info_cont .room_list{border-bottom:none}
 .ad_info_room .info_cont .room_list li {overflow:hidden;position:relative;height:95px;padding:14px 15px 0 145px;border-top:1px solid #d3d3d3;background:#fff;}
 .ad_info_room .info_cont .room_list li a {display:block}
