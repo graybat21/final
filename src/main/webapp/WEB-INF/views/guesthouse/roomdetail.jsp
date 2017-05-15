@@ -8,8 +8,7 @@
 <meta http-equiv="Content-Type">
 <title>게스트하우스리뷰</title>
 </head>
-<body class="pcweb" oncontextmenu="return false"
-	ondragstart="return false">
+<body class="pcweb" ondragstart="return false">
  	<!-- 페이지별 호출 소스 -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/detail.css">
 	<!-- //페이지별 호출 소스 -->
@@ -328,9 +327,10 @@
 								</div>
 								</a>
 							</li>
-													</ul>
+						</ul>
 					</div>
-									</div>
+				</div>
+				
 				<!-- //객실정보 -->
 				<div class="ad_info_room row">
 					<div class="info_title margin_align">
