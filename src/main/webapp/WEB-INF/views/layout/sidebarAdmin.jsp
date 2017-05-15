@@ -10,42 +10,40 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>상품관리</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../../index.html"><i class="fa fa-circle-o"></i>상품추가</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>상품수정</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>상품삭제</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
             <i class="fa fa-users"></i>
-            <span>회원관리</span>
+            <span>회원 관리</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/admin/userList.do"><i class="fa fa-circle-o"></i>회원정보조회</a></li>
-            <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i>포인트관리</a></li>
+            <li><a href="adminmemberList.gh"><i class="fa fa-circle-o"></i>일반회원조회</a></li>
+            <li><a href="adminhostList.gh"><i class="fa fa-circle-o"></i>기업회원조회</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-calendar"></i>
-            <span>이벤트관리</span>
+            <i class="fa fa-dashboard"></i> <span>상품 관리</span>
             <span class="pull-right-container">
-              <!-- <i class="fa fa-angle-left pull-right"></i> -->
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <!-- <ul class="treeview-menu">
-            <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i>회원정보조회</a></li>
-            <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i>포인트관리</a></li>
-          </ul> -->
+          <ul class="treeview-menu">
+            <li><a href="adminRoomList.gh"><i class="fa fa-circle-o"></i>게하룸상품조회</a></li>
+            <li><a href="adminDiscountList.gh"><i class="fa fa-circle-o"></i>특가상품조회</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-calendar"></i> <span>게시판 관리</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="noticeList.gh"><i class="fa fa-circle-o"></i>공지 사항</a></li>
+            <li><a href="qnaList.gh"><i class="fa fa-circle-o"></i>문의 사항</a></li>
+          </ul>
         </li>
         <!-- <li>
           <a href="../widgets.html">
