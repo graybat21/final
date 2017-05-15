@@ -10,17 +10,13 @@
 	
 	<!-- 페이지별 화면 load -->
 		<!-- 페이지별 호출 소스 -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage_files/mypage.css">
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/mypage.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/jquery-ui-1.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/jquery.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/mypage.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery-ui-1.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/check.js"></script>
 	
-	<script src="${pageContext.request.contextPath}/resources/mypage_files/check.js"></script>
-	
-
 	<script type="text/javascript">
 	$(document).ready(function(){
-
 		//로그아웃
 		$('.btn_logout').click(function(){
 			if(!confirm(confirm_msg['logout_confirm'])) return false;
@@ -151,24 +147,20 @@
 <!-- 해봄 위에 얇은줄만 없어짐 --><div class="my_allwrap">
 	<!-- 해봄 왼쪽메뉴바 사라짐 -->		<div class="my_wrap row row_cont">
 				<!-- 마이페이지 메뉴 -->
-				
-<!-- 해봄 왼쪽메뉴바 망가짐 -->				<div class="my_menu" style="display:none">
+<!-- 해봄 왼쪽메뉴바 망가짐 -->				
+<div class="my_menu" style="display:none">
 					<h3>마이페이지</h3>
 					<ul>
-						<li><a href="https://www.goodchoice.kr/mypage/myZzim">찜</a></li>
+						<li><a href="">찜</a></li>
 
-						<li><a href="https://www.goodchoice.kr/mypage/myReserve">예약내역</a></li>
+						<li><a href="">예약내역</a></li>
 
-						<li><a href="https://www.goodchoice.kr/mypage/myInfo" class="active">내정보수정</a></li>
+						<li><a href="" class="active">내정보수정</a></li>
 					</ul>
 				</div>
-
-								<!-- //마이페이지 메뉴 -->
 				
 				<!-- 마이페이지 콘텐츠 -->
 <!-- 해봄  -->				<div class="my_contents">
-															
-									
 					
 					<!-- my_cont_wrap  얘가 오른쪽 페이지 줄짧게 만드는?애 없애면 길어짐 -->
 					<div class="my_cont_wrap">
@@ -181,16 +173,11 @@
 						</div>
 						
 						<div class="myinfo_table ">
-													
-							
 								<table>
-									
 									<tr>
 										<th>이메일</th>
 										<td>
-											
-																						taejin2533@naver.com																						
-											<!--span class="login_type">페이스북</span-->
+											이메일주소 가져오																						
 											<a class="btn_logout">로그아웃</a>
 										</td>
 									</tr>
