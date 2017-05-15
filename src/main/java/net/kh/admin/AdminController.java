@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
 import net.kh.room.RoomVO;
 
@@ -55,7 +56,6 @@ public class AdminController {
 											//hostList.jsp 의미
 		ModelAndView mav = new ModelAndView("hostList");
 		List<HostVO> hostList = adminService.hostList(host);
-		logger.info(hostList.toString());
 		mav.addObject("hostList", hostList);
 		
 		return mav;
@@ -76,11 +76,37 @@ public class AdminController {
 	// 관리자의 게하 방 관리
 	@RequestMapping("/adminRoomList.gh")
 	public ModelAndView adminRoomList(RoomVO room) throws Exception {
-		
-		ModelAndView mav = new ModelAndView("admin/roomList/게스트하우스 방 목록");
+											// roomList.jsp
+		ModelAndView mav = new ModelAndView("roomList");
 		
 		List<RoomVO> adminRoomList = adminService.adminRoomList(room);
+		//logger.info(adminRoomList.toString());
+		
 		mav.addObject("adminRoomList", adminRoomList);
+		
+		return mav;
+	}
+	
+	//관리자의 방 관리 - 방 삭제
+	@RequestMapping("/adminRoomDelete.gh")
+	public ModelAndView deleteRoom(HttpServletRequest request) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		String no = request.getParameter("no");
+		adminService.deleteRoom(Integer.parseInt(no));
+		mav.setViewName("redirect:/adminRoomList.gh");
+		
+		return mav;
+	}
+	
+	//관리자의 특가 관리
+	@RequestMapping("/adminDiscountList.gh")
+	public ModelAndView adminDiscountList(DiscountVO discount) throws Exception {
+											//discountList.jsp
+		ModelAndView mav = new ModelAndView("discountList");
+		
+		List<DiscountVO> adminDiscountList = adminService.adminDiscountList(discount);
+		mav.addObject("adminDiscountList", adminDiscountList);
 		
 		return mav;
 	}
