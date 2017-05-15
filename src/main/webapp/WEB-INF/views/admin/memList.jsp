@@ -24,6 +24,27 @@ td {
 	text-align: center;
 	padding-top: 15px;
 }
+/* paging */
+	.svc_paging ul li a {min-width:50px}
+	.svc_paging ul li.page_first a {background-size:auto 14px;}
+	.svc_paging ul li.page_prev a {background-size:auto 14px}
+	.svc_paging ul li.page_next a {background-size:auto 14px}
+	.svc_paging ul li.page_last a {background-size:auto 14px;}
+
+/* paging */
+.svc_paging {padding:30px 0;text-align:center;}
+.svc_paging ul {display:inline-block;border:1px solid #ccc;border-radius:5px;}
+.svc_paging ul li {float:left;display:inline-block;border-right:1px solid #ddd;box-sizing:border-box;}
+.svc_paging ul li a {display:inline-block;min-width:28px;height:38px;line-height:42px;font-weight:500;text-align:center;color:#707070;vertical-align:middle;}
+.svc_paging ul li.page_first a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_first.png') no-repeat 50% 50%;background-size:auto 10px;}
+.svc_paging ul li.page_prev a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_prev.png') no-repeat 50% 50%;background-size:auto 10px}
+.svc_paging ul li.page_next a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_next.png') no-repeat 50% 50%;background-size:auto 10px}
+.svc_paging ul li.page_last a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_last.png') no-repeat 50% 50%;background-size:auto 10px;}
+.svc_paging ul li:last-child {border-right:none;}
+.svc_paging ul li:last-child a {border-radius:0 5px 5px 0;}
+.svc_paging ul li:first-child a {border-radius:5px 0 0 5px;}
+.svc_paging ul li:hover a, .svc_paging ul li.active a {color:#e62a4a;background-color:#fff;}
+
 </style>
 </head>
 
@@ -79,7 +100,28 @@ td {
 		return confirm("선택한 회원을 탈퇴시키겠습니까?");
 	}
 </script>	
- 
+ 	<div class="svc_allwrap">
+		<div class="svc_wrap row row_cont">
+			<div class="svc_contents">
+				<div class="svc_cont_wrap" style="min-height: 1127px;">
+ 	<!-- 페이징 -->
+		<div class="svc_paging">
+		<ul class="pageUL">
+			<c:if test="${memberPageMaker.prev }">
+				<li><a href='adminmemberList.gh?page=${memberPageMaker.start -1}'>이전</a></li>
+			</c:if>
+			<c:forEach begin="${memberPageMaker.start }" end="${memberPageMaker.end}"
+				var="idx">
+				<li
+					class="${idx == memberPageMaker.page ? 'current' : ''}">
+					<a href='adminmemberList.gh?page=${idx}'>${idx}</a>
+				</li>
+			</c:forEach>
+			<c:if test="${memberPageMaker.next }">
+				<li><a href='adminmemberList.gh?page=${memberPageMaker.end +1}'>다음</a></li>
+			</c:if>
+		</ul>
+		</div></div></div></div></div>
     </section>
     <!-- /.content -->
   </div>
