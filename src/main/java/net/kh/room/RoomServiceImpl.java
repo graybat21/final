@@ -16,6 +16,7 @@ public class RoomServiceImpl implements RoomService {
 
 	@Autowired
 	private RoomDao roomMapper;
+	
 
 
 	
@@ -32,5 +33,19 @@ public class RoomServiceImpl implements RoomService {
 		
 		return roomMapper.roomGetCurrentNo();
 	}
+
+
+
+	@Override
+	@Transactional
+	public int wish() throws Exception {
+		// TODO Auto-generated method stub
+		return roomMapper.wish();
+	}
+
+
+
+	
+	
 
 }

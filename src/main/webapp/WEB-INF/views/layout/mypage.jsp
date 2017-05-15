@@ -18,10 +18,16 @@
 	</ul>
 	</c:if>
 	<c:if test="${host != null }">
+	<h3>방관리</h3>
+	<ul>
+		<li><a href="roomInsertForm.gh" class="active">방 추가하기</a></li>
+		<li><a href="#">방 수정하기</a></li>
+	</ul>
 	<h3>QNA</h3>
 	<ul>
 		<li><a href="qnaList.gh" class="active">QNA리스트</a></li>
 		<li><a href="qnaList.gh">QNA내가쓴글</a></li>
 	</ul>
+	
 	</c:if>
 </div>

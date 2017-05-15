@@ -26,5 +26,6 @@
 		WHERE
 		SEQUENCE_NAME='SEQ_ROOM_NO'
 	</select>
+	
 </mapper>
 	

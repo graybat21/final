@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -18,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
+
+import net.kh.qna.QnaVO;
 
 /**
  * Handles requests for the application home page.
@@ -55,6 +58,7 @@ public class RoomController {
 		model.addObject("host_no", 16);
 		return model;
 	}
+	
 
 	@RequestMapping(value="/roomInsert.gh", method=RequestMethod.POST, produces="text/plain")
 	public ModelAndView upload(MultipartHttpServletRequest request, RoomVO room) throws Exception {
@@ -106,8 +110,8 @@ public class RoomController {
 
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
-}
 
+}
 /*
  * @RequestMapping(value = "/room/roomInsert.gh", method = RequestMethod.POST)
  * public ModelAndView roomInsert(HttpServletRequest

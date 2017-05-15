@@ -32,7 +32,7 @@ public class HomeController {
 //		
 //		model.addAttribute("serverTime", formattedDate );
 		
-		return "main/main/MAIN";
+		return "room/base";
 //		return "guesthouse/reserve/MAIN";
 
 	}

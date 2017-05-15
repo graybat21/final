@@ -28,8 +28,11 @@
 <meta name="naver-site-verification"
 	content="27e1bd094d2f12af942addbf4afdb3f479ad0273">
 
-<link rel="canonical" href="https://goodchoice.kr/">
-
+<script type="text/javascript" async="" ></script>
+<script src="${pageContext.request.contextPath}/resources/js/h5utils.js">
+</script>
+<script src="${pageContext.request.contextPath}/resources/js/prettify.js"></script>
+</script>
 <script type="text/javascript">
 	function get_version_of_IE () {
 
@@ -85,10 +88,173 @@
 						alert(jqXHR.responseText);
 					}
 				});
-			}
+			
 		});
 	//]]>
 	</script>
+	<script>
+var upload = document.getElementsByTagName('input')[0],
+    holder = document.getElementById('holder'),
+    state = document.getElementById('status');
+
+if (typeof window.FileReader === 'undefined') {
+  state.className = 'fail';
+} else {
+  state.className = 'success';
+  state.innerHTML = 'File API & FileReader available';
+}
+ 
+upload.onchange = function (e) {
+  e.preventDefault();
+
+  var file = upload.files[0],
+      reader = new FileReader();
+  reader.onload = function (event) {
+    var img = new Image();
+    img.src = event.target.result;
+    // note: no onload required since we've got the dataurl...I think! :)
+    if (img.width > 560) { // holder width
+      img.width = 560;
+    }
+    holder.innerHTML = '';
+    holder.appendChild(img);
+  };
+  reader.readAsDataURL(file);
+
+  return false;
+};
+</script>
+<script>
+//Reference: 
+//http://www.onextrapixel.com/2012/12/10/how-to-create-a-custom-file-input-with-jquery-css3-and-php/
+;(function($) {
+
+		  // Browser supports HTML5 multiple file?
+		  var multipleSupport = typeof $('<input/>')[0].multiple !== 'undefined',
+		      isIE = /msie/i.test( navigator.userAgent );
+
+		  $.fn.customFile = function() {
+
+		    return this.each(function() {
+
+		      var $file = $(this).addClass('custom-file-upload-hidden'), // the original file input
+		          $wrap = $('<div class="file-upload-wrapper">'),
+		          $input = $('<input type="text" class="file-upload-input" />'),
+		          // Button that will be used in non-IE browsers
+		          $button = $('<button type="button" class="file-upload-button">파일 업로드</button>'),
+		          // Hack for IE
+		          $label = $('<label class="file-upload-button" for="'+ $file[0].id +'">Select a File</label>');
+
+		      // Hide by shifting to the left so we
+		      // can still trigger events
+		      $file.css({
+		        position: 'absolute',
+		        left: '-9999px'
+		      });
+
+		      $wrap.insertAfter( $file )
+		        .append( $file, $input, ( isIE ? $label : $button ) );
+
+		      // Prevent focus
+		      $file.attr('tabIndex', -1);
+		      $button.attr('tabIndex', -1);
+
+		      $button.click(function () {
+		        $file.focus().click(); // Open dialog
+		      });
+
+		      $file.change(function() {
+
+		        var files = [], fileArr, filename;
+
+		        // If multiple is supported then extract
+		        // all filenames from the file array
+		        if ( multipleSupport ) {
+		          fileArr = $file[0].files;
+		          for ( var i = 0, len = fileArr.length; i < len; i++ ) {
+		            files.push( fileArr[i].name );
+		          }
+		          filename = files.join(', ');
+
+		        // If not supported then just take the value
+		        // and remove the path to just show the filename
+		        } else {
+		          filename = $file.val().split('\\').pop();
+		        }
+
+		        $input.val( filename ) // Set the value
+		          .attr('title', filename) // Show filename in title tootlip
+		          .focus(); // Regain focus
+
+		      });
+
+		      $input.on({
+		        blur: function() { $file.trigger('blur'); },
+		        keydown: function( e ) {
+		          if ( e.which === 13 ) { // Enter
+		            if ( !isIE ) { $file.trigger('click'); }
+		          } else if ( e.which === 8 || e.which === 46 ) { // Backspace & Del
+		            // On some browsers the value is read-only
+		            // with this trick we remove the old input and add
+		            // a clean clone with all the original events attached
+		            $file.replaceWith( $file = $file.clone( true ) );
+		            $file.trigger('change');
+		            $input.val('');
+		          } else if ( e.which === 9 ){ // TAB
+		            return;
+		          } else { // All other keys
+		            return false;
+		          }
+		        }
+		      });
+
+		    });
+
+		  };
+
+		  // Old browser fallback
+		  if ( !multipleSupport ) {
+		    $( document ).on('change', 'input.customfile', function() {
+
+		      var $this = $(this),
+		          // Create a unique ID so we
+		          // can attach the label to the input
+		          uniqId = 'customfile_'+ (new Date()).getTime(),
+		          $wrap = $this.parent(),
+
+		          // Filter empty input
+		          $inputs = $wrap.siblings().find('.file-upload-input')
+		            .filter(function(){ return !this.value }),
+
+		          $file = $('<input type="file" id="'+ uniqId +'" name="'+ $this.attr('name') +'"/>');
+
+		      // 1ms timeout so it runs after all other events
+		      // that modify the value have triggered
+		      setTimeout(function() {
+		        // Add a new input
+		        if ( $this.val() ) {
+		          // Check for empty fields to prevent
+		          // creating new inputs when changing files
+		          if ( !$inputs.length ) {
+		            $wrap.after( $file );
+		            $file.customFile();
+		          }
+		        // Remove and reorganize inputs
+		        } else {
+		          $inputs.parent().remove();
+		          // Move the input so it's always last on the list
+		          $wrap.appendTo( $wrap.parent() );
+		          $wrap.find('input').focus();
+		        }
+		      }, 1);
+
+		    });
+		  }
+
+}(jQuery));
+
+$('input[type=file]').customFile();
+</script>
 </head>
 
 <body class="pcweb" oncontextmenu="return false"
@@ -288,10 +454,10 @@
 	})(jQuery);
 	</script>
 		<!-- //페이지별 호출 소스 -->
-		
+
 		<!-- 다음 우편번호  -->
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script>
+		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+		<script>
     function execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -340,7 +506,7 @@
 
 		<!-- (공통)contentsWrap -->
 		<article id="contentsWrap">
-	
+
 
 			<!-- user wrap -->
 			<div class="user_wrap row row_cont">
@@ -348,7 +514,8 @@
 				<!-- user_cont_wrap -->
 				<div class="user_cont_wrap">
 					<form action="${pageContext.request.contextPath}/join/joinB.gh"
-						method="post" enctype="multipart/form-data" accept-charset="utf-8" id="joinform">
+						method="post" enctype="multipart/form-data" accept-charset="utf-8"
+						id="joinform">
 
 						<!-- 회원가입 입력 -->
 						<div class="join_email">
@@ -359,61 +526,65 @@
 									onclick="return false;" class="btn_overlap_chk" id="chkid">중복확인</a>
 							</p>
 							<p class="join_item item_2">
-								<label>비밀번호</label> 
-								<input class="ipt ipt_password"	placeholder="영문,숫자 포함 6~20자" name="pw" maxlength="20" type="password">
+								<label>비밀번호</label> <input class="ipt ipt_password"
+									placeholder="영문,숫자 포함 6~20자" name="pw" maxlength="20"
+									type="password">
 							</p>
 							<p class="join_item item_3">
-								<label>비밀번호 확인</label> 
-								<input class="ipt ipt_password" placeholder="비밀번호 확인" name="hpwchk" maxlength="20" type="password">
+								<label>비밀번호 확인</label> <input class="ipt ipt_password"
+									placeholder="비밀번호 확인" name="hpwchk" maxlength="20"
+									type="password">
 							</p>
 							<p class="join_item item_5">
 								<label>업체명</label> <input class="ipt ipt_nick"
 									placeholder="한글,영문,숫자 포함 2~10자" name="name" maxlength="10"
-									onkeypress="$.duplnickreset()" type="text"> 
-									<!-- <a class="btn_overlap_chk" id="chknick" onclick="return false;">중복확인</a> -->
+									onkeypress="$.duplnickreset()" type="text">
+								<!-- <a class="btn_overlap_chk" id="chknick" onclick="return false;">중복확인</a> -->
 							</p>
 							<p class="join_item item_6">
 								<label>사업자번호</label> <input class="ipt ipt_bizno"
-									placeholder="사업자 등록번호" name="biz_no" maxlength="10" onkeypress="$.duplnickreset()" type="text"> 
-									<a class="btn_overlap_chk" id="chkbizno" onclick="return false;">중복확인</a>
+									placeholder="사업자 등록번호" name="biz_no" maxlength="10"
+									onkeypress="$.duplnickreset()" type="text"> <a
+									class="btn_overlap_chk" id="chkbizno" onclick="return false;">중복확인</a>
 							</p>
 							<p class="join_item item_7">
-								<label>우편번호</label> 
-								<input class="ipt ipt_add" placeholder="우편번호" id="postcode" name="zip" type="text" readonly="readonly"> 
-									 <a class="btn_overlap_chk" id="chkzip" onclick="execDaumPostcode()">우편번호 찾기</a>
+								<label>우편번호</label> <input class="ipt ipt_add"
+									placeholder="우편번호" id="postcode" name="zip" type="text"
+									readonly="readonly"> <a class="btn_overlap_chk"
+									id="chkzip" onclick="execDaumPostcode()">우편번호 찾기</a>
 							</p>
 							<p class="join_item item_7">
-								<label>주소</label> 
-								<input class="ipt ipt_add" type="text" name="addr1" id="address1" placeholder="주소" readonly="readonly"> 
+								<label>주소</label> <input class="ipt ipt_add" type="text"
+									name="addr1" id="address1" placeholder="주소" readonly="readonly">
 							</p>
 							<p class="join_item item_7">
-								<label>상세주소</label> 
-								<input class="ipt ipt_add" type="text" name="addr2" id="address2" placeholder="상세주소"> 
+								<label>상세주소</label> <input class="ipt ipt_add" type="text"
+									name="addr2" id="address2" placeholder="상세주소">
 							</p>
 							<p class="join_item item_7">
-								<label>업체번호</label> 
-								<input class="ipt ipt_add" type="text" name="tel" id="tel" placeholder="업체번호"> 
+								<label>업체번호</label> <input class="ipt ipt_add" type="text"
+									name="tel" id="tel" placeholder="업체번호">
 							</p>
+							<!-- 파일업로드 -->
+									<p class="join_item item_7" id="status">
+										<label for="file">업체메인사진: </label> <input class="ipt ipt_add"
+											type="file" id="imagename" name="imagename" multiple />
+									</p>
+									<div id="holder"></div>
+							
+								</p>
+								<!-- Agree Area -->
+								<div class="agree_area">
+									<!-- 서비스 이용약관 동의 -->
+									<label class="agree_chk"> <input class="ipt_chk"
+										name="rolechk" id="rolechk" type="checkbox"> <strong>서비스
+											이용약관</strong> 동의
+									</label>
+									<div class="agree_txt">
+										<div class="ag_wrap">
+											<!-- 3.0 약관 -->
 
-							<!-- image 입력폼 필요, 임시로 값을 넣음. -->
-							<input name="imagename" type="hidden" value="imagename">
-							<input name="imagesize" type="hidden" value="imagesize">
-								<p class="join_item item_7">
-								<label>메인이미지</label> 
-								<input class="ipt ipt_add" type="text" name="filename" id="filename" > 
-							</p>
-							<!-- Agree Area -->
-							<div class="agree_area">
-								<!-- 서비스 이용약관 동의 -->
-								<label class="agree_chk"> <input class="ipt_chk"
-									name="rolechk" id="rolechk" type="checkbox"> <strong>서비스
-										이용약관</strong> 동의
-								</label>
-								<div class="agree_txt">
-									<div class="ag_wrap">
-										<!-- 3.0 약관 -->
-
-<script type="text/javascript">
+											<script type="text/javascript">
 $(function(){
 
 	$('.last_policy').each(function(e){
@@ -433,24 +604,24 @@ $(function(){
 
 });
 </script>
+										</div>
+
+										<p class="join_info">
+											<span>14세 미만 아동은 서비스 사용이 불가합니다</span>
+										</p>
 									</div>
+									<!-- //Agree Area -->
 
-									<p class="join_info">
-										<span>14세 미만 아동은 서비스 사용이 불가합니다</span>
-									</p>
-								</div>
-								<!-- //Agree Area -->
-
-								<div class="btn_area">
-									<!-- <a href="" onclick="$.joinok(); return false;"
+									<div class="btn_area">
+										<!-- <a href="" onclick="$.joinok(); return false;"
 										class="btn_confirm">가입완료</a> -->
 										<input class="btn_confirm" type="submit" value="JOIN">
+									</div>
+									<p class="join_info">
+										<span>비밀번호 분실시 이메일을 통해 확인하므로,</span> <span>정확하게 입력해주세요.</span>
+									</p>
 								</div>
-								<p class="join_info">
-									<span>비밀번호 분실시 이메일을 통해 확인하므로,</span> <span>정확하게 입력해주세요.</span>
-								</p>
-							</div>
-							<!-- 회원가입 입력 -->
+								<!-- 회원가입 입력 -->
 						</div>
 					</form>
 				</div>

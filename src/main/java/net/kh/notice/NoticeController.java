@@ -1,5 +1,6 @@
 package net.kh.notice;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.kh.qna.QnaVO;
+import net.kh.utils.PageMaker;
 
 @Controller
 public class NoticeController {
@@ -25,11 +27,28 @@ public class NoticeController {
 
 	//리스트
 	@RequestMapping(value="/noticeList.gh")
-	public String noticeList(Model model) throws Exception{
+	public String noticeList(PageMaker pagemaker,Model model) throws Exception{
+		int page = 1;
+		int totalCnt = 0;
+		int countPerPage = 5;
+		int countPerPaging = 5;
 		
-		List<NoticeVO> list = noticeService.noticeList();
-
-	    model.addAttribute("list", list);
+		page = pagemaker.getPage() != null ? pagemaker.getPage() : 1;
+		pagemaker.setPage(page);
+		
+		totalCnt = noticeService.selectListCnt(); // DB연동_ 총 갯수 구해오기
+		pagemaker.setCount(totalCnt, countPerPaging);
+		
+		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
+		int last = first + countPerPage - 1;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("first", first);
+		map.put("last", last);
+		List<NoticeVO> list = noticeService.noticeList(map);
+		
+		model.addAttribute("noticeList", list);
+		model.addAttribute("noticePageMaker", pagemaker);
 
 		return "notice/noticeList/공지사항";
 	}

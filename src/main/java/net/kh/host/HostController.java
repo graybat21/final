@@ -1,8 +1,5 @@
 package net.kh.host;
 
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -12,19 +9,14 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 /**
  * Handles requests for the application home page.
@@ -32,85 +24,85 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 @Controller
 public class HostController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HostController.class);
-	@Inject
-	private JavaMailSenderImpl javaMailSenderImpl;
+   private static final Logger logger = LoggerFactory.getLogger(HostController.class);
 
-	@Resource(name = "hostService")
-	private HostService hostService;
-	
-	@Inject
-	BCryptPasswordEncoder passwordEncoder;
-@Resource
-	ModelAndView mav = new ModelAndView();
+   @Inject
+   private JavaMailSenderImpl javaMailSenderImpl;
 
-	@RequestMapping("/join/joinFormB.gh")
-	public String joinStep2b() {
-		return "member/joinForm2b/기업회원 가입폼";
-	}
+   @Resource(name = "hostService")
+   private HostService hostService;
+   
+   @Inject
+   BCryptPasswordEncoder passwordEncoder;
 
-	@RequestMapping("/join/joinB.gh")
-	public String joinStep3a(HttpSession session, HostVO host, MultipartHttpServletRequest request) throws Exception {
+   ModelAndView mav = new ModelAndView();
 
-		String encryptPassword = passwordEncoder.encode(host.getPw());
-		host.setPw(encryptPassword);
+   @RequestMapping("/join/joinFormB.gh")
+   public String joinStep2b() {
+      return "member/joinForm2b/기업회원 가입폼";
+   }
 
-		String joinCode = getUuid();
-		host.setAuth(joinCode);
-		
+   @RequestMapping("/join/joinB.gh")
+   public String joinStep3a(HttpSession session, HostVO host) throws Exception {
 
-		private String getUUID() {
+      String encryptPassword = passwordEncoder.encode(host.getPw());
+      host.setPw(encryptPassword);
 
-			return UUID.randomUUID().toString().replaceAll("-", "");
-		}
-	
+      String joinCode = getUuid();
+      host.setAuth(joinCode);
+      String MemOrHost = "기업";
+      int no = hostService.hostGetCurrentNo();
+      sendMail(no, host.getEmail(), joinCode, MemOrHost);
 
-		session.setAttribute("host", host);
-		mav.addObject(host);
+      host.setNo(no);
+      boolean insertSuccess = hostService.hostInsert(host);
 
-		logger.info(host.toString());
-		return "member/joinSuccess/개인회원가입 성공";
-	}
-	
-	@RequestMapping(value = "/auth-h/{no}/{auth}")
-	public ModelAndView authOk(@PathVariable String no, @PathVariable String auth) throws Exception {
+      session.setAttribute("host", host);
+      mav.addObject(host);
 
-		HostVO host = new HostVO();
-		host.setAuth(auth);
-		host.setNo(Integer.parseInt(no));
+      logger.info(host.toString());
+      return "member/joinSuccess/개인회원가입 성공";
+   }
+   
+   @RequestMapping(value = "/auth-h/{no}/{auth}")
+   public ModelAndView authOk(@PathVariable String no, @PathVariable String auth) throws Exception {
 
-		hostService.hostAuthOk(host);
-		mav.setViewName("member/authSuccess/인증성공 host");
-		// mav.setViewName("member/authError/인증실패");
+      HostVO host = new HostVO();
+      host.setAuth(auth);
+      host.setNo(Integer.parseInt(no));
 
-		return mav;
-	}
-	
-	public void sendMail(int no, String email, String joinCode, String MemOrHost) throws Exception {
+      hostService.hostAuthOk(host);
+      mav.setViewName("member/authSuccess/인증성공 host");
+      // mav.setViewName("member/authError/인증실패");
 
-		MimeMessage mimeMessage = javaMailSenderImpl.createMimeMessage();
+      return mav;
+   }
+   
+   public void sendMail(int no, String email, String joinCode, String MemOrHost) throws Exception {
 
-		mimeMessage.setFrom(new InternetAddress("guesthi1111@gmail.com"));
-		mimeMessage.addRecipient(RecipientType.TO, new InternetAddress(email));
-		mimeMessage.setSubject("GuestHi - 회원가입 인증요청메일 입니다.");
+      MimeMessage mimeMessage = javaMailSenderImpl.createMimeMessage();
 
-		StringBuilder sb = new StringBuilder();
-		String uri = "http://localhost:8080/GuestHi/";
-		sb.append("<h1><a href='" + uri + "'>");
-		sb.append("<img src='http://i.imgur.com/Jo4vPeX.png'></a></h1>");
-		sb.append("<h1>Welcome GuestHi</h1>");
-		sb.append("저희 GuestHi에 가입해 주셔서 진심으로 감사드립니다.<br>");
-		sb.append("회원님은 " + MemOrHost + " 으로 가입하셨습니다.<br>");
-		sb.append("사이트 이용은 아래 링크를 통해 인증하신후 가능합니다.<br>");
-		sb.append("<hr><br>");
-		sb.append("<a href='" + uri + "auth-h/" + no + "/" + joinCode + "'>");
-		sb.append("링크를 클릭하시면 인증이 왼료됩니다.</a>");
-		mimeMessage.setText(sb.toString(), "UTF-8", "html");
+      mimeMessage.setFrom(new InternetAddress("guesthi1111@gmail.com"));
+      mimeMessage.addRecipient(RecipientType.TO, new InternetAddress(email));
+      mimeMessage.setSubject("GuestHi - 회원가입 인증요청메일 입니다.");
 
-		javaMailSenderImpl.send(mimeMessage);
-	}
-	
-	private String getUuid() {
-		return UUID.randomUUID().toString().replaceAll("-", "");
-	}
+      StringBuilder sb = new StringBuilder();
+      String uri = "http://localhost:8080/GuestHi/";
+      sb.append("<h1><a href='" + uri + "'>");
+      sb.append("<img src='http://i.imgur.com/Jo4vPeX.png'></a></h1>");
+      sb.append("<h1>Welcome GuestHi</h1>");
+      sb.append("저희 GuestHi에 가입해 주셔서 진심으로 감사드립니다.<br>");
+      sb.append("회원님은 " + MemOrHost + " 으로 가입하셨습니다.<br>");
+      sb.append("사이트 이용은 아래 링크를 통해 인증하신후 가능합니다.<br>");
+      sb.append("<hr><br>");
+      sb.append("<a href='" + uri + "auth-h/" + no + "/" + joinCode + "'>");
+      sb.append("링크를 클릭하시면 인증이 왼료됩니다.</a>");
+      mimeMessage.setText(sb.toString(), "UTF-8", "html");
+
+      javaMailSenderImpl.send(mimeMessage);
+   }
+   
+   private String getUuid() {
+      return UUID.randomUUID().toString().replaceAll("-", "");
+   }
 }
