@@ -31,5 +31,15 @@
 		SELECT * FROM room ORDER BY no DESC
 	</select>
 	
+	<!-- 관리자 게하 룸 강제 삭제 -->
+	<update id="deleteRoom" parameterType="int">
+		DELETE FROM room WHERE no=#{no}
+	</update>
+	
+	<!-- 관리자 특가 관리 목록 -->
+	<select id="adminDiscountList" resultType="discountVO" parameterType="int">
+		SELECT * FROM discount ORDER BY no DESC
+	</select>
+	
 	
 </mapper>
