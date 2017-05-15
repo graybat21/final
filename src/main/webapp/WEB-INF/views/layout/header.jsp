@@ -258,7 +258,9 @@
 									<tr>
 										<td onclick="joinchoice.gh" width="20%" align="center">회원가입</td>
 										<td width="30%;" align="center">아이디/비밀번호 찾기</td>
-										<td width="10%" align="center"><a href="#layer_anchor"
+									</tr>
+									<tr>
+										<td width="20%" align="right"><a href="#layer_anchor"
 											title="레이어 닫기" class="close">닫기</a></td>
 									</tr>
 								</table>

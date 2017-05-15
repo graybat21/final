@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+.about-hotel .sub-section-left {
+	width: 280px;
+	padding-right: 20px;
+	float: left;
+}
+
+.sub-section {
+	width: 100%;
+	padding: 25px 0;
+	*display: inline;
+	zoom: 1;
+}
+
+.about-hotel .line-seperator {
+	padding-bottom: 20px;
+	color: #CCC;
+}
+
+.line-seperator {
+	color: #BCBCBC;
+	border-top: 1px solid;
+	width: 100%;
+	margin: 0;
+}
+
+.about-hotel .sub-section-header {
+	font-size: 18px;
+	font-weight: 500;
+	width: 240px;
+}
+
+.sub-section-header {
+	margin-bottom: 10px;
+	color: #4E4E4E;
+	margin-top: 0;
+}
+
+.map-hotel-name, .sub-section-header {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.about-hotel .sub-section-right {
+	margin-left: 280px;
+}
+.about-hotel .line-seperator {
+	padding-bottom: 20px;
+	color: #CCC;
+}
+.line-seperator {
+	color: #BCBCBC;
+	border-top: 1px solid;
+	width: 100%;
+	margin: 0;
+}
+
+.about-hotel .collapsed {
+    overflow: hidden;
+    position: relative;
+}
+.about-hotel .show-more {
+    margin: 20px 0 30px;
+    text-align: left;
+}
+
+.about-hotel .show-more {
+    margin: 20px 0 30px;
+    text-align: left;
+}
+
+.about-hotel .sub-section-right-header {
+    font-weight: 700;
+    font-size: 14px;
+    color: #4E4E4E;
+    margin: 0 0 10px;
+}
+.no-margin {
+    margin: 0;
+}
+.non-bullet-list {
+    line-height: 25px;
+    width: 100%;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+.about-hotel .list-item:nth-child(3n+1) {
+    clear: both;
+}
+.about-hotel .list-item {
+    padding: 0 20px 0 0;
+}
+.list-item.three-column {
+    width: 32%;
+}
+.features-item {
+    position: relative;
+}
+.list-item, .media-block .info {
+    padding-left: 5px;
+    float: left;
+}
+
+
+.non-bullet-list .list-item .ficon {
+    margin-right: 6px;
+}
+.ficon-wifi-in-public-areas {
+    *zoom: expression(this.runtimeStyle [ 'zoom' ] = '1', this.innerHTML = '&#xf344;');
+}
+.ficon {
+    font-family: icons;
+    display: inline-block;
+    line-height: 1;
+    font-weight: 400;
+    font-style: normal;
+    speak: none;
+    text-decoration: inherit;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-bottom: 3px;
+}
+
+.ficon, button, select {
+    text-transform: none;
+}
+.ficon, img {
+    vertical-align: middle;
+}
+.about-hotel .list-item {
+    padding: 0 20px 0 0;
+}
+.list-item.three-column {
+    width: 32%;
+}
+.features-item {
+    position: relative;
+}
+.list-item, .media-block .info {
+    padding-left: 5px;
+    float: left;
+}
+.sub-section {
+    width: 100%;
+    padding: 25px 0;
+    *display: inline;
+    zoom: 1;
+}
+.icon-badge-gca, .sub-section, .suggestion-result-container .suggestion-item .suggestion-number-of-hotel-container .suggestion-count, .suggestion-result-container .suggestion-item .suggestion-number-of-hotel-container .suggestion-hotel {
+    display: inline-block;
+}

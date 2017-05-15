@@ -1,5 +1,6 @@
 package net.kh.notice;
 
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,9 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	@Transactional
-	public List<NoticeVO> noticeList() throws Exception {
+	public List<NoticeVO> noticeList(HashMap<String, Object> map) throws Exception{
 		// TODO Auto-generated method stub
-		return noticeMapper.noticeList();
+		return noticeMapper.noticeList(map);
 	}
 
 	//글쓰기
@@ -52,4 +53,11 @@ public class NoticeServiceImpl implements NoticeService {
 		// TODO Auto-generated method stub
 		return noticeMapper.noticeDelete(no);
 	}
+
+	@Override
+	@Transactional
+	public int selectListCnt() throws Exception {
+		return noticeMapper.selectListCnt();
+	}
+	
 }

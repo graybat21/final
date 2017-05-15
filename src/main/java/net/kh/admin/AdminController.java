@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kh.host.HostVO;
+import net.kh.room.RoomVO;
+
 @Controller
 public class AdminController {
 	
@@ -21,14 +24,11 @@ public class AdminController {
 	private AdminService adminService;
 	
 	
-	
-
-	
-	
+	// 관리자의 회원관리 - 회원 목록
 	@RequestMapping("/adminmemberList.gh")
 	public ModelAndView memberList(AdminVO admin) throws Exception {
-		
-		ModelAndView mav = new ModelAndView("admin/memList/멤버리스트");
+											// memList.jsp 의미
+		ModelAndView mav = new ModelAndView("memList");
 		
 		List<AdminVO> memberList = adminService.memberList(admin);
 		mav.addObject("memberList", memberList);
@@ -37,6 +37,7 @@ public class AdminController {
 		
 	}
 	
+	// 관리자의 회원관리 - 회원 강제 탈퇴
 	@RequestMapping("/adminmemberDelete.gh")
 	public ModelAndView deleteMember(HttpServletRequest request) throws Exception {
 		
@@ -47,5 +48,40 @@ public class AdminController {
 		return mav;
 		
 	}
-
+	
+	// 관리자의 호스트관리 - 호스트 목록
+	@RequestMapping("/adminhostList.gh")
+	public ModelAndView hostList(HostVO host) throws Exception {
+											//hostList.jsp 의미
+		ModelAndView mav = new ModelAndView("hostList");
+		List<HostVO> hostList = adminService.hostList(host);
+		logger.info(hostList.toString());
+		mav.addObject("hostList", hostList);
+		
+		return mav;
+	}
+	
+	//관리자의 호스트관리 - 호스트 강제 탈퇴
+	@RequestMapping("/adminhostDelete.gh")
+	public ModelAndView deleteHost(HttpServletRequest request) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		String no = request.getParameter("no");
+		adminService.deleteHost(Integer.parseInt(no));
+		mav.setViewName("redirect:/adminhostList.gh");
+		
+		return mav;
+	}
+	
+	// 관리자의 게하 방 관리
+	@RequestMapping("/adminRoomList.gh")
+	public ModelAndView adminRoomList(RoomVO room) throws Exception {
+		
+		ModelAndView mav = new ModelAndView("admin/roomList/게스트하우스 방 목록");
+		
+		List<RoomVO> adminRoomList = adminService.adminRoomList(room);
+		mav.addObject("adminRoomList", adminRoomList);
+		
+		return mav;
+	}
 }

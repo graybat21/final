@@ -1,15 +1,14 @@
 package net.kh.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import net.kh.notice.NoticeVO;
-import net.kh.qna.QnaVO;
 
 public interface NoticeDao {
 	
 	//list
-	List<NoticeVO> noticeList() throws Exception;
-	
+	List<NoticeVO> noticeList(HashMap<String, Object> map) throws Exception;
 	//쓰기
 	int noticeWrite(NoticeVO noticeVO) throws Exception;
 	
@@ -21,4 +20,7 @@ public interface NoticeDao {
 
 	// 글삭제
 	int noticeDelete(int no) throws Exception;
+	// 글 전체 개수
+	int selectListCnt() throws Exception;
+
 }
