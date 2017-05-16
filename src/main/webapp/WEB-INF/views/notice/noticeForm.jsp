@@ -1,84 +1,70 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="utf-8">
 
-<title>공지</title>
+<title>bootstrap-wysihtml5</title>
 
-<!-- 공통 CSS  -->
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/lib/css/bootstrap.min.css"></link>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/lib/css/prettify.css"></link>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/lib/bootstrap-wysihtml5.css"></link>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/js/bootstrap-wysihtml5.css"></link>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/lib/css/bootstrap.min.css"></link>
+<script src="${pageContext.request.contextPath}/resources/lib/js/wysihtml5-0.3.0.js"></script>
+<script src="${pageContext.request.contextPath}/resources/lib/js/jquery-1.7.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/lib/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap-wysihtml5.js"></script>
+
+<style type="text/css" media="screen">
+	.btn.jumbo {
+		font-size: 20px;
+		font-weight: normal;
+		padding: 14px 24px;
+		margin-right: 10px;
+		-webkit-border-radius: 6px;
+		-moz-border-radius: 6px;
+		border-radius: 6px;
+	}
+</style>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30181385-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
 </head>
+<body>
+<div class="container">
+	<div class="hero-unit" style="margin-top:40px">
 
-<body class="pcweb" oncontextmenu="return false"
-	ondragstart="return false">
-
-	<div id="allWrap">
-
-
-		<!-- (공통)contentsWrap -->
-		<article id="contentsWrap">
-			<h2 class="hide">공지사항</h2>
-
-			<!-- 서비스 wrap -->
-			<div class="svc_allwrap">
+		<textarea class="textarea" placeholder="Enter text ..." style="width: 810px; height: 200px"></textarea>
+	</div>
+</div>
 
 
-				<div class="svc_wrap row row_cont">
-
-
-					<!-- 서비스 콘텐츠 -->
-					<div class="svc_contents">
-						<div class="svc_title svc_inquiry">
-							<h4>공지</h4>
-						</div>
-						<!-- svc_cont_wrap -->
-						<div class="svc_cont_wrap">
-							<div class="svc_tab svc_inquiry svc_inq_reg">
-								<form action="noticeWrite.gh" method="post" accept-charset="utf-8">
-									<div class="svc_inquiry_reg">
-										<div class="inq_cate_sel">
-											<label> 
-											<span>작성자:</span>
-												<td>${session_name}<input type="hidden" name="name"
-													value="${session_name}" /></td>
-											</label>
-										</div>
-										<div class="inq_tel">
-											<p>
-
-												<label><input
-													class="ipt_inq_tel numOnly" name="subject"
-													placeholder="제목을 입력해주세요" maxlength="11">
-												</label>
-										</div>
-										<div class="inq_input">
-											<textarea name="content" placeholder="문의하실 내용을 입력해주세요."></textarea>
-										</div>
+<script src="${pageContext.request.contextPath}/resources/lib/js/wysihtml5-0.3.0.js"></script>
+<script src="${pageContext.request.contextPath}/resources/lib/js/jquery-1.7.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/lib/js/prettify.js"></script>
+<script src="${pageContext.request.contextPath}/resources/lib/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/lib/bootstrap-wysihtml5.js"></script>
 
 
 
-										<div class="inq_btn">
-											<input type="submit" class="btn_inq_reg" value="완료">
-											<span  onclick="history.go(-1);"><input type="button" class="btn_inq_reg" value="취소"></span>
-										</div>
+<script type="text/javascript" charset="utf-8">
+	$(prettyPrint);
+</script>
 
-									</div>
-
-								</form>
-							</div>
-							</div>
-							<!-- //svc_cont_wrap -->
-
-
-						</div>
-						<!-- //서비스 콘텐츠 -->
-					</div>
-
-				</div>
-				<!-- //서비스 wrap -->
-		</article>
-		<!-- //(공통)contentsWrap -->
-
-		<!-- //페이지별 화면 load -->
 </body>
 </html>
