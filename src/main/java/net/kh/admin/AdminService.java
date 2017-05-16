@@ -4,14 +4,15 @@ import java.util.List;
 
 import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
+import net.kh.member.MemberVO;
 import net.kh.room.RoomVO;
 
 public interface AdminService {
 	
 	//회원 관리
-	List<AdminVO> memberList(AdminVO admin) throws Exception;
+	List<MemberVO> memberList(MemberVO member) throws Exception;
 	
-	public int deleteMember(String no) throws Exception;
+	public int deleteMember(int no) throws Exception;
 	
 	//호스트 관리
 	List<HostVO> hostList(HostVO host) throws Exception;

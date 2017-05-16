@@ -32,7 +32,8 @@ public class HomeController {
 //		
 //		model.addAttribute("serverTime", formattedDate );
 		
-		return "mypage/modifyMyInfo/MAIN";
+	//	return "mypage/modifyMyInfo/MAIN";
+		return "base";
 
 	}
 	
