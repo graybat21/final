@@ -40,4 +40,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.emailCheck(email);
 	}
 
+	@Override
+	public Object modifyMyInfo(MemberVO member) throws Exception {
+		return memberMapper.modifyMyInfo(member);
+	}
+
 }

@@ -331,7 +331,7 @@
 								<div class="btn_area">
 									<!-- <a href="" onclick="$.joinok(); return false;"
 										class="btn_confirm">회원가입!</a> -->
-									<input class="btn_confirm" type="submit" value="JOIN">
+									<input class="btn_confirm" type="submit" width="200" value="JOIN">
 								</div>
 								<p class="join_info">
 									<span>비밀번호 분실시 이메일을 통해 확인하므로,</span> <span>정확하게 입력해주세요.</span>

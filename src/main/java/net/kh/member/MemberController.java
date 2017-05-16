@@ -80,6 +80,7 @@ public class MemberController {
 		return mav;
 	}
 	
+	
 //	public ModelAndView register(@ModelAttribute @Valid User user, BindingResult bindingResult, HttpSession session)
 //			throws Exception {
 //
@@ -108,7 +109,10 @@ public class MemberController {
 //		return mav;
 //	}
 	
-	
+	@RequestMapping("modifyMyInfo.gh")
+	public String modifyMyInfo() {
+		return "mypage/modifyMyInfo/개인회원 수정";
+	}
 	
 
 	@RequestMapping(value = "emailCheck.gh", method = RequestMethod.POST)

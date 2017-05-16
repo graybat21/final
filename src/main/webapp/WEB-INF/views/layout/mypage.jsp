@@ -9,7 +9,7 @@
 	<ul>
 		<li><a href="">찜 </a></li>
 		<li><a href="#">예약내역</a></li>
-		<li><a href="">내정보수정</a></li>
+		<li><a href="modifyMyInfo.gh">내정보수정</a></li>
 	</ul>
 	<h3>QNA</h3>
 	<ul>

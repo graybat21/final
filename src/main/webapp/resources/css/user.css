@@ -8,7 +8,7 @@
 
 /* user 버튼 스타일 */
 .btn_area {padding:10px 0;}
-.btn_area .btn_confirm {display:block;padding:12px 0;border-radius:2px;background:#e62a4a;color:#fff;text-align:center;font-size:1.125rem;font-weight:bold;line-height:1.5;}
+.btn_area .btn_confirm {width: 820px;display:block;padding:12px 0;border-radius:2px;background:#e62a4a;color:#fff;text-align:center;font-size:1.125rem;font-weight:bold;line-height:1.5;}
 .btn_area .btn_confirm:hover {color:#fff;}
 
 /* input 스타일 */

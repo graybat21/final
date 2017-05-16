@@ -30,7 +30,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="adminRoomList.gh"><i class="fa fa-circle-o"></i>게하룸상품조회</a></li>
-            <li><a href="admindiscountList.gh"><i class="fa fa-circle-o"></i>특가상품조회</a></li>
+            <li><a href="adminDiscountList.gh"><i class="fa fa-circle-o"></i>특가상품조회</a></li>
           </ul>
         </li>
         <li class="treeview">

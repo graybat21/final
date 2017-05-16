@@ -122,7 +122,7 @@
 .myinfo_title {clear:both;overflow:hidden;margin-bottom:20px;padding:15px;border-bottom:1px solid #ccc;}
 .myinfo_title h5 {float:left;font-size:1.25rem;color:#353535;}
 .myinfo_title span {float:right;font-size:0.875rem;color:#707070;margin-top: 1px;}
-.myinfo_table {position:relative;padding:0 10px 0 140px; font-size: 0.8rem;}
+.myinfo_table {position:relative; font-size: 0.8rem;}
 .myinfo_table .myinfo_img {overflow:hidden;position:absolute;left:10px;top:8px;display:inline-block;width:130px;height:130px;border:1px solid #ddd;background:#eee;}
 .myinfo_table .myinfo_img img {}
 .myinfo_table .myinfo_img .my_img_change {position:absolute;left:0;bottom:0;width:100%;padding:8px 0;color:#ccc;background:#454545;text-align:center;font-size:0.75rem;cursor:pointer;}
@@ -141,12 +141,6 @@
 .myinfo_table .moblie_area{display:none;}
 .myinfo_table .myinfo_img .my_img.upload .thumb_none {display:block;width:100%;height:100%;position:absolute;left:0;top:0;bottom:0;right:0;background:#e9e9e9 url('https://img.goodchoice.kr/images/web_v2/mypage/img_user_default_2.png') no-repeat;background-size:100%;}
 
-@media all and (max-width:480px) {
-	.myinfo_table {padding:55px 15px 0 15px}
-	.myinfo_table .myinfo_img {width:90%;height:40px;box-sizing:border-box;left:15px;}
-	.myinfo_table .myinfo_img img {display:none;}
-	.myinfo_table .myinfo_img .my_img_change {padding:12px 0;}
-}
 
 /* 예약내역 */
 .reserve_wrap{padding:45px 0 0 0;}
@@ -224,32 +218,7 @@
 }
 
 /* 768 이하 */
-@media all and (max-width:768px) {
-	/* 내정보 수정 모바일 */
-	.mweb .myinfo_title {margin:15px 0 0 0;padding:0 0 5px 0;font-size:1.15rem;}
-	.mweb .myinfo_title span {clear: both;display: block;width:100%;margin-top:10px;font-size:0.7rem;}
-	.mweb .myinfo_table {padding:0;}
-	.mweb .myinfo_table .myinfo_img {position:relative;width:35%;height:100%;left:0;box-sizing:content-box;border:0;background:transparent;padding:5px;z-index:10;}
-	.mweb .myinfo_table .myinfo_img .my_img.upload {position:relative;width: 100%;height: 0;overflow: hidden;padding-bottom: 100%; }
-	.mweb .myinfo_table .myinfo_img .my_img.upload img {display:block;width:100%;height:100%;position:absolute;left:0;top:0;bottom:0;right:0;border-radius:500px;}
-	.mweb .myinfo_table .myinfo_img .my_img.upload .thumb_none {display:block;width:100%;height:100%;position:absolute;left:0;top:0;bottom:0;right:0;border-radius:500px;background:#e9e9e9 url('https://img.goodchoice.kr/images/web_v2/mypage/img_user_default_2.png') no-repeat;background-size:110%;}
-	.mweb .myinfo_table .myinfo_img .my_img.upload .btn_loading {top:5px;right:5px;left:initial;width:20px;height:20px;}
-	.mweb .myinfo_table .myinfo_img .my_img_change {height:100%;padding:0;background:transparent;}
-	.mweb .myinfo_table .myinfo_img .my_img_change span {font-size:0;padding:0;height:25%;width:25%;display:block;position:absolute;top:0px;right:0px;background: url('https://img.goodchoice.kr/images/web_v2/mypage/ic_img_mchange.png') no-repeat;background-size: 100%;}
-	.mweb .myinfo_table .info_table {position:absolute;top:0px;width:100%;height:0;padding-bottom:100%;}
-	.mweb .myinfo_table .info_table table {position: initial;top:0;left:0;width:100%;height:100%;}
-	.mweb .myinfo_table .info_table table .user_level {position:absolute;top:11%;left:40%;border:0;}
-	.mweb .myinfo_table .info_table table .user_level th {display:none;}
-	.mweb .myinfo_table .info_table table .user_level td span {padding:3px 12px 2px 12px;border:1px solid #e62a4a;border-radius:20px;color:#e62a4a;font-weight:bold;font-size:0.8rem;}
-	.mweb .myinfo_table .info_table table .user_level td .nickname_title {display:block;padding:10px 0;color:#353535;font-weight:bold;font-size:1rem;}
-	.mweb .myinfo_table .moblie_area{display:table-row;}
-	.mweb .myinfo_table .info_table table tr:first-child th,
-	.mweb .myinfo_table .info_table table tr:first-child td{padding-top:39%;border-top:0;}
-	.mweb .myinfo_table .info_table table tr a{top:10px;}
-	.mweb .myinfo_table .info_table table tr {border-bottom:1px solid #ddd;}
-	.mweb .myinfo_table .info_table table th,
-	.mweb .myinfo_table .info_table table td {padding:15px 0;font-size:0.8rem;}
-}
+
 
 /* 레이어 : 비밀번호/닉네임 변경 */
 .layer_allwrap .layer_cont p {color:#353535;}
@@ -334,7 +303,7 @@
 	.my_allwrap .bg_right {width:50%/*79.03226%*/;position:absolute;right:0;top:0;height:100%;background:#f6f6f6 url('https://img.goodchoice.kr/images/web_v2/mypage/bg_right.png') repeat-x 0 0;}
 	.my_wrap {clear:both;overflow:hidden;}	
 	.my_wrap .my_menu {position:static;float:left;width:20.96774%;}
-	.my_wrap .my_contents {float:left;width:78.902%;min-height:800px;border-left:1px;}
+	.my_wrap .my_contents {float:left;width:78.902%;min-height:800px;border-left:1px ;}
 	.my_menu {border-bottom:none;}
 	.my_menu h3 {display:block;padding-left:15px;color:#343434;text-align:left;font-size:2rem;line-height:128px;}
 	.my_menu ul li a {margin-bottom:50px;padding:0 15px;text-align:left;border-bottom:none;font-size:1.125rem;background:none;}
@@ -402,7 +371,7 @@
 
 	/* 내정보 수정 */
 	.myinfo_title {margin-bottom:0;padding:35px 0 10px 0;border-bottom:4px solid #ccc;}
-	.myinfo_table {padding-left:270px; font-size: 1rem;}
+	.myinfo_table {font-size: 1rem;}
 	.myinfo_table .myinfo_img {left:25px;top:33px;width:210px;height:210px;}
 	.myinfo_table.login_sns {padding-left:250px;}
 	.myinfo_table.login_sns .myinfo_img {left:25px;top:15px;width:190px;height:190px;}
