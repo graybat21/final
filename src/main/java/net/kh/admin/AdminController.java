@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.kh.host.HostVO;
 import net.kh.qna.QnaVO;
+import net.kh.member.MemberVO;
+import net.kh.room.ImageVO;
 import net.kh.room.RoomVO;
 import net.kh.utils.PageMaker;
 
@@ -113,9 +115,8 @@ public class AdminController {
 	
 	// 관리자의 게하 방 관리
 	@RequestMapping("/adminRoomList.gh")
-	public ModelAndView adminRoomList(RoomVO room) throws Exception {
-		
-		ModelAndView mav = new ModelAndView("admin/roomList/게스트하우스 방 목록");
+	public ModelAndView adminRoomList(RoomVO room, ImageVO image) throws Exception {
+		ModelAndView mav = new ModelAndView("roomList");
 		
 		List<RoomVO> adminRoomList = adminService.adminRoomList(room);
 		mav.addObject("adminRoomList", adminRoomList);
