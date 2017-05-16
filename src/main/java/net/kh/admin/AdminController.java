@@ -81,7 +81,7 @@ public class AdminController {
 											// roomList.jsp
 		ModelAndView mav = new ModelAndView("roomList");
 		
-		List<RoomVO> adminRoomList = adminService.adminRoomList(room, );
+		List<RoomVO> adminRoomList = adminService.adminRoomList(room);
 		//logger.info(adminRoomList.toString());
 		
 		mav.addObject("adminRoomList", adminRoomList);
