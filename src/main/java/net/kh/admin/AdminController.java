@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
+import net.kh.member.MemberVO;
+import net.kh.room.ImageVO;
 import net.kh.room.RoomVO;
 
 @Controller
@@ -27,11 +29,11 @@ public class AdminController {
 	
 	// 관리자의 회원관리 - 회원 목록
 	@RequestMapping("/adminmemberList.gh")
-	public ModelAndView memberList(AdminVO admin) throws Exception {
+	public ModelAndView memberList(MemberVO member) throws Exception {
 											// memList.jsp 의미
 		ModelAndView mav = new ModelAndView("memList");
 		
-		List<AdminVO> memberList = adminService.memberList(admin);
+		List<MemberVO> memberList = adminService.memberList(member);
 		mav.addObject("memberList", memberList);
 			
 		return mav;
@@ -44,7 +46,7 @@ public class AdminController {
 		
 		ModelAndView mav = new ModelAndView();
 		String no = request.getParameter("no");
-		adminService.deleteMember(no);
+		adminService.deleteMember(Integer.parseInt(no));
 		mav.setViewName("redirect:/adminmemberList.gh");
 		return mav;
 		
@@ -75,7 +77,7 @@ public class AdminController {
 	
 	// 관리자의 게하 방 관리
 	@RequestMapping("/adminRoomList.gh")
-	public ModelAndView adminRoomList(RoomVO room) throws Exception {
+	public ModelAndView adminRoomList(RoomVO room, ImageVO image) throws Exception {
 											// roomList.jsp
 		ModelAndView mav = new ModelAndView("roomList");
 		

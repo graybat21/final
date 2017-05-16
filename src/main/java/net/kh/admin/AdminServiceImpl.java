@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import net.kh.dao.AdminDao;
 import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
+import net.kh.member.MemberVO;
 import net.kh.room.RoomVO;
 
 @Service("adminService")
@@ -20,14 +21,14 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Override
 	@Transactional
-	public List<AdminVO> memberList(AdminVO admin) throws Exception {
+	public List<MemberVO> memberList(MemberVO member) throws Exception {
 		
-		return adminMapper.memberList(admin);
+		return adminMapper.memberList(member);
 	}
 	
 	@Override
 	@Transactional
-	public int deleteMember(String no) throws Exception {
+	public int deleteMember(int no) throws Exception {
 		
 		return adminMapper.deleteMember(no);
 	}

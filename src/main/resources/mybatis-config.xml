@@ -16,7 +16,6 @@
 		<typeAlias alias="roomVO" type="net.kh.room.RoomVO" />
 		<typeAlias alias="imageVO" type="net.kh.room.ImageVO" />
 
-		<typeAlias alias="adminVO" type="net.kh.admin.AdminVO" />
 		<typeAlias alias="discountVO" type="net.kh.discount.DiscountVO" />
 
 	</typeAliases>

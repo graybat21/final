@@ -45,7 +45,7 @@
 </script>
 
 		<!-- 마이페이지 wrap -->
-<!-- 해봄 위에 얇은줄만 없어짐 --><div class="my_allwrap">
+<!-- 해봄 위에 얇은줄만 없어짐 --><!-- <div class="my_allwrap"> -->
 	<!-- 해봄 왼쪽메뉴바 사라짐 -->		<div class="my_wrap row row_cont">
 				<!-- 마이페이지 메뉴 -->
 <!-- 해봄 왼쪽메뉴바 망가짐 -->				
