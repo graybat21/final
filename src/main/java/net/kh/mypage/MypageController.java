@@ -22,5 +22,11 @@ public class MypageController {
 		logger.info("MypageController - myPage.gh");
 		return "mypage/modifyMyInfo/MY PAGE";
 	}
+	
+	@RequestMapping("/withdrawal.gh")
+	public String withdrawal(){
+		logger.info("회원탈퇴하기");
+		return "mypage/delete/회원탈퇴";
+	}
 
 }
