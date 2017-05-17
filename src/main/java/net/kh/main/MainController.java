@@ -1,3 +1,4 @@
+package net.kh.main;
 //package net.kh.main;
 //
 //import java.util.List;
@@ -23,7 +24,7 @@
 //	@RequestMapping(value="/main.dog")
 //	public ModelAndView mainForm(){
 //		
-//		//goods »óÇ°±¸ºÐ ±âº»=0, ÃßÃµ=1, º£½ºÆ®=2, ½Å»ó=3¿¡ µû¶ó ±¸ºÐ ¸ÞÀÎÆäÀÌÁö ³ëÃâ
+//		//goods ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ ï¿½âº»=0, ï¿½ï¿½Ãµ=1, ï¿½ï¿½ï¿½ï¿½Æ®=2, ï¿½Å»ï¿½=3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //		List<GoodsModel> goodsSelectList1 = goodsService.goodsSelectList1("1");
 //		List<GoodsModel> goodsSelectList2 = goodsService.goodsSelectList1("2");
 //		List<GoodsModel> goodsSelectList3 = goodsService.goodsSelectList1("3");

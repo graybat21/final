@@ -15,4 +15,5 @@ public interface RoomDao {
 	RoomVO roomList(int no) throws Exception;
 	List<String> allImage(int h_no) throws Exception;
 	
+	RoomVO getRoomInfoByHostNo(int no)throws Exception;
 }

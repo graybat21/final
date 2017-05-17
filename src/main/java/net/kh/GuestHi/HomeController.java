@@ -31,9 +31,8 @@ public class HomeController {
 //		String formattedDate = dateFormat.format(date);
 //		
 //		model.addAttribute("serverTime", formattedDate );
-		
 //		return "mypage/wish/MAIN";
-		return "guesthouse/review/예약";
+		return "guesthouse/ghDetail/예약";
 
 	}
 	

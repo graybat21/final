@@ -106,16 +106,7 @@
 }
 </style>
 		<!-- Menu (search.js 138참고 )-->
-		<div class="search_menu">
-			<ul>
-				<li><a href="#" class="a_room">객실정보</a></li>
-				<li><a href="#" class="a_reserve">예약</a></li>
-				<li><a href="#" class="a_time">요금 및 시간</a></li>
-				<li><a href="#" class="a_notice">공지사항</a></li>
-				<li><a href="#" class="a_theme">테마</a></li>
-				<li><a href="#" class="a_review on">리뷰</a></li>
-			</ul>
-		</div>
+		
 		
 			<a id="bookmark6"></a>
 			<div class="ad_info_review row" id="reivew_area"

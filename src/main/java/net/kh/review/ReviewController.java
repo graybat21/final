@@ -27,7 +27,7 @@ public class ReviewController {
 	@Inject
 	private ReviewService reviewService;
 
-	@RequestMapping(value = "/review.gh", method = RequestMethod.GET)
+	@RequestMapping("/tabReview.gh")
 	public ModelAndView review(HttpSession session) throws Exception {
 		logger.info("ReviewController 구동");
 		ModelAndView mav = new ModelAndView("guesthouse/review/예약");

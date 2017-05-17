@@ -15,6 +15,6 @@ public interface RoomService {
 	
 	public List<String> allImage(int h_no) throws Exception;
 	
-	
+	public RoomVO getRoomInfoByHostNo(int no)throws Exception;
 	
 }
