@@ -49,9 +49,9 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Override
 	@Transactional
-	public List<RoomVO> adminRoomList(RoomVO room) throws Exception {
+	public List<AdminVO> adminRoomList(AdminVO admin) throws Exception {
 		
-		return adminMapper.adminRoomList(room);
+		return adminMapper.adminRoomList(admin);
 	}
 	
 	@Override

@@ -27,8 +27,8 @@
 	</update>
 	
 	<!-- 관리자 게하 룸 관리 목록 -->
-	<select id="adminRoomList" resultType="roomVO">
-		SELECT * FROM room ORDER BY no DESC
+	<select id="adminRoomList" resultType="adminVO">
+		SELECT r.no, r.name, r.max, r.price, r.host_no, r.reg, i.no, i.room_no, i.filename, i.filesize FROM room r, image i ORDER BY r.no DESC
 	</select>
 	
 	<!-- 관리자 게하 룸 강제 삭제 -->

@@ -20,7 +20,7 @@ public interface AdminService {
 	public int deleteHost(int no) throws Exception;
 	
 	//방 관리
-	List<RoomVO> adminRoomList(RoomVO room) throws Exception;
+	List<AdminVO> adminRoomList(AdminVO admin) throws Exception;
 	
 	public int deleteRoom(int no) throws Exception;
 	
