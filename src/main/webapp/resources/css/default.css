@@ -121,7 +121,7 @@ select {border:1px solid #ccc;color:#707070;box-sizing:border-box}
 /* layout */
 #allWrap {position:relative;width:100%;padding:0 0 0 0}
 #headerWrap{position:fixed;left:0;top:0;width:100%;background:#fff;z-index:6000}
-#contentsWrap {width:100%;min-height:550px;margin-top:90px;padding:0}
+#contentsWrap {width:100%;min-height:550px;padding:0}
 .row {position:relative;width:100%;max-width:1240px;margin:0 auto;box-sizing:border-box}
 .row.row_cont {clear:both;padding:0}
 .row.row_cont .section_title {margin:15px 0 0 15px;color:#353535;text-align:left}

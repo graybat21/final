@@ -33,54 +33,46 @@ td {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        	기업 회원 목록
+        	게스트하우스 특가 목록
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
-        
-    <c:if test="${hostList.size()<=0}">
-    	<h3 align="center">가입한 호스트가 없습니다.</h3>
+    
+    <c:if test="${adminDiscountList.size()<=0}">
+    	<h3 align="center">등록된 특가 상품이 없습니다.</h3>
     </c:if>
     <br /> <br>
+    
 <table>
 		<thead>
 			<tr height="30px">
-				<th>회원번호</th>
-				<th>이메일</th>
-				<th>이름</th>
-				<th>연락처</th>
-				<th>가입일</th>
-				<th>사업자번호</th>
-				<th>주소1</th>
-				<th>주소2</th>
-				<th>우편번호</th>
-				<th>인증여부</th>
-				<th>강제탈퇴</th>
-				
+				<th>특가 번호</th>
+				<th>방 번호</th>
+				<th>등록 시간</th>
+				<th>시작 시간</th>
+				<th>종료 시간</th>
+				<th>특 가</th>				
+				<th>강제 삭제</th>				
 			</tr>
 		</thead>
 		
 		<tbody>
-					<c:forEach items="${hostList }" var="host">
+					<c:forEach items="${adminDiscountList }" var="discount">
 						<tr height="50px">
-							<td>${host.no }</td>
-							<td>${host.email }</td>
-							<td>${host.name }</td>
-							<td>${host.tel }</td>
-							<td><fmt:formatDate value="${host.reg }" pattern="yyyy.MM.dd"/></td>
-							<td>${host.biz_no}</td>
-							<td>${host.addr1 }</td>
-							<td>${host.addr2 }</td>
-							<td>${host.zip }</td>
-							<td>${host.auth }</td>
+							<td>${discount.no }</td>
+							<td>${discount.room_no }</td>
+							<td><fmt:formatDate value="${discount.reg }" pattern="yy.MM.dd kk:mm:ss"/></td>
+							<td><fmt:formatDate value="${discount.starttime }" pattern="yy.MM.dd kk:mm:ss"/></td>
+							<td><fmt:formatDate value="${discount.endtime }" pattern="yy.MM.dd kk:mm:ss"/></td>
+							<td>${discount.newprice}</td>
 							<td>
-								<c:url var="deleteMem" value="/adminhostDelete.gh">
-									<c:param name="no" value="${host.no }" />
+								<c:url var="deletediscount" value="/adminDiscountDelete.gh">
+									<c:param name="no" value="${discount.no }" />
 								</c:url>
 								
-							<a href="${deleteMem }"><input type="button" value="탈 퇴" onclick="return deleteMem()"></a></td>
+							<a href="${deletediscount }"><input type="button" value="삭 제" onclick="return deletediscount()"></a></td>
 						</tr>
 					</c:forEach>
 
@@ -89,8 +81,8 @@ td {
 	
 	<script type="text/javascript">	
 	
-	function deleteMem() {
-		return confirm("선택한 기업 회원을 탈퇴시키겠습니까?");
+	function deletediscount() {
+		return confirm("선택한 특가 방을 삭제시키겠습니까?");
 	}
 </script>	
  

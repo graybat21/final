@@ -28,9 +28,7 @@
 
  <body class="pcweb" oncontextmenu="return false" ondragstart="return false"> <!--<![endif]-->
 
-
-
-      <!-- 페이지별 호출 소스 -->
+   <!-- 페이지별 호출 소스 -->
    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage_files/mypage.css">
    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage_files/search.css">
    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage_files/jquery-ui-1.htm">

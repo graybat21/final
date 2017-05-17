@@ -7,12 +7,12 @@
 	<!-- id 속성은 DAO 의 메소드와 같아야 한다. 여기의 boardVO 는 mybatis-confg.xml 에 Alias 되어 있습니다. -->
 	
 	<!-- 관리자 회원 목록 -->
-	<select id="memberList" resultType="adminVO">
+	<select id="memberList" resultType="memberVO" parameterType="int">
 		SELECT no, email, name, phone, reg, auth FROM member ORDER BY no DESC
 	</select>
 	
 	<!-- 관리자 회원 강제 탈퇴 -->
-	<update id="deleteMember" parameterType="adminVO">
+	<update id="deleteMember" parameterType="int">
 		DELETE FROM member WHERE no=#{no}
 	</update>
 	
@@ -25,6 +25,21 @@
 	<update id="deleteHost" parameterType="int">
 		DELETE FROM host WHERE no=#{no}
 	</update>
+	
+	<!-- 관리자 게하 룸 관리 목록 -->
+	<select id="adminRoomList" resultType="roomVO">
+		SELECT * FROM room ORDER BY no DESC
+	</select>
+	
+	<!-- 관리자 게하 룸 강제 삭제 -->
+	<update id="deleteRoom" parameterType="int">
+		DELETE FROM room WHERE no=#{no}
+	</update>
+	
+	<!-- 관리자 특가 관리 목록 -->
+	<select id="adminDiscountList" resultType="discountVO" parameterType="int">
+		SELECT * FROM discount ORDER BY no DESC
+	</select>
 	
 	
 </mapper>

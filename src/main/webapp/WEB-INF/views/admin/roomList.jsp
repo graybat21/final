@@ -33,54 +33,44 @@ td {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        	기업 회원 목록
+        	게스트하우스 방 목록
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
-        
-    <c:if test="${hostList.size()<=0}">
-    	<h3 align="center">가입한 호스트가 없습니다.</h3>
+    
+    <c:if test="${adminRoomList.size()<=0}">
+    	<h3 align="center">등록된 방이 없습니다.</h3>
     </c:if>
-    <br /> <br>
+    <br><br>
+    
 <table>
 		<thead>
 			<tr height="30px">
-				<th>회원번호</th>
-				<th>이메일</th>
-				<th>이름</th>
-				<th>연락처</th>
-				<th>가입일</th>
-				<th>사업자번호</th>
-				<th>주소1</th>
-				<th>주소2</th>
-				<th>우편번호</th>
-				<th>인증여부</th>
-				<th>강제탈퇴</th>
-				
+				<th>방 번호</th>
+				<th>호스트 번호</th>
+				<th>방 이름</th>
+				<th>최대 인원</th>
+				<th>가격</th>				
+				<th>강제 삭제</th>				
 			</tr>
 		</thead>
 		
 		<tbody>
-					<c:forEach items="${hostList }" var="host">
+					<c:forEach items="${adminRoomList }" var="room">
 						<tr height="50px">
-							<td>${host.no }</td>
-							<td>${host.email }</td>
-							<td>${host.name }</td>
-							<td>${host.tel }</td>
-							<td><fmt:formatDate value="${host.reg }" pattern="yyyy.MM.dd"/></td>
-							<td>${host.biz_no}</td>
-							<td>${host.addr1 }</td>
-							<td>${host.addr2 }</td>
-							<td>${host.zip }</td>
-							<td>${host.auth }</td>
+							<td>${room.no }</td>
+							<td>${room.host_no }</td>
+							<td>${room.name }</td>
+							<td>${room.max }</td>
+							<td>${room.price}</td>
 							<td>
-								<c:url var="deleteMem" value="/adminhostDelete.gh">
-									<c:param name="no" value="${host.no }" />
+								<c:url var="deleteRoom" value="/adminRoomDelete.gh">
+									<c:param name="no" value="${room.no }" />
 								</c:url>
 								
-							<a href="${deleteMem }"><input type="button" value="탈 퇴" onclick="return deleteMem()"></a></td>
+							<a href="${deleteRoom }"><input type="button" value="삭 제" onclick="return deleteRoom()"></a></td>
 						</tr>
 					</c:forEach>
 
@@ -89,8 +79,8 @@ td {
 	
 	<script type="text/javascript">	
 	
-	function deleteMem() {
-		return confirm("선택한 기업 회원을 탈퇴시키겠습니까?");
+	function deleteRoom() {
+		return confirm("선택한 방을 삭제시키겠습니까?");
 	}
 </script>	
  
