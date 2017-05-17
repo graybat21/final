@@ -26,5 +26,17 @@
 		WHERE
 		SEQUENCE_NAME='SEQ_ROOM_NO'
 	</select>
+
+	<select id="roomList" parameterType="int" resultType="roomVO">
+
+		select * from room where no = #{no}
+	</select>
+	
+	<select id="allImage" parameterType="int" resultType="String">
+		select
+		i.filename from image i, room r, host h
+		where i.room_no = r.no and
+		r.host_no=h.no and h.no=#{no}
+	</select>
 </mapper>
 	
