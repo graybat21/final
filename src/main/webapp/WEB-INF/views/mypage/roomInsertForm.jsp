@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -58,11 +59,18 @@
 </head>
 
 <body>
+<div class="svc_allwrap">
+<div class="svc_wrap row row_cont">
+<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
 
-	<div>
+	<div class="svc_contents">
+		<div class="svc_title svc_notice">
+		<h4>방등록</h4>
+		</div>
 		<form id="uploadForm" enctype="multipart/form-data" method="POST"
 			action="${pageContext.request.contextPath}/roomInsert.gh">
-			<label for="file1">파일 첫 번째</label>
+			
+						<label for="file1">파일 첫 번째</label>
 			<div>
 				<input type="file" id="file1" name="file" required="required" />
 			</div>
@@ -85,13 +93,18 @@
 
 			<input type="text" id="host_no" name="host_no" value="${host_no}"required="required" />
 
-
 		</form>
+		<div>
+		<button id="btn-upload" type="submit" onclick="location.href='roomList.gh'">파일 업로드</button>
+		<!-- <button id="btn-upload">파일 업로드</button> -->
+		 <%-- <a href="resources/upload/${filename}">${filename}</a><br/> --%>
+	</div>
 	</div>
 
-	<div>
-		<button id="btn-upload">파일 업로드</button>
-	</div>
+	
+</div></div>
+
+
 
 </body>
 </html>
