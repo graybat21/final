@@ -30,7 +30,7 @@ public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 	
-	String PATH = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
+	String PATH = "C:\\java_eclipse\\work\\guestHi\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject
@@ -48,9 +48,8 @@ public class RoomController {
 	 * HTML private Paging paging; // 페이징 클래스의 변수 선언
 	 */
 
-	// json 데이터로 응답을 보내기 위한
-	@Autowired
-	MappingJackson2JsonView jsonView;
+	// json 데이터로 응답을 보내기 위한r
+	
 
 	@RequestMapping("/roomInsertForm.gh")
 	public ModelAndView roomInsertForm() throws Exception {
@@ -73,7 +72,6 @@ public class RoomController {
 		// C:\Java\Final\src\main\webapp\resources
 		logger.info(room.toString()); // no->seq
 		ModelAndView model = new ModelAndView();
-		model.setView(jsonView);
 		roomService.roomInsert2(room);
 		ImageVO image = new ImageVO();
 		int room_no = roomService.roomGetCurrentNo();
@@ -93,7 +91,7 @@ public class RoomController {
 
 				logger.info(orgFileName + "============원래 파일명=========");
 				logger.info(file.getAbsolutePath() + "========= 암호화 ===========");
-				mpf.get(i).transferTo(file);// 복사 try
+				mpf.get(i).transferTo(file);// 복사 try 
 				image.setFilename(newFileName);
 				image.setRoom_no(room_no - 1);//
 				image.setFilesize("0");
@@ -129,56 +127,7 @@ public class RoomController {
 	
 	
 	
-/*		//select * FROM room a INNER JOIN image b on a.no = b.ROOm_no;
-		
-		List<room> list = roomService.roomList(map);
-		
-		model.addObject("room", list);
-		
-		//
-		
 
-	return model;
-		
-	
-	}
-
-	/*
-	 * @RequestMapping("/roomList.gh") public ModelAndView
-	 * download(@RequestParam("fname") String fname) { String realFolder =
-	 * "C:/Java/upload/"; ModelAndView mav = new ModelAndView();
-	 * 
-	 * mav.addObject("fileName", new File(realFolder + fname));
-	 * mav.setViewName("downloadView"); return mav; }
-	 * 
-	 * @RequestMapping("/roomList.gh") public class DownloadImpl extends
-	 * AbstractView {
-	 * 
-	 * @Override protected void renderMergedOutputModel(Map<String, Object> map,
-	 * HttpServletRequest req, HttpServletResponse res) throws Exception {
-	 * 
-	 * String fileName = null; File file = (File) map.get("fileName");
-	 * 
-	 * res.setContentType("application/download;"); int length = (int)
-	 * file.length(); res.setContentLength(length);
-	 * 
-	 * // 익스플로러 인지 확인 String userAgent = req.getHeader("User-Agent"); boolean ie
-	 * = userAgent.indexOf("MSIE") > -1;
-	 * 
-	 * if (ie) { fileName = URLEncoder.encode(file.getName(),
-	 * "utf-8").replace("+", "%20"); } else { fileName = new
-	 * String(file.getName().getBytes("utf-8"), "iso-8859-1").replace("+",
-	 * "%20"); }
-	 * 
-	 * res.setHeader("Content-Disposition", "attachment;" + " filename=\"" +
-	 * fileName + "\";"); OutputStream out = res.getOutputStream();
-	 * FileInputStream fis = null;
-	 * 
-	 * try { int temp; fis = new FileInputStream(file); while ((temp =
-	 * fis.read()) != -1) { out.write(temp); } } catch (Exception e) {
-	 * e.printStackTrace(); } finally { if (fis != null) { try { fis.close(); }
-	 * catch (Exception e) { e.printStackTrace(); } } } } }
-	 */
 
 	private String getUUID() {
 
