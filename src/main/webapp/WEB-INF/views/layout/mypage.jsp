@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
-<div class="svc_menu" style="display: none;"><!-- min-height: 1530px; -->
+
 
 	<c:if test="${mem != null }">
 	<h3>마이페이지</h3>
@@ -30,4 +30,3 @@
 	</ul>
 	
 	</c:if>
-</div>
