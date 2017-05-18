@@ -7,7 +7,7 @@
 	<c:if test="${mem != null }">
 	<h3>마이페이지</h3>
 	<ul>
-		<li><a href="">찜 </a></li>
+		<li><a href="wishList.gh">찜 </a></li>
 		<li><a href="#">예약내역</a></li>
 		<li><a href="modifyMyInfo.gh">내정보수정</a></li>
 	</ul>

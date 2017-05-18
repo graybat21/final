@@ -18,6 +18,7 @@ public class RoomServiceImpl implements RoomService {
 
 	@Autowired
 	private RoomDao roomMapper;
+	
 
 
 	
@@ -61,5 +62,14 @@ public class RoomServiceImpl implements RoomService {
 
 	
 
+
+
+
+
+
+
+
+	
+	
 
 }
