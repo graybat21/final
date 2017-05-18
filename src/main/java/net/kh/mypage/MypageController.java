@@ -20,7 +20,9 @@ public class MypageController {
 	@RequestMapping("/myPage.gh")
 	public String noticeList(Model model) {
 		logger.info("MypageController - myPage.gh");
-		return "mypage/modifyMyInfo/MY PAGE";
+
+		return "mypage/mypage/MY PAGE";
+
 	}
 	
 	@RequestMapping("/withdrawal.gh")

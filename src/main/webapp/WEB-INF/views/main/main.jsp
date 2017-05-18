@@ -320,7 +320,7 @@ button, input, optgroup, select, textarea {
 </head>
 <body>
 
-	<a href="${pageContext.request.contextPath}/roomInsertForm.gh">하하</a>
+	
 	<div class="inner-body">
 		<!-- <div class="wrapper-index"> -->
 		<img class="wrapper-index"
