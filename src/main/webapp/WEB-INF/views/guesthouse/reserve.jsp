@@ -135,7 +135,7 @@
 						<h3>게스트하우스 이름</h3>
 						<p class="address btn_copy">주소 블라블라</p>
 						<p class="tel">☎ 1234567899</p>
-						<a class="btn_zzim ">찜하기</a>
+						<a href="wishAdd.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" class="btn_zzim ">찜하기</a>
 					</div>
 					<div id="maparea" class="map"
 						style="overflow: hidden; background: transparent url(&quot;https://i1.daumcdn.net/dmaps/apis/loading_n.png&quot;) repeat scroll 0% 0%;">

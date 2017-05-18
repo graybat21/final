@@ -67,9 +67,9 @@ public class LoginController {
 				HttpSession session = request.getSession();
 	
 				session.setAttribute("mem", resultMember);
-				session.setAttribute("session_email", resultMember.getEmail());
-				session.setAttribute("session_name", resultMember.getName());
-				session.setAttribute("session_no", resultMember.getNo());
+				session.setAttribute("session_mem_email", resultMember.getEmail());
+				session.setAttribute("session_mem_name", resultMember.getName());
+				session.setAttribute("session_mem_no", resultMember.getNo());
 	
 				session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
 	
@@ -93,9 +93,9 @@ public class LoginController {
 				HttpSession session = request.getSession();
 	
 				session.setAttribute("host", resultHost);
-				session.setAttribute("session_email", resultHost.getEmail());
-				session.setAttribute("session_name", resultHost.getName());
-				session.setAttribute("session_no", resultHost.getNo());
+				session.setAttribute("session_host_email", resultHost.getEmail());
+				session.setAttribute("session_host_name", resultHost.getName());
+				session.setAttribute("session_host_no", resultHost.getNo());
 	
 				session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
 	

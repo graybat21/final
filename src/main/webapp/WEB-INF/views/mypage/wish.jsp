@@ -1,70 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 </head>
-
 <body class="pcweb" oncontextmenu="return false"
 	ondragstart="return false">
-
 	<!-- 헤더 시작부분 -->
-
 	<div id="allWrap">
-
-		<!-- 페이지별 화면 load -->
 		<!-- 페이지별 호출 소스 -->
 		<link rel="stylesheet" type="text/css"
 			href="${pageContext.request.contextPath}/resources/mypage_files/mypage.css">
-		<link rel="stylesheet" type="text/css"
-			href="${pageContext.request.contextPath}/resources/mypage_files/search.css">
-		<!-- ★★★ -->
-		<!-- <script src="${pageContext.request.contextPath}/resources/mypage_files/mypage.js"></script> -->
-		<!-- <script src="${pageContext.request.contextPath}/resources/mypage_files/search.js"></script> -->
-		<script type="text/javascript">
-			$(document).ready(function() {
-
-				// 찜해제
-				$('.delzzim_btn').click(function(e) {
-					e.preventDefault();
-					e.stopPropagation();
-
-					var $parent = $(this).parent().parent();
-
-					if (confirm("찜을 해제하시겠습니까?")) {
-						$.ajax({
-							type : 'POST',
-							async : false,
-							cache : false,
-							url : '/search/userAdFavorSet',
-							data : {
-								'uno' : '4197344',
-								'ano' : $(this).data('ano'),
-								'userfavor' : 'Y'
-							},
-							dataType : 'json',
-							success : function(data) {
-								if (data.rtv == true) {
-									alert("해제되었습니다.");
-									//$parent.remove();
-									location.reload();
-								} else {
-									alert("관리자에게 문의하여주세요.");
-								}
-
-							},
-							error : function(e) {
-								console.log(e);
-							}
-						});
-					}
-				});
-			});
-		</script>
+	
 		<!-- //페이지별 호출 소스 -->
-
 		<!-- (공통)contentsWrap -->
 		<article id="contentsWrap">
 			<h2 class="hide">마이페이지</h2>
@@ -85,18 +35,12 @@
 					});
 				});
 			</script>
-
-
 			<!-- 진정한 마이페이지의 시작 -->
-
 			<!-- 마이페이지 wrap -->
 			<div class="my_allwrap">
-
-
 				<!-- <div class="bg_left"></div> -->
 				<!-- 바깥으로 빠져나가는 회색 선 없어짐. -->
 				<!-- <div class="bg_right"></div> -->
-
 				<div class="my_wrap row row_cont">
 					<!-- 마이페이지 메뉴 -->
 					<!-- 좌측 네비게이션 -->
@@ -105,193 +49,94 @@
 						<ul>
 							<li><a href="https://www.goodchoice.kr/mypage/myZzim"
 								class="active">찜</a></li>
-
-
 							<li><a href="https://www.goodchoice.kr/mypage/myReserve">예약내역</a></li>
 
 							<li><a href="https://www.goodchoice.kr/mypage/myInfo">내정보수정</a></li>
 						</ul>
 					</div>
-
 					<!-- //마이페이지 메뉴 -->
-
 					<!-- 마이페이지 콘텐츠 -->
 					<div class="my_contents">
-
 						<!-- my_cont_wrap -->
 						<div class="my_cont_wrap">
-
-
 							<!-- 찜 리스트 -->
 							<div class="my_count">
 								<p>
-									<span class="cnt_num">찜목록</span>
+									<strong class="cnt_title">찜목록</strong> 
+									<span class="cnt_num"><em></em></span>
 								</p>
 							</div>
 							<div class="my_zzim_list">
 
-
 								<div class="srch_list_wrap">
 
 									<div class="srch_list ">
-									<c:forEach var="list" items="${wishList}">
-									<c:url var="viewURL" value="wishView.gh">
-									<c:param name="host_no" value="${list.host_no }"/>
-									</c:url>
-									</c:forEach>
-										<!-- 리스트 TYPE1 -->
-										<ul>
-											<li><a class="link" data-ano="5913" data-uitype=""
-												data-adtype="2" data-viewtype=""
-												href="https://www.goodchoice.kr/search/detailView/5913">
-													<div class="ad_thumb">
-														<div class="img_wrap imgLiquidFill"
-															style="overflow: hidden; background-image: none;">
-															<span class="top1000">Top1000</span>
-															<!-- TOP 1000 -->
-															<span class="thumb_none"></span> <img
-																src="${pageContext.request.contextPath}/resources/image/00e2fd6aac7074a4a9fd019bf26de81a.jpg"
-																alt="HOTEL 여기어때 - 잠실"
-																onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'"
-																style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
-															<span class="opacity"></span>
-															<!-- 그라데이션 배경 -->
+										<c:forEach var="list" items="${list}">
+											<c:url var="viewURL" value="wishView.gh">
+												<c:param name="host_no" value="${list.HOST_NO }" />
+												<c:param name="mem_no" value="${list.MEM_NO }" />
+											</c:url>
+											<!-- 리스트 TYPE1 -->
+											<ul>
+												<li><a class="link" data-ano="5913" data-uitype=""
+													data-adtype="2" data-viewtype=""
+													href="">
+														<div class="ad_thumb">
+															<div class="img_wrap imgLiquidFill"
+																style="overflow: hidden; background-image: none;">
+																<span class="thumb_none"></span> <img
+																	<%-- src="${pageContext.request.contextPath}/resources/image/epilp_21.png" --%>
+																	alt="${list.NAME }"
+																<%-- 	onerror="this.src='${list.host_imagename }'" --%>
+																	style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
+																<span class="opacity"></span>
+																<!-- 그라데이션 배경 -->
+															</div>
 														</div>
-													</div>
-
-													<div class="txt">
-														<p class="name">
-															<span>#{}</span>&nbsp;
-															<!--도보가-->
-														<p class="price col_fff">대실 25,000원</p>
-
-														<!--예약가-->
-														<p class="price">숙박예약 60,000원~</p>
-
-														<p class="icon">
-															<span class="box_red">TOP1000</span>
-														</p>
-														<p class="bene">#최저가보장 #예약취소가능 #회원가보장 #적립카드</p>
-
-														<p></p>
-													</div>
-											</a></li>
-											<!-- G4, 키워드 검색 -->
-											<li><a class="link" data-ano="749" data-uitype=""
-												data-adtype="5" data-viewtype=""
-												href="https://www.goodchoice.kr/search/detailView/749">
-													<div class="ad_thumb">
-														<div class="img_wrap imgLiquidFill"
-															style="overflow: hidden; background-image: none;">
-															<span class="thumb_none"></span> <img
-																src="${pageContext.request.contextPath}/resources/image/02.jpg"
-																alt="신촌 파르페"
-																onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'"
-																style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
-															<span class="opacity"></span>
-															<!-- 그라데이션 배경 -->
-														</div>
-													</div>
-
-													<div class="txt">
-														<p class="name">
-															신촌 파르페 <span>노고산동 4.0km</span>&nbsp;
-
-														</p>
-														<p class="score">만족해요 8 (2053)</p>
-														<p class="distance">4.0km 노고산동</p>
-
-
-														<!--예약가-->
-														<p class="price">대실예약 15,000원~</p>
-
-														<!--예약가-->
-														<p class="price">
-															숙박예약 <b>35,000~</b> <strong>30,000원~</strong><span
-																class="box_org">특가</span>
-														</p>
-
-														<p class="icon"></p>
-														<p class="bene">#최저가보장 #예약취소가능</p>
-
-														<p></p>
-													</div>
-											</a></li>
-											<!-- G4, 키워드 검색 -->
-											<li><a class="link" data-ano="4471" data-uitype=""
-												data-adtype="3" data-viewtype=""
-												href="https://www.goodchoice.kr/search/detailView/4471">
-													<div class="ad_thumb">
-														<div class="img_wrap imgLiquidFill"
-															style="overflow: hidden; background-image: none;">
-															<span class="ad_img">50%쿠폰</span>
-															<!-- 50프로쿠폰 -->
-															<span class="top1000">Top1000</span>
-															<!-- TOP 1000 -->
-															<span class="thumb_none"></span> <img
-																src="${pageContext.request.contextPath}/resources/image/650ddac45f0cd66c9fea33778dceadf2.jpg"
-																alt="태릉 마가렛"
-																onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'"
-																style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
-															<span class="opacity"></span>
-															<!-- 그라데이션 배경 -->
-														</div>
-													</div>
-
-													<div class="txt">
-														<p class="name">
-															태릉 마가렛 <span>묵동 10.1km</span>&nbsp; <b>TOP1000</b>
-														</p>
-														<p class="score">추천해요 9 (572)</p>
-														<p class="distance">10.1km 묵동</p>
-
-
-														<!--예약가-->
-														<p class="price">대실예약 25,000원~</p>
-
-														<!--예약가-->
-														<p class="price">숙박예약 50,000원~</p>
-
-														<p class="icon">
-															<span class="box_red">TOP1000</span>
-														</p>
-														<p class="bene">#최저가보장 #예약취소가능 #회원가보장</p>
-
-														<p></p>
-													</div>
-											</a></li>
-											<!-- G4, 키워드 검색 -->
-										</ul>
+														<div class="txt">
+															<p class="name">
+															<h4>${list.NAME }</h4>&nbsp;
+																<!--도보가-->
+															<p class="score">${list.ADDR1 }</p>
+															<p class="score">${list.ADDR2 }</p>
+															<p class="score">${list.ZIP }</p>
+															<p class="price">${list.TEL }</p>
+															<p class="icon">
+																<span class="box_red">전화</span>
+															</p></div>
+															<p></p>
+														<a href="wishDelete.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" ><strong>X</strong> </a>
+												</a></li>
+												<!-- G4, 키워드 검색 -->
+											</ul>
+										</c:forEach>
 									</div>
 								</div>
-
-
 								<!-- //리스트 TYPE1 -->
 							</div>
+							<!-- //마이페이지 wrap -->
+							
+			<c:if test="${empty list }">
+			<div class="my_zzim_list">
+			<div class="list_none">
+				<h5>찜한 게스트하우스가 없습니다</h5>
+				<p>관심 있는 게스트하우스를 찜해놓으세요 더욱 빠르게 찾으실 수 있습니다</p>
+				</div>
+				</div>
+			</c:if>
 							<!-- //찜 리스트 -->
-
 							<!-- 페이징 -->
-							<div class="svc_paging"></div>
 							<!-- //페이징 -->
-
 						</div>
 						<!-- //my_cont_wrap -->
-
 					</div>
 					<!-- //마이페이지 콘텐츠 -->
 				</div>
-
 			</div>
-			<!-- //마이페이지 wrap -->
-
-
-
+			
 		</article>
 		<!-- //(공통)contentsWrap -->
-
-
 		<!-- //페이지별 화면 load -->
 	</div>
-
 </body>
 </html>

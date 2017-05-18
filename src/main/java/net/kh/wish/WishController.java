@@ -6,11 +6,12 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import org.omg.PortableInterceptor.SUCCESSFUL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -26,21 +27,23 @@ public class WishController {
 	ModelAndView mav = new ModelAndView();
 	
 	@RequestMapping("/wishAdd.gh")
-	public ModelAndView wishAddMan(HttpSession session,WishListVO wishList) throws Exception{
-		String mem_no = (String) session.getAttribute("session_mem_no");
-		int host_no =(int) session.getAttribute("session_host_no") ;
-		
-		if(mem_no == null){
+	public ModelAndView wishAddMan(@RequestParam(value="session_mem_no") int mem_no,
+								   @RequestParam(value="session_host_no") int host_no,
+								   WishListVO wishList,HttpSession session) throws Exception{
+/*		Integer mem_no = (Integer) session.getAttribute("session_no");
+		String a =  String.valueOf(session.getAttribute("host_no"));
+		Integer host_no = Integer.parseInt(a);
+*/		if(mem_no == 0){
 			mav.setViewName("mypage/wishFail/오류");
 					return mav;
 		}
-		wishList.setHost_no(host_no );
-		wishList.setMem_no(Integer.parseInt(mem_no));
+		wishList.setHost_no(host_no);
+		wishList.setMem_no(mem_no);
 			
-		wishService.inserWish(wishList);
+		wishService.insertWish(wishList);
 		mav.addObject("host_no",host_no);
-		mav.addObject("wishList",wishList);
-		mav.setViewName("redirect:/host/hostView.gh");	
+		mav.addObject("list",wishList);
+		mav.setViewName("redirect:/wishList.gh");	
 		return mav;
 		
 		
@@ -48,15 +51,26 @@ public class WishController {
 	}
 	
 	@RequestMapping("/wishList.gh")
-	public ModelAndView wishListHo(Map<String,Object> map) throws Exception{
+	public String wishListHo(Map<String,Object> map,Model model) throws Exception{
 	List<Map<String,Object>> list = wishService.wishList(map);
-	mav.addObject("list",list);
-	return mav;
+	logger.info(list.toString());
+	model.addAttribute("list", list);
+	return "mypage/wish/찜목록";
 	
 		
 	}
-
-//	addMyWish()
-//	deleteMyWish()
+	@RequestMapping("/wishDelete.gh")
+	public ModelAndView wishListBye(@RequestParam(value="session_mem_no") int mem_no,@RequestParam(value="session_host_no") int host_no,
+			HttpSession session, WishListVO wishList) throws Exception{
+/*	Integer mem_no =(Integer) session.getAttribute("session_mem_no");
+	int host_no =(int) session.getAttribute("session_host_no");
+	*/
+	wishList.setHost_no(host_no);
+	wishList.setMem_no(mem_no);
+	wishService.wishDelete(wishList);
+	mav.addObject("list",wishList);
+	mav.setViewName("redirect:/wishList.gh");
+	return mav;
+	}
 
 }

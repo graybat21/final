@@ -6,10 +6,12 @@ import java.util.Map;
 
 
 public interface WishService {
-	
-	Object inserWish(WishListVO wishList) throws Exception;
-
+	//찜하기
+	void insertWish(WishListVO wishList) throws Exception;
+	//찜목록
 	List<Map<String, Object>> wishList(Map<String,Object> map) throws Exception;
+	//찜삭제
+	void wishDelete(WishListVO wishList) throws Exception;
 	
 	
 }

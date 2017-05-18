@@ -216,7 +216,6 @@
 	</ul>
 </div>			<!-- //업체 요약정보 -->
 				<div class="ad_info_wrap">
-
 				<!-- 객실정보 -->
 				<a id="bookmark1"></a>
 				<div class="ad_info_room row">
@@ -226,12 +225,6 @@
 					</div>
 										<div class="info_cont">
 						<ul class="room_list">
-								<li>
-								<a href="javascript:showLayerImg('thum', 0,'/adimg_new/1667/27820/bcf79b3068d1372f1395eea640ba16bd.jpg');">
-								<div class="room_img">
-									<div class="img_wrap imgLiquidFill">
-										<span class="thumb_none"></span>
-										<img src="https://img.goodchoice.kr/resize_588x300/adimg_new/1667/27820/bcf79b3068d1372f1395eea640ba16bd.jpg" data-src="/adimg_new/1667/27820/bcf79b3068d1372f1395eea640ba16bd.jpg" alt="" class="" data-original="https://img.goodchoice.kr/resize_588x300/adimg_new/1667/27820/bcf79b3068d1372f1395eea640ba16bd.jpg" style="display: block;">
 									</div>
 								</div>
 								<p class="room_name">

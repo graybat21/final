@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import net.kh.dao.WishDao;
 
-
+@Service("wishService")
 public class WishServiceImpl implements WishService {
 
 	@Autowired
@@ -22,9 +23,15 @@ public class WishServiceImpl implements WishService {
 	}
 	@Override
 	@Transactional
-	public Object inserWish(WishListVO wishList) throws Exception {
+	public void insertWish(WishListVO wishList) throws Exception {
 		// TODO Auto-generated method stub
-		return wishDao.inserWish(wishList);
+		 wishDao.insertWish(wishList);
+	}
+	@Override
+	@Transactional
+	public void wishDelete(WishListVO wishList) throws Exception {
+		// TODO Auto-generated method stub
+		 wishDao.wishDelete(wishList);
 	}
 	
 }
