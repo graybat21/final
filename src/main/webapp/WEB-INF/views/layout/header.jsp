@@ -185,7 +185,7 @@
 							</li>
 							<!-- 마이페이지 연결 아직 안함. -->
 							<li class="link_02"><a
-								href="qnaList.gh">마이페이지</a></li>
+								href="qnaList.gh"><input type="hidden" name="ab" id="bc" value="${session_no}"/>마이페이지</a></li>
 
 							<li class="link_04"><a
 								href="noticeList.gh">고객센터</a></li>

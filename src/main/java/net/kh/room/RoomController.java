@@ -8,8 +8,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
-
-
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +26,9 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
  */
 @Controller
 public class RoomController {
+	
+	private String ab;
+	private String bc;
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 	
@@ -111,17 +113,19 @@ public class RoomController {
 
 	
 	@RequestMapping("/roomList.gh")
-	public ModelAndView roomList(Map<String, Object> map) throws Exception {
+	public ModelAndView roomList(HttpSession session) throws Exception {
 
 		ModelAndView model = new ModelAndView("mypage/roomList/방리스트");
 		
-		int no= 158; //몇번인지를 알아야해
-		int h_no=16;
-		RoomVO roomVO = roomService.roomList(no); // room에있는no -> image에있는 room_no=158
+		System.out.println(getAb());
+		
+		/*int no= 158; //몇번인지를 알아야해
+		int h_no=16;*/
+		/*RoomVO roomVO = roomService.roomList(no); // room에있는no -> image에있는 room_no=158
 		List<String> image = roomService.allImage(h_no); //호스트넘버를 가져와야해
 
 		model.addObject("room",roomVO);
-		model.addObject("image",image);
+		model.addObject("image",image);*/
 		return model;
 	}
 	
@@ -133,4 +137,22 @@ public class RoomController {
 
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
+
+	public String getAb() {
+		return ab;
+	}
+
+	public void setAb(String ab) {
+		this.ab = ab;
+	}
+
+	public String getBc() {
+		return bc;
+	}
+
+	public void setBc(String bc) {
+		this.bc = bc;
+	}
+	
+	
 }
