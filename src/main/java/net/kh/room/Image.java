@@ -1,11 +1,22 @@
 package net.kh.room;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Image {
 
 	private int no;
 	private int room_no;
 	private String filename;
 	private String filesize;
+	private MultipartFile file;
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 
 	public int getNo() {
 		return no;

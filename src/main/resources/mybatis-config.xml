@@ -15,8 +15,9 @@
 		<typeAlias alias="qnaVO" type="net.kh.qna.QnaVO"/>
 		<typeAlias alias="roomVO" type="net.kh.room.RoomVO" />
 		<typeAlias alias="imageVO" type="net.kh.room.ImageVO" />
-		<typeAlias alias="wishListVO" type="net.kh.wish.WishListVO" />
 		<typeAlias alias="adminVO" type="net.kh.admin.AdminVO" />
+		<typeAlias alias="reviewVO" type="net.kh.review.ReviewVO" />
+
 		<typeAlias alias="discountVO" type="net.kh.discount.DiscountVO" />
 
 	</typeAliases>

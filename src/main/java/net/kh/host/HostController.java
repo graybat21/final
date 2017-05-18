@@ -1,5 +1,13 @@
 package net.kh.host;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -7,6 +15,7 @@ import javax.inject.Inject;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,8 +23,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -24,85 +37,128 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HostController {
 
-   private static final Logger logger = LoggerFactory.getLogger(HostController.class);
+	private static final Logger logger = LoggerFactory.getLogger(HostController.class);
 
-   @Inject
-   private JavaMailSenderImpl javaMailSenderImpl;
+	@Inject
+	private JavaMailSenderImpl javaMailSenderImpl;
 
-   @Resource(name = "hostService")
-   private HostService hostService;
-   
-   @Inject
-   BCryptPasswordEncoder passwordEncoder;
+	@Resource(name = "hostService")
+	private HostService hostService;
 
-   ModelAndView mav = new ModelAndView();
+	@Inject
+	BCryptPasswordEncoder passwordEncoder;
 
-   @RequestMapping("/join/joinFormB.gh")
-   public String joinStep2b() {
-      return "member/joinForm2b/기업회원 가입폼";
-   }
+	ModelAndView mav = new ModelAndView();
 
-   @RequestMapping("/join/joinB.gh")
-   public String joinStep3a(HttpSession session, HostVO host) throws Exception {
+	@RequestMapping("/join/joinFormB.gh")
+	public String joinStep2b() {
+		return "member/register/기업회원 가입폼";
+	}
 
-      String encryptPassword = passwordEncoder.encode(host.getPw());
-      host.setPw(encryptPassword);
+	@RequestMapping(value = "/join/joinB.gh", method = RequestMethod.POST)
+	public ModelAndView joinStep3a(MultipartHttpServletRequest req, HostVO host)
+			throws Exception {
+		String PATH = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload\\";
+		System.out.println(" ===== ");
+		Map<String, Object> returnObject = new HashMap<String, Object>();
+		try {
+			Iterator<String> iter = req.getFileNames();
+			MultipartFile mfile = null;
+			String fieldName = "";
+			List<HashMap<String, Object>> resultList = new ArrayList<HashMap<String, Object>>();
+			File dir = new File(PATH);
+			if (!dir.isDirectory()) {
+				dir.mkdirs();
+			}
+			System.out.println("while문 전에...");
+			while (iter.hasNext()) {
+				fieldName = (String) iter.next();
+				System.out.println(fieldName);
+				mfile = req.getFile(fieldName);
+				String origName;
+				origName = new String(mfile.getOriginalFilename().getBytes("8859_1"), "UTF-8");
 
-      String joinCode = getUuid();
-      host.setAuth(joinCode);
-      String MemOrHost = "기업";
-      int no = hostService.hostGetCurrentNo();
-      sendMail(no, host.getEmail(), joinCode, MemOrHost);
+				if ("".equals(origName)) {
+					continue;
+				}
+				String ext = origName.substring(origName.lastIndexOf('.')); // 확장자
+				String saveFileName = getUuid() + ext;
+				File serverFile = new File(PATH + saveFileName);
+				mfile.transferTo(serverFile);
 
-      host.setNo(no);
-      boolean insertSuccess = hostService.hostInsert(host);
+				Map<String, Object> file = new HashMap<String, Object>();
+				file.put("imagename", saveFileName);
+				file.put("sfile", serverFile);
+				resultList.add((HashMap<String, Object>) file);
 
-      session.setAttribute("host", host);
-      mav.addObject(host);
+				host.setImagesize("0");
+				host.setImagename(saveFileName);
+				String encryptPassword = passwordEncoder.encode(host.getPw());
+				host.setPw(encryptPassword);
 
-      logger.info(host.toString());
-      return "member/joinSuccess/개인회원가입 성공";
-   }
-   
-   @RequestMapping(value = "/auth-h/{no}/{auth}")
-   public ModelAndView authOk(@PathVariable String no, @PathVariable String auth) throws Exception {
+				String joinCode = getUuid();
+				host.setAuth(joinCode);
 
-      HostVO host = new HostVO();
-      host.setAuth(auth);
-      host.setNo(Integer.parseInt(no));
+				int no = hostService.hostGetCurrentNo();
+				sendMail(no, host.getEmail(), joinCode, "게스트하우스");
 
-      hostService.hostAuthOk(host);
-      mav.setViewName("member/authSuccess/인증성공 host");
-      // mav.setViewName("member/authError/인증실패");
+				host.setNo(no);
+				boolean insertSuccess = hostService.hostInsert(host);
 
-      return mav;
-   }
-   
-   public void sendMail(int no, String email, String joinCode, String MemOrHost) throws Exception {
+				mav.addObject(host);
+			}
 
-      MimeMessage mimeMessage = javaMailSenderImpl.createMimeMessage();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		mav.setViewName("member/authNotYet/기업회원가입 인증대기중");
 
-      mimeMessage.setFrom(new InternetAddress("guesthi1111@gmail.com"));
-      mimeMessage.addRecipient(RecipientType.TO, new InternetAddress(email));
-      mimeMessage.setSubject("GuestHi - 회원가입 인증요청메일 입니다.");
+		return mav;
+	}
 
-      StringBuilder sb = new StringBuilder();
-      String uri = "http://localhost:8080/GuestHi/";
-      sb.append("<h1><a href='" + uri + "'>");
-      sb.append("<img src='http://i.imgur.com/Jo4vPeX.png'></a></h1>");
-      sb.append("<h1>Welcome GuestHi</h1>");
-      sb.append("저희 GuestHi에 가입해 주셔서 진심으로 감사드립니다.<br>");
-      sb.append("회원님은 " + MemOrHost + " 으로 가입하셨습니다.<br>");
-      sb.append("사이트 이용은 아래 링크를 통해 인증하신후 가능합니다.<br>");
-      sb.append("<hr><br>");
-      sb.append("<a href='" + uri + "auth-h/" + no + "/" + joinCode + "'>");
-      sb.append("링크를 클릭하시면 인증이 왼료됩니다.</a>");
-      mimeMessage.setText(sb.toString(), "UTF-8", "html");
+	@RequestMapping(value = "/auth-h/{no}/{auth}")
+	public ModelAndView authOk(@PathVariable String no, @PathVariable String auth) throws Exception {
 
-      javaMailSenderImpl.send(mimeMessage);
-   }
-   
-   private String getUuid() {
-      return UUID.randomUUID().toString().replaceAll("-", "");
-   }
+		HostVO host = new HostVO();
+		host.setAuth(auth);
+		host.setNo(Integer.parseInt(no));
+
+		hostService.hostAuthOk(host);
+		mav.setViewName("member/authSuccess/인증성공 host");
+		// mav.setViewName("member/authError/인증실패");
+
+		return mav;
+	}
+
+	public void sendMail(int no, String email, String joinCode, String MemOrHost) throws Exception {
+
+		MimeMessage mimeMessage = javaMailSenderImpl.createMimeMessage();
+
+		mimeMessage.setFrom(new InternetAddress("guesthi1111@gmail.com"));
+		mimeMessage.addRecipient(RecipientType.TO, new InternetAddress(email));
+		mimeMessage.setSubject("GuestHi - 회원가입 인증요청메일 입니다.");
+
+		StringBuilder sb = new StringBuilder();
+		String uri = "http://localhost:8080/GuestHi/";
+		sb.append("<h1><a href='" + uri + "'>");
+		sb.append("<img src='http://i.imgur.com/Jo4vPeX.png'></a></h1>");
+		sb.append("<h1>Welcome GuestHi</h1>");
+		sb.append("저희 GuestHi에 가입해 주셔서 진심으로 감사드립니다.<br>");
+		sb.append("회원님은 " + MemOrHost + " 으로 가입하셨습니다.<br>");
+		sb.append("사이트 이용은 아래 링크를 통해 인증하신후 가능합니다.<br>");
+		sb.append("<hr><br>");
+		sb.append("<a href='" + uri + "auth-h/" + no + "/" + joinCode + "'>");
+		sb.append("링크를 클릭하시면 인증이 왼료됩니다.</a>");
+		mimeMessage.setText(sb.toString(), "UTF-8", "html");
+
+		javaMailSenderImpl.send(mimeMessage);
+	}
+
+	private String getUuid() {
+		return UUID.randomUUID().toString().replaceAll("-", "");
+	}
 }

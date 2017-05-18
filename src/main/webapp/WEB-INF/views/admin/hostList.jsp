@@ -24,6 +24,20 @@ td {
 	text-align: center;
 	padding-top: 15px;
 }
+/* paging */
+.svc_paging {padding:30px 0;text-align:center;}
+.svc_paging ul {display:inline-block;border:1px solid #ccc;border-radius:5px;}
+.svc_paging ul li {float:left;display:inline-block;border-right:1px solid #ddd;box-sizing:border-box;}
+.svc_paging ul li a {display:inline-block;min-width:28px;height:38px;line-height:42px;font-weight:500;text-align:center;color:#707070;vertical-align:middle;}
+.svc_paging ul li.page_first a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_first.png') no-repeat 50% 50%;background-size:auto 10px;}
+.svc_paging ul li.page_prev a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_prev.png') no-repeat 50% 50%;background-size:auto 10px}
+.svc_paging ul li.page_next a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_next.png') no-repeat 50% 50%;background-size:auto 10px}
+.svc_paging ul li.page_last a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_last.png') no-repeat 50% 50%;background-size:auto 10px;}
+.svc_paging ul li:last-child {border-right:none;}
+.svc_paging ul li:last-child a {border-radius:0 5px 5px 0;}
+.svc_paging ul li:first-child a {border-radius:5px 0 0 5px;}
+.svc_paging ul li:hover a, .svc_paging ul li.active a {color:#e62a4a;background-color:#fff;}
+
 </style>
 </head>
 
@@ -94,6 +108,24 @@ td {
 	}
 </script>	
  
+ 		<!-- 페이징 -->
+		<div class="svc_paging">
+		<ul class="pageUL">
+			<c:if test="${hostPageMaker.prev }">
+				<li><a href='adminhostList.gh?page=${hostPageMaker.start -1}'>이전</a></li>
+			</c:if>
+			<c:forEach begin="${hostPageMaker.start }" end="${hostPageMaker.end}"
+				var="idx">
+				<li
+					class='<c:out value="${idx == hostPageMaker.page?'current':''}"/>'>
+					<a href='adminhostList.gh?page=${idx}'>${idx}</a>
+				</li>
+			</c:forEach>
+			<c:if test="${hostPageMaker.next }">
+				<li><a href='adminhostList.gh?page=${hostPageMaker.end +1}'>다음</a></li>
+			</c:if>
+		</ul>
+		</div>
     </section>
     <!-- /.content -->
   </div>

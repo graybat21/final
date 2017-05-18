@@ -67,9 +67,10 @@ public class LoginController {
 				HttpSession session = request.getSession();
 	
 				session.setAttribute("mem", resultMember);
+				session.setAttribute("session_mem_no", resultMember.getNo());
 				session.setAttribute("session_mem_email", resultMember.getEmail());
 				session.setAttribute("session_mem_name", resultMember.getName());
-				session.setAttribute("session_mem_no", resultMember.getNo());
+	
 	
 				session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
 	

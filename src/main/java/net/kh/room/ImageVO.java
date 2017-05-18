@@ -1,12 +1,22 @@
 package net.kh.room;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ImageVO {
 
 	private int no;
 	private int room_no;
 	private String filename;
 	private String filesize;
+	private MultipartFile file;
 	
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	@Override
 	public String toString() {
 		return "ImageVO [no=" + no + ", room_no=" + room_no + ", filename=" + filename + ", filesize=" + filesize + "]";

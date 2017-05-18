@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
 <!DOCTYPE html>
 <html lang="ko"><head>
 	
@@ -25,7 +26,7 @@
 </head>
 
 <body class="pcweb" oncontextmenu="return false" ondragstart="return false">
-
+   <%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
 
 <div id="allWrap">
 	
@@ -163,4 +164,4 @@
 
 	<!-- //페이지별 화면 load -->
 
-</body></html>
+</body></html> --%>

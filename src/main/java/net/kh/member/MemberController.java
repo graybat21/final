@@ -49,7 +49,7 @@ public class MemberController {
 
 	@RequestMapping("/join/joinFormA.gh")
 	public String joinStep2a() {
-		return "member/joinForm2a/개인회원 가입폼";
+		return "member/registerMember/개인회원 가입폼";
 	}
 
 	@RequestMapping("/join/joinA.gh")
@@ -80,6 +80,7 @@ public class MemberController {
 		return mav;
 	}
 	
+	
 //	public ModelAndView register(@ModelAttribute @Valid User user, BindingResult bindingResult, HttpSession session)
 //			throws Exception {
 //
@@ -108,7 +109,10 @@ public class MemberController {
 //		return mav;
 //	}
 	
-	
+	@RequestMapping("modifyMyInfo.gh")
+	public String modifyMyInfo() {
+		return "mypage/modifyMyInfo/개인회원 수정";
+	}
 	
 
 	@RequestMapping(value = "emailCheck.gh", method = RequestMethod.POST)

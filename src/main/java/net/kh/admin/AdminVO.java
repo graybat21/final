@@ -15,6 +15,11 @@ public class AdminVO {
 	
 	
 
+	@Override
+	public String toString() {
+		return "\nAdminVO [no=" + no + ", email=" + email + ", pw=" + pw + ", name=" + name + ", phone=" + phone
+				+ ", reg=" + reg + ", birth=" + birth + ", auth=" + auth + "]";
+	}
 	public String getNo() {
 		return no;
 	}

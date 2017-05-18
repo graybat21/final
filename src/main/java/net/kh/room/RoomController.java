@@ -1,14 +1,16 @@
 package net.kh.room;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
-import net.kh.qna.QnaVO;
-
 /**
  * Handles requests for the application home page.
  */
@@ -29,16 +29,16 @@ import net.kh.qna.QnaVO;
 public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
+	
+	String PATH = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject
 	private RoomService roomService;
 	@Inject
 	private ImageService imageService;
-	private final String PATH = "C:/Java/upload/";
-	/* String uploadPath = "C:\\Java\\upload\\"; */
 
-	ModelAndView mav = new ModelAndView();
+	/* String uploadPath = "C:\\Java\\upload\\"; */
 
 	// paging
 	/*
@@ -52,153 +52,141 @@ public class RoomController {
 	@Autowired
 	MappingJackson2JsonView jsonView;
 
+	@RequestMapping("/tabRoomDetail.gh")
+	public String tabRoomDetail(){
+		return "guesthouse/roomdetail";
+	}
+
 	@RequestMapping("/roomInsertForm.gh")
 	public ModelAndView roomInsertForm() throws Exception {
 		ModelAndView model = new ModelAndView("mypage/roomInsertForm/룸 가입폼");
-		model.addObject("host_no", 16);
+		/* model.addObject("host_no", 16); */
 		return model;
 	}
-	
 
-	@RequestMapping(value="/roomInsert.gh", method=RequestMethod.POST, produces="text/plain")
-	public ModelAndView upload(MultipartHttpServletRequest request, RoomVO room) throws Exception {
-		logger.info(room.toString()); //no->seq
+	@RequestMapping(value = "/roomInsert.gh", method = RequestMethod.POST, produces = "text/plain")
+	public String upload(MultipartHttpServletRequest request, RoomVO room) throws Exception {
+		
+		/*
+		 * Set PATHSET =
+		 * request.getSession().getServletContext().getResourcePaths("/");
+		 */
+		// String PATH = "GuestHi/upload";
+		// request.getSession().getServletContext().getRealPath("/upload");
+
+		// GUESTHi
+		// C:\Java\Final\src\main\webapp\resources
+		logger.info(room.toString()); // no->seq
 		ModelAndView model = new ModelAndView();
 		model.setView(jsonView);
 		roomService.roomInsert2(room);
 		ImageVO image = new ImageVO();
 		int room_no = roomService.roomGetCurrentNo();
-		
-		Iterator<String> itr =  request.getFileNames();
-		
-        if(itr.hasNext()) {
-        	List<MultipartFile> mpf = request.getFiles(itr.next());
-            // 임시 파일을 복사한다.
-            for(int i = 0; i < mpf.size(); i++) {
-            	String orgFileName = mpf.get(i).getOriginalFilename();
-            	String newFileName = getUUID() + orgFileName.substring((orgFileName.lastIndexOf(".")));
-            	
-                File file = new File(PATH+newFileName);
-                
-                logger.info(file.getAbsolutePath());
-                mpf.get(i).transferTo(file);//복사
-                System.out.println("얍얍");
-              image.setFilename(newFileName);
-              image.setRoom_no(room_no-1);//
-              image.setFilesize("0");
-              
-                imageService.imageInsert(image);
-                
-            }
-            
-            JSONObject json = new JSONObject();
-            json.put("code", "true");
-            model.addObject("result", json);
-            return model;
-            
-        } else {
-        	
-            JSONObject json = new JSONObject();
-            json.put("code", "false");
-            model.addObject("result", json);
-            return model;
-            
-        }
+
+		Iterator<String> itr = request.getFileNames(); // 다중
+
+		String newFileName = "";
+		if (itr.hasNext()) {
+			List<MultipartFile> mpf = request.getFiles(itr.next()); // 값넣기
+			// 임시 파일을 복사한다.
+			for (int i = 0; i < mpf.size(); i++) {
+				String orgFileName = mpf.get(i).getOriginalFilename();
+
+				newFileName = getUUID() + orgFileName.substring((orgFileName.lastIndexOf(".")));
+
+				File file = new File(PATH + "/" + newFileName);
+
+				logger.info(orgFileName + "============원래 파일명=========");
+				logger.info(file.getAbsolutePath() + "========= 암호화 ===========");
+				mpf.get(i).transferTo(file);// 복사 try
+				image.setFilename(newFileName);
+				image.setRoom_no(room_no - 1);//
+				image.setFilesize("0");
+//				System.out.println(PATH + "얍얍");
+				imageService.imageInsert(image);
+				
+				System.out.println("읍읍" + image);
+
+			}
+
+			
+		}
+		return "redirect:roomList.gh";
 	}
+
+
+
+	
+	@RequestMapping("/roomList.gh")
+	public ModelAndView roomList(Map<String, Object> map) throws Exception {
+
+		ModelAndView model = new ModelAndView("mypage/roomList/방리스트");
+		
+		int no= 158; //몇번인지를 알아야해
+		int h_no=16;
+		RoomVO roomVO = roomService.roomList(no); // room에있는no -> image에있는 room_no=158
+		List<String> image = roomService.allImage(h_no); //호스트넘버를 가져와야해
+
+		model.addObject("room",roomVO);
+		model.addObject("image",image);
+		return model;
+	}
+	
+	
+	
+/*		//select * FROM room a INNER JOIN image b on a.no = b.ROOm_no;
+		
+		List<room> list = roomService.roomList(map);
+		
+		model.addObject("room", list);
+		
+		//
+		
+
+	return model;
+		
+	
+	}
+
+	/*
+	 * @RequestMapping("/roomList.gh") public ModelAndView
+	 * download(@RequestParam("fname") String fname) { String realFolder =
+	 * "C:/Java/upload/"; ModelAndView mav = new ModelAndView();
+	 * 
+	 * mav.addObject("fileName", new File(realFolder + fname));
+	 * mav.setViewName("downloadView"); return mav; }
+	 * 
+	 * @RequestMapping("/roomList.gh") public class DownloadImpl extends
+	 * AbstractView {
+	 * 
+	 * @Override protected void renderMergedOutputModel(Map<String, Object> map,
+	 * HttpServletRequest req, HttpServletResponse res) throws Exception {
+	 * 
+	 * String fileName = null; File file = (File) map.get("fileName");
+	 * 
+	 * res.setContentType("application/download;"); int length = (int)
+	 * file.length(); res.setContentLength(length);
+	 * 
+	 * // 익스플로러 인지 확인 String userAgent = req.getHeader("User-Agent"); boolean ie
+	 * = userAgent.indexOf("MSIE") > -1;
+	 * 
+	 * if (ie) { fileName = URLEncoder.encode(file.getName(),
+	 * "utf-8").replace("+", "%20"); } else { fileName = new
+	 * String(file.getName().getBytes("utf-8"), "iso-8859-1").replace("+",
+	 * "%20"); }
+	 * 
+	 * res.setHeader("Content-Disposition", "attachment;" + " filename=\"" +
+	 * fileName + "\";"); OutputStream out = res.getOutputStream();
+	 * FileInputStream fis = null;
+	 * 
+	 * try { int temp; fis = new FileInputStream(file); while ((temp =
+	 * fis.read()) != -1) { out.write(temp); } } catch (Exception e) {
+	 * e.printStackTrace(); } finally { if (fis != null) { try { fis.close(); }
+	 * catch (Exception e) { e.printStackTrace(); } } } } }
+	 */
 
 	private String getUUID() {
 
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
-
 }
-/*
- * @RequestMapping(value = "/room/roomInsert.gh", method = RequestMethod.POST)
- * public ModelAndView roomInsert(HttpServletRequest
- * request, @ModelAttribute("article") RoomVO article,
- * MultipartHttpServletRequest mhsq) throws IllegalStateException, IOException {
- * session = req.getSessiom();
- * 
- * article.setId((String) session.getAttribute("id"));
- * 
- * bbs.Service.write(article);
- * 
- * String realFolder = "c:/Java/upload/"; File dir = new FIle(realFolder); if
- * (!dir.isDirectory()) { dir.mkdirs();
- * 
- * }
- * 
- * List<MultipartFile> mf = mhsq.getFiles("uploadFile"); if (mf.size() == 1 &&
- * mf.get(0).getOriginalFilename().equals("")) {
- * 
- * } else { for (int i = 0; i < mf.size(); i++) { String genId =
- * UUID.randomUUID().toString(); String originalfileName =
- * mf.get(index).getOriginalFilename();
- * 
- * String saveFileName = genId + "." + getExtension(originalfileName);
- * 
- * String savePath = realFolder + saveFileName;
- * 
- * long fileSize = mf.get(i).getSize();
- * 
- * mf.get(i).transferTo(new File(savePath));
- * bbsService.fileUpload(originalfileName, saveFileName, fileSize);
- * 
- * } } return new ModelAndView("redirect:list.do");
- * 
- * }
- * 
- * @RequestMapping(value = "/ajaxUpload") public String ajaxUpload() { return
- * "ajaxUpload"; }
- * 
- * @RequestMapping(value = "/fileUpload") public String
- * fileUp(MultipartHttpServletRequest multi) {
- * 
- * // 저장 경로 설정 String root =
- * multi.getSession().getServletContext().getRealPath("/"); String path = root +
- * "resources/upload/";
- * 
- * String newFileName = ""; // 업로드 되는 파일명
- * 
- * File dir = new File(path); if (!dir.isDirectory()) { dir.mkdir(); }
- * 
- * Iterator<String> files = multi.getFileNames(); while (files.hasNext()) {
- * String uploadFile = files.next();
- * 
- * MultipartFile mFile = multi.getFile(uploadFile); String fileName =
- * mFile.getOriginalFilename(); System.out.println("실제 파일 이름 : " + fileName);
- * newFileName = System.currentTimeMillis() + "." +
- * fileName.substring(fileName.lastIndexOf(".") + 1);
- * 
- * try { mFile.transferTo(new File(path + newFileName)); } catch (Exception e) {
- * e.printStackTrace(); } }
- * 
- * System.out.println("id : " + multi.getParameter("id"));
- * System.out.println("pw : " + multi.getParameter("pw"));
- * 
- * return "ajaxUpload"; }
- */
-/*
- * mav.setViewName("mypage/roomInsertForm/gg");
- * 
- * return mav; }
- */
-
-/*
- * @RequestMapping("/room/roomInsert.gh") public String
- * roomInsert(MultipartHttpServletRequest multipartHttpServletRequest, RoomVO
- * member) throws Exception { // 써야지.. MultipartFile multipartFile =
- * multipartHttpServletRequest.getFile("file[0]"); String filename =
- * multipartFile.getOriginalFilename(); if (filename != "") {
- * GoodsModel.setGoods_image(System.currentTimeMillis() + "_" +
- * multipartFile.getOriginalFilename()); String savimagename =
- * System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
- * FileCopyUtils.copy(multipartFile.getInputStream(), new
- * FileOutputStream(uploadPath + "/" + savimagename)); } else {
- * GoodsModel.setGoods_image("NULL"); }
- * 
- * return "mypage/roomInsert/등록 성공"; }
- */
-
-// roomView()
-// roomDelete()

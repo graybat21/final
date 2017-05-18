@@ -185,7 +185,7 @@
 							</li>
 							<!-- 마이페이지 연결 아직 안함. -->
 							<li class="link_02"><a
-								href="qnaList.gh">마이페이지</a></li>
+								href="myPage.gh">마이페이지</a></li>
 
 							<li class="link_04"><a
 								href="noticeList.gh">고객센터</a></li>
@@ -256,7 +256,7 @@
 							<div class="close">
 								<table width="100%" id="loginTbl">
 									<tr>
-										<td onclick="joinchoice.gh" width="20%" align="center">회원가입</td>
+										<td onclick="joinchoice.gh" width="20%" align="center"><a href="href="${pageContext.request.contextPath}/joinChoice.gh">회원가입</a></td>
 										<td width="30%;" align="center">아이디/비밀번호 찾기</td>
 									</tr>
 									<tr>
