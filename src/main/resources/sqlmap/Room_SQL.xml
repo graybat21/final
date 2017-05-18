@@ -31,6 +31,9 @@
 
 		select * from room where no = #{no}
 	</select>
+	<select id="getRoomInfoByHostNo" parameterType="int" resultType="roomVO">
+		select * from room where host_no = #{no}
+	</select>
 	
 	<select id="allImage" parameterType="int" resultType="String">
 		select

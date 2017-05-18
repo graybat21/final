@@ -26,7 +26,15 @@
 		<put-attribute name="content" value="/WEB-INF/views/admin/{1}.jsp" />
 	</definition>
 
-	
+	<definition name="guesthouse/reserve" template="/WEB-INF/views/guesthouse/reserve.jsp">
+        <put-attribute name="content" value=""/>  
+    </definition>
+	<definition name="guesthouse/review" template="/WEB-INF/views/guesthouse/review.jsp">
+        <put-attribute name="content" value=""/>  
+    </definition>
+	<definition name="guesthouse/roomdetail" template="/WEB-INF/views/guesthouse/roomdetail.jsp">
+        <put-attribute name="content" value=""/>  
+    </definition>
 
 
 </tiles-definitions>

@@ -1,5 +1,13 @@
 package net.kh.host;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -7,6 +15,7 @@ import javax.inject.Inject;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,8 +23,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -31,7 +44,7 @@ public class HostController {
 
 	@Resource(name = "hostService")
 	private HostService hostService;
-	
+
 	@Inject
 	BCryptPasswordEncoder passwordEncoder;
 
@@ -39,31 +52,74 @@ public class HostController {
 
 	@RequestMapping("/join/joinFormB.gh")
 	public String joinStep2b() {
-		return "member/joinForm2b/기업회원 가입폼";
+		return "member/register/기업회원 가입폼";
 	}
 
-	@RequestMapping("/join/joinB.gh")
-	public String joinStep3a(HttpSession session, HostVO host) throws Exception {
+	@RequestMapping(value = "/join/joinB.gh", method = RequestMethod.POST)
+	public ModelAndView joinStep3a(MultipartHttpServletRequest req, HostVO host)
+			throws Exception {
+		String PATH = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload\\";
+		System.out.println(" ===== ");
+		Map<String, Object> returnObject = new HashMap<String, Object>();
+		try {
+			Iterator<String> iter = req.getFileNames();
+			MultipartFile mfile = null;
+			String fieldName = "";
+			List<HashMap<String, Object>> resultList = new ArrayList<HashMap<String, Object>>();
+			File dir = new File(PATH);
+			if (!dir.isDirectory()) {
+				dir.mkdirs();
+			}
+			System.out.println("while문 전에...");
+			while (iter.hasNext()) {
+				fieldName = (String) iter.next();
+				System.out.println(fieldName);
+				mfile = req.getFile(fieldName);
+				String origName;
+				origName = new String(mfile.getOriginalFilename().getBytes("8859_1"), "UTF-8");
 
-		String encryptPassword = passwordEncoder.encode(host.getPw());
-		host.setPw(encryptPassword);
+				if ("".equals(origName)) {
+					continue;
+				}
+				String ext = origName.substring(origName.lastIndexOf('.')); // 확장자
+				String saveFileName = getUuid() + ext;
+				File serverFile = new File(PATH + saveFileName);
+				mfile.transferTo(serverFile);
 
-		String joinCode = getUuid();
-		host.setAuth(joinCode);
-		String MemOrHost = "기업";
-		int no = hostService.hostGetCurrentNo();
-		sendMail(no, host.getEmail(), joinCode, MemOrHost);
+				Map<String, Object> file = new HashMap<String, Object>();
+				file.put("imagename", saveFileName);
+				file.put("sfile", serverFile);
+				resultList.add((HashMap<String, Object>) file);
 
-		host.setNo(no);
-		boolean insertSuccess = hostService.hostInsert(host);
+				host.setImagesize("0");
+				host.setImagename(saveFileName);
+				String encryptPassword = passwordEncoder.encode(host.getPw());
+				host.setPw(encryptPassword);
 
-		session.setAttribute("host", host);
-		mav.addObject(host);
+				String joinCode = getUuid();
+				host.setAuth(joinCode);
 
-		logger.info(host.toString());
-		return "member/joinSuccess/개인회원가입 성공";
+				int no = hostService.hostGetCurrentNo();
+				sendMail(no, host.getEmail(), joinCode, "게스트하우스");
+
+				host.setNo(no);
+				boolean insertSuccess = hostService.hostInsert(host);
+
+				mav.addObject(host);
+			}
+
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		mav.setViewName("member/authNotYet/기업회원가입 인증대기중");
+
+		return mav;
 	}
-	
+
 	@RequestMapping(value = "/auth-h/{no}/{auth}")
 	public ModelAndView authOk(@PathVariable String no, @PathVariable String auth) throws Exception {
 
@@ -77,7 +133,7 @@ public class HostController {
 
 		return mav;
 	}
-	
+
 	public void sendMail(int no, String email, String joinCode, String MemOrHost) throws Exception {
 
 		MimeMessage mimeMessage = javaMailSenderImpl.createMimeMessage();
@@ -101,7 +157,7 @@ public class HostController {
 
 		javaMailSenderImpl.send(mimeMessage);
 	}
-	
+
 	private String getUuid() {
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
