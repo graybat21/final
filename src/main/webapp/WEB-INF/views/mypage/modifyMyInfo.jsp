@@ -49,17 +49,7 @@
 	<!-- 해봄 왼쪽메뉴바 사라짐 -->		<div class="my_wrap row row_cont">
 				<!-- 마이페이지 메뉴 -->
 <!-- 해봄 왼쪽메뉴바 망가짐 -->				
-<div class="my_menu" style="display:none">
-					<h3>마이페이지</h3>
-					<ul>
-						<li><a href="">찜</a></li>
-
-						<li><a href="">예약내역</a></li>
-
-						<li><a href="" class="active">내정보수정</a></li>
-					</ul>
-				</div>
-				
+<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>				
 				<!-- 마이페이지 콘텐츠 -->
 				<div class="my_contents">
 					<!-- my_cont_wrap  얘가 오른쪽 페이지 줄짧게 만드는?애 없애면 길어짐 -->
@@ -75,15 +65,15 @@
 									<tr>
 										<th>이메일</th>
 										<td>
-											이메일주소 가져오기																				
-											<a class="btn_logout">회원탈퇴</a>
+											${session_email } / ${mem.email } / ${host.email }																		
+											<a class="btn_logout" href="withdrawal.gh">회원탈퇴</a>
 										</td>
 									</tr>
 									
 									<tr>
 										<th>연락처</th>
 										<td>
-											<input type="tel" name="phone" placeholder="연락처불러오기" size="15" maxlength="11">
+											<input type="tel" name="phone" placeholder="연락처불러오기" value="${mem.phone }" size="15" maxlength="11">
 										</td>
 									</tr>
 

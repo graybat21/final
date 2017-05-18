@@ -7,24 +7,41 @@
 	<!-- id 속성은 DAO 의 메소드와 같아야 한다. 여기의 boardVO 는 mybatis-confg.xml 에 Alias 되어 있습니다. -->
 	
 	<!-- 관리자 회원 목록 -->
-	<select id="memberList" resultType="memberVO" parameterType="int">
-		SELECT no, email, name, phone, reg, auth FROM member ORDER BY no DESC
+	<select id="memberList" resultType="adminVO" parameterType="hashmap">
+		SELECT * FROM
+			(SELECT ROW_NUMBER() OVER (ORDER BY no DESC) RNUM,
+					no, email, name, phone, reg, auth
+				FROM member
+			) X
+		WHERE X.RNUM BETWEEN #{first} and #{last}
 	</select>
-	
+	<select id="memberListCnt" resultType="int">
+		SELECT count(*) FROM member
+	</select>	
 	<!-- 관리자 회원 강제 탈퇴 -->
-	<update id="deleteMember" parameterType="int">
+	<update id="deleteMember" parameterType="adminVO">
 		DELETE FROM member WHERE no=#{no}
 	</update>
 	
 	<!-- 관리자 호스트 목록 -->
-	<select id="hostList" resultType="hostVO">
-		SELECT * FROM host ORDER BY no DESC
+	<select id="hostList" resultType="hostVO" parameterType="hashmap">
+		SELECT * FROM
+			(SELECT ROW_NUMBER() OVER(ORDER BY no DESC) RNUM,
+					no, email, pw, name, tel, reg, biz_no, 
+					addr1, addr2, zip, imagename, imagesize, auth
+				FROM host
+			) X
+		WHERE X.RNUM between #{first} and #{last}
 	</select>
 	
 	<!-- 관리자 호스트 강제 탈퇴 -->
 	<update id="deleteHost" parameterType="int">
 		DELETE FROM host WHERE no=#{no}
 	</update>
+	<!-- 호스트 전체 가입수 -->
+	<select id="hostListCnt" resultType="int">
+		SELECT count(*) FROM host
+	</select>
 	
 	<!-- 관리자 게하 룸 관리 목록 -->
 	<select id="adminRoomList" resultType="adminVO">

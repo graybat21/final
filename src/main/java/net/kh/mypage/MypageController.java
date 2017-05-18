@@ -5,23 +5,28 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class MypageController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping("/myPage.gh")
 	public String noticeList(Model model) {
 		logger.info("MypageController - myPage.gh");
-		return "mypage/mypage/¸¶ÀÌÆäÀÌÁö";
+		return "mypage/modifyMyInfo/MY PAGE";
 	}
 	
+	@RequestMapping("/withdrawal.gh")
+	public String withdrawal(){
+		logger.info("íšŒì›íƒˆí‡´í•˜ê¸°");
+		return "mypage/delete/íšŒì›íƒˆí‡´";
+	}
+
 }

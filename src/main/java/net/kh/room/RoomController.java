@@ -53,6 +53,11 @@ public class RoomController {
 	// json 데이터로 응답을 보내기 위한r
 	
 
+	@RequestMapping("/tabRoomDetail.gh")
+	public String tabRoomDetail(){
+		return "guesthouse/roomdetail";
+	}
+
 	@RequestMapping("/roomInsertForm.gh")
 	public ModelAndView roomInsertForm() throws Exception {
 		ModelAndView model = new ModelAndView("mypage/roomInsertForm/룸 가입폼");
