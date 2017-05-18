@@ -1,17 +1,17 @@
-package net.kh.wish;
+package net.kh.dao;
 
 import java.util.List;
 import java.util.Map;
 
+import net.kh.wish.WishListVO;
 
-
-public interface WishService {
-	//찜하기
+public interface WishDao {
+	
 	void insertWish(WishListVO wishList) throws Exception;
-	//찜목록
+
 	List<Map<String, Object>> wishList(Map<String,Object> map) throws Exception;
-	//찜삭제
+	
 	void wishDelete(WishListVO wishList) throws Exception;
 	
-	
 }
+ 

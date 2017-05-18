@@ -104,7 +104,7 @@
 				<div class="svc_menu" style="display:none">
 	<h3>마이페이지</h3>
 					<ul>
-						<li><a href="https://www.goodchoice.kr/mypage/myZzim">찜</a></li>
+						<li><a href="wishList.gh">찜</a></li>
 
 						<li><a href="https://www.goodchoice.kr/mypage/myReserve">예약내역</a></li>
 
