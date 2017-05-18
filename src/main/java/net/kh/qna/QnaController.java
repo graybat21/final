@@ -54,7 +54,7 @@ public class QnaController {
 		model.addAttribute("qnaList", list);
 		model.addAttribute("qnaPageMaker", pagemaker);
 
-		return "qna/qnaList/QNA";
+		return "guesthouse/roomdetail/QNA"; //qna/qnaList
 	}
 
 	// 글쓰기
