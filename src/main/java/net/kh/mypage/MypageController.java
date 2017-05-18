@@ -21,7 +21,7 @@ public class MypageController {
 	@RequestMapping("/myPage.gh")
 	public String noticeList(Model model) {
 		logger.info("MypageController - myPage.gh");
-		return "mypage/mypage/¸¶ÀÌÆäÀÌÁö";
+		return "mypage/mypage/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 	}
 	
 }

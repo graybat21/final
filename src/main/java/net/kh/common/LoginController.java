@@ -92,7 +92,7 @@ public class LoginController {
 	
 				HttpSession session = request.getSession();
 	
-				session.setAttribute("host", resultHost);
+				session.setAttribute("host", resultHost); //자바빈
 				session.setAttribute("session_email", resultHost.getEmail());
 				session.setAttribute("session_name", resultHost.getName());
 				session.setAttribute("session_no", resultHost.getNo());

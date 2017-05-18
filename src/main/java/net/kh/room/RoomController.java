@@ -8,12 +8,12 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
-
-
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +22,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import net.kh.member.MemberVO;
+
 /**
  * Handles requests for the application home page.
  */
@@ -29,7 +31,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
-	
+
 	String PATH = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
@@ -61,7 +63,7 @@ public class RoomController {
 
 	@RequestMapping(value = "/roomInsert.gh", method = RequestMethod.POST, produces = "text/plain")
 	public String upload(MultipartHttpServletRequest request, RoomVO room) throws Exception {
-		
+
 		/*
 		 * Set PATHSET =
 		 * request.getSession().getServletContext().getResourcePaths("/");
@@ -97,88 +99,42 @@ public class RoomController {
 				image.setFilename(newFileName);
 				image.setRoom_no(room_no - 1);//
 				image.setFilesize("0");
-//				System.out.println(PATH + "얍얍");
+				// System.out.println(PATH + "얍얍");
 				imageService.imageInsert(image);
-				
+
 				System.out.println("읍읍" + image);
 
 			}
 
-			
 		}
 		return "redirect:roomList.gh";
 	}
 
-
-
-	
 	@RequestMapping("/roomList.gh")
 	public ModelAndView roomList(Map<String, Object> map) throws Exception {
 
 		ModelAndView model = new ModelAndView("mypage/roomList/방리스트");
-		
-		int no= 158; //몇번인지를 알아야해
-		int h_no=16;
-		RoomVO roomVO = roomService.roomList(no); // room에있는no -> image에있는 room_no=158
-		List<String> image = roomService.allImage(h_no); //호스트넘버를 가져와야해
 
-		model.addObject("room",roomVO);
-		model.addObject("image",image);
+		int no = 152;
+		int h_no = 21;
+		RoomVO roomVO = roomService.roomList(no); // room에있는no -> image에있는
+													// room_no=158
+		List<String> image = roomService.allImage(h_no); // 호스트넘버를 가져와야해
+
+		model.addObject("room", roomVO);
+		model.addObject("image", image);
 		return model;
 	}
-	
-	
-	
-/*		//select * FROM room a INNER JOIN image b on a.no = b.ROOm_no;
-		
-		List<room> list = roomService.roomList(map);
-		
-		model.addObject("room", list);
-		
-		//
-		
 
-	return model;
+	@RequestMapping("/roomDetail.gh")
+	public ModelAndView roomDetail(MemberVO member, HttpSession session, HttpRequest request) throws Exception{
+		ModelAndView model = new ModelAndView();
 		
-	
+		
+//		model.addObject("room", roomVO);
+		
+		return model;
 	}
-
-	/*
-	 * @RequestMapping("/roomList.gh") public ModelAndView
-	 * download(@RequestParam("fname") String fname) { String realFolder =
-	 * "C:/Java/upload/"; ModelAndView mav = new ModelAndView();
-	 * 
-	 * mav.addObject("fileName", new File(realFolder + fname));
-	 * mav.setViewName("downloadView"); return mav; }
-	 * 
-	 * @RequestMapping("/roomList.gh") public class DownloadImpl extends
-	 * AbstractView {
-	 * 
-	 * @Override protected void renderMergedOutputModel(Map<String, Object> map,
-	 * HttpServletRequest req, HttpServletResponse res) throws Exception {
-	 * 
-	 * String fileName = null; File file = (File) map.get("fileName");
-	 * 
-	 * res.setContentType("application/download;"); int length = (int)
-	 * file.length(); res.setContentLength(length);
-	 * 
-	 * // 익스플로러 인지 확인 String userAgent = req.getHeader("User-Agent"); boolean ie
-	 * = userAgent.indexOf("MSIE") > -1;
-	 * 
-	 * if (ie) { fileName = URLEncoder.encode(file.getName(),
-	 * "utf-8").replace("+", "%20"); } else { fileName = new
-	 * String(file.getName().getBytes("utf-8"), "iso-8859-1").replace("+",
-	 * "%20"); }
-	 * 
-	 * res.setHeader("Content-Disposition", "attachment;" + " filename=\"" +
-	 * fileName + "\";"); OutputStream out = res.getOutputStream();
-	 * FileInputStream fis = null;
-	 * 
-	 * try { int temp; fis = new FileInputStream(file); while ((temp =
-	 * fis.read()) != -1) { out.write(temp); } } catch (Exception e) {
-	 * e.printStackTrace(); } finally { if (fis != null) { try { fis.close(); }
-	 * catch (Exception e) { e.printStackTrace(); } } } } }
-	 */
 
 	private String getUUID() {
 
