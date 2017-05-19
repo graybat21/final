@@ -59,50 +59,54 @@
 </head>
 
 <body>
-<div class="svc_allwrap">
-<div class="svc_wrap row row_cont">
-<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
+	<div class="svc_allwrap">
+		<div class="svc_wrap row row_cont">
+			<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
 
-	<div class="svc_contents">
-		<div class="svc_title svc_notice">
-		<h4>방등록</h4>
+			<div class="svc_contents">
+				<div class="svc_title svc_notice">
+					<h4>방등록</h4>
+				</div>
+				<form id="uploadForm" enctype="multipart/form-data" method="POST"
+					action="${pageContext.request.contextPath}/roomInsert.gh">
+
+					<label for="file1">파일 첫 번째</label>
+					<div>
+						<input type="file" id="file1" name="file" required="required" />
+					</div>
+					<label for="file2">파일 두 번째</label>
+					<div>
+						<input type="file" id="file2" name="file" required="required" />
+					</div>
+
+					<label for="file2">name</label>
+					<div>
+						<input type="text" id="name" name="name" required="required" />
+					</div>
+					<label for="file2">max</label>
+					<div>
+						<input type="text" id="max" name="max" required="required" />
+					</div>
+					<label for="file2">price</label>
+					<div>
+						<input type="text" id="price" name="price" required="required" />
+					</div>
+
+					<input type="text" id="host_no" name="host_no" value="${sessionScope.session_host_no}"
+						required="required" />
+
+				</form>
+				<div>
+					<button id="btn-upload" type="submit"
+						onclick="location.href='roomList.gh'">파일 업로드</button>
+					<!-- <button id="btn-upload">파일 업로드</button> -->
+					<%-- <a href="resources/upload/${filename}">${filename}</a><br/> --%>
+				</div>
+			</div>
+
+
 		</div>
-		<form id="uploadForm" enctype="multipart/form-data" method="POST"
-			action="${pageContext.request.contextPath}/roomInsert.gh">
-			
-						<label for="file1">파일 첫 번째</label>
-			<div>
-				<input type="file" id="file1" name="file" required="required" />
-			</div>
-			<label for="file2">파일 두 번째</label>
-			<div>
-				<input type="file" id="file2" name="file" required="required" />
-			</div>
-			<label for="file2">name</label>
-			<div>
-				<input type="text" id="name" name="name" required="required" />
-			</div>
-			<label for="file2">max</label>
-			<div>
-				<input type="text" id="max" name="max" required="required" />
-			</div>
-			<label for="file2">price</label>
-			<div>
-				<input type="text" id="price" name="price" required="required" />
-			</div>
-
-			<input type="text" id="host_no" name="host_no" value="${host_no}"required="required" />
-
-		</form>
-		<div>
-		<button id="btn-upload" type="submit" onclick="location.href='roomList.gh'">파일 업로드</button>
-		<!-- <button id="btn-upload">파일 업로드</button> -->
-		 <%-- <a href="resources/upload/${filename}">${filename}</a><br/> --%>
 	</div>
-	</div>
-
-	
-</div></div>
 
 
 
