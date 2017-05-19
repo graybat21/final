@@ -39,7 +39,7 @@
 		select
 		i.filename from image i, room r, host h
 		where i.room_no = r.no and
-		r.host_no=h.no and h.no=#{no}
+		r.host_no=h.no and h.no=#{no}   
 	</select>
 </mapper>
 	

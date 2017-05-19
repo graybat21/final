@@ -3,6 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script>
+    $(function(){
+        $(".DatePicker").datepicker({});
+    });
+</script>
 
 
 <link href="${pageContext.request.contextPath}/css/font-awesome.css"
@@ -33,7 +41,7 @@
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
-	type="text/css" />
+	type="text/css"/>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -42,7 +50,7 @@
 		// 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
 		// 종료일(toDate)은 시작일(fromDate) 이전 날짜 선택 불가
 		//시작일.
-		$('#datepicker1').datepicker(
+		$('.datepicker1').datepicker(
 				{
 					dateFormat : "yy-mm-dd", // 날짜의 형식
 					changeMonth : false, // 월을 이동하기 위한 선택상자 표시여부
@@ -55,7 +63,7 @@
 					}
 				});
 		//종료일
-		$('#datepicker2').datepicker(
+		$('.datepicker2').datepicker(
 				{
 					dateFormat : "yy-mm-dd",
 					changeMonth : false,
@@ -449,18 +457,17 @@ button, input, optgroup, select, textarea {
 								<div class="tab-pane fade in" id="tabhotel">
 									<h3>Search and Book Hotels</h3>
 									<ul class="list-inline list-unstyled">
+										<li><select class="select-one">
+												<option selected="selected">지역</option>
+												<option>서울</option>
+												<option>경기</option>
+												<option>부산</option>
+												<option>제주도</option>
+										</select></li>
 										<li>
 											<div class="form-group">
-												<input class="form-control" placeholder="GuestHi!"
-													type="text">
-											</div>
-										</li>
-										<li>
-											<div class="form-group">
-												<input class="form-control hasDatepicker"
+												<input class="datepicker1"
 													placeholder="Check In" id="datepicker1" type="text">
-
-
 												<!-- 
 													<img
 													class="ui-datepicker-trigger" src="image/icon-calendar.png"
@@ -469,7 +476,7 @@ button, input, optgroup, select, textarea {
 										</li>
 										<li>
 											<div class="form-group">
-												<input class="form-control hasDatepicker"
+												<input class="datepicker2"
 													placeholder="Check Off" id="datepicker2" type="text">
 												<!-- 	<input type="text" id="datepicker4"> -->
 												<!-- <img
@@ -478,31 +485,22 @@ button, input, optgroup, select, textarea {
 											</div>
 										</li>
 										<li><select class="select-one">
-												<option selected="selected">1 Room</option>
-												<option>2 Room</option>
-												<option>3 Room</option>
-												<option>4 Room</option>
-
-										</select></li>
-
-										<li><select class="select-one">
-												<option selected="selected">1 Guest</option>
+												<option selected="selected">인원</option>
 												<option>1 Guest</option>
 												<option>2 Guest</option>
 												<option>No One</option>
 
 										</select></li>
-
 										<li>
 											<div class="form-group">
 												<input class="form-control"
-													placeholder="Max budget (Optional)" type="text">
+													placeholder="최대가격" type="text">
 											</div>
 										</li>
 										<!--   search now -->
 										<li><a
 											href="http://teamworktec.com/demo/travel-gateway/html/hotel/hotels_list_one/left_sidebar.html"
-											class="btn btn-search-travel">Search Now!!!!!</a></li>
+											class="btn btn-search-travel">검   색</a></li>
 									</ul>
 								</div>
 

@@ -54,7 +54,7 @@ public class RoomServiceImpl implements RoomService {
 
 
 	@Override
-	public RoomVO getRoomInfoByHostNo(int no) throws Exception {
+	public List<RoomVO> getRoomInfoByHostNo(int no) throws Exception {
 		return roomMapper.getRoomInfoByHostNo(no);
 	}
 

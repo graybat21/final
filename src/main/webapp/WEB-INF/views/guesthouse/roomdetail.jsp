@@ -1,6 +1,7 @@
+<%@page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
-<%@page pageEncoding="UTF-8"%>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
@@ -19,112 +20,36 @@
 				<div class="ad_info_room row">
 					<div class="info_title margin_align">
 						<h4>객실정보</h4>
-						<p class="room_detail info_title_sub txt_option">선택하신 날짜 객실 정보 입니다. <span class="info_title_group">(<span class="txt_default">일반가</span>, <span class="txt_spacial">특별가</span>)</span></p>	
+						<p class="room_detail info_title_sub txt_option">
+						선택하신 날짜 객실 정보 입니다. 
+						<span class="info_title_group">(<span class="txt_default">일반가</span>, <span class="txt_spacial">특별가</span>)</span>
+						</p>	
 					</div>
-										<div class="info_cont">
+					<div class="info_cont">
 						<ul class="room_list">
-								<li>
+							<c:forEach var="item" items="${roomList }" varStatus="status">
+							<li>
 								<a href="javascript:showLayerImg('thum', 0,'/adimg_new/1667/27820/bcf79b3068d1372f1395eea640ba16bd.jpg');">
 								<div class="room_img">
 									<div class="img_wrap imgLiquidFill">
 										<span class="thumb_none"></span>
-										<img src="https://img.goodchoice.kr/resize_588x300/adimg_new/1667/27820/bcf79b3068d1372f1395eea640ba16bd.jpg" data-src="/adimg_new/1667/27820/bcf79b3068d1372f1395eea640ba16bd.jpg" alt="" class="" data-original="https://img.goodchoice.kr/resize_588x300/adimg_new/1667/27820/bcf79b3068d1372f1395eea640ba16bd.jpg" style="display: block;">
+										<img src="http://placehold.it/588x300" style="display: block;">
+										<!-- <img src="http://placehold.it/588x300" data-src="http://placehold.it/588x300" class="" data-original="http://placehold.it/588x300" style="display: block;"> -->
 									</div>
 								</div>
 								<p class="room_name">
-								2인실									
-								<!-- 예약가능 버튼 -->
+									${item.name }
+									<!-- 예약가능 버튼 -->
 									<span class="reserve_ok">예약가능</span>
 								</p>
 								<div class="room_txt">
-								<p class="room_info"><span>요금&nbsp;&nbsp;</span><strong>45,000</strong>원<i>|</i>1인 요금</p>								
+								<p class="room_info"><span>요금&nbsp;&nbsp;</span><strong>${item.price }</strong>원<i>|</i>1인 요금</p>								
 								<p class="room_info"><strong style="color:#000">잔여 인원</strong><i>|</i>3명</p>		
 								</div>
-								<!-- 
-								<div id="info_text0" style="display:none">
-									<h4>특실 트윈</h4>
-									<p>
-										대실&nbsp;&nbsp;<strong>20,000</strong>원~<i>|</i>12시간 <br>										숙박&nbsp;&nbsp;<strong>45,000</strong>원~<i>|</i>21:00시부터									</p>
-								</div> -->
-								<!--//imgpopup  -->
 
 								</a>
-								</li>
-								<li>
-								<a href="javascript:showLayerImg('thum', 1,'/adimg_new/1667/27816/c1e9b8dba451883be305e27f01bd4743.jpg');">
-								<div class="room_img">
-									<div class="img_wrap imgLiquidFill">
-										<span class="thumb_none"></span>
-										<img src="https://img.goodchoice.kr/resize_588x300/adimg_new/1667/27816/c1e9b8dba451883be305e27f01bd4743.jpg" data-src="/adimg_new/1667/27816/c1e9b8dba451883be305e27f01bd4743.jpg" alt="" class="" data-original="https://img.goodchoice.kr/resize_588x300/adimg_new/1667/27816/c1e9b8dba451883be305e27f01bd4743.jpg" style="display: block;">
-										<!-- img src="" data-src="/adimg_new/1667/27816/c1e9b8dba451883be305e27f01bd4743.jpg" alt="" onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'"/ -->
-									</div>
-								</div>
-								<p class="room_name">
-									4인실									
-									<!-- 예약가능 버튼 -->
-										<span class="reserve_ok">예약가능</span></p>
-								<div class="room_txt">
-									<p class="room_info"><span>요금&nbsp;&nbsp;</span><strong>35,000</strong>원<i>|</i>1인 요금</p>								
-									<p class="room_info"><strong style="color:#000">잔여 인원</strong><i>|</i>8명</p>										
-								<!-- <div id="info_text1" style="display:none">
-									<h4>일반 더블</h4>
-									<p>
-										대실&nbsp;&nbsp;<strong>15,000</strong>원~<i>|</i>12시간 <br>										숙박&nbsp;&nbsp;<strong>40,000</strong>원~<i>|</i>21:00시부터									</p>
-								</div> -->
-								</div>
-								
-								</a>
 							</li>
-							<li>
-								<a href="javascript:showLayerImg('thum', 2,'/adimg_new/1667/27818/781e91d6fdfc3a29697dc6724d3c9637.jpg');">
-								<div class="room_img">
-									<div class="img_wrap imgLiquidFill">
-										<span class="thumb_none"></span>
-										<img src="https://img.goodchoice.kr/resize_588x300/adimg_new/1667/27818/781e91d6fdfc3a29697dc6724d3c9637.jpg" data-src="/adimg_new/1667/27818/781e91d6fdfc3a29697dc6724d3c9637.jpg" alt="" class="" data-original="https://img.goodchoice.kr/resize_588x300/adimg_new/1667/27818/781e91d6fdfc3a29697dc6724d3c9637.jpg" style="display: block;">
-										<!-- img src="" data-src="/adimg_new/1667/27818/781e91d6fdfc3a29697dc6724d3c9637.jpg" alt="" onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'"/ -->
-									</div>
-								</div>
-								<p class="room_name">
-									12인실(여성)							
-									<!-- 예약가능 버튼 -->
-									<span class="reserve_ok">예약가능</span>
-								</p>
-								<div class="room_txt">
-								<p class="room_info"><span>요금&nbsp;&nbsp;</span><strong>15,000</strong>원<i>|</i>1인 요금</p>								
-								<p class="room_info"><strong style="color:#000">잔여 인원</strong><i>|</i>20명</p>	
-								<!-- <div id="info_text2" style="display:none">
-									<h4>일반 트윈</h4>
-									<p>
-										대실&nbsp;&nbsp;<strong>15,000</strong>원~<i>|</i>12시간 <br>										숙박&nbsp;&nbsp;<strong>40,000</strong>원~<i>|</i>21:00시부터									</p>
-								</div> -->
-								</div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:showLayerImg('thum', 3,'/adimg_new/1667/27818/781e91d6fdfc3a29697dc6724d3c9637.jpg');">
-								<div class="room_img">
-									<div class="img_wrap imgLiquidFill">
-										<span class="thumb_none"></span>
-										<img src="https://img.goodchoice.kr/resize_588x300/adimg_new/1667/27818/781e91d6fdfc3a29697dc6724d3c9637.jpg" data-src="/adimg_new/1667/27818/781e91d6fdfc3a29697dc6724d3c9637.jpg" alt="" class="" data-original="https://img.goodchoice.kr/resize_588x300/adimg_new/1667/27818/781e91d6fdfc3a29697dc6724d3c9637.jpg" style="display: block;">
-										<!-- img src="" data-src="/adimg_new/1667/27818/781e91d6fdfc3a29697dc6724d3c9637.jpg" alt="" onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_blank.png'"/ -->
-									</div>
-								</div>
-								<p class="room_name">
-									12인실(남성)									
-									<!-- 예약가능 버튼 -->
-									<span class="reserve_ok">예약가능</span>
-								</p>
-								<div class="room_txt">
-								<p class="room_info"><span>요금&nbsp;&nbsp;</span><strong>15,000</strong>원<i>|</i>1인 요금</p>								
-								<p class="room_info"><strong style="color:#000">잔여 인원</strong><i>|</i>30명</p>	
-								<!-- <div id="info_text2" style="display:none">
-									<h4>일반 트윈</h4>
-									<p>
-										대실&nbsp;&nbsp;<strong>15,000</strong>원~<i>|</i>12시간 <br>										숙박&nbsp;&nbsp;<strong>40,000</strong>원~<i>|</i>21:00시부터									</p>
-								</div> -->
-								</div>
-								</a>
-							</li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>

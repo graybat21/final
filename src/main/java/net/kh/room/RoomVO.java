@@ -15,7 +15,7 @@ public class RoomVO {
 	
 	@Override
 	public String toString() {
-		return "RoomVO [no=" + no + ", name=" + name + ", max=" + max + ", price=" + price + ", host_no=" + host_no
+		return "\nRoomVO [no=" + no + ", name=" + name + ", max=" + max + ", price=" + price + ", host_no=" + host_no
 				+ "]";
 	}
 

@@ -23,6 +23,7 @@ import net.kh.utils.PageMaker;
 public class QnaController {
 	@Resource(name = "qnaService")
 	private QnaService qnaService;
+	
 	ModelAndView mav = new ModelAndView();
 
 

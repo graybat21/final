@@ -177,7 +177,7 @@
 									// 주소로 좌표를 검색합니다
 									geocoder
 											.addr2coord(
-													'서울시 마포구 연남로1길 37',
+													'서울시 마포구 연남로1길 37${session.addr1}',
 													function(status, result) {
 
 														// 정상적으로 검색이 완료됐으면 
@@ -296,7 +296,9 @@
 <!-- Menu (search.js 138참고 )-->
 
 <script>
-
+$(function(){
+	tabRoomDetail();
+})
 	function tabRoomDetail() {
 		$(".search_menu *").removeClass('on');
 		$(".ad_info_wrap").load("/GuestHi/tabRoomDetail.gh");
