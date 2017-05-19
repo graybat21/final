@@ -8,12 +8,12 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,17 +22,15 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
-import net.kh.member.MemberVO;
-
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class RoomController {
-
+	
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
-
-	String PATH = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
+	
+	String PATH = "C:\\java_eclipse\\work\\guestHi\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject
@@ -50,9 +48,8 @@ public class RoomController {
 	 * HTML private Paging paging; // 페이징 클래스의 변수 선언
 	 */
 
-	// json 데이터로 응답을 보내기 위한
-	@Autowired
-	MappingJackson2JsonView jsonView;
+	// json 데이터로 응답을 보내기 위한r
+	
 
 	@RequestMapping("/tabRoomDetail.gh")
 	public String tabRoomDetail(){
@@ -68,7 +65,7 @@ public class RoomController {
 
 	@RequestMapping(value = "/roomInsert.gh", method = RequestMethod.POST, produces = "text/plain")
 	public String upload(MultipartHttpServletRequest request, RoomVO room) throws Exception {
-
+		
 		/*
 		 * Set PATHSET =
 		 * request.getSession().getServletContext().getResourcePaths("/");
@@ -80,7 +77,6 @@ public class RoomController {
 		// C:\Java\Final\src\main\webapp\resources
 		logger.info(room.toString()); // no->seq
 		ModelAndView model = new ModelAndView();
-		model.setView(jsonView);
 		roomService.roomInsert2(room);
 		ImageVO image = new ImageVO();
 		int room_no = roomService.roomGetCurrentNo();
@@ -100,49 +96,54 @@ public class RoomController {
 
 				logger.info(orgFileName + "============원래 파일명=========");
 				logger.info(file.getAbsolutePath() + "========= 암호화 ===========");
-				mpf.get(i).transferTo(file);// 복사 try
+				mpf.get(i).transferTo(file);// 복사 try 
 				image.setFilename(newFileName);
 				image.setRoom_no(room_no - 1);//
 				image.setFilesize("0");
-				// System.out.println(PATH + "얍얍");
+//				System.out.println(PATH + "얍얍");
 				imageService.imageInsert(image);
-
+				
 				System.out.println("읍읍" + image);
 
 			}
 
+			
 		}
 		return "redirect:roomList.gh";
 	}
 
+
+
+	
 	@RequestMapping("/roomList.gh")
-	public ModelAndView roomList(Map<String, Object> map) throws Exception {
+	public ModelAndView roomList(HttpServletRequest request) throws Exception {
 
 		ModelAndView model = new ModelAndView("mypage/roomList/방리스트");
+		
+		System.out.println(request.getSession().getAttribute("session_no"));
+		
+		String hno = (String) request.getSession().getAttribute("session_no");
+		
+		
+		/*int no= 158; //몇번인지를 알아야해
+		int h_no=16;*/
+		/*RoomVO roomVO = roomService.roomList(no); // room에있는no -> image에있는 room_no=158
+		List<String> image = roomService.allImage(h_no); //호스트넘버를 가져와야해
 
-		int no = 152;
-		int h_no = 21;
-		RoomVO roomVO = roomService.roomList(no); // room에있는no -> image에있는
-													// room_no=158
-		List<String> image = roomService.allImage(h_no); // 호스트넘버를 가져와야해
-
-		model.addObject("room", roomVO);
-		model.addObject("image", image);
+		model.addObject("room",roomVO);
+		model.addObject("image",image);*/
 		return model;
 	}
+	
+	
+	
 
-	@RequestMapping("/roomDetail.gh")
-	public ModelAndView roomDetail(MemberVO member, HttpSession session, HttpRequest request) throws Exception{
-		ModelAndView model = new ModelAndView();
-		
-		
-//		model.addObject("room", roomVO);
-		
-		return model;
-	}
 
 	private String getUUID() {
 
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
+
+	
+	
 }

@@ -4,33 +4,24 @@ import java.util.Date;
 
 public class AdminVO {
 	
-	private String no;
-	private String email;
-	private String pw;
+	private int rno;
 	private String name;
-	private String phone;
+	private int max;
+	private String price;
+	private String host_no;
 	private Date reg;
-	private Date birth;
-	private String auth;
+	
+	private int ino;
+	private int room_no;
+	private String filename;
+	private String filesize;
 	
 	
-
-	@Override
-	public String toString() {
-		return "\nAdminVO [no=" + no + ", email=" + email + ", pw=" + pw + ", name=" + name + ", phone=" + phone
-				+ ", reg=" + reg + ", birth=" + birth + ", auth=" + auth + "]";
+	public int getRno() {
+		return rno;
 	}
-	public String getNo() {
-		return no;
-	}
-	public void setNo(String no) {
-		this.no = no;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setRno(int rno) {
+		this.rno = rno;
 	}
 	public String getName() {
 		return name;
@@ -38,11 +29,23 @@ public class AdminVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPhone() {
-		return phone;
+	public int getMax() {
+		return max;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setMax(int max) {
+		this.max = max;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getHost_no() {
+		return host_no;
+	}
+	public void setHost_no(String host_no) {
+		this.host_no = host_no;
 	}
 	public Date getReg() {
 		return reg;
@@ -50,23 +53,28 @@ public class AdminVO {
 	public void setReg(Date reg) {
 		this.reg = reg;
 	}
-	public Date getBirth() {
-		return birth;
+	public int getIno() {
+		return ino;
 	}
-	public void setBirth(Date birth) {
-		this.birth = birth;
+	public void setIno(int ino) {
+		this.ino = ino;
 	}
-	public String getAuth() {
-		return auth;
+	public int getRoom_no() {
+		return room_no;
 	}
-	public void setAuth(String auth) {
-		this.auth = auth;
+	public void setRoom_no(int room_no) {
+		this.room_no = room_no;
 	}
-	public String getPw() {
-		return pw;
+	public String getFilename() {
+		return filename;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
-
+	public String getFilesize() {
+		return filesize;
+	}
+	public void setFilesize(String filesize) {
+		this.filesize = filesize;
+	}
 }

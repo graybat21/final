@@ -1,6 +1,5 @@
 package net.kh.admin;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,58 +9,49 @@ import org.springframework.transaction.annotation.Transactional;
 import net.kh.dao.AdminDao;
 import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
+import net.kh.member.MemberVO;
 import net.kh.room.RoomVO;
 
 @Service("adminService")
 public class AdminServiceImpl implements AdminService {
-
+	
 	@Autowired
 	private AdminDao adminMapper;
-
+	
+	
 	@Override
 	@Transactional
-	public List<AdminVO> memberList(HashMap<String, Object> map) throws Exception {
-		return adminMapper.memberList(map);
+	public List<MemberVO> memberList(MemberVO member) throws Exception {
+		
+		return adminMapper.memberList(member);
 	}
-
+	
 	@Override
 	@Transactional
-	public int memberListCnt() throws Exception {
-		return adminMapper.memberListCnt();
-	}
-
-	@Override
-	@Transactional
-	public int deleteMember(String no) throws Exception {
-
+	public int deleteMember(int no) throws Exception {
+		
 		return adminMapper.deleteMember(no);
 	}
-
+	
 	@Override
 	@Transactional
-	public List<HostVO> hostList(HashMap<String, Object> map) throws Exception {
-
-		return adminMapper.hostList(map);
+	public List<HostVO> hostList(HostVO host) throws Exception {
+		
+		return adminMapper.hostList(host);
 	}
-
-	@Override
-	@Transactional
-	public int hostListCnt() throws Exception {
-		return adminMapper.hostListCnt();
-	}
-
+	
 	@Override
 	@Transactional
 	public int deleteHost(int no) throws Exception {
-
+		
 		return adminMapper.deleteHost(no);
 	}
-
+	
 	@Override
 	@Transactional
-	public List<RoomVO> adminRoomList(RoomVO room) throws Exception {
-
-		return adminMapper.adminRoomList(room);
+	public List<AdminVO> adminRoomList(AdminVO admin) throws Exception {
+		
+		return adminMapper.adminRoomList(admin);
 	}
 	
 	@Override

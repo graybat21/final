@@ -177,9 +177,10 @@
 						<ul>
 							<li class="nav_nick">
 								<div class="my_info">
-									<span class="nickname"> <a href="${pageContext.request.contextPath}/logout.gh">${session_name}&nbsp;님</a></span>
-									<span class="my_img"> <img
-										src="${pageContext.request.contextPath}/resources/image/ic_menu_user_default.png">
+									<span class="nickname"> <a href="${pageContext.request.contextPath}/logout.gh">${session_name}&nbsp;님과 ${session_no }</a></span>
+									<span class="my_img"> 
+									<input type="hidden" name="hno" value="${session_no }" />
+									<img src="${pageContext.request.contextPath}/resources/image/ic_menu_user_default.png">
 									</span>
 								</div>
 							</li>
