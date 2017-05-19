@@ -2,10 +2,10 @@ package net.kh.dao;
 
 import java.util.List;
 
+import net.kh.admin.AdminVO;
 import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
 import net.kh.member.MemberVO;
-import net.kh.room.RoomVO;
 
 public interface AdminDao {
 
@@ -20,7 +20,7 @@ public interface AdminDao {
 	int deleteHost(int no) throws Exception;
 	
 	// 방관리
-	List<RoomVO> adminRoomList(RoomVO room) throws Exception;
+	List<AdminVO> adminRoomList(AdminVO admin) throws Exception;
 	
 	int deleteRoom(int no) throws Exception;
 	

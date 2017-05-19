@@ -157,7 +157,7 @@
 				<a href="#" class="btn_menu">메뉴</a> <a href="#" class="btn_m_srch">검색</a>
 
 				<!-- 로그인전 -->
-				<c:if test="${session_email == null }">
+				<c:if test="${session_mem_email == null && session_host_email == null }">
 					<nav class="nav_sub">
 						<ul>
 							<li class="link_01"><a href="#layer" class="layer_trigger">로그인</a></li>
@@ -172,12 +172,13 @@
 				</c:if>
 
 				<!-- 로그인후 -->
-				<c:if test="${session_email != null }">
+				<c:if test="${session_mem_email != null || session_host_email != null }">
 					<nav class="nav_sub">
 						<ul>
 							<li class="nav_nick">
 								<div class="my_info">
-									<span class="nickname"> <a href="${pageContext.request.contextPath}/logout.gh">${session_name}&nbsp;님</a></span>
+									<span class="nickname"> <a href="${pageContext.request.contextPath}/logout.gh">
+									${session_mem_name != null ? session_mem_name : session_host_name}&nbsp;님</a></span>
 									<span class="my_img"> <img
 										src="${pageContext.request.contextPath}/resources/image/ic_menu_user_default.png">
 									</span>
@@ -185,7 +186,7 @@
 							</li>
 							<!-- 마이페이지 연결 아직 안함. -->
 							<li class="link_02"><a
-								href="qnaList.gh">마이페이지</a></li>
+								href="myPage.gh">마이페이지</a></li>
 
 							<li class="link_04"><a
 								href="noticeList.gh">고객센터</a></li>

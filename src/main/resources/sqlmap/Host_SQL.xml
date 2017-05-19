@@ -4,6 +4,7 @@
 <!-- 맵핑될 DAO 인터페이스의 Full name 을 줍니다. -->
 <mapper namespace="net.kh.dao.HostDao"> 
 
+
 	<!-- id 속성은 DAO 의 메소드와 같아야 한다. 여기의 boardVO 는 mybatis-confg.xml 에 Alias 되어 있습니다. -->
 	<select id="hostLogin" resultType="hostVO"> 
 		SELECT
@@ -17,12 +18,12 @@
 		INSERT INTO HOST (
 			no, email, pw, name, tel, 
 			reg, biz_no, addr1, addr2, zip,
-			imagename, imagesize, auth
+			imagename, imagesize, auth, imagename
 		)
 		VALUES (
 			SEQ_HOST_NO.NEXTVAL, #{email}, #{pw}, #{name}, #{tel},
 			sysdate, #{biz_no}, #{addr1}, #{addr2}, #{zip},
-			#{imagename}, #{imagesize}, #{auth}
+			#{imagename}, #{imagesize}, #{auth}, #{imagename}
 		)
 	</insert>
 	

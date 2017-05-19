@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
 <!DOCTYPE html>
 <html lang="ko"><head>
 	
@@ -25,7 +26,7 @@
 </head>
 
 <body class="pcweb" oncontextmenu="return false" ondragstart="return false">
-
+   <%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
 
 <div id="allWrap">
 	
@@ -103,7 +104,7 @@
 				<div class="svc_menu" style="display:none">
 	<h3>마이페이지</h3>
 					<ul>
-						<li><a href="https://www.goodchoice.kr/mypage/myZzim">찜</a></li>
+						<li><a href="wishList.gh">찜</a></li>
 
 						<li><a href="https://www.goodchoice.kr/mypage/myReserve">예약내역</a></li>
 
@@ -163,4 +164,4 @@
 
 	<!-- //페이지별 화면 load -->
 
-</body></html>
+</body></html> --%>

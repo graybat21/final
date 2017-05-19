@@ -49,7 +49,7 @@ public class MemberController {
 
 	@RequestMapping("/join/joinFormA.gh")
 	public String joinStep2a() {
-		return "member/joinForm2a/개인회원 가입폼";
+		return "member/registerMember/개인회원 가입폼";
 	}
 
 	@RequestMapping("/join/joinA.gh")

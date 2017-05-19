@@ -23,8 +23,9 @@ import net.kh.utils.PageMaker;
 public class QnaController {
 	@Resource(name = "qnaService")
 	private QnaService qnaService;
+	
 	ModelAndView mav = new ModelAndView();
-	QnaVO qnaVOO = new QnaVO(); 
+
 
 	private static final Logger logger = LoggerFactory.getLogger(QnaController.class);
 
@@ -54,7 +55,7 @@ public class QnaController {
 		model.addAttribute("qnaList", list);
 		model.addAttribute("qnaPageMaker", pagemaker);
 
-		return "qna/qnaList/QNA";
+		return "guesthouse/roomdetail/QNA"; //qna/qnaList
 	}
 
 	// 글쓰기

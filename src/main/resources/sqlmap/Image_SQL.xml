@@ -6,14 +6,14 @@
 	<!-- <select id="memberLogin" resultType="memberVO"> SELECT no, email, pw, 
 		name, phone, reg, auth FROM MEMBER WHERE email = #{email} </select> -->
 
-	<insert id="imageInsert" parameterType="imageVO"> <!-- 하나씩들어가는거 -->   <!-- 결과값이 VO로 가는거 -->
+	<insert id="imageInsert" parameterType="hashmap"> <!-- 하나씩들어가는거 -->   <!-- 결과값이 VO로 가는거 -->
 		INSERT INTO IMAGE (
 		no, room_no, filename, filesize
 		)
 		VALUES
 		(SEQ_IMAGE_NO.NEXTVAL, #{room_no},
 		#{filename},
-		#{filesize}
+		'0'
 		)
 	</insert>
 </mapper>

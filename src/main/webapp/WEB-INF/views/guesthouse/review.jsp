@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,8 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type">
-<title><tiles:getAsString name="title"/></title>
-
+ 
 <!-- 공통 CSS  -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/folder/default.css">
@@ -28,7 +30,7 @@
 		<h2 class="hide">업체상세페이지</h2>
 		<!-- 페이지 navi -->
 		<script src="${pageContext.request.contextPath}/resources/folder/jquery_003.js"></script>
-		<style type="text/css">
+<style type="text/css">
 #eventSlide_02 {
 	position: relative;
 }
@@ -104,23 +106,14 @@
 }
 </style>
 		<!-- Menu (search.js 138참고 )-->
-		<div class="search_menu">
-			<ul>
-				<li><a href="#" class="a_room">객실정보</a></li>
-				<li><a href="#" class="a_reserve">예약</a></li>
-				<li><a href="#" class="a_time">요금 및 시간</a></li>
-				<li><a href="#" class="a_notice">공지사항</a></li>
-				<li><a href="#" class="a_theme">테마</a></li>
-				<li><a href="#" class="a_review on">리뷰</a></li>
-			</ul>
-		</div>
+		
 		
 			<a id="bookmark6"></a>
 			<div class="ad_info_review row" id="reivew_area"
 				style="display: block;">
 				<div class="info_title">
 					<h4 onclick="javascript:scrollLink('bookmark1', 1000);">
-						리뷰 <em>(count개)</em>
+						리뷰 <em>${reviewList.size() }개</em>
 					</h4>
 				</div>
 				<div class="info_cont">
@@ -153,47 +146,69 @@
 
 					<div class="review_list">
 						<ul id="review_list">
-							<li>
-								<div class="review_user_img">
-									<!--리얼리뷰 일때... 2016-03-04 by.심정우-->
-									<p>
+						
+							<c:forEach var="item" items="${reviewList }">
+								<li>
+									<div class="review_user_img">
+										<!--리얼리뷰 일때... 2016-03-04 by.심정우-->
+										<p>
+											<img
+												src="${pageContext.request.contextPath}/resources/image/epilp_21.png"
+												onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_user_default.png'">
+										</p>
+										<span>리얼리뷰</span>
+									</div>
+									<div class="review_user_info">
+										<span class="user_name">${item.MEMBERNAME }</span> <span
+											class="user_reg_date">${item.REG }</span>
+									</div>
+	
+									<div class="score_wrap">
+										<p class="score_star star_${item.STAR }"></p>
+										<span class="score_num">${item.STAR }</span>
+									</div>
+	
+									<div class="review_cont">
+										${item.CONTENT } /&nbsp; ${item.ROOMNAME }이용
+									</div> <!-- 이용후기 당첨자 아이콘 --> <!-- //이용후기 당첨자 아이콘 -->
+								</li>
+							<c:if test="${item.C_CONTENT != null }">
+								<li class="review_oner">
+									<div class="review_user_img">
 										<img
-											src="${pageContext.request.contextPath}/resources/image/epilp_21.png"
-											onerror="this.src='https://img.goodchoice.kr/images/web_v2/search/img_user_default.png'">
-									</p>
-									<span>리얼리뷰</span>
-								</div>
-								<div class="review_user_info">
-									<span class="user_name">여기어때회원1445436588</span> <span
-										class="user_reg_date">2017.04.25</span>
-								</div>
-
-								<div class="score_wrap">
-									<p class="score_star star_50"></p>
-									<span class="score_num">10.0</span>
-								</div>
-
-								<div class="review_cont">
-									깨씃하고 고급스러운 디자인 너무 좋아요<br> 로비도 호텔분위기 이곳만 오게 되네요~
-								</div> <!-- 이용후기 당첨자 아이콘 --> <!-- //이용후기 당첨자 아이콘 -->
-							</li>
-
-							<li class="review_oner">
-								<div class="review_user_img">
-									<img
-										src="${pageContext.request.contextPath}/resources/image/owner_defaultprofile_20160414.png"
-										alt="">
-								</div>
-								<div class="review_user_info">
-									<span class="user_name">태릉 호텔 드씨엘사장님</span> <span
-										class="user_reg_date">2017.04.25</span>
-								</div>
-
-								<div class="review_cont">
-									여기어때회원1445436588님 안녕하세요.<br> 드씨엘을 이용해 주셔서 감사드립니다^^ 앞으로도
-									만족하실 수 있는 <br> 서비스 제공해 드리도록 노력하겠습니다~ 소중한 후기 감사드립니다 ㅎㅎ
-								</div>
-							</li>
+											src="${pageContext.request.contextPath}/resources/image/owner_defaultprofile_20160414.png"
+											alt="">
+									</div>
+									<div class="review_user_info">
+										<span class="user_name">${item.HOSTNAME }</span> <span
+											class="user_reg_date">${item.C_REG }</span>
+									</div>
+	
+									<div class="review_cont">
+										${item.C_CONTENT }
+									</div>
+								</li>
+							</c:if>
+							</c:forEach>
+							<c:if test="${mem != null }">
+								<form>
+								<li class="review_write">
+									<div class="review_user_img">
+										<img
+											src="${pageContext.request.contextPath}/resources/image/owner_defaultprofile_20160414.png"
+											alt="">
+									</div>
+									<div class="review_user_info">
+										<span class="user_name">${mem.MEMBERNAME} &nbsp;님</span> <span
+											class="user_reg_date">현재시간</span>
+									</div>
+									<div class="review_cont">
+										<input type="text" id="star" name="star">
+										<input type="submit">
+									</div>
+								</li>
+								</form>
+							</c:if>
 						</ul>
 						 <div class="btn_wrap">
 							<a href="javascript:;" class="btn_review_more">더 많은 리뷰보기</a>
@@ -202,8 +217,6 @@
 				</div>
 			</div>
 			<!-- //이용후기 -->
-	</article>
 
 </body>
-</html><%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+</html>

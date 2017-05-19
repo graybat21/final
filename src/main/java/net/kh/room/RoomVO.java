@@ -2,7 +2,7 @@ package net.kh.room;
 
 
 import java.util.Date;
-
+import net.kh.room.ImageVO;
 public class RoomVO {
 
 	private int no;
@@ -11,10 +11,10 @@ public class RoomVO {
 	private String price;
 	private String host_no;
 	private Date reg;
-	/*private Image image;*/
+	private ImageVO image;
 	@Override
 	public String toString() {
-		return "RoomVO [no=" + no + ", name=" + name + ", max=" + max + ", price=" + price + ", host_no=" + host_no
+		return "\nRoomVO [no=" + no + ", name=" + name + ", max=" + max + ", price=" + price + ", host_no=" + host_no
 				+ "]";
 	}
 
@@ -66,6 +66,16 @@ public class RoomVO {
 	public void setReg(Date reg) {
 		this.reg = reg;
 	}
+
+	public ImageVO getImage() {
+		return image;
+	}
+
+	public void setImage(ImageVO image) {
+		this.image = image;
+	}
+
+	
 
 
 	
