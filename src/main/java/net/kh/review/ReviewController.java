@@ -30,7 +30,7 @@ public class ReviewController {
 	@RequestMapping("/tabReview.gh")
 	public ModelAndView review(HttpSession session) throws Exception {
 		logger.info("ReviewController 구동");
-		ModelAndView mav = new ModelAndView("guesthouse/review/예약");
+		ModelAndView mav = new ModelAndView("guesthouse/review");
 
 		// MemberVO member = (MemberVO) session.getAttribute("mem");
 

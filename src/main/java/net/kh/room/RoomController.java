@@ -1,10 +1,8 @@
 package net.kh.room;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -13,14 +11,14 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
+
+import net.kh.host.HostVO;
 
 /**
  * Handles requests for the application home page.
@@ -52,8 +50,17 @@ public class RoomController {
 	
 
 	@RequestMapping("/tabRoomDetail.gh")
-	public String tabRoomDetail(){
-		return "guesthouse/roomdetail";
+	public ModelAndView tabRoomDetail(HttpSession session)throws Exception{
+		ModelAndView mav=new ModelAndView("guesthouse/roomdetail");
+//		int host_no = (int)session.getAttribute("session_host_no");
+		HostVO host= (HostVO) session.getAttribute("host");
+		logger.info(host.toString());
+		int host_no = host.getNo();
+		List<RoomVO> roomList=roomService.getRoomInfoByHostNo(host_no);
+		logger.info(roomList.toString());
+		mav.addObject("host_no",host_no);
+		mav.addObject("roomList",roomList);
+		return mav;
 	}
 
 	@RequestMapping("/roomInsertForm.gh")

@@ -217,7 +217,6 @@
 				</div>
 			</div>
 			<!-- //이용후기 -->
-	</article>
 
 </body>
 </html>

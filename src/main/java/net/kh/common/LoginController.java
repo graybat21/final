@@ -93,10 +93,10 @@ public class LoginController {
 	
 				HttpSession session = request.getSession();
 	
+				session.setAttribute("session_host_email", resultHost.getEmail());
+				session.setAttribute("session_host_name", resultHost.getName());
+				session.setAttribute("session_host_no", resultHost.getNo());
 				session.setAttribute("host", resultHost); //자바빈
-				session.setAttribute("session_email", resultHost.getEmail());
-				session.setAttribute("session_name", resultHost.getName());
-				session.setAttribute("session_no", resultHost.getNo());
 	
 				session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
 	
