@@ -1,7 +1,6 @@
 package net.kh.room;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -13,17 +12,15 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
-import net.kh.member.MemberVO;
+import net.kh.host.HostVO;
 
 /**
  * Handles requests for the application home page.
@@ -51,13 +48,20 @@ public class RoomController {
 	 * HTML private Paging paging; // 페이징 클래스의 변수 선언
 	 */
 
-	// json 데이터로 응답을 보내기 위한
-	@Autowired
-	MappingJackson2JsonView jsonView;
+	// json 데이터로 응답을 보내기 위한r
 
 	@RequestMapping("/tabRoomDetail.gh")
-	public String tabRoomDetail(){
-		return "guesthouse/roomdetail";
+	public ModelAndView tabRoomDetail(HttpSession session) throws Exception {
+		ModelAndView mav = new ModelAndView("guesthouse/roomdetail");
+		// int host_no = (int)session.getAttribute("session_host_no");
+		HostVO host = (HostVO) session.getAttribute("host");
+		logger.info(host.toString());
+		int host_no = host.getNo();
+		List<RoomVO> roomList = roomService.getRoomInfoByHostNo(host_no);
+		logger.info(roomList.toString());
+		mav.addObject("host_no", host_no);
+		mav.addObject("roomList", roomList);
+		return mav;
 	}
 
 	@RequestMapping("/roomInsertForm.gh")
@@ -81,7 +85,6 @@ public class RoomController {
 		// C:\Java\Final\src\main\webapp\resources
 		logger.info(room.toString()); // no->seq
 		ModelAndView model = new ModelAndView();
-		model.setView(jsonView);
 		roomService.roomInsert2(room);
 		ImageVO image = new ImageVO();
 		int room_no = roomService.roomGetCurrentNo();
@@ -109,7 +112,7 @@ public class RoomController {
 				imageService.imageInsert(image);
 
 				System.out.println("읍읍" + image);
-				session.setAttribute("image", image);
+				model.addObject("roomNumber", image.getRoom_no());
 			}
 
 		}
@@ -117,36 +120,27 @@ public class RoomController {
 	}
 
 	@RequestMapping("/roomList.gh")
-	public ModelAndView roomList(Map<String, Object> map, HttpSession session, HttpServletRequest request) throws Exception {
-		ModelAndView model = new ModelAndView("mypage/roomList/방리스트");
-//	int no = 152;
-	int no = (int)(request.getSession().getAttribute("session_no"));
-	System.out.println(no+"얍얍");
-//		int h_no = 21;
-	int h_no = (int)(request.getSession().getAttribute("session_no"));
-	System.out.println(h_no);
+	public String roomList(Map<String, Object> map, HttpSession session, HttpServletRequest request, Model model)
+			throws Exception {
+		// int no = 152;
+		int no = roomService.roomGetCurrentNo()-1;//room_no
+		System.out.println(no + "얍얍");
+		// int h_no = 21;
+		int h_no = (int) (request.getSession().getAttribute("session_host_no"));
+		System.out.println(h_no);
 		RoomVO roomVO = roomService.roomList(no); // room에있는no -> image에있는
 													// room_no=158
 		List<String> image = roomService.allImage(h_no); // 호스트넘버를 가져와야해
-	
-//		session.setAttribute("image", image);
-		model.addObject("room", roomVO);
-		model.addObject("image", image);
-		return model;
-	}
 
-	@RequestMapping("/roomDetail.gh")
-	public ModelAndView roomDetail(MemberVO member, HttpSession session, HttpRequest request) throws Exception{
-		ModelAndView model = new ModelAndView();
-		
-		
-//		model.addObject("room", roomVO);
-		
-		return model;
+		// session.setAttribute("image", image);
+		model.addAttribute("room", roomVO);
+		model.addAttribute("image", image);
+		return "mypage/roomList/방리스트";
 	}
 
 	private String getUUID() {
 
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
+
 }

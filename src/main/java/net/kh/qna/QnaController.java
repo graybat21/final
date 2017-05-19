@@ -23,8 +23,9 @@ import net.kh.utils.PageMaker;
 public class QnaController {
 	@Resource(name = "qnaService")
 	private QnaService qnaService;
+	
 	ModelAndView mav = new ModelAndView();
-	QnaVO qnaVOO = new QnaVO(); 
+
 
 	private static final Logger logger = LoggerFactory.getLogger(QnaController.class);
 

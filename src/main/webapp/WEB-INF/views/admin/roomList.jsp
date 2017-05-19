@@ -50,6 +50,7 @@ td {
 			<tr height="30px">
 				<th>방 번호</th>
 				<th>호스트 번호</th>
+				<th>썸네일</th>
 				<th>방 이름</th>
 				<th>최대 인원</th>
 				<th>가격</th>				
@@ -62,6 +63,7 @@ td {
 						<tr height="50px">
 							<td>${room.no }</td>
 							<td>${room.host_no }</td>
+							<td>${room }
 							<td>${room.name }</td>
 							<td>${room.max }</td>
 							<td>${room.price}</td>

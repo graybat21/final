@@ -146,7 +146,7 @@
 			<h3>게스트하우스 이름</h3>
 			<p class="address btn_copy">주소 블라블라</p>
 			<p class="tel">☎ 1234567899</p>
-			<a class="btn_zzim ">찜하기</a>
+			<a href="wishAdd.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" class="btn_zzim ">찜하기</a>
 		</div>
 		
 		<!-- 주소 -->
@@ -296,7 +296,9 @@
 <!-- Menu (search.js 138참고 )-->
 
 <script>
-
+$(function(){
+	tabRoomDetail();
+})
 	function tabRoomDetail() {
 		$(".search_menu *").removeClass('on');
 		$(".ad_info_wrap").load("/GuestHi/tabRoomDetail.gh");

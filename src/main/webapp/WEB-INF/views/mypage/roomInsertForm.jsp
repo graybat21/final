@@ -92,7 +92,7 @@
 						<input type="text" id="price" name="price" required="required" />
 					</div>
 
-					<input type="text" id="host_no" name="host_no" value="${host_no}"
+					<input type="text" id="host_no" name="host_no" value="${sessionScope.session_host_no}"
 						required="required" />
 
 				</form>

@@ -18,6 +18,7 @@ public class RoomServiceImpl implements RoomService {
 
 	@Autowired
 	private RoomDao roomMapper;
+	
 
 
 	
@@ -53,7 +54,7 @@ public class RoomServiceImpl implements RoomService {
 
 
 	@Override
-	public RoomVO getRoomInfoByHostNo(int no) throws Exception {
+	public List<RoomVO> getRoomInfoByHostNo(int no) throws Exception {
 		return roomMapper.getRoomInfoByHostNo(no);
 	}
 
@@ -61,5 +62,14 @@ public class RoomServiceImpl implements RoomService {
 
 	
 
+
+
+
+
+
+
+
+	
+	
 
 }

@@ -7,5 +7,8 @@ encoding//src/main/webapp/WEB-INF/views/guesthouse/tabEx.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/layout/header.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/layout/mypage.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/mypage/roomInsertForm.jsp=UTF-8
+<<<<<<< HEAD
+=======
 encoding//src/main/webapp/WEB-INF/views/mypage/roomList.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/mypage/wish.jsp=UTF-8
+>>>>>>> 0608c2be0fbd9727c7598e4f6cdacf47701f1ee9

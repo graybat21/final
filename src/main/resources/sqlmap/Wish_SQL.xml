@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.kh.dao.WishDao">
+
+
+
+<insert id="insertWish" parameterType="wishListVO">
+insert into WISH (mem_no, host_no) 
+		   values(#{mem_no}, #{host_no})
+</insert>
+
+<select id="wishList1" resultType="wishListVO">
+select * from WISH where mem_no = #{mem_no} and host_no = #{host_no}
+</select>
+
+<select id="wishList" resultType="hashmap" parameterType="hashmap" >
+select w.mem_no, 
+       w.host_no,
+       h.name,
+       h.addr1,
+       h.addr2,
+       h.zip,
+       h.tel
+from wish w, host h, member m
+where 
+h.no = w.host_no and
+m.no = w.mem_no 
+     
+       
+		
+</select>
+
+ <!--  찜 삭제 -->
+<delete id="wishDelete" parameterType="wishListVO">
+delete from WISH where mem_no = #{mem_no} and host_no = #{host_no}
+</delete>
+
+</mapper>
