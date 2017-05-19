@@ -8,8 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -34,6 +36,15 @@ public class HomeController {
 //		return "mypage/wish/MAIN";
 		return "main/main/예약";
 
+	}
+	
+	@RequestMapping("/ghList.gh")
+	public ModelAndView ghList(Search search){
+		ModelAndView mav=new ModelAndView("main/ghList/검색리스트");
+		System.out.println("얍얍");
+		mav.addObject(search);
+		logger.info(search.toString());
+		return mav;
 	}
 	
 }
