@@ -49,7 +49,10 @@
 	<!-- 해봄 왼쪽메뉴바 사라짐 -->		<div class="my_wrap row row_cont">
 				<!-- 마이페이지 메뉴 -->
 <!-- 해봄 왼쪽메뉴바 망가짐 -->				
-<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>				
+<div class="my_menu" style="display: none;"><!-- min-height: 1530px; -->
+
+<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>		
+</div>		
 				<!-- 마이페이지 콘텐츠 -->
 				<div class="my_contents">
 					<!-- my_cont_wrap  얘가 오른쪽 페이지 줄짧게 만드는?애 없애면 길어짐 -->
