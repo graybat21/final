@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import net.kh.host.HostVO;
 import net.kh.member.MemberVO;
 
 /**
@@ -55,8 +56,17 @@ public class RoomController {
 	MappingJackson2JsonView jsonView;
 
 	@RequestMapping("/tabRoomDetail.gh")
-	public String tabRoomDetail(){
-		return "guesthouse/roomdetail";
+	public ModelAndView tabRoomDetail(HttpSession session)throws Exception{
+		ModelAndView mav=new ModelAndView("guesthouse/roomdetail");
+//		int host_no = (int)session.getAttribute("session_host_no");
+		HostVO host= (HostVO) session.getAttribute("host");
+		logger.info(host.toString());
+		int host_no = host.getNo();
+		List<RoomVO> roomList=roomService.getRoomInfoByHostNo(host_no);
+		logger.info(roomList.toString());
+		mav.addObject("host_no",host_no);
+		mav.addObject("roomList",roomList);
+		return mav;
 	}
 
 	@RequestMapping("/roomInsertForm.gh")

@@ -296,7 +296,9 @@
 <!-- Menu (search.js 138참고 )-->
 
 <script>
-
+$(function(){
+	tabRoomDetail();
+})
 	function tabRoomDetail() {
 		$(".search_menu *").removeClass('on');
 		$(".ad_info_wrap").load("/GuestHi/tabRoomDetail.gh");
