@@ -43,7 +43,7 @@
 					</div>
 
 					<div class="">
-						<c:if test="${session_name != null }">
+						<c:if test="${session_mem_name != null }">
 							<a href="noticeWrite.gh" class=""><strong>글쓰기</strong> </a>
 						</c:if>
 					</div>

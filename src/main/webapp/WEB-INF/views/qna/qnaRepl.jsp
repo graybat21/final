@@ -109,7 +109,7 @@
 
                                     <label><input
                                        class="ipt_inq_tel numOnly" name="writer"
-                                       value="${session_name }" maxlength="50" readonly>
+                                       value="${session_mem_name}" maxlength="50" readonly>
                                     </label>
                              			</div>
 										<div class="inq_tel">

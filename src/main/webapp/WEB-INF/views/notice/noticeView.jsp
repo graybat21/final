@@ -40,7 +40,7 @@
 			<input type="hidden" name="${noticeVO.no }" />
 			<%-- <input type="hidden" name="seq" value="${item.seq }" /> --%>
 
-			<c:if test="${session_name != null }">
+			<c:if test="${session_mem_name != null }">
 			<button type="button" onclick="onModify()" class="btn btn-primary">수정</button>
 			<button type="button" onclick="onDelete()" class="btn btn-primary">삭제</button>
 			</c:if>

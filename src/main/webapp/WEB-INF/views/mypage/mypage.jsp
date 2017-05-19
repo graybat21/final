@@ -1,12 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko"><head>
+
+   
 </head>
 <body>
+<div class="my_wrap row row_cont">
+<body class="pcweb" oncontextmenu="return false" ondragstart="return false"> <!--<![endif]-->
+   
+<div class="my_menu" style="display: none;">
+
+<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>   
+   
+</div>   
 
 </body>
 </html>

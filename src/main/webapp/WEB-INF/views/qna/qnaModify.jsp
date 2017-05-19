@@ -12,7 +12,10 @@
 <body>
 	<div class="svc_allwrap">
 		<div class="svc_wrap row row_cont">
+			<div class="svc_menu" style="display: none;"><!-- min-height: 1530px; -->
+			
 			<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
+			</div>
 			<div class="svc_contents">
 				<div class="svc_title svc_notice">
 					<h4>QnA</h4>

@@ -14,7 +14,11 @@
 	<div class="svc_allwrap">
 		<div class="svc_wrap row row_cont">
 			<!-- 서비스 메뉴 -->
-			<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
+			<div class="svc_menu" style="display: none;">
+
+<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>   
+   
+</div>   
 			<!-- //서비스 메뉴 -->
 			<div class="svc_contents">
 				<div class="svc_title svc_notice">
@@ -42,11 +46,11 @@
 			</tr>
 	</table>
 	
-	<c:if test="${session_name != null }">
+	<c:if test="${session_mem_name != null }">
 	<button type="button" onclick="qnaModify()" class="btn btn-primary">수정</button>
 	<button type="button" onclick="qnaDelete()" class="btn btn-primary">삭제</button>
 	</c:if>
-	<c:if test="${session_name =='1'}">
+	<c:if test="${session_mem_name =='1'}">
 	<button type="button" onclick="qnaRepl()" class="btn btn-primary">답변</button>
 	</c:if>
 	<button type="button" onclick="qnaList()" class="btn btn-primary">목록</button>
