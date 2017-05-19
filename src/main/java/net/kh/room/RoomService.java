@@ -11,7 +11,7 @@ public interface RoomService {
 
 	public int roomGetCurrentNo() throws Exception;
 	
-	public RoomVO roomList(int no) throws Exception;
+	public List<RoomVO> roomList(int host_no) throws Exception;
 	
 	public List<String> allImage(int h_no) throws Exception;
 	

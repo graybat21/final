@@ -38,9 +38,9 @@ public class RoomServiceImpl implements RoomService {
 	
 	@Override
 	@Transactional
-	public RoomVO roomList(int no) throws Exception {
+	public List<RoomVO> roomList(int host_no) throws Exception {
 		// TODO Auto-generated method stub
-		return roomMapper.roomList(no);
+		return roomMapper.roomList(host_no);
 	}
 
 

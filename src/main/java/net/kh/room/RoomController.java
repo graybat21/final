@@ -120,9 +120,11 @@ public class RoomController {
 
 		ModelAndView model = new ModelAndView("mypage/roomList/방리스트");
 		
-		System.out.println(request.getSession().getAttribute("session_no"));
 		
-		String hno = (String) request.getSession().getAttribute("session_no");
+		int host_no = (int) request.getSession().getAttribute("session_mem_no");
+		System.out.println(host_no);
+		List<RoomVO> roomList = roomService.roomList(host_no);
+		model.addObject("roomList", roomList);
 		
 		
 		/*int no= 158; //몇번인지를 알아야해

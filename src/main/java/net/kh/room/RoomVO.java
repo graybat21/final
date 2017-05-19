@@ -12,6 +12,7 @@ public class RoomVO {
 	private String host_no;
 	private Date reg;
 	private ImageVO image;
+	
 	@Override
 	public String toString() {
 		return "RoomVO [no=" + no + ", name=" + name + ", max=" + max + ", price=" + price + ", host_no=" + host_no

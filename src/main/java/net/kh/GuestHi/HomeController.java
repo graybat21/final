@@ -32,7 +32,7 @@ public class HomeController {
 //		
 //		model.addAttribute("serverTime", formattedDate );
 //		return "mypage/wish/MAIN";
-		return "guesthouse/ghDetail/예약";
+		return "guesthouse/ghList/게하 리스트";
 
 	}
 	
