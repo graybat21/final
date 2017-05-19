@@ -95,8 +95,8 @@ public class LoginController {
 				session.setAttribute("host", resultHost); //자바빈
 				session.setAttribute("session_email", resultHost.getEmail());
 				session.setAttribute("session_name", resultHost.getName());
-				session.setAttribute("session_no", resultHost.getNo());
-	
+				session.setAttribute("session_no", resultHost.getNo()); //16
+				session.setAttribute("session_addr1", resultHost.getAddr1());
 				session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
 	
 				logger.info(resultHost.toString());

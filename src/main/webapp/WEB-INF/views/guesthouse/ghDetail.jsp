@@ -177,7 +177,7 @@
 									// 주소로 좌표를 검색합니다
 									geocoder
 											.addr2coord(
-													'서울시 마포구 연남로1길 37',
+													'서울시 마포구 연남로1길 37${session.addr1}',
 													function(status, result) {
 
 														// 정상적으로 검색이 완료됐으면 

@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -67,7 +68,7 @@ public class RoomController {
 	}
 
 	@RequestMapping(value = "/roomInsert.gh", method = RequestMethod.POST, produces = "text/plain")
-	public String upload(MultipartHttpServletRequest request, RoomVO room) throws Exception {
+	public String upload(MultipartHttpServletRequest request, RoomVO room, HttpSession session) throws Exception {
 
 		/*
 		 * Set PATHSET =
@@ -108,7 +109,7 @@ public class RoomController {
 				imageService.imageInsert(image);
 
 				System.out.println("읍읍" + image);
-
+				session.setAttribute("image", image);
 			}
 
 		}
@@ -116,16 +117,19 @@ public class RoomController {
 	}
 
 	@RequestMapping("/roomList.gh")
-	public ModelAndView roomList(Map<String, Object> map) throws Exception {
-
+	public ModelAndView roomList(Map<String, Object> map, HttpSession session, HttpServletRequest request) throws Exception {
 		ModelAndView model = new ModelAndView("mypage/roomList/방리스트");
-
-		int no = 152;
-		int h_no = 21;
+//	int no = 152;
+	int no = (int)(request.getSession().getAttribute("session_no"));
+	System.out.println(no+"얍얍");
+//		int h_no = 21;
+	int h_no = (int)(request.getSession().getAttribute("session_no"));
+	System.out.println(h_no);
 		RoomVO roomVO = roomService.roomList(no); // room에있는no -> image에있는
 													// room_no=158
 		List<String> image = roomService.allImage(h_no); // 호스트넘버를 가져와야해
-
+	
+//		session.setAttribute("image", image);
 		model.addObject("room", roomVO);
 		model.addObject("image", image);
 		return model;
