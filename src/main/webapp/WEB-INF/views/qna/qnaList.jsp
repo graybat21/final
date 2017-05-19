@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<link href="${pageContext.request.contextPath}/css/board.css" rel="stylesheet">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible">
@@ -30,32 +31,38 @@
 				<!-- svc_cont_wrap -->
 				<div class="svc_cont_wrap" style="min-height: 1127px;">
 					<div class="svc_list">
-								<c:forEach var="list" items="${qnaList}">
+					
+					
+<table class="type07">
+    
+    <tbody>
+  					  <c:forEach var="list" items="${qnaList}">
+  					  
+    <tr>
 									<c:url var="viewURL" value="qnaView.gh">
 										<c:param name="no" value="${list.no }" />
 									</c:url>
-										<ul>
-											<li>
-													<a href="${viewURL }">
-												<p class="list_title" align="left">
-													<strong>${list.no }</strong>
-													<c:if test="${list.restep==1}">&nbsp;
+									
+									 		    <td align="left"><strong><a href="${viewURL }">${list.no }</a></strong></td>
+												<td align="left"><strong><a href="${viewURL }">
+												<c:if test="${list.restep==1}">&nbsp;
 													<img src="https://www.google.co.kr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjPsYv94efTAhVIvbwKHVZyDQkQjRwIBw&url=http%3A%2F%2Fwww.applebeebook.co.kr%2Fm%2Fgoods%2Fview.php%3Fgoodsno%3D1043&psig=AFQjCNF890lFQ5VPiPi_r2rP7EvAjRSOiQ&ust=1494589515835847">
 													</c:if>
-													<span>${list.subject }/${list.writer }</span>
-												</p>
-												<p class="list_date">
-													<fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" />
-												</p>
-													</a>
-
-											</li>
-										</ul>
+												${list.subject }
+												</a></strong></td>
+                                                <td align="left"><strong><a href="${viewURL }">${list.writer }</a></strong></td>
+												<td align="right"><gray><fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" /></gray></td>
+    </tr>
 								</c:forEach>
+        
+
+    </tbody>
+</table>
 					</div>
 					<div class="">
 						<a href="qnaWrite.gh" class=""><strong>글쓰기</strong> </a>
 					</div>
+					
 					<!-- 페이징 -->
 					<div class="svc_paging">
 					<ul class="pageUL">
@@ -96,5 +103,6 @@
 		</div>
 	</div>
 	<!-- //서비스 wrap -->
+	
 </body>
 </html>

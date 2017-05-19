@@ -6,59 +6,45 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>수정하기</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymosus">
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
 </head>
 </head>
 <body>
-		<div class="container">
-			<table class="table table-bordered">
-				<thead>
-				<caption>글쓰기</caption>
-				</thead>
-				<tbody>
-					<form action="qnaModify.gh" method="post">
-						<input type="hidden" name="no" value="${qnaVO.no }" />
-						<tr>
-							<th>작성자:</th>
+	<div class="svc_allwrap">
+		<div class="svc_wrap row row_cont">
+			<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
+			<div class="svc_contents">
+				<div class="svc_title svc_notice">
+					<h4>QnA</h4>
+				</div>
+                  <!-- svc_cont_wrap -->
+                  <div class="svc_cont_wrap">  <!-- 제목 내용 칸 너비 -->
 
-							<td><input type="text" name="writer"
-								value="${qnaVO.writer }" readonly /></td>
-						</tr>
-						<tr>
-							<th>제목:</th>
-							<td><input type="text" name="subject"
-								value="${qnaVO.subject }" /></td>
-						</tr>
-						<tr>
-							<th>내용:</th>
-							<td><textarea cols="40" name="content">${qnaVO.content }</textarea></td>
-						</tr>
+                        <form action="qnaModify.gh" method="post" accept-charset="utf-8">
+                           <div class="svc_inquiry_reg">  <!-- <<<<<<<<<<<<<<<<얘가 글 칸 넓게 해줌 -->
+                             <div class="inq_tel">
+                                 <p>
+<input type="hidden" name="no" value="${qnaVO.no }" />
+                                    <label><input class="ipt_inq_tel numOnly" name="subject" value="${qnaVO.subject }" maxlength="20"></label>
+                              </div>
+                              <div class="inq_input">
+                                 <textarea name="content" >${qnaVO.content }</textarea>
+                              </div>
 
 
-						<tr>
-							<td colspan="2"><input type="submit" value="글작성" /> <input
-								type="button" value="다시입력" /> <input type="button" value="취소 " />
-							</td>
-						</tr>
-					</form>
-				</tbody>
-			</table>
+
+                              <div class="inq_btn">
+                                 <input type="submit" class="btn_inq_reg" value="완료">
+                                 <span  onclick="history.go(-1);"><input type="button" class="btn_inq_reg" value="취소"></span>
+                              </div>
+
+                           </div>
+
+                        </form>
+
+                     </div>		
+			</div>
 		</div>
+	</div>
 </body>
 </html>

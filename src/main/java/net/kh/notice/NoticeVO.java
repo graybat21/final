@@ -5,7 +5,7 @@ import java.util.Date;
 public class NoticeVO {
 	
 	private int no;
-	private String name;	
+
 	private String subject;
 	private String content;	
 	private Date reg;
@@ -14,7 +14,7 @@ public class NoticeVO {
 	
 	@Override
 	public String toString() {
-		return "NoticeVO [no=" + no + ", name=" + name + ", subject=" + subject + ", content=" + content + ", reg="
+		return "NoticeVO [no=" + no +", subject=" + subject + ", content=" + content + ", reg="
 				+ reg + "]";
 	}
 	public int getNo() {
@@ -22,12 +22,6 @@ public class NoticeVO {
 	}
 	public void setNo(int no) {
 		this.no = no;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public String getSubject() {
 		return subject;
