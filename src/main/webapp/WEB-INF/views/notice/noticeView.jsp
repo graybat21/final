@@ -8,95 +8,63 @@
 <head>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
-<link href="/pet/resources/admincss/bootstrap.min.css" rel="stylesheet">
-<link href="/pet/resources/css/reset.css" rel="stylesheet">
-<link href="/pet/resources/admincss/sb-admin-2.css" rel="stylesheet">
-<style type="text/css"> 
+<link href="${pageContext.request.contextPath}/css/board.css" rel="stylesheet">
 
-	.contents-wrap{margin:30px 0 0 0;min-height: 500px;}
-	.contents{ margin: 60px 0 0 0;}
-	.recode-wrap{text-align: right; color: #888;}
-	.hit-wrap{color:#888; margin: 10px 0;}
-	.viewForm{margin: 20px 0 0 0;}
-</style>
 
 </head>
 
 <body>
 
 
-<div id="wrapper">
-<div class="category_top">
-	<ul>
-	 	<li class="post1">커뮤니티</li><li>></li><li class="post2">공지사항</li>			
-	</ul>
-</div>
-		<div id="page-wrapper">
-			<div class="row">
-				<div class="col-lg-12">
-					<h1 class="page-header">NOTICE</h1>
+<!-- 서비스 wrap  -->
+	<div class="svc_allwrap">
+		<div class="svc_wrap row row_cont">
+			
+			<div class="svc_contents_notice">
+				<div class="svc_title svc_notice">
+					<h4>공지사항</h4>
 				</div>
-				<!-- /.col-lg-12 -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="panel panel-default">
 
-						<!-- /.panel-heading -->
+<table class="type05">
+    <tr>
+        <th height="30px">제목</th>
+        <td>${noticeVO.subject }</td>
+    </tr>
 
-						<div class="dataTable_wrapper">
-							<table class="table table-striped table-bordered table-hover"
-								id="dataTables-example">
-								<thead>
-									<tr class="danger">
-										<th> ${noticeVO.subject }</th>
-										
-									</tr>
-								</thead>
-								<tbody>
+    <tr>
+        <th height="300px">내용</th>
+        <td>${noticeVO.content }</td>
+    </tr>
+</table>
 
-							
-									<tr>
-										<td>${noticeVO.content }</td>
-
-									</tr>
-
-								</tbody>
-							</table>
-						</div>
-			<form class="viewForm" method="post">
 			<input type="hidden" name="${noticeVO.no }" />
 			<%-- <input type="hidden" name="seq" value="${item.seq }" /> --%>
 
-			<c:if test="${session_name != null }">
-			<a href="noticeModify.gh?no=${noticeVO.no }"><span>수정</span></a>
-			<a href="noticeDelete.gh?no=${noticeVO.no }"><span>삭제</span></a>
+			<c:if test="${session_mem_name != null }">
+			<button type="button" onclick="onModify()" class="btn btn-primary">수정</button>
+			<button type="button" onclick="onDelete()" class="btn btn-primary">삭제</button>
 			</c:if>
 			<button type="button" onclick="onList()" class="btn btn-primary">목록</button>
-		</form>	
 
-					</div>
 
-				</div>
+
+
 			</div>
+
 		</div>
+	</div>
 
-
-
-
-
-
-</div>
-
-
-
-	
 </body>
 <script type="text/javascript">
 
 	var onList = function(){
 		location.href='noticeList.gh';
+	};
+	var onModify = function(){
+		location.href='noticeModify.gh?no=${noticeVO.no }';
+	};
+	var onDelete = function(){
+		location.href='noticeDelete.gh?no=${noticeVO.no }';
 	};
 </script>
 </html>
