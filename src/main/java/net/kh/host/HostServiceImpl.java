@@ -1,5 +1,6 @@
 package net.kh.host;
 
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,5 @@ public class HostServiceImpl implements HostService {
 	public int hostGetCurrentNo() throws Exception {
 		return hostMapper.hostGetCurrentNo();
 	}
-	
-	
+
 }

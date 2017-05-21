@@ -454,25 +454,24 @@ button, input, optgroup, select, textarea {
 							<div class="tab-content">
 
 
-<!-- <script>
+<script>
 function searchSubmit(){
 	$('#searchForm').submit();
 }
 </script>
- -->
+
 
 								<!--tabhotel-->
 								<div class="tab-pane fade in" id="tabhotel">
-									<form action="ghList.gh" id="searchForm" name="searchForm"
-									 accept-charset="utf-8">
+									<form action="ghList.gh" id="searchForm" name="searchForm">
 									<h3>Search and Book Hotels</h3>
 									<ul class="list-inline list-unstyled">
 										<li><select class="select-one" name="area">
 												<option selected="selected">지역</option>
-												<option value="seoul">서울</option>
-												<option>경기</option>
-												<option>부산</option>
-												<option>제주도</option>
+												<option value="서울">서울</option>
+												<option value="경기">경기</option>
+												<option value="부산">부산</option>
+												<option value="제주도">제주도</option>
 										</select></li>
 										<li>
 											<div class="form-group">
@@ -499,6 +498,8 @@ function searchSubmit(){
 												<option value="1">1 Guest</option>
 												<option value="2">2 Guest</option>
 												<option value="3">3 Guest</option>
+												<option value="4">4 Guest</option>
+												<option value="5">5 Guest</option>
 										</select></li>
 										<li>
 											<div class="form-group">
@@ -507,9 +508,9 @@ function searchSubmit(){
 											</div>
 										</li>
 										<!--   search now -->
-										<li><!-- <a
+										<li><a
 											href="javascript:searchSubmit()"
-											class="btn btn-search-travel">검   색</a> --><input type="submit" value="검색"></li>
+											class="btn btn-search-travel">검   색</a></li>
 									</ul>
 									</form>
 								</div>

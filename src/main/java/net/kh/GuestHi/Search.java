@@ -7,8 +7,8 @@ public class Search {
 	private String area;
 	private Date from;
 	private Date to;
-	private String participant;
-	private String max_price;
+	private int participant;
+	private int max_price;
 
 	public String getArea() {
 		return area;
@@ -34,19 +34,19 @@ public class Search {
 		this.to = to;
 	}
 
-	public String getParticipant() {
+	public int getParticipant() {
 		return participant;
 	}
 
-	public void setParticipant(String participant) {
+	public void setParticipant(int participant) {
 		this.participant = participant;
 	}
 
-	public String getMax_price() {
+	public int getMax_price() {
 		return max_price;
 	}
 
-	public void setMax_price(String max_price) {
+	public void setMax_price(int max_price) {
 		this.max_price = max_price;
 	}
 

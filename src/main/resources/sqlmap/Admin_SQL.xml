@@ -28,7 +28,7 @@
 		SELECT * FROM
 			(SELECT ROW_NUMBER() OVER(ORDER BY no DESC) RNUM,
 					no, email, pw, name, tel, reg, biz_no, 
-					addr1, addr2, zip, imagename, imagesize, auth
+					addr1, addr2, zip, imagename, auth
 				FROM host
 			) X
 		WHERE X.RNUM between #{first} and #{last}
@@ -45,7 +45,9 @@
 	
 	<!-- 관리자 게하 룸 관리 목록 -->
 	<select id="adminRoomList" resultType="adminVO">
-		SELECT r.no, r.name, r.max, r.price, r.host_no, r.reg, i.no, i.room_no, i.filename, i.filesize FROM room r, image i ORDER BY r.no DESC
+		SELECT r.no, r.name, r.max, r.price, r.host_no, r.reg, i.no, i.room_no, i.filename, i.filesize 
+		FROM room r, image i 
+		ORDER BY r.no DESC
 	</select>
 	
 	<!-- 관리자 게하 룸 강제 삭제 -->

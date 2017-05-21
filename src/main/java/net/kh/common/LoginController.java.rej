@@ -1,9 +1,0 @@
-diff a/src/main/java/net/kh/common/LoginController.java b/src/main/java/net/kh/common/LoginController.java	(rejected hunks)
-@@ -67,7 +67,6 @@
- 				HttpSession session = request.getSession();
- 	
- 				session.setAttribute("mem", resultMember);
--				session.setAttribute("session_no", resultMember.getNo());
- 				session.setAttribute("session_mem_email", resultMember.getEmail());
- 				session.setAttribute("session_mem_name", resultMember.getName());
- 				session.setAttribute("session_mem_no", resultMember.getNo());
