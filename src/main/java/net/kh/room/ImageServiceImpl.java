@@ -21,10 +21,17 @@ public class ImageServiceImpl implements ImageService {
 
 	}
 
+
 	@Override
-	public List<String> getRoomNumber(int no) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> selectImageByRoomNumber(int room_no) throws Exception {
+		return imageMapper.selectImageByRoomNumber(room_no);
 	}
+
+
+	@Override
+	public List<String> getRoomNumberByHostNumber(int h_no) throws Exception {
+		return imageMapper.getRoomNumberByHostNumber(h_no);
+	}
+	
 
 }

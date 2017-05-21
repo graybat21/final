@@ -18,7 +18,7 @@
 		#{price}, #{host_no}, sysdate
 		)
 	</insert>
-	<select id="roomGetCurrentNo" resultType="int">
+	<select id="roomGetCurrentNo" resultType="int"> <!-- insert후에 바로 뒤에 보일것을 보이게함 -->
 		SELECT
 		LAST_NUMBER
 		FROM
@@ -27,10 +27,10 @@
 		SEQUENCE_NAME='SEQ_ROOM_NO'
 	</select>
 
-	<select id="roomList" parameterType="int" resultType="roomVO">
+	<!-- <select id="roomList" parameterType="int" resultType="roomVO">
 
 		select * from room where no = #{no}
-	</select>
+	</select> -->
 	<select id="getRoomInfoByHostNo" parameterType="int" resultType="roomVO">
 		select * from room where host_no = #{no}
 	</select>
@@ -48,6 +48,8 @@
 	<!-- 이쿼리에서...
 	1. 호스트번호에 맞는걸 가져와서
 	룸번호에 따라서 이미지를 가져와야함... -->
+	
+	
 	
 </mapper>
 	

@@ -23,7 +23,8 @@
 			<td>이미지</td>
 			<td>
 			이미지 :<c:forEach var="item" items="${image}">
- <img src="./resources/upload/${item}" width="100px" height="100px"/>
+ <img src="./resources/upload/${item.}" width="100px" height="100px" />
+ ${item.image}
 				</c:forEach></td>
 		</tr>
 

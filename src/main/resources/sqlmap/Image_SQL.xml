@@ -16,5 +16,18 @@
 		'0'
 		)
 	</insert>
+
+	<select id="selectImageByRoomNumber" parameterType="int"
+		resultType="String"> <!-- 스트링으로 받아서 리스트로 보냄 -->
+		select filename from image where room_no = #{room_no}
+	</select>
+
+<!-- int후 list -->
+	<select id="getRoomNumberByHostNumber" parameterType="int" resultType="String"> <!-- 호스트넘버를 가지고 방번호를 가져옴 -->
+		<!-- select distinct room_no from image i, room r, host h where h.no = 
+			r.host_no and r.no = i.room_no and h.no= #{h.no} -->
+		select r.no from room r, host h
+		where h.no=r.host_no and h.no=#{h_no}
+	</select>
 </mapper>
 	

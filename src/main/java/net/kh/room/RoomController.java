@@ -1,6 +1,8 @@
 package net.kh.room;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -122,21 +124,53 @@ public class RoomController {
 	@RequestMapping("/roomList.gh")
 	public String roomList(Map<String, Object> map, HttpSession session, HttpServletRequest request, Model model)
 			throws Exception {
-		// int no = 152;
-		int no = roomService.roomGetCurrentNo()-1;//room_no
-		System.out.println(no + "얍얍");
-		// int h_no = 21;
+
 		int h_no = (int) (request.getSession().getAttribute("session_host_no"));
 		System.out.println(h_no);
-		RoomVO roomVO = roomService.roomList(no); // room에있는no -> image에있는
-													// room_no=158
-		List<String> image = roomService.allImage(h_no); // 호스트넘버를 가져와야해
-
+		List<RoomVO> roomVO = roomService.getRoomInfoByHostNo(h_no); // room에있는no -> image에있는
+		List<String> roomNumber = imageService.getRoomNumberByHostNumber(h_no);
+		
+		List<String> image = new ArrayList<String>();
+		for(int i=0; i<roomNumber.size(); i++){
+			//키값이 291일때 291에 해당하는 이미지를 불러옴
+			//roomNumber.get(i) = 숫자인데 문자열로 저장됨..
+			//이미지만 가져옴
+			//int-String
+		image.add(imageService.selectImageByRoomNumber(Integer.parseInt(roomNumber.get(i))));  // 호스트넘버를 가져와야해 !방번호를 통해서 이미지를 가져와야해! ->리스트형태 리턴
+		
+		}
 		// session.setAttribute("image", image);
-		model.addAttribute("room", roomVO);
-		model.addAttribute("image", image);
+		model.addAttribute("room", roomVO); //한줄
+		model.addAttribute("image", image); //map객체 
+		
 		return "mypage/roomList/방리스트";
 	}
+	
+	/*@RequestMapping("/roomList.gh")
+	public String roomList(Map<String, Object> map, HttpSession session, HttpServletRequest request, Model model)
+			throws Exception {
+
+		int h_no = (int) (request.getSession().getAttribute("session_host_no"));
+		System.out.println(h_no);
+		List<RoomVO> roomVO = roomService.getRoomInfoByHostNo(h_no); // room에있는no -> image에있는
+		List<String> roomNumber = imageService.getRoomNumberByHostNumber(h_no);
+		
+		Map<String, Object> image = new HashMap<String, Object>();
+		for(int i=0; i<roomNumber.size(); i++){
+			//키값이 291일때 291에 해당하는 이미지를 불러옴
+			//roomNumber.get(i) = 숫자인데 문자열로 저장됨..
+			//이미지만 가져옴
+			//int-String
+		image.put(String.valueOf(roomVO.get(i).getNo()), imageService.selectImageByRoomNumber(Integer.parseInt(roomNumber.get(i))));  // 호스트넘버를 가져와야해 !방번호를 통해서 이미지를 가져와야해! ->리스트형태 리턴
+		
+		}
+		// session.setAttribute("image", image);
+		model.addAttribute("room", roomVO); //한줄
+		model.addAttribute("image", image); //map객체 
+		
+		return "mypage/roomList/방리스트";
+	}*/
+	
 
 	private String getUUID() {
 
