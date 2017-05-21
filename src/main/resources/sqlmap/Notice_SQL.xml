@@ -9,7 +9,6 @@
 					no,
 					content,
 					subject,
-					name,
 					reg
 				FROM NOTICE
 			) X 
@@ -19,9 +18,9 @@
 	<!-- 글쓰기 -->
 	<insert id="noticeWrite" parameterType="noticeVO">
 			INSERT INTO NOTICE
-			(NO, CONTENT, REG, SUBJECT, NAME)
+			(NO, CONTENT, REG, SUBJECT)
 			VALUES
-			(SEQ_NOTICE_NO.NEXTVAL, #{content}, SYSDATE, #{subject}, #{name})
+			(SEQ_NOTICE_NO.NEXTVAL, #{content}, SYSDATE, #{subject})
 	</insert>
 	
 		<!--글 상세보기 -->

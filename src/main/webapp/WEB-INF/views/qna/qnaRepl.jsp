@@ -72,7 +72,6 @@
 															});
 
 												});
-							});
 
 			function dataClean() {
 				$("select[name='uiqcate']").val('');
@@ -86,33 +85,18 @@
 			<h2 class="hide">문의사항</h2>
 
 			<!-- 서비스 wrap -->
-			<div class="svc_allwrap">
+
 
 
 				<!-- <div class="bg_left"></div>
 			<div class="bg_right"></div> -->
 
 				<div class="svc_wrap row row_cont">
-					<!-- 서비스 메뉴 -->
-					<div class="svc_menu" style="display: none">
-						<h3>마이페이지</h3>
-						<ul>
-							<li><a href="https://www.goodchoice.kr/mypage/myZzim">찜</a></li>
-
-							<li><a href="https://www.goodchoice.kr/mypage/myReserve">예약내역</a></li>
-
-							<li><a href="https://www.goodchoice.kr/mypage/myInfo"
-								class="active">내정보수정</a></li>
-
-							<li><a href="https://www.goodchoice.kr/mypage/myInfo">문의사항</a></li>
-						</ul>
-					</div>
-					<!-- //서비스 메뉴 -->
-
+				<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
 					<!-- 서비스 콘텐츠 -->
 					<div class="svc_contents">
 						<div class="svc_title svc_inquiry">
-							<h4>문의글 답변</h4>
+							<h4>QnA</h4>
 						</div>
 						<!-- svc_cont_wrap -->
 						<div class="svc_cont_wrap">
@@ -120,13 +104,14 @@
 								<form action="qnaRepl.gh" method="post" accept-charset="utf-8">
 								<input type="hidden" name="no" value="${qnaVO.no}" /> 
 									<div class="svc_inquiry_reg">
-										<div class="inq_cate_sel">
-											<label> 
-											<span>작성자:</span>
-												<td>${session_name }
-												<input type="hidden" name="writer" value="${session_name }">
-											</label>
-										</div>
+										<div class="inq_tel">
+                                 <p>
+
+                                    <label><input
+                                       class="ipt_inq_tel numOnly" name="writer"
+                                       value="${session_mem_name}" maxlength="50" readonly>
+                                    </label>
+                             			</div>
 										<div class="inq_tel">
 											<p>
 
@@ -138,17 +123,16 @@
 										</div>
 										<div class="inq_input">
 											<textarea name="content" >${qnaVO.content }
-===========================================답변======================================================
-											
-											</textarea>
+==========================================답변==========================================
+</textarea>
 										</div>
 
 
 
-										<div class="inq_btn">
-											<input type="submit" class="btn_inq_reg" value="작성">
-											<input type="reset" class="btn_inq_reg" value="다시입력">
-										</div>
+							  <div class="inq_btn">
+                                 <input type="submit" class="btn_inq_reg" value="답변하기">
+                                 <span  onclick="history.go(-1);"><input type="button" class="btn_inq_reg" value="뒤로가기"></span>
+                              </div>
 
 									</div>
 
