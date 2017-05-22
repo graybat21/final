@@ -566,12 +566,13 @@ $('input[type=file]').customFile();
 									name="tel" id="tel" placeholder="업체번호">
 							</p>
 							<!-- 파일업로드 -->
-									<p class="join_item item_7" id="status">
+									<!-- <p class="join_item item_7" id="status">
 										<label for="file">업체메인사진: </label> <input class="ipt ipt_add"
 											type="file" id="imagename" name="imagename" multiple />
 									</p>
-									<div id="holder"></div>
-							
+									<div id="holder"></div> -->
+								<input type="hidden" id="imagename" name="imagename" value="imagename">
+								<input type="hidden" id="imagesize" name="imagesize" value="imagesize">
 								</p>
 								<!-- Agree Area -->
 								<div class="agree_area">

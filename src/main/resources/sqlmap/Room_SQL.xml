@@ -28,26 +28,17 @@
 	</select>
 
 	<select id="roomList" parameterType="int" resultType="roomVO">
-
 		select * from room where no = #{no}
 	</select>
 	<select id="getRoomInfoByHostNo" parameterType="int" resultType="roomVO">
 		select * from room where host_no = #{no}
+		order by no
 	</select>
 	<!-- 방번호에 대한것만 가져오자나여...
 	방번호로 가져오면 안되고
 	기업회원에 대한걸로 가져와야 하자나여..
 	이걸로 쿼리를 짜야해여 -->
 	
-	<select id="allImage" parameterType="int" resultType="String">
-		select
-		i.filename from image i, room r, host h
-		where i.room_no = r.no and
-		r.host_no=h.no and h.no=#{no}
-	</select>
-	<!-- 이쿼리에서...
-	1. 호스트번호에 맞는걸 가져와서
-	룸번호에 따라서 이미지를 가져와야함... -->
 	
 </mapper>
 	

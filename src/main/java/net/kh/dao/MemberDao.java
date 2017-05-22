@@ -12,7 +12,7 @@ public interface MemberDao {
 
 	int memberGetCurrentNo() throws Exception;
 
-	boolean emailCheck(String email) throws Exception;
+	int emailCheck(String email) throws Exception;
 	
 	MemberVO modifyMyInfo(MemberVO member) throws Exception;
 

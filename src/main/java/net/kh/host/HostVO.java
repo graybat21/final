@@ -2,6 +2,8 @@ package net.kh.host;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class HostVO {
 
 	private int no;
@@ -14,9 +16,10 @@ public class HostVO {
 	private String addr1;
 	private String addr2;
 	private String zip;
+	private MultipartFile imageFile;
 	private String imagename;
-	private String imagesize;
 	private String auth;
+	
 
 	public int getNo() {
 		return no;
@@ -98,22 +101,6 @@ public class HostVO {
 		this.zip = zip;
 	}
 
-	public String getImagename() {
-		return imagename;
-	}
-
-	public void setImagename(String imagename) {
-		this.imagename = imagename;
-	}
-
-	public String getImagesize() {
-		return imagesize;
-	}
-
-	public void setImagesize(String imagesize) {
-		this.imagesize = imagesize;
-	}
-
 	public String getAuth() {
 		return auth;
 	}
@@ -122,11 +109,27 @@ public class HostVO {
 		this.auth = auth;
 	}
 
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
+	}
+
+	public String getImagename() {
+		return imagename;
+	}
+
+	public void setImagename(String imagename) {
+		this.imagename = imagename;
+	}
+
 	@Override
 	public String toString() {
-		return "HostVO [no=" + no + ", email=" + email + ", pw=" + pw + ", name=" + name + ", tel=" + tel + ", reg="
-				+ reg + ", biz_no=" + biz_no + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zip=" + zip + ", imagename="
-				+ imagename + ", imagesize=" + imagesize + ", auth=" + auth + "]";
+		return "\nHostVO [no=" + no + ", email=" + email + ", pw=" + pw + ", name=" + name + ", tel=" + tel + ", reg="
+				+ reg + ", biz_no=" + biz_no + ", addr1=" + addr1 + ", addr2=" + addr2 + ", zip=" + zip + ", imageFile="
+				+ imageFile + ", imagename=" + imagename + ", auth=" + auth + "]";
 	}
 
 }

@@ -63,7 +63,7 @@
         }).open();
     }
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 /*----------------------------------------
 Upload btn
@@ -108,7 +108,7 @@ $(".uploader").change(function(){
   readURL(this);
 });
 
-</script>
+</script> -->
 <style>
 @import "bourbon";
 .img-holder{
@@ -148,6 +148,50 @@ $(".uploader").change(function(){
 }
 
 </style>
+<script>
+/* $(function(event){
+	$('#email').keyup(function(){
+		var emailVal=$('#email').val();
+		alert(emailVal);
+	})
+}) */
+
+	/* var email = $('#email').val(); */
+	
+$(function(event){
+	$("#email").keyup(function() {
+		if ( $("#email").val().length >= 6 )
+		{	
+			$.ajax({
+			  url : "/emailCheck.gh",
+			  type : "post",
+			  contentType : 'application/json; charset=utf-8',
+			  //data : JSON.stringify({ username : $("#username").val() }),
+			  data : $("#email").val(),
+			  //dataType: "json",
+			  /* beforeSend: function(xhr){
+			        xhr.setRequestHeader(header, token);
+			    }, */
+			  success : function(data) {
+			    if (data) {
+			    	$("#duplicateResult").text("이미 해당 아이디로 가입된 회원이 있습니다. 다른 아이디를 입력해주세요."); 
+			    } 
+			    else {
+			    	$("#duplicateResult").text(""); 
+			    } 
+			  },
+			  error : function(error) {
+			    alert(error.statusText);  
+			  }
+			});
+		}
+		else {
+	    	$("#duplicateResult").text("아이디를 6자 이상 입력해주세요."); 
+		}
+	  	return false;
+	});
+});
+</script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -155,7 +199,8 @@ $(".uploader").change(function(){
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<h2>Host Register</h2>
-				<form class="form-horizontal" action="${pageContext.request.contextPath}/join/joinB.gh" method="post" enctype="multipart/form-data">
+				<form class="form-horizontal" action="${pageContext.request.contextPath}/join/joinB.gh" 
+				method="post" enctype="multipart/form-data" name="hostVO" id="hostVO">
 				
 					<div class="form-group"><div class="control-group">
 						<label class="col-sm-3 control-label">Email</label>
@@ -163,9 +208,10 @@ $(".uploader").change(function(){
 							<input type="email" class="form-control" id="email" name="email" 
   							data-validation-email-message="형식에 맞는 이메일을 입력해 주세요."/>
 							<p class="help-block" style="color:red;"></p>
+							<span id="duplicateResult"></span><br>
 						</div></div>
 						<div class="col-sm-3">
-							<a class="btn" id="chkzip" onclick="execDaumPostcode()">중복확인</a>
+							<a class="btn" id="chkzip" onclick="">중복확인</a>
 						</div>
 					</div></div>
 					<div class="form-group"><div class="control-group">
@@ -178,7 +224,7 @@ $(".uploader").change(function(){
 					<div class="form-group"><div class="control-group">
 						<label class="col-sm-3 control-label">비밀번호 확인</label>
 						<div class="col-sm-6"><div class="controls">
-							<input type="password" class="form-control" id="pwcheck"
+							<input type="password" class="form-control" id="pwcheck" name="pwcheck"
 							data-validation-match-match="pw"
 							data-validation-match-message="비밀번호가 다릅니다." />
 							<p class="help-block" style="color:red;"></p>
@@ -188,6 +234,14 @@ $(".uploader").change(function(){
 						<label class="col-sm-3 control-label">업체명</label>
 						<div class="col-sm-6"><div class="controls">
 							<input type="text" class="form-control" id="name" name="name" required="required"
+							data-validation-required-message="꼭 적어주세요" />
+							<p class="help-block" style="color:red;"></p>
+						</div></div>
+					</div></div>
+					<div class="form-group"><div class="control-group">
+						<label class="col-sm-3 control-label">업체번호</label>
+						<div class="col-sm-6"><div class="controls">
+							<input type="text" class="form-control" id="tel" name="tel" required="required"
 							data-validation-required-message="꼭 적어주세요" />
 							<p class="help-block" style="color:red;"></p>
 						</div></div>
@@ -228,20 +282,20 @@ $(".uploader").change(function(){
 						<label class="col-sm-3 control-label">이미지</label>
 						<div class="col-sm-3">
 						<span class="file-wrapper">
-	  						<input type="file" name="imagename" id="imagename" class="uploader" required="required"/>
-	  						<input type="hidden" name="imagesize" id="imagesize" value="0"/>
+	  						<input type="file" name="imageFile" id="imageFile" required="required"/>
+	  						<input type="hidden" name="imagename" value="">
 	  						<span class="btn btn-large btn-alpha">Upload Image</span>
 						</span>
   						</div>
-						<div class="col-sm-3">
+						<!-- <div class="col-sm-3">
 						<img id="img-uploaded" src="http://placehold.it/350x350" alt="your image" />
-  						</div>
+  						</div> -->
 					</div></div>
 					
 					<div class="form-group"><div class="control-group">
 						<label class="col-sm-3 control-label">약관</label>
 						<div class="col-sm-9"><div class="controls">
-							<input type="checkbox" class="form-control" id="chk" required 
+							<input type="checkbox" class="form-control" id="chk" name="chk" required 
   							data-validation-required-message="You must agree to the terms and conditions"/>
 							<p class="help-block" style="color:red;"></p>
 						</div></div>
@@ -249,7 +303,7 @@ $(".uploader").change(function(){
 					
 					<div class="col-sm-5"></div>
 					<div class="col-sm-2">
-						<input type="submit" class="form-control" />
+						<input type="submit" class="form-control" value="입력"/>
 					</div>
 					<div class="col-sm-5"></div>
 					

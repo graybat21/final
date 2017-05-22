@@ -37,7 +37,7 @@ public class NoticeController {
 		pagemaker.setPage(page);
 		
 		totalCnt = noticeService.selectListCnt(); // DB연동_ 총 갯수 구해오기
-		pagemaker.setCount(totalCnt, countPerPaging);
+		pagemaker.setCount(totalCnt, countPerPage,countPerPaging);
 		
 		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
 		int last = first + countPerPage - 1;
