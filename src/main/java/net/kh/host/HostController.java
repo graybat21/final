@@ -3,10 +3,7 @@ package net.kh.host;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -15,20 +12,16 @@ import javax.inject.Inject;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -39,6 +32,8 @@ public class HostController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HostController.class);
 
+	private String uploadPath = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload";
+
 	@Inject
 	private JavaMailSenderImpl javaMailSenderImpl;
 
@@ -48,65 +43,41 @@ public class HostController {
 	@Inject
 	BCryptPasswordEncoder passwordEncoder;
 
-	ModelAndView mav = new ModelAndView();
-
 	@RequestMapping("/join/joinFormB.gh")
 	public String joinStep2b() {
-		return "member/register/기업회원 가입폼";
+		return "member/registerHost/기업회원 가입폼";
 	}
 
 	@RequestMapping(value = "/join/joinB.gh", method = RequestMethod.POST)
-	public ModelAndView joinStep3a(MultipartHttpServletRequest req, HostVO host)
-			throws Exception {
-		String PATH = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload\\";
-		System.out.println(" ===== ");
-		Map<String, Object> returnObject = new HashMap<String, Object>();
+	public ModelAndView joinStep3a(HostVO host) throws Exception {
+		ModelAndView mav = new ModelAndView();
 		try {
-			Iterator<String> iter = req.getFileNames();
-			MultipartFile mfile = null;
-			String fieldName = "";
-			List<HashMap<String, Object>> resultList = new ArrayList<HashMap<String, Object>>();
-			File dir = new File(PATH);
-			if (!dir.isDirectory()) {
-				dir.mkdirs();
-			}
-			System.out.println("while문 전에...");
-			while (iter.hasNext()) {
-				fieldName = (String) iter.next();
-				System.out.println(fieldName);
-				mfile = req.getFile(fieldName);
-				String origName;
-				origName = new String(mfile.getOriginalFilename().getBytes("8859_1"), "UTF-8");
-
-				if ("".equals(origName)) {
-					continue;
+			String newFileName;
+			MultipartFile mf = host.getImageFile();
+			host.setImagename("");
+			if (!mf.isEmpty()) {
+				String orgname = mf.getOriginalFilename();
+				String ext = orgname.substring(orgname.lastIndexOf('.'));
+				newFileName = getUuid() + ext;
+				File dir = new File(uploadPath);
+				if (!dir.isDirectory()) {
+					dir.mkdirs();
 				}
-				String ext = origName.substring(origName.lastIndexOf('.')); // 확장자
-				String saveFileName = getUuid() + ext;
-				File serverFile = new File(PATH + saveFileName);
-				mfile.transferTo(serverFile);
-
-				Map<String, Object> file = new HashMap<String, Object>();
-				file.put("imagename", saveFileName);
-				file.put("sfile", serverFile);
-				resultList.add((HashMap<String, Object>) file);
-
-				host.setImagesize("0");
-				host.setImagename(saveFileName);
-				String encryptPassword = passwordEncoder.encode(host.getPw());
-				host.setPw(encryptPassword);
-
-				String joinCode = getUuid();
-				host.setAuth(joinCode);
-
-				int no = hostService.hostGetCurrentNo();
-				sendMail(no, host.getEmail(), joinCode, "게스트하우스");
-
-				host.setNo(no);
-				boolean insertSuccess = hostService.hostInsert(host);
-
-				mav.addObject(host);
+				File serverFile = new File(uploadPath + File.separator + newFileName);
+				mf.transferTo(serverFile);
+				host.setImagename(newFileName);
 			}
+			String encryptPassword = passwordEncoder.encode(host.getPw());
+			host.setPw(encryptPassword);
+
+			String joinCode = getUuid();
+			host.setAuth(joinCode);
+
+			int no = hostService.hostGetCurrentNo();
+			sendMail(no, host.getEmail(), joinCode, "게스트하우스");
+
+			host.setNo(no);
+			hostService.hostInsert(host);
 
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -120,9 +91,77 @@ public class HostController {
 		return mav;
 	}
 
+	// @RequestMapping(value = "/join/joinB.gh", method = RequestMethod.POST)
+	// public ModelAndView joinStep3a(MultipartHttpServletRequest req, HostVO
+	// host)
+	// throws Exception {
+	// 
+	// System.out.println(" ===== ");
+	// Map<String, Object> returnObject = new HashMap<String, Object>();
+	// try {
+	// Iterator<String> iter = req.getFileNames();
+	// MultipartFile mfile = null;
+	// String fieldName = "";
+	// List<HashMap<String, Object>> resultList = new ArrayList<HashMap<String,
+	// Object>>();
+	// File dir = new File(PATH);
+	// if (!dir.isDirectory()) {
+	// dir.mkdirs();
+	// }
+	// System.out.println("while문 전에...");
+	// while (iter.hasNext()) {
+	// fieldName = (String) iter.next();
+	// System.out.println(fieldName);
+	// mfile = req.getFile(fieldName);
+	// String origName;
+	// origName = new String(mfile.getOriginalFilename().getBytes("8859_1"),
+	// "UTF-8");
+	//
+	// if ("".equals(origName)) {
+	// continue;
+	// }
+	// String ext = origName.substring(origName.lastIndexOf('.')); // 확장자
+	// String saveFileName = getUuid() + ext;
+	// File serverFile = new File(PATH + saveFileName);
+	// mfile.transferTo(serverFile);
+	//
+	// Map<String, Object> file = new HashMap<String, Object>();
+	// file.put("imagename", saveFileName);
+	// file.put("sfile", serverFile);
+	// resultList.add((HashMap<String, Object>) file);
+	//
+	// host.setImagesize("0");
+	// host.setImagename(saveFileName);
+	// String encryptPassword = passwordEncoder.encode(host.getPw());
+	// host.setPw(encryptPassword);
+	//
+	// String joinCode = getUuid();
+	// host.setAuth(joinCode);
+	//
+	// int no = hostService.hostGetCurrentNo();
+	// sendMail(no, host.getEmail(), joinCode, "게스트하우스");
+	//
+	// host.setNo(no);
+	// boolean insertSuccess = hostService.hostInsert(host);
+	//
+	// mav.addObject(host);
+	// }
+	//
+	// } catch (UnsupportedEncodingException e) {
+	// e.printStackTrace();
+	// } catch (IllegalStateException e) {
+	// e.printStackTrace();
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// }
+	// mav.setViewName("member/authNotYet/기업회원가입 인증대기중");
+	//
+	// return mav;
+	// }
+
 	@RequestMapping(value = "/auth-h/{no}/{auth}")
 	public ModelAndView authOk(@PathVariable String no, @PathVariable String auth) throws Exception {
-
+		ModelAndView mav = new ModelAndView();
 		HostVO host = new HostVO();
 		host.setAuth(auth);
 		host.setNo(Integer.parseInt(no));

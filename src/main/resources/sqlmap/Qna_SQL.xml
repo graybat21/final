@@ -3,24 +3,26 @@
 <mapper namespace="net.kh.dao.QnaDao">
 	<!-- 글 리스트 -->
 	<select id="qnaList" resultType="qnaVO" parameterType="hashmap">
-		select * from
-			(SELECT ROW_NUMBER() OVER(ORDER BY no DESC) RNUM,
-					no,
-					subject,
-					writer,
-					content,
-					reg,
-					ref,
-					restep
-				FROM QNA 
-				ORDER BY ref DESC, restep ASC
-			) X 
+		select *
+		from
+		(SELECT ROW_NUMBER() OVER(ORDER BY no DESC) RNUM,
+		no,
+		subject,
+		writer,
+		content,
+		reg,
+		ref,
+		restep
+		FROM QNA
+		ORDER BY ref DESC, restep ASC
+		) X
 		where X.RNUM between #{first} and #{last}
 	</select>
-	
+
 	<!-- 글쓰기 -->
 	<insert id="qnaWrite" parameterType="qnaVO">
-		insert into QNA(no, writer, content, reg, restep, subject) values(SEQ_QNA_NO.NEXTVAL, #{writer},
+		insert into QNA(no, writer,
+		content, reg, restep, subject) values(SEQ_QNA_NO.NEXTVAL, #{writer},
 		#{content}, sysdate, #{restep}, #{subject})
 	</insert>
 
@@ -41,14 +43,15 @@
 		delete from QNA where
 		no=#{no}
 	</delete>
-	
+
 	<select id="selectListCnt" resultType="int">
 		select count(*) from QNA
 	</select>
 
 	<!-- 답변 글쓰기 -->
-<insert id="qnaRepl" parameterType="qnaVO">
-insert into QNA (no, writer, content, reg, ref, restep, subject) 
-		  values(SEQ_QNA_NO.NEXTVAL, #{writer}, #{content}, sysdate, #{ref}, #{restep}, #{subject})
-</insert>
+	<insert id="qnaRepl" parameterType="qnaVO">
+		insert into QNA (no, writer, content, reg, ref, restep, subject)
+		values(SEQ_QNA_NO.NEXTVAL, #{writer}, #{content}, sysdate, #{ref},
+		#{restep}, #{subject})
+	</insert>
 </mapper>

@@ -1,6 +1,6 @@
 package net.kh.dao;
 
-import java.util.List;
+import java.util.HashMap;
 
 import net.kh.host.HostVO;
 

@@ -8,12 +8,11 @@
 
 	<insert id="imageInsert" parameterType="hashmap"> <!-- 하나씩들어가는거 -->   <!-- 결과값이 VO로 가는거 -->
 		INSERT INTO IMAGE (
-		no, room_no, filename, filesize
+		no, room_no, filename
 		)
 		VALUES
 		(SEQ_IMAGE_NO.NEXTVAL, #{room_no},
-		#{filename},
-		'0'
+		#{filename}
 		)
 	</insert>
 </mapper>

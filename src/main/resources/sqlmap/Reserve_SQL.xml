@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="net.kh.dao.ReserveDao">
+	<select id="selectSearchHappy" resultType="hashmap"> 
+		select h.addr1, h.name, r.price, r.max, re.checkin, re.checkout, re.count 
+		from host h, room r, reservation re
+		where h.no = re.host_no and r.no = re.room_no
+	</select>
+
+	
+	<!-- <select id="roomGetCurrentNo" resultType="int">
+		SELECT
+		LAST_NUMBER
+		FROM
+		USER_SEQUENCES
+		WHERE
+		SEQUENCE_NAME='SEQ_ROOM_NO'
+	</select> -->
+</mapper>
+	
