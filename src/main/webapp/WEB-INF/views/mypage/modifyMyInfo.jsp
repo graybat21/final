@@ -116,7 +116,6 @@
 				</div>
 				<!-- //마이페이지 콘텐츠 -->
 			</div>
-</div>
 		<!-- //마이페이지 wrap -->
 	</article>
 	<!-- //(공통)contentsWrap -->
