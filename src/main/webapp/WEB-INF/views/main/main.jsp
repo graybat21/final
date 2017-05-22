@@ -453,21 +453,30 @@ button, input, optgroup, select, textarea {
 							<!--tab-content-->
 							<div class="tab-content">
 
+
+<script>
+function searchSubmit(){
+	$('#searchForm').submit();
+}
+</script>
+
+
 								<!--tabhotel-->
 								<div class="tab-pane fade in" id="tabhotel">
+									<form action="ghList.gh" id="searchForm" name="searchForm">
 									<h3>Search and Book Hotels</h3>
 									<ul class="list-inline list-unstyled">
-										<li><select class="select-one">
+										<li><select class="select-one" name="area">
 												<option selected="selected">지역</option>
-												<option>서울</option>
-												<option>경기</option>
-												<option>부산</option>
-												<option>제주도</option>
+												<option value="서울">서울</option>
+												<option value="경기">경기</option>
+												<option value="부산">부산</option>
+												<option value="제주도">제주도</option>
 										</select></li>
 										<li>
 											<div class="form-group">
 												<input class="datepicker1"
-													placeholder="Check In" id="datepicker1" type="text">
+													placeholder="Check In" id="datepicker1" name="from" type="text">
 												<!-- 
 													<img
 													class="ui-datepicker-trigger" src="image/icon-calendar.png"
@@ -477,31 +486,33 @@ button, input, optgroup, select, textarea {
 										<li>
 											<div class="form-group">
 												<input class="datepicker2"
-													placeholder="Check Off" id="datepicker2" type="text">
+													placeholder="Check Off" id="datepicker2" name="to" type="text">
 												<!-- 	<input type="text" id="datepicker4"> -->
 												<!-- <img
 													class="ui-datepicker-trigger" src="image/icon-calendar.png"
 													alt="Select date" title="Select date"> -->
 											</div>
 										</li>
-										<li><select class="select-one">
+										<li><select class="select-one" name="participant">
 												<option selected="selected">인원</option>
-												<option>1 Guest</option>
-												<option>2 Guest</option>
-												<option>No One</option>
-
+												<option value="1">1 Guest</option>
+												<option value="2">2 Guest</option>
+												<option value="3">3 Guest</option>
+												<option value="4">4 Guest</option>
+												<option value="5">5 Guest</option>
 										</select></li>
 										<li>
 											<div class="form-group">
 												<input class="form-control"
-													placeholder="최대가격" type="text">
+													placeholder="최대가격" type="text" name="max_price">
 											</div>
 										</li>
 										<!--   search now -->
 										<li><a
-											href="http://teamworktec.com/demo/travel-gateway/html/hotel/hotels_list_one/left_sidebar.html"
+											href="javascript:searchSubmit()"
 											class="btn btn-search-travel">검   색</a></li>
 									</ul>
+									</form>
 								</div>
 
 

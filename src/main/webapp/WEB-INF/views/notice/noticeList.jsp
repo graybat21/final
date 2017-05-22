@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<link href="${pageContext.request.contextPath}/css/board.css" rel="stylesheet">
 </head>
 <body>
 
@@ -20,31 +21,29 @@
 				<!-- svc_cont_wrap -->
 				<div class="svc_cont_wrap" style="min-height: 1127px;">
 					<div class="svc_list">
-
-								<c:forEach var="list" items="${noticeList}">
+<table class="type07">
+    
+    <tbody>
+  					  <c:forEach var="list" items="${noticeList}">
+    <tr>
 									<c:url var="viewURL" value="noticeView.gh">
 										<c:param name="no" value="${list.no }" />
 									</c:url>
-										<ul>
-											<li>
-									 		<a href="${viewURL }">
-												<p class="list_title" align="left">
-													<strong>${list.no }</strong>
-													<span>${list.subject } / ${list.name }</span>
-														
-												</p>
-												<p class="list_date" align="right">
-													<fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" />
-												</p>
-											</a>
-											</li>
-										</ul>
+									 		
+												<td align="left"><strong><a href="${viewURL }">${list.subject }</a></strong></td>
+
+												<td align="right"><gray><fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" /></gray></td>
+    </tr>
 								</c:forEach>
+        
+
+    </tbody>
+</table>
 
 					</div>
 
 					<div class="">
-						<c:if test="${session_name != null }">
+						<c:if test="${session_mem_name != null }">
 							<a href="noticeWrite.gh" class=""><strong>글쓰기</strong> </a>
 						</c:if>
 					</div>

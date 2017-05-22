@@ -7,21 +7,19 @@
 	<!-- id 속성은 DAO 의 메소드와 같아야 한다. 여기의 boardVO 는 mybatis-confg.xml 에 Alias 되어 있습니다. -->
 	
 	<!-- 관리자 회원 목록 -->
-	<select id="memberList" resultType="memberVO" parameterType="hashmap">
-		<!-- SELECT * FROM
+	<select id="memberList" resultType="adminVO" parameterType="hashmap">
+		SELECT * FROM
 			(SELECT ROW_NUMBER() OVER (ORDER BY no DESC) RNUM,
 					no, email, name, phone, reg, auth
 				FROM member
 			) X
-		WHERE X.RNUM BETWEEN #{first} and #{last} -->
-		SELECT * FROM member ORDER BY no DESC
+		WHERE X.RNUM BETWEEN #{first} and #{last}
 	</select>
 	<select id="memberListCnt" resultType="int">
 		SELECT count(*) FROM member
 	</select>	
-	
 	<!-- 관리자 회원 강제 탈퇴 -->
-	<update id="deleteMember" parameterType="memberVO">
+	<update id="deleteMember" parameterType="adminVO">
 		DELETE FROM member WHERE no=#{no}
 	</update>
 	
@@ -30,7 +28,7 @@
 		SELECT * FROM
 			(SELECT ROW_NUMBER() OVER(ORDER BY no DESC) RNUM,
 					no, email, pw, name, tel, reg, biz_no, 
-					addr1, addr2, zip, imagename, imagesize, auth
+					addr1, addr2, zip, imagename, auth
 				FROM host
 			) X
 		WHERE X.RNUM between #{first} and #{last}
@@ -47,25 +45,19 @@
 	
 	<!-- 관리자 게하 룸 관리 목록 -->
 	<select id="adminRoomList" resultType="adminVO">
-		SELECT r.no, r.name, r.max, r.price, r.host_no, r.reg, i.filename, i.filesize FROM room r, image i WHERE r.no=i.room_no ORDER BY r.no DESC
+		SELECT r.no, r.name, r.max, r.price, r.host_no, r.reg, i.no, i.room_no, i.filename, i.filesize 
+		FROM room r, image i 
+		ORDER BY r.no DESC
 	</select>
 	
-<!-- 	<select id="selectOneImage" resultType="String" parameterType="int">
-		SELECT * FROM room
-		SELECT filename FROM image WHERE room_no=#{no}
-	</select> -->
-	
 	<!-- 관리자 게하 룸 강제 삭제 -->
-	<update id="deleteImage" parameterType="int">
-		DELETE FROM image WHERE room_no=#{no}
-	</update>
 	<update id="deleteRoom" parameterType="int">
 		DELETE FROM room WHERE no=#{no}
 	</update>
 	
 	<!-- 관리자 특가 관리 목록 -->
-	<select id="adminDiscountList" resultType="adminDiscountVO" parameterType="int">
-		SELECT r.name, r.price, i.filename, d.no, d.starttime, d.endtime, d.newprice, d.reg, d.room_no FROM discount d, room r, image i WHERE i.room_no = r.no ORDER BY d.no DESC
+	<select id="adminDiscountList" resultType="discountVO" parameterType="int">
+		SELECT * FROM discount ORDER BY no DESC
 	</select>
 	
 	

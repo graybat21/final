@@ -122,10 +122,10 @@
 .svc_inquiry_reg label span {display:none;}
 .svc_inquiry_reg .inq_cate_sel select {width:100%;padding:8px 10px;border-radius:2px;}
 .svc_inquiry_reg .inq_input {margin:20px 0 10px 0;}
-.svc_inquiry_reg .inq_input textarea {width:100%;min-height:300px;padding:8px 10px;}
+.svc_inquiry_reg .inq_input textarea {width:82%;min-height:300px;padding:8px 10px;}
 .svc_inquiry_reg .inq_tel p {margin-bottom:10px;color:#707070;font-size:0.735rem;line-height:1.4;}
 .svc_inquiry_reg .inq_tel p label{display:block;position:relative;left:0;top:0;width:auto;padding:0 0 7px 0}
-.svc_inquiry_reg .inq_tel .ipt_inq_tel {width:100%;padding:8px 10px;}
+.svc_inquiry_reg .inq_tel .ipt_inq_tel {width:80%;padding:8px 10px;}
 .svc_inquiry_reg .inq_btn {margin:30px 0;text-align:center;}
 .svc_inquiry_reg .inq_btn .btn_inq_reg {display:block;width:100%;padding:15px 0;border-radius:3px;background:#757575;color:#fff;}
 
@@ -190,7 +190,7 @@
 	.svc_contents_notice .svc_title.svc_tip {background:none;}
 	.svc_contents_notice .svc_title h4 {padding:0 0 0 60px;color:#343434;text-align:left;font-size:2rem;line-height:128px;background:none;}
 	.svc_contents_notice .svc_title h4.active {background:none;}
-	.svc_contents_notice .svc_cont_wrap {border-left:1px solid #e7e7e7;padding:0 20px 60px 60px;}
+	.svc_contents_notice .svc_cont_wrap {border-left:1px solid #e7e7e7;padding:0 70px 60px 60px;}
 	.svc_contents_notice .view_cont {font-size:0.9rem;}
 
 	/* list */

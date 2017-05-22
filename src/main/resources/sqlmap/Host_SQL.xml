@@ -14,16 +14,17 @@
 			email = #{email} 
 	</select>
 	
+	<!-- <insert id="hostInsert" parameterType="hashmap"> -->
 	<insert id="hostInsert" parameterType="hostVO">
 		INSERT INTO HOST (
 			no, email, pw, name, tel, 
 			reg, biz_no, addr1, addr2, zip,
-			imagename, imagesize, auth, imagename
+			imagename, auth
 		)
 		VALUES (
 			SEQ_HOST_NO.NEXTVAL, #{email}, #{pw}, #{name}, #{tel},
 			sysdate, #{biz_no}, #{addr1}, #{addr2}, #{zip},
-			#{imagename}, #{imagesize}, #{auth}, #{imagename}
+			#{imagename}, #{auth} 
 		)
 	</insert>
 	
