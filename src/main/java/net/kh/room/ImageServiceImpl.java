@@ -13,7 +13,7 @@ public class ImageServiceImpl implements ImageService {
 
 	@Autowired
 	private ImageDao imageMapper;
-	
+
 	@Override
 	@Transactional
 	public void imageInsert(ImageVO image) throws Exception {
@@ -25,6 +25,11 @@ public class ImageServiceImpl implements ImageService {
 	public List<String> getRoomNumber(int no) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<ImageVO> getImageByHostNo(int host_no) throws Exception {
+		return imageMapper.getImageByHostNo(host_no);
 	}
 
 }

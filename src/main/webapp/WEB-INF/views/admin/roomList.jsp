@@ -25,6 +25,11 @@ td {
 	padding-top: 15px;
 }
 </style>
+<script type="text/javascript">	
+	function deleteRoom() {
+		return confirm("선택한 방을 삭제시키겠습니까?");
+	}
+</script>
 </head>
 
 <body>
@@ -40,11 +45,19 @@ td {
     <!-- Main content -->
     <section class="content">
     
-    <c:if test="${adminRoomList.size()<=0}">
-    	<h3 align="center">등록된 방이 없습니다.</h3>
-    </c:if>
-    <br><br>
-    
+    	<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+				<div class="box-header">
+					<form action="adminroomList.gh">
+						<select name="o">
+							<option value="name" ${param.o eq "name" ? "selected" : "" }>name</option>
+						</select>
+						<input type="text" name="k" value="${searchKeyword }">
+						<input type="submit" value="검색">
+					</form>
+    			</div>
+    			<div class="box-body">
 <table>
 		<thead>
 			<tr height="30px">
@@ -59,14 +72,11 @@ td {
 		</thead>
 		
 		<tbody>
-					<c:forEach items="${adminRoomList }" var="room">
+					<c:forEach items="${roomList }" var="room">
 						<tr height="50px">
 							<td>${room.no }</td>
 							<td>${room.host_no }</td>
-							<td>
-							<%-- <c:forEach var="item" items="${room.filename}"> --%>
-							<img width="150px" src="./resources/upload/${room.filename}" />
-							<%-- </c:forEach> --%>
+							<td><img src="./resources/upload/${room.filename }" width="100px" height="100px"/></td>
 							<td>${room.name }</td>
 							<td>${room.max }</td>
 							<td>${room.price}</td>
@@ -81,13 +91,63 @@ td {
 
 		</tbody>
 	</table>
+	</div>
 	
-	<script type="text/javascript">	
-	
-	function deleteRoom() {
-		return confirm("선택한 방을 삭제시키겠습니까?");
-	}
-</script>	
+	<!-- 페이징 -->
+	<div class="box-footer clearfix">
+		<ul class="pagination pagination-sm no-margin pull-right">
+			<c:if test="${pageMaker.prev }">
+				<c:if test="${searchKeyword != null }">
+					<c:url var="adminRoomList" value="adminroomList.gh">
+						<c:param name="page" value="${pageMaker.start - 1}" />
+						<c:param name="o" value="${searchOption }"></c:param>
+						<c:param name="k" value="${searchKeyword }"></c:param>
+					</c:url>
+				</c:if>
+				<c:if test="${searchKeyword == null }">
+					<c:url var="adminRoomList" value="adminroomList.gh">
+						<c:param name="page" value="${pageMaker.start - 1}" />
+					</c:url>
+				</c:if>
+				<li><a href="${adminRoomList }">이전</a></li>
+			</c:if>
+			<c:forEach begin="${pageMaker.start }"
+				end="${pageMaker.end}" var="idx">
+				<c:if test="${searchKeyword != null }">
+					<c:url var="adminRoomList" value="adminroomList.gh">
+						<c:param name="page" value="${idx}" />
+						<c:param name="o" value="${searchOption }"></c:param>
+						<c:param name="k" value="${searchKeyword }"></c:param>
+					</c:url>
+				</c:if>
+				<c:if test="${searchKeyword == null }">
+					<c:url var="adminRoomList" value="adminroomList.gh">
+						<c:param name="page" value="${idx}" />
+					</c:url>
+				</c:if>
+				<li class='<c:out value="${idx == pageMaker.page ? 'current' : ''}"/>'>
+					<a href='${adminRoomList }'>${idx}</a>
+				</li>
+				
+			</c:forEach>
+			<c:if test="${pageMaker.next }">
+				<c:if test="${searchKeyword != null }">
+					<c:url var="adminRoomList" value="adminroomList.gh">
+						<c:param name="page" value="${pageMaker.end + 1}" />
+						<c:param name="o" value="${searchOption }"></c:param>
+						<c:param name="k" value="${searchKeyword }"></c:param>
+					</c:url>
+				</c:if>
+				<c:if test="${searchKeyword == null }">
+					<c:url var="adminRoomList" value="adminroomList.gh">
+						<c:param name="page" value="${pageMaker.end + 1}" />
+					</c:url>
+				</c:if>
+				<li><a href="${adminRoomList }">다음</a></li>
+			</c:if>
+		</ul>
+		</div></div></div></div>
+		
  
     </section>
     <!-- /.content -->

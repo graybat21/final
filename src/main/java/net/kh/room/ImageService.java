@@ -8,5 +8,5 @@ public interface ImageService {
 
 	public List<String> getRoomNumber(int no);
 	
-	
+	public List<ImageVO> getImageByHostNo(int host_no) throws Exception;
 }

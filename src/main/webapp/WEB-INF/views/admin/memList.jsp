@@ -24,28 +24,13 @@ td {
 	text-align: center;
 	padding-top: 15px;
 }
-/* paging */
-	.svc_paging ul li a {min-width:50px}
-	.svc_paging ul li.page_first a {background-size:auto 14px;}
-	.svc_paging ul li.page_prev a {background-size:auto 14px}
-	.svc_paging ul li.page_next a {background-size:auto 14px}
-	.svc_paging ul li.page_last a {background-size:auto 14px;}
-
-/* paging */
-.svc_paging {padding:30px 0;text-align:center;}
-.svc_paging ul {display:inline-block;border:1px solid #ccc;border-radius:5px;}
-.svc_paging ul li {float:left;display:inline-block;border-right:1px solid #ddd;box-sizing:border-box;}
-.svc_paging ul li a {display:inline-block;min-width:28px;height:38px;line-height:42px;font-weight:500;text-align:center;color:#707070;vertical-align:middle;}
-.svc_paging ul li.page_first a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_first.png') no-repeat 50% 50%;background-size:auto 10px;}
-.svc_paging ul li.page_prev a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_prev.png') no-repeat 50% 50%;background-size:auto 10px}
-.svc_paging ul li.page_next a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_next.png') no-repeat 50% 50%;background-size:auto 10px}
-.svc_paging ul li.page_last a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_last.png') no-repeat 50% 50%;background-size:auto 10px;}
-.svc_paging ul li:last-child {border-right:none;}
-.svc_paging ul li:last-child a {border-radius:0 5px 5px 0;}
-.svc_paging ul li:first-child a {border-radius:5px 0 0 5px;}
-.svc_paging ul li:hover a, .svc_paging ul li.active a {color:#e62a4a;background-color:#fff;}
 
 </style>
+<script>	
+	function deleteMem() {
+		return confirm("선택한 기업 회원을 탈퇴시키겠습니까?");
+	}
+</script>	
 </head>
 
 <body>
@@ -53,19 +38,29 @@ td {
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
+		<h1>
         	일반 회원 목록
-      </h1>
+		</h1>
+		
     </section>
 
     <!-- Main content -->
     <section class="content">
-    
-	<c:if test="${memberList.size()<=0}">
-    	<h3 align="center">가입한 회원이 없습니다.</h3>
-    </c:if>
-    <br /> <br>
-    
+    	<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+				<div class="box-header">
+					<form action="adminmemberList.gh">
+						<select name="o">
+							<option value="email" ${param.o eq "email" ? "selected" : "" }>email</option>
+							<option value="name" ${param.o eq "name" ? "selected" : "" }>name</option>
+							<option value="phone" ${param.o eq "phone" ? "selected" : "" }>phone</option>
+						</select>
+						<input type="text" name="k" value="${searchKeyword }">
+						<input type="submit" value="검색">
+					</form>
+    			</div>
+    			<div class="box-body">
     <table>
 		<thead>
 			<tr height="30px">
@@ -99,38 +94,63 @@ td {
 
 		</tbody>
 	</table>
+	</div>
 	
-	<script type="text/javascript">		
-	function deleteMem() {
-		return confirm("선택한 회원을 탈퇴시키겠습니까?");
-	}
-</script>	
- 	<div class="svc_allwrap">
-		<div class="svc_wrap row row_cont">
-			<div class="svc_contents">
-				<div class="svc_cont_wrap" style="min-height: 1127px;">
- 	<!-- 페이징 -->
-		<div class="svc_paging">
-		<ul class="pageUL">
-			<c:if test="${memberPageMaker.prev }">
-				<li><a href='adminmemberList.gh?page=${memberPageMaker.start -1}'>이전</a></li>
+ 	<div class="box-footer clearfix">
+		<ul class="pagination pagination-sm no-margin pull-right">
+			<c:if test="${pageMaker.prev }">
+				<c:if test="${searchKeyword != null }">
+					<c:url var="adminMemberList" value="adminmemberList.gh">
+						<c:param name="page" value="${pageMaker.start - 1}" />
+						<c:param name="o" value="${searchOption }"></c:param>
+						<c:param name="k" value="${searchKeyword }"></c:param>
+					</c:url>
+				</c:if>
+				<c:if test="${searchKeyword == null }">
+					<c:url var="adminMemberList" value="adminmemberList.gh">
+						<c:param name="page" value="${pageMaker.start - 1}" />
+					</c:url>
+				</c:if>
+				<li><a href="${adminMemberList }">이전</a></li>
 			</c:if>
-			<c:forEach begin="${memberPageMaker.start }" end="${memberPageMaker.end}"
-				var="idx">
-				<li
-					class="${idx == memberPageMaker.page ? 'current' : ''}">
-					<a href='adminmemberList.gh?page=${idx}'>${idx}</a>
+			<c:forEach begin="${pageMaker.start }"
+				end="${pageMaker.end}" var="idx">
+				<c:if test="${searchKeyword != null }">
+					<c:url var="adminMemberList" value="adminmemberList.gh">
+						<c:param name="page" value="${idx}" />
+						<c:param name="o" value="${searchOption }"></c:param>
+						<c:param name="k" value="${searchKeyword }"></c:param>
+					</c:url>
+				</c:if>
+				<c:if test="${searchKeyword == null }">
+					<c:url var="adminMemberList" value="adminmemberList.gh">
+						<c:param name="page" value="${idx}" />
+					</c:url>
+				</c:if>
+				<li class='<c:out value="${idx == pageMaker.page ? 'current' : ''}"/>'>
+					<a href='${adminMemberList }'>${idx}</a>
 				</li>
+				
 			</c:forEach>
-			<c:if test="${memberPageMaker.next }">
-				<li><a href='adminmemberList.gh?page=${memberPageMaker.end +1}'>다음</a></li>
+			<c:if test="${pageMaker.next }">
+				<c:if test="${searchKeyword != null }">
+					<c:url var="adminMemberList" value="adminmemberList.gh">
+						<c:param name="page" value="${pageMaker.end + 1}" />
+						<c:param name="o" value="${searchOption }"></c:param>
+						<c:param name="k" value="${searchKeyword }"></c:param>
+					</c:url>
+				</c:if>
+				<c:if test="${searchKeyword == null }">
+					<c:url var="adminMemberList" value="adminmemberList.gh">
+						<c:param name="page" value="${pageMaker.end + 1}" />
+					</c:url>
+				</c:if>
+				<li><a href="${adminMemberList }">다음</a></li>
 			</c:if>
 		</ul>
-		</div></div></div></div></div>
-    </section>
-    <!-- /.content -->
+		</div></div></div></div>
+ 	</section>
+ 	
   </div>
-  <!-- /.content-wrapper -->
-
 </body>
 </html> 

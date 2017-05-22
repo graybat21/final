@@ -8,17 +8,11 @@ import net.kh.room.RoomVO;
 
 public interface RoomDao {
 
-   void roomInsert2(RoomVO room) throws Exception;
-   
-   int roomGetCurrentNo() throws Exception;
+	void roomInsert2(RoomVO room) throws Exception;
+	
+	int roomGetCurrentNo() throws Exception;
 
-   RoomVO roomList(int no) throws Exception;
-   
-   List<String> allImage(int h_no) throws Exception;
-   
-   List<RoomVO> getRoomInfoByHostNo(int no)throws Exception;
-   
-   // 혜 
-   List<RoomVO> roommList(int host_no) throws Exception;
-   String image(int host_no) throws Exception;
+	RoomVO roomList(int no) throws Exception;
+	
+	List<RoomVO> getRoomInfoByHostNo(int no)throws Exception;
 }

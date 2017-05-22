@@ -1,7 +1,6 @@
 package net.kh.room;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +30,7 @@ public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-	String PATH = "C:\\java_eclipse\\work\\guestHi\\src\\main\\webapp\\resources\\upload";
+	String PATH = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject
@@ -72,9 +71,25 @@ public class RoomController {
 		return model;
 	}
 
+	
+//	@RequestMapping(value="/roomInsert.gh", method=RequestMethod.POST)
+//	public ModelAndView roomInsert(RoomVO room)throws Exception{
+//		ModelAndView mav=new ModelAndView();
+//		
+//		try{
+//			String newFileName;
+//			MultipartFile mf=
+//		}
+//		
+//		return mav;
+//	}
+	
+	
+	
 	@RequestMapping(value = "/roomInsert.gh", method = RequestMethod.POST, produces = "text/plain")
 	public String upload(MultipartHttpServletRequest request, RoomVO room, HttpSession session) throws Exception {
 
+		
 		/*
 		 * Set PATHSET =
 		 * request.getSession().getServletContext().getResourcePaths("/");
@@ -108,7 +123,6 @@ public class RoomController {
 				mpf.get(i).transferTo(file);// 복사 try
 				image.setFilename(newFileName);
 				image.setRoom_no(room_no - 1);//
-				
 				// System.out.println(PATH + "얍얍");
 				imageService.imageInsert(image);
 
@@ -120,42 +134,25 @@ public class RoomController {
 		return "redirect:roomList.gh";
 	}
 
-/*	@RequestMapping("/roomList.gh")
-	public String roomList(HttpSession session, HttpServletRequest request, Model model)
+	@RequestMapping("/roomList.gh")
+	public String roomList(HttpServletRequest request, Model model)
 			throws Exception {
-		// int no = 152;
-		int no = roomService.roomGetCurrentNo()-1;//room_no
-		System.out.println(no + "얍얍");
-		// int h_no = 21;
+		// 호스트 넘버를 통해서 등록한 방정보를 불러온다.
+		// 각 방마다 대표이미지만 불러온다.
 		int h_no = (int) (request.getSession().getAttribute("session_host_no"));
-		System.out.println(h_no);
-		RoomVO roomVO = roomService.roomList(h_no); // room에있는no -> image에있는
-													// room_no=158
-		List<String> image = roomService.allImage(h_no); // 호스트넘버를 가져와야해
+		
+		// int no = 152;
+//		int no = roomService.roomGetCurrentNo()-1;//room_no
+		// int h_no = 21;
+		List<RoomVO> roomVO = roomService.getRoomInfoByHostNo(h_no); // room에있는no
+		
+		
+		List<ImageVO> image = imageService.getImageByHostNo(h_no); // 호스트넘버를 가져와야해
 
 		// session.setAttribute("image", image);
 		model.addAttribute("room", roomVO);
 		model.addAttribute("image", image);
 		return "mypage/roomList/방리스트";
-	}*/
-	
-	// 혜리가 추가
-	@RequestMapping("/roomList.gh")
-	public ModelAndView roommList(HttpServletRequest request) throws Exception{
-		
-		ModelAndView mav = new ModelAndView("mypage/roomList/방리스트");
-		
-		int host_no = (int)(request.getSession().getAttribute("session_host_no"));
-		List<RoomVO> roommList = roomService.roommList(host_no);
-		logger.info(roommList.toString());
-		
-		String image = roomService.image(host_no);
-		logger.info(image.toString());
-		
-		mav.addObject("roommList", roommList);
-		mav.addObject("image", image);
-		
-		return mav;
 	}
 
 	private String getUUID() {

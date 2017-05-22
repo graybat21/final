@@ -16,63 +16,44 @@ import net.kh.qna.QnaVO;
 @Service("roomService")
 public class RoomServiceImpl implements RoomService {
 
-   @Autowired
-   private RoomDao roomMapper;
-   
+	@Autowired
+	private RoomDao roomMapper;
+	
 
 
-   
-   @Override
-   @Transactional
-   public void roomInsert2(RoomVO room)throws Exception {
-      roomMapper.roomInsert2(room);
-   }
-
-
-
-   @Override
-   public int roomGetCurrentNo() throws Exception {
-      
-      return roomMapper.roomGetCurrentNo();
-   }
-   
-   @Override
-   @Transactional
-   public RoomVO roomList(int no) throws Exception {
-      // TODO Auto-generated method stub
-      return roomMapper.roomList(no);
-   }
+	
+	@Override
+	@Transactional
+	public void roomInsert2(RoomVO room)throws Exception {
+		roomMapper.roomInsert2(room);
+	}
 
 
 
-   @Override
-   public List<String> allImage(int h_no) throws Exception {
-      // TODO Auto-generated method stub
-      return roomMapper.allImage(h_no);
-   }
+	@Override
+	public int roomGetCurrentNo() throws Exception {
+		
+		return roomMapper.roomGetCurrentNo();
+	}
+	
+	@Override
+	@Transactional
+	public RoomVO roomList(int no) throws Exception {
+		// TODO Auto-generated method stub
+		return roomMapper.roomList(no);
+	}
 
 
 
-   @Override
-   public List<RoomVO> getRoomInfoByHostNo(int no) throws Exception {
-      return roomMapper.getRoomInfoByHostNo(no);
-   }
-   
-   // 혜
-   @Override
-   public List<RoomVO> roommList(int host_no) throws Exception {
-	   
-	   return roomMapper.roommList(host_no);
-   }
-   // 혜
-   @Override
-   public String image(int host_no) throws Exception {
-	   
-	   return roomMapper.image(host_no);
-   }
+
+	@Override
+	public List<RoomVO> getRoomInfoByHostNo(int no) throws Exception {
+		return roomMapper.getRoomInfoByHostNo(no);
+	}
 
 
-   
+
+	
 
 
 
@@ -81,7 +62,7 @@ public class RoomServiceImpl implements RoomService {
 
 
 
-   
-   
+	
+	
 
 }
