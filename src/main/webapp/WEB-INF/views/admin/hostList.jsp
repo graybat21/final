@@ -24,21 +24,13 @@ td {
 	text-align: center;
 	padding-top: 15px;
 }
-/* paging */
-.svc_paging {padding:30px 0;text-align:center;}
-.svc_paging ul {display:inline-block;border:1px solid #ccc;border-radius:5px;}
-.svc_paging ul li {float:left;display:inline-block;border-right:1px solid #ddd;box-sizing:border-box;}
-.svc_paging ul li a {display:inline-block;min-width:28px;height:38px;line-height:42px;font-weight:500;text-align:center;color:#707070;vertical-align:middle;}
-.svc_paging ul li.page_first a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_first.png') no-repeat 50% 50%;background-size:auto 10px;}
-.svc_paging ul li.page_prev a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_prev.png') no-repeat 50% 50%;background-size:auto 10px}
-.svc_paging ul li.page_next a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_next.png') no-repeat 50% 50%;background-size:auto 10px}
-.svc_paging ul li.page_last a {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_page_last.png') no-repeat 50% 50%;background-size:auto 10px;}
-.svc_paging ul li:last-child {border-right:none;}
-.svc_paging ul li:last-child a {border-radius:0 5px 5px 0;}
-.svc_paging ul li:first-child a {border-radius:5px 0 0 5px;}
-.svc_paging ul li:hover a, .svc_paging ul li.active a {color:#e62a4a;background-color:#fff;}
 
 </style>
+<script>	
+	function deleteMem() {
+		return confirm("선택한 기업 회원을 탈퇴시키겠습니까?");
+	}
+</script>	
 </head>
 
 <body>
@@ -46,19 +38,30 @@ td {
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        	기업 회원 목록
-      </h1>
+      <h1>기업 회원 목록</h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
-        
-    <c:if test="${hostList.size()<=0}">
-    	<h3 align="center">가입한 호스트가 없습니다.</h3>
-    </c:if>
-    <br /> <br>
-<table>
+    	<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+				<div class="box-header">
+			        <form action="adminhostList.gh">
+					<select name="o">
+						<option value="email" ${param.o eq "email" ? "selected" : "" }>email</option>
+						<option value="name" ${param.o eq "name" ? "selected" : "" }>name</option>
+						<option value="tel" ${param.o eq "tel" ? "selected" : "" }>tel</option>
+						<option value="biz_no" ${param.o eq "biz_no" ? "selected" : "" }>biz_no</option>
+						<option value="addr1" ${param.o eq "addr1" ? "selected" : "" }>address</option>
+					</select>
+					<input type="text" name="k" value="${searchKeyword }">
+					<input type="submit" value="검색">
+					</form>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+	<table>
 		<thead>
 			<tr height="30px">
 				<th>회원번호</th>
@@ -98,38 +101,67 @@ td {
 						</tr>
 					</c:forEach>
 
+	
 		</tbody>
 	</table>
-	
-	<script type="text/javascript">	
-	
-	function deleteMem() {
-		return confirm("선택한 기업 회원을 탈퇴시키겠습니까?");
-	}
-</script>	
- 
+</div>
  		<!-- 페이징 -->
-		<div class="svc_paging">
-		<ul class="pageUL">
-			<c:if test="${hostPageMaker.prev }">
-				<li><a href='adminhostList.gh?page=${hostPageMaker.start -1}'>이전</a></li>
+		<div class="box-footer clearfix">
+			<ul class="pagination pagination-sm no-margin pull-right">
+			<c:if test="${pageMaker.prev }">
+				<c:if test="${searchKeyword != null }">
+					<c:url var="adminHostList" value="adminhostList.gh">
+						<c:param name="page" value="${pageMaker.start - 1}" />
+						<c:param name="o" value="${searchOption }"></c:param>
+						<c:param name="k" value="${searchKeyword }"></c:param>
+					</c:url>
+				</c:if>
+				<c:if test="${searchKeyword == null }">
+					<c:url var="adminHostList" value="adminhostList.gh">
+						<c:param name="page" value="${pageMaker.start - 1}" />
+					</c:url>
+				</c:if>
+				<li><a href="${adminHostList }">이전</a></li>
 			</c:if>
-			<c:forEach begin="${hostPageMaker.start }" end="${hostPageMaker.end}"
-				var="idx">
-				<li
-					class='<c:out value="${idx == hostPageMaker.page?'current':''}"/>'>
-					<a href='adminhostList.gh?page=${idx}'>${idx}</a>
+			<c:forEach begin="${pageMaker.start }"
+				end="${pageMaker.end}" var="idx">
+				<c:if test="${searchKeyword != null }">
+					<c:url var="adminHostList" value="adminhostList.gh">
+						<c:param name="page" value="${idx}" />
+						<c:param name="o" value="${searchOption }"></c:param>
+						<c:param name="k" value="${searchKeyword }"></c:param>
+					</c:url>
+				</c:if>
+				<c:if test="${searchKeyword == null }">
+					<c:url var="adminHostList" value="adminhostList.gh">
+						<c:param name="page" value="${idx}" />
+					</c:url>
+				</c:if>
+				<li class='<c:out value="${idx == pageMaker.page ? 'current' : ''}"/>'>
+					<a href='${adminHostList }'>${idx}</a>
 				</li>
+				
 			</c:forEach>
-			<c:if test="${hostPageMaker.next }">
-				<li><a href='adminhostList.gh?page=${hostPageMaker.end +1}'>다음</a></li>
+			<c:if test="${pageMaker.next }">
+				<c:if test="${searchKeyword != null }">
+					<c:url var="adminHostList" value="adminhostList.gh">
+						<c:param name="page" value="${pageMaker.end + 1}" />
+						<c:param name="o" value="${searchOption }"></c:param>
+						<c:param name="k" value="${searchKeyword }"></c:param>
+					</c:url>
+				</c:if>
+				<c:if test="${searchKeyword == null }">
+					<c:url var="adminHostList" value="adminhostList.gh">
+						<c:param name="page" value="${pageMaker.end + 1}" />
+					</c:url>
+				</c:if>
+				<li><a href="${adminHostList }">다음</a></li>
 			</c:if>
 		</ul>
-		</div>
+		</div></div></div></div>
     </section>
     <!-- /.content -->
-  </div>
   <!-- /.content-wrapper -->
-
+</div>
 </body>
 </html> 

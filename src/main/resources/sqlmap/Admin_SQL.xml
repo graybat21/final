@@ -7,16 +7,23 @@
 	<!-- id 속성은 DAO 의 메소드와 같아야 한다. 여기의 boardVO 는 mybatis-confg.xml 에 Alias 되어 있습니다. -->
 	
 	<!-- 관리자 회원 목록 -->
-	<select id="memberList" resultType="adminVO" parameterType="hashmap">
+	<select id="memberList" resultType="memberVO" parameterType="hashmap">
 		SELECT * FROM
 			(SELECT ROW_NUMBER() OVER (ORDER BY no DESC) RNUM,
 					no, email, name, phone, reg, auth
 				FROM member
+				<if test="searchKeyword != null || searchKeyword == ''">
+	    		WHERE ${searchOption} like '%${searchKeyword}%'
+	  			</if>
 			) X
 		WHERE X.RNUM BETWEEN #{first} and #{last}
 	</select>
+	
 	<select id="memberListCnt" resultType="int">
 		SELECT count(*) FROM member
+		<if test="searchKeyword != null || searchKeyword == ''">
+   		WHERE ${searchOption} LIKE '%${searchKeyword}%'
+		</if>
 	</select>	
 	<!-- 관리자 회원 강제 탈퇴 -->
 	<update id="deleteMember" parameterType="adminVO">
@@ -30,6 +37,9 @@
 					no, email, pw, name, tel, reg, biz_no, 
 					addr1, addr2, zip, imagename, auth
 				FROM host
+				<if test="searchKeyword != null || searchKeyword == ''">
+	    		WHERE ${searchOption} like '%${searchKeyword}%'
+	  			</if>
 			) X
 		WHERE X.RNUM between #{first} and #{last}
 	</select>
@@ -41,15 +51,44 @@
 	<!-- 호스트 전체 가입수 -->
 	<select id="hostListCnt" resultType="int">
 		SELECT count(*) FROM host
+		<if test="searchKeyword != null || searchKeyword == ''">
+   		WHERE ${searchOption} LIKE '%${searchKeyword}%'
+		</if>
 	</select>
 	
 	<!-- 관리자 게하 룸 관리 목록 -->
-	<select id="adminRoomList" resultType="adminVO">
-		SELECT r.no, r.name, r.max, r.price, r.host_no, r.reg, i.no, i.room_no, i.filename, i.filesize 
-		FROM room r, image i 
-		ORDER BY r.no DESC
+	<select id="adminRoomList" resultType="roomVO" parameterType="hashmap">
+		SELECT * FROM (
+			SELECT ROW_NUMBER() OVER (ORDER BY no DESC) RNUM, 
+				no, name, max, price, host_no, filename 
+			FROM (
+				SELECT ss.room_no no, ss.name, ss.max, ss.price, ss.host_no, ss.filename 
+				FROM (
+					SELECT min(i.no) no 
+					FROM image i INNER JOIN room r 
+					ON i.room_no = r.no 
+					GROUP BY i.room_no
+				) s,
+				(
+				SELECT i.no no, i.ROOM_NO room_no, i.FILENAME filename, 
+					r.max max, r.name name, r.price price, r.host_no host_no 
+				FROM image i INNER JOIN room r 
+				ON i.room_no = r.no 
+				) ss
+			WHERE s.no = ss.no 
+			<if test="searchKeyword != null || searchKeyword == ''">
+	   		AND ${searchOption} LIKE '%${searchKeyword}%'
+			</if>
+			)
+		) X
+		WHERE X.RNUM between #{first} and #{last}
 	</select>
-	
+	<select id="roomListCnt" resultType="int">
+		SELECT count(*) FROM room
+		<if test="searchKeyword != null || searchKeyword == ''">
+   		WHERE ${searchOption} LIKE '%${searchKeyword}%'
+		</if>
+	</select>
 	<!-- 관리자 게하 룸 강제 삭제 -->
 	<update id="deleteRoom" parameterType="int">
 		DELETE FROM room WHERE no=#{no}

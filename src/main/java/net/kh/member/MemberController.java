@@ -117,10 +117,10 @@ public class MemberController {
 
 	@RequestMapping(value = "emailCheck.gh", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean emailCheck(@RequestBody String email) throws Exception {
+	public int emailCheck(@RequestBody String email) throws Exception {
 		logger.info(email);
-		boolean isEmailExist = !memberService.emailCheck(email);
-		return isEmailExist;// false 이면 중복이 있음.
+		int isEmailExist = memberService.emailCheck(email);
+		return isEmailExist;
 	}
 	
 	@RequestMapping(value = "/auth-m/{no}/{auth}")

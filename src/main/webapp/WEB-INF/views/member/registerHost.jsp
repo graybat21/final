@@ -148,6 +148,50 @@ $(".uploader").change(function(){
 }
 
 </style>
+<script>
+/* $(function(event){
+	$('#email').keyup(function(){
+		var emailVal=$('#email').val();
+		alert(emailVal);
+	})
+}) */
+
+	/* var email = $('#email').val(); */
+	
+$(function(event){
+	$("#email").keyup(function() {
+		if ( $("#email").val().length >= 6 )
+		{	
+			$.ajax({
+			  url : "/emailCheck.gh",
+			  type : "post",
+			  contentType : 'application/json; charset=utf-8',
+			  //data : JSON.stringify({ username : $("#username").val() }),
+			  data : $("#email").val(),
+			  //dataType: "json",
+			  /* beforeSend: function(xhr){
+			        xhr.setRequestHeader(header, token);
+			    }, */
+			  success : function(data) {
+			    if (data) {
+			    	$("#duplicateResult").text("이미 해당 아이디로 가입된 회원이 있습니다. 다른 아이디를 입력해주세요."); 
+			    } 
+			    else {
+			    	$("#duplicateResult").text(""); 
+			    } 
+			  },
+			  error : function(error) {
+			    alert(error.statusText);  
+			  }
+			});
+		}
+		else {
+	    	$("#duplicateResult").text("아이디를 6자 이상 입력해주세요."); 
+		}
+	  	return false;
+	});
+});
+</script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -164,9 +208,10 @@ $(".uploader").change(function(){
 							<input type="email" class="form-control" id="email" name="email" 
   							data-validation-email-message="형식에 맞는 이메일을 입력해 주세요."/>
 							<p class="help-block" style="color:red;"></p>
+							<span id="duplicateResult"></span><br>
 						</div></div>
 						<div class="col-sm-3">
-							<a class="btn" id="chkzip" onclick="execDaumPostcode()">중복확인</a>
+							<a class="btn" id="chkzip" onclick="">중복확인</a>
 						</div>
 					</div></div>
 					<div class="form-group"><div class="control-group">

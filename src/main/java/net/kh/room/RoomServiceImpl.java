@@ -45,13 +45,6 @@ public class RoomServiceImpl implements RoomService {
 
 
 
-	@Override
-	public List<String> allImage(int h_no) throws Exception {
-		// TODO Auto-generated method stub
-		return roomMapper.allImage(h_no);
-	}
-
-
 
 	@Override
 	public List<RoomVO> getRoomInfoByHostNo(int no) throws Exception {

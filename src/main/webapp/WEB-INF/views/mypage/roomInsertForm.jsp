@@ -132,7 +132,7 @@
 					<div>
 						<input type="text" id="price" name="price" required="required" />
 					</div>
-					<label for="file2">방번호</label><br /> <input type="text"
+					<label for="file2">호스트번호</label><br /> <input type="text"
 						id="host_no" name="host_no"
 						value="${sessionScope.session_host_no}" required="required" />
 

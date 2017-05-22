@@ -7,7 +7,6 @@ public class ImageVO {
 	private int no;
 	private int room_no;
 	private String filename;
-	private String filesize;
 	private MultipartFile file;
 	
 	
@@ -17,9 +16,10 @@ public class ImageVO {
 	public void setFile(MultipartFile file) {
 		this.file = file;
 	}
+
 	@Override
 	public String toString() {
-		return "ImageVO [no=" + no + ", room_no=" + room_no + ", filename=" + filename + ", filesize=" + filesize + "]";
+		return "\nImageVO [no=" + no + ", room_no=" + room_no + ", filename=" + filename + "]";
 	}
 	public int getNo() {
 		return no;
@@ -38,12 +38,6 @@ public class ImageVO {
 	}
 	public void setFilename(String filename) {
 		this.filename = filename;
-	}
-	public String getFilesize() {
-		return filesize;
-	}
-	public void setFilesize(String filesize) {
-		this.filesize = filesize;
 	}
 	
 	
