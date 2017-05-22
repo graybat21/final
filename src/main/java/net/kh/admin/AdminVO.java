@@ -4,25 +4,33 @@ import java.util.Date;
 
 public class AdminVO {
 	
-	private int rno;
+	private int no;
 	private String name;
 	private int max;
 	private String price;
 	private String host_no;
 	private Date reg;
 	
-	private int ino;
 	private int room_no;
 	private String filename;
 	private String filesize;
 	
+	@Override
+	public String toString() {
+		return "AdminVO [no=" + no + ", name=" + name + ", max=" + max + ", price=" + price + ", host_no=" + host_no
+				+ ", reg=" + reg + ", room_no=" + room_no + ", filename=" + filename + ", filesize=" + filesize +"]";
+	}
 	
-	public int getRno() {
-		return rno;
+	
+
+	public int getNo() {
+		return no;
 	}
-	public void setRno(int rno) {
-		this.rno = rno;
+
+	public void setNo(int no) {
+		this.no = no;
 	}
+
 	public String getName() {
 		return name;
 	}
@@ -52,12 +60,6 @@ public class AdminVO {
 	}
 	public void setReg(Date reg) {
 		this.reg = reg;
-	}
-	public int getIno() {
-		return ino;
-	}
-	public void setIno(int ino) {
-		this.ino = ino;
 	}
 	public int getRoom_no() {
 		return room_no;

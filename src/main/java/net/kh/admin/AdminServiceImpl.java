@@ -60,6 +60,12 @@ public class AdminServiceImpl implements AdminService {
 		
 		return adminMapper.deleteRoom(no);
 	}
+	@Override
+	@Transactional
+	public int deleteImage(int no) throws Exception {
+		
+		return adminMapper.deleteImage(no);
+	}
 	
 	@Override
 	@Transactional

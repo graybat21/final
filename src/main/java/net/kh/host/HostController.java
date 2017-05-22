@@ -52,7 +52,7 @@ public class HostController {
 
 	@RequestMapping("/join/joinFormB.gh")
 	public String joinStep2b() {
-		return "member/register/기업회원 가입폼";
+		return "member/registerHost/기업회원 가입폼";
 	}
 
 	@RequestMapping(value = "/join/joinB.gh", method = RequestMethod.POST)

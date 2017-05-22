@@ -93,6 +93,8 @@ public class AdminController {
 		
 		ModelAndView mav = new ModelAndView();
 		String no = request.getParameter("no");
+		
+		adminService.deleteImage(Integer.parseInt(no));
 		adminService.deleteRoom(Integer.parseInt(no));
 		mav.setViewName("redirect:/adminRoomList.gh");
 		

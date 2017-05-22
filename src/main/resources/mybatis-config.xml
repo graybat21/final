@@ -20,6 +20,7 @@
 		<typeAlias alias="wishListVO" type="net.kh.wish.WishListVO" />
 
 		<typeAlias alias="adminVO" type="net.kh.admin.AdminVO" />
+		<typeAlias alias="adminDiscountVO" type="net.kh.admin.AdminDiscountVO" />
 		<typeAlias alias="discountVO" type="net.kh.discount.DiscountVO" />
 
 	</typeAliases>

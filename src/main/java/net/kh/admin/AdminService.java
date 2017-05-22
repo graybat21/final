@@ -23,6 +23,7 @@ public interface AdminService {
 	List<AdminVO> adminRoomList(AdminVO admin) throws Exception;
 	
 	public int deleteRoom(int no) throws Exception;
+	public int deleteImage(int no) throws Exception;
 	
 	//특가관리
 	List<DiscountVO> adminDiscountList(DiscountVO discount) throws Exception;

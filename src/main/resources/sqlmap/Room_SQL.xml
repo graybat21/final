@@ -3,43 +3,62 @@
 
 
 <mapper namespace="net.kh.dao.RoomDao">
-	<!-- <select id="memberLogin" resultType="memberVO"> SELECT no, email, pw, 
-		name, phone, reg, auth FROM MEMBER WHERE email = #{email} </select> -->
+   <!-- <select id="memberLogin" resultType="memberVO"> SELECT no, email, pw, 
+      name, phone, reg, auth FROM MEMBER WHERE email = #{email} </select> -->
 
-	<insert id="roomInsert2" parameterType="roomVO"> <!-- 하나씩들어가는거 -->   <!-- 결과값이 VO로 가는거 -->
-		INSERT INTO ROOM (
-		no,
-		name, max,
-		price, host_no, reg
-		)
-		VALUES (
-		SEQ_ROOM_NO.NEXTVAL, #{name},
-		#{max},
-		#{price}, #{host_no}, sysdate
-		)
-	</insert>
-	<select id="roomGetCurrentNo" resultType="int">
-		SELECT
-		LAST_NUMBER
-		FROM
-		USER_SEQUENCES
-		WHERE
-		SEQUENCE_NAME='SEQ_ROOM_NO'
-	</select>
+   <insert id="roomInsert2" parameterType="roomVO"> <!-- 하나씩들어가는거 -->   <!-- 결과값이 VO로 가는거 -->
+      INSERT INTO ROOM (
+      no,
+      name, max,
+      price, host_no, reg
+      )
+      VALUES (
+      SEQ_ROOM_NO.NEXTVAL, #{name},
+      #{max},
+      #{price}, #{host_no}, sysdate
+      )
+   </insert>
+   <select id="roomGetCurrentNo" resultType="int">
+      SELECT
+      LAST_NUMBER
+      FROM
+      USER_SEQUENCES
+      WHERE
+      SEQUENCE_NAME='SEQ_ROOM_NO'
+   </select>
 
-	<select id="roomList" parameterType="int" resultType="roomVO">
+   <select id="roomList" parameterType="int" resultType="roomVO">
 
-		select * from room, image where host_no = #{host_no}
-	</select>
-	<select id="getRoomInfoByHostNo" parameterType="int" resultType="roomVO">
-		select * from room where host_no = #{no}
-	</select>
-	
-	<select id="allImage" parameterType="int" resultType="String">
-		select
-		i.filename from image i, room r, host h
-		where i.room_no = r.no and
-		r.host_no=h.no and h.no=#{no}   
-	</select>
+      select * from room where host_no = #{h_no}
+   </select>
+   <select id="getRoomInfoByHostNo" parameterType="int" resultType="roomVO">
+      select * from room where host_no = #{no}
+   </select>
+   
+   <select id="allImage" parameterType="int" resultType="String">
+      select
+      i.filename from image i, room r, host h
+      where i.room_no = r.no and
+      r.host_no=h.no and h.no=#{h_no}   
+   </select>
+   
+<!--    <select id="image" parameterType="int" resultType="String">
+      select filename
+      from image
+      where room_no = #{no}
+   </select> -->
+   
+   <select id="image" parameterType="int" resultType="String">
+   	select s.no, ss.room_no, ss.filename from
+(select min(i.no) no from image i inner join room r on i.room_no = r.no
+where r.host_no=#{host_no}
+group by i.room_no) s,
+(select i.no no, i.ROOM_NO room_no, i.FILENAME filename from image i inner join room r on i.room_no = r.no 
+where r.host_no=#{host_no}) ss
+where s.no = ss.no
+   </select>
+   
+   <select id="roommList" parameterType="int" resultType="roomVO">
+		SELECT * FROM room where host_no = #{host_no} ORDER BY no DESC
+   </select>
 </mapper>
-	

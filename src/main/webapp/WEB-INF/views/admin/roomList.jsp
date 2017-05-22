@@ -63,7 +63,10 @@ td {
 						<tr height="50px">
 							<td>${room.no }</td>
 							<td>${room.host_no }</td>
-							<td>${room }
+							<td>
+							<%-- <c:forEach var="item" items="${room.filename}"> --%>
+							<img width="150px" src="./resources/upload/${room.filename}" />
+							<%-- </c:forEach> --%>
 							<td>${room.name }</td>
 							<td>${room.max }</td>
 							<td>${room.price}</td>
