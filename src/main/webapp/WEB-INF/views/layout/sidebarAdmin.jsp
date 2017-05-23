@@ -29,13 +29,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="adminRoomList.gh"><i class="fa fa-circle-o"></i>게하룸상품조회</a></li>
+            <li><a href="adminroomList.gh"><i class="fa fa-circle-o"></i>게하룸상품조회</a></li>
             <li><a href="adminDiscountList.gh"><i class="fa fa-circle-o"></i>특가상품조회</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-calendar"></i> <span>게시판 관리</span>
+            <i class="fa fa-calendar"></i> <span>게시판/예약 관리</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -43,6 +43,7 @@
           <ul class="treeview-menu">
             <li><a href="noticeList.gh"><i class="fa fa-circle-o"></i>공지 사항</a></li>
             <li><a href="qnaList.gh"><i class="fa fa-circle-o"></i>문의 사항</a></li>
+            <li><a href="adminReserveList.gh"><i class="fa fa-circle-o"></i>예약 관리</a></li>
           </ul>
         </li>
         <!-- <li>

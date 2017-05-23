@@ -13,7 +13,7 @@ public class AdminDiscountVO {
 	
 	// discount 테이블
 	private int no;
-	private int room_no;
+	private int roomno;
 	private Date starttime;
 	private Date endtime;
 	private String newprice;
@@ -44,11 +44,12 @@ public class AdminDiscountVO {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public int getRoom_no() {
-		return room_no;
+
+	public int getRoomno() {
+		return roomno;
 	}
-	public void setRoom_no(int room_no) {
-		this.room_no = room_no;
+	public void setRoomno(int roomno) {
+		this.roomno = roomno;
 	}
 	public Date getStarttime() {
 		return starttime;

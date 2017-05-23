@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
 import net.kh.member.MemberVO;
-import net.kh.room.ImageVO;
+import net.kh.reserve.ReserveVO;
 import net.kh.room.RoomVO;
 import net.kh.utils.PageMaker;
 
@@ -57,9 +57,7 @@ public class AdminController {
 		mav.addObject("pageMaker", pagemaker);
 		mav.addObject("searchOption", searchOption);
 		mav.addObject("searchKeyword", searchKeyword);
-		
-		logger.info(memberList.toString());
-			
+					
 		return mav;
 	}
 	
@@ -166,12 +164,93 @@ public class AdminController {
 	
 	//관리자의 특가 관리
 	@RequestMapping("/adminDiscountList.gh")
-	public ModelAndView adminDiscountList(DiscountVO discount) throws Exception {
-											//discountList.jsp
-		ModelAndView mav = new ModelAndView("discountList");
+	public ModelAndView adminDiscountList(PageMaker pagemaker, @RequestParam(value = "o", required = false) String searchOption,
+			@RequestParam(value = "k", required = false) String searchKeyword) throws Exception {
 		
-		List<DiscountVO> adminDiscountList = adminService.adminDiscountList(discount);
+		ModelAndView mav = new ModelAndView("discountList");
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		
+		int page = pagemaker.getPage() != null ? pagemaker.getPage() : 1;
+		pagemaker.setPage(page);
+		map.put("searchOption", searchOption);
+		map.put("searchKeyword", searchKeyword);
+		int totalCnt = adminService.discountListCnt(map); // DB연동_ 총 갯수 구해오기
+		int countPerPage = 3;
+		int countPerPaging = 3;
+
+		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
+		int last = first + countPerPage - 1;
+
+		map.put("first", first);
+		map.put("last", last);
+		
+		List<DiscountVO> adminDiscountList = adminService.adminDiscountList(map);
+		
+		pagemaker.setCount(totalCnt, countPerPage, countPerPaging);
 		mav.addObject("adminDiscountList", adminDiscountList);
+		mav.addObject("pageMaker", pagemaker);
+		mav.addObject("searchOption", searchOption);
+		mav.addObject("searchKeyword", searchKeyword);
+		
+		return mav;
+	}
+	
+	//관리자의 특가 관리 - 특가 삭제
+	@RequestMapping("/adminDiscountDelete.gh")
+	public ModelAndView deleteDiscount(HttpServletRequest request) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		String no = request.getParameter("no");
+		
+		adminService.deleteDiscount(Integer.parseInt(no));
+		mav.setViewName("redirect:/adminDiscountList.gh");
+		
+		return mav;
+	}
+	
+	
+	//관리자의 예약내역목록 관리
+	@RequestMapping("/adminReserveList.gh")
+	public ModelAndView adminReserveList(PageMaker pagemaker, @RequestParam(value = "o", required = false) String searchOption,
+			@RequestParam(value = "k", required = false) String searchKeyword) throws Exception {
+		
+		ModelAndView mav = new ModelAndView("reserveList");
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		
+		int page = pagemaker.getPage() != null ? pagemaker.getPage() : 1;
+		pagemaker.setPage(page);
+		map.put("searchOption", searchOption);
+		map.put("searchKeyword", searchKeyword);
+		int totalCnt = adminService.reserveListCnt(map); // DB연동_ 총 갯수 구해오기
+		int countPerPage = 3;
+		int countPerPaging = 3;
+		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
+		int last = first + countPerPage - 1;
+
+		map.put("first", first);
+		map.put("last", last);
+		
+		List<ReserveVO> adminReserveList = adminService.adminReserveList(map);
+		
+		pagemaker.setCount(totalCnt, countPerPage, countPerPaging);
+		mav.addObject("adminReserveList", adminReserveList);
+		mav.addObject("pageMaker", pagemaker);
+		mav.addObject("searchOption", searchOption);
+		mav.addObject("searchKeyword", searchKeyword);
+		
+		return mav;
+	}
+	
+	//예약 내역 삭제
+	@RequestMapping("/adminReserveDelete.gh")
+	public ModelAndView deleteReserve(HttpServletRequest request) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		String no = request.getParameter("no");
+		
+		adminService.deleteImage(Integer.parseInt(no));
+		adminService.deleteRoom(Integer.parseInt(no));
+		mav.setViewName("redirect:/adminReserveList.gh");
 		
 		return mav;
 	}
