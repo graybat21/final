@@ -36,7 +36,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public boolean emailCheck(String email) throws Exception {
+	public int emailCheck(String email) throws Exception {
 		return memberMapper.emailCheck(email);
 	}
 

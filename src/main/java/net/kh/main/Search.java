@@ -1,4 +1,4 @@
-package net.kh.GuestHi;
+package net.kh.main;
 
 import java.util.Date;
 

@@ -35,5 +35,13 @@ public class ReserveController {
 		mav.addObject(room);
 		return mav;
 	}
+	
+	@RequestMapping("/myReservation.gh")
+	public ModelAndView myReservation()throws Exception{
+		ModelAndView mav=new ModelAndView("mypage/reserve/내 예약내역 확인");
+		
+		
+		return mav;
+	}
 
 }

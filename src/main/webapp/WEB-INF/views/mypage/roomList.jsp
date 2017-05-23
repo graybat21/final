@@ -9,54 +9,59 @@
 </head>
 
 <body>
+<article id="contentsWrap">
+		<div class="my_wrap row row_cont">
+			<div class="my_menu" style="display: none">
+				<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
+			</div>
 
-	<table border=1>
+			<div class="my_contents">
+				<!-- my_cont_wrap  얘가 오른쪽 페이지 줄짧게 만드는?애 없애면 길어짐 -->
+				<div class="my_cont_wrap">
+					<!-- 내정보 수정 -->
+					<div class="myinfo_title">
+						<strong>방등록</strong>
+						<!-- <span>회원정보를 수정할 수 있습니다.</span> -->
+					</div>
+					<div class="myinfo_table ">
+	<table border=1 width="1200px">
+		<thead>
+			<tr>
+			<th>방이름</th>
+			<th>최대인원</th>
+			<th>인당가격</th>
+			<th>방번호</th>
+			<th>이미지</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:forEach var="item" items="${room }" varStatus="status">
 		<tr>
-			<td>이름</td>
-			<td>${sessionScope.session_host_name }</td>
-			<td>번호</td>
-			<td>${sessionScope.session_host_no }</td>
-			<td>이메일</td>
-			<td>${sessionScope.session_host_email }</td>
-			<td>주소1</td>
-			<td>${sessionScope.session_addr1 }</td>
-			<td>이미지</td>
-			<td>
-			이미지 :<c:forEach var="item" items="${image}">
- <img src="./resources/upload/${item}" width="100px" height="100px"/>
-				</c:forEach></td>
+			<td>${item.name}</td>
+			<td>${item.max }</td>
+			<td>${item.price}</td>
+			<td>${item.no}</td>
+			<td><img src="./resources/upload/${image[status.count].filename}" width="100px" height="100px"/></td>
 		</tr>
-
+		</c:forEach>
+		</tbody>
 	</table>
-	<%-- ${ImageSession}
-	${room}
-	<br /> ${image} --%>
+</div>
+					<div class="myinfo_table ">
+						<table>
+							<tr>
+								<td>
+									<button id="btn-upload" type="submit"
+										onclick="location.href='roomList.gh'">방 등록</button> <br>
+								</td>
+							</tr>
+						</table>
+					</div>
 
-	<%-- 
-	여기!!!!!!!!!
-	
-	<br /> 이름 : ${sessionScope.session_host_name }
-	<br /> 번호 : ${sessionScope.session_host_no}
-	<br />
-	<!-- 16 -->
-	이메일 : ${sessionScope.session_host_email}
-	<br />
-	<br /> 주소1 : ${sessionScope.session_addr1}
-	<c:forEach var="item" items="${image}">
-		<br /> 이미지 : <img src="./resources/upload/${item}" />
-		<br />
-	</c:forEach>/
-	끝ㅌㅌㅌㅌ
- --%>
-
-
-	<%-- ${sessionScope.ImageSession} --%>
-
-	<%-- 	<c:forEach var="Image" items="${imageSession}">
-   이미지 : <img src="./resources/upload/${image}" />
-
-	</c:forEach> --%>
-
+				</div>
+			</div>
+		</div>
+	</article>
 
 </body>
 </html>

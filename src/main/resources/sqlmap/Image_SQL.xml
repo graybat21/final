@@ -15,5 +15,32 @@
 		#{filename}
 		)
 	</insert>
+	<select id="getImageByHostNo" parameterType="int" resultType="imageVO">
+		SELECT 
+			s.no, ss.room_no, ss.filename 
+		FROM
+			(SELECT 
+				min(i.no) no 
+			FROM 
+				image i INNER JOIN room r 
+			ON 
+				i.room_no = r.no 
+			WHERE 
+				r.host_no = #{host_no}
+			GROUP BY i.room_no
+			) s,
+			(SELECT 
+				i.no no, i.ROOM_NO room_no, i.FILENAME filename 
+			FROM 
+				image i INNER JOIN room r 
+			ON 
+				i.room_no = r.no 
+			WHERE 
+				r.host_no = #{host_no}
+			) ss
+		WHERE 
+			s.no = ss.no
+		ORDER BY no
+	</select>
 </mapper>
 	

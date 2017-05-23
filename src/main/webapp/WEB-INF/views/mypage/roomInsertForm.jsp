@@ -92,64 +92,64 @@
 </head>
 
 <body>
-	<div class="svc_allwrap">
-		<div class="svc_wrap row row_cont">
-			<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
-
-			<div class="svc_contents">
-				<div class="svc_title svc_notice">
-					<h4>방등록</h4>
-				</div>
-
-				<br />
-				<form id="uploadForm" enctype="multipart/form-data" method="POST"
-					action="${pageContext.request.contextPath}/roomInsert.gh">
-
-					<label for="file1">파일 첫 번째 : </label>
-					<div>
-						<a href="#" id="imageUpload"> <!-- <input type="file" name="imageName_1" id="1" /> -->
-							<input type="file" name="file" id="file1" /></a>
-
-					</div>
-
-
-					<!-- 
-				
-					<label for="file2">파일 두 번째</label>
-					<div>
-						<input type="file" id="file2" name="file" required="required" />
-					</div>
- -->
-					<label for="file2">name</label><br />
-					<div>
-						<input type="text" id="name" name="name" required="required" />
-					</div>
-					<label for="file2">max</label><br />
-					<div>
-						<input type="text" id="max" name="max" required="required" />
-					</div>
-					<label for="file2">price</label><br />
-					<div>
-						<input type="text" id="price" name="price" required="required" />
-					</div>
-					<label for="file2">방번호</label><br /> <input type="text"
-						id="host_no" name="host_no"
-						value="${sessionScope.session_host_no}" required="required" />
-
-				</form>
-				<div>
-					<button id="btn-upload" type="submit"
-						onclick="location.href='roomList.gh'">파일 업로드</button>
-					<!-- <button id="btn-upload">파일 업로드</button> -->
-					<%-- <a href="resources/upload/${filename}">${filename}</a><br/> --%>
-				</div>
+	<article id="contentsWrap">
+		<div class="my_wrap row row_cont">
+			<div class="my_menu" style="display: none">
+				<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
 			</div>
 
+			<div class="my_contents">
+				<!-- my_cont_wrap  얘가 오른쪽 페이지 줄짧게 만드는?애 없애면 길어짐 -->
+				<div class="my_cont_wrap">
+					<!-- 내정보 수정 -->
+					<div class="myinfo_title">
+						<strong>방등록</strong>
+						<!-- <span>회원정보를 수정할 수 있습니다.</span> -->
+					</div>
+					<div class="myinfo_table ">
 
+						<form name="infoform" id="uploadForm"
+							enctype="multipart/form-data" method="POST"
+							action="${pageContext.request.contextPath}/roomInsert.gh">
+							<table>
+								<tr>
+									<th>방이름</th>
+									<td><input type="text" id="name" name="name"
+										required="required" size="15" maxlength="11" /></td>
+								</tr>
+								<tr>
+									<th>최대인원</th>
+									<td><input type="text" id="max" name="max"
+										required="required" size="15" maxlength="11" /></td>
+								</tr>
+								<tr>
+									<th>가격</th>
+									<td><input type="text" id="price" name="price"
+										required="required" size="15" maxlength="11" /></td>
+								</tr>
+								<tr>
+									<th>사진</th>
+									<td><a href="#" id="imageUpload"><input type="file"
+											name="file" id="file1" /></a></td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					<div class="myinfo_table ">
+						<table>
+							<tr>
+								<td>
+									<button id="btn-upload" type="submit"
+										onclick="location.href='roomList.gh'">방 등록</button> <br>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+				</div>
+			</div>
 		</div>
-	</div>
-
-
+	</article>
 
 </body>
 </html>

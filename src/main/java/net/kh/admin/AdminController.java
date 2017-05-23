@@ -1,20 +1,24 @@
 package net.kh.admin;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
 import net.kh.member.MemberVO;
+import net.kh.room.ImageVO;
+import net.kh.room.RoomVO;
+import net.kh.utils.PageMaker;
 
 @Controller
 public class AdminController {
@@ -27,15 +31,36 @@ public class AdminController {
 	
 	// 관리자의 회원관리 - 회원 목록
 	@RequestMapping("/adminmemberList.gh")
-	public ModelAndView memberList(MemberVO member) throws Exception {
+	public ModelAndView memberList(PageMaker pagemaker, @RequestParam(value = "o", required = false) String searchOption,
+			@RequestParam(value = "k", required = false) String searchKeyword) throws Exception {
 											// memList.jsp 의미
 		ModelAndView mav = new ModelAndView("memList");
+		HashMap<String, Object> map=new HashMap<String, Object>();
 		
-		List<MemberVO> memberList = adminService.memberList(member);
+		int page = pagemaker.getPage() != null ? pagemaker.getPage() : 1;
+		pagemaker.setPage(page);
+		map.put("searchOption", searchOption);
+		map.put("searchKeyword", searchKeyword);
+		int totalCnt = adminService.memberListCnt(map); // DB연동_ 총 갯수 구해오기
+		int countPerPage = 5;
+		int countPerPaging = 3;
+
+		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
+		int last = first + countPerPage - 1;
+
+		map.put("first", first);
+		map.put("last", last);
+		
+		List<MemberVO> memberList = adminService.memberList(map);
+		pagemaker.setCount(totalCnt, countPerPage, countPerPaging);
 		mav.addObject("memberList", memberList);
+		mav.addObject("pageMaker", pagemaker);
+		mav.addObject("searchOption", searchOption);
+		mav.addObject("searchKeyword", searchKeyword);
+		
+		logger.info(memberList.toString());
 			
 		return mav;
-		
 	}
 	
 	// 관리자의 회원관리 - 회원 강제 탈퇴
@@ -52,12 +77,32 @@ public class AdminController {
 	
 	// 관리자의 호스트관리 - 호스트 목록
 	@RequestMapping("/adminhostList.gh")
-	public ModelAndView hostList(HostVO host) throws Exception {
+	public ModelAndView hostList(PageMaker pagemaker, @RequestParam(value = "o", required = false) String searchOption,
+			@RequestParam(value = "k", required = false) String searchKeyword) throws Exception {
 											//hostList.jsp 의미
 		ModelAndView mav = new ModelAndView("hostList");
-		List<HostVO> hostList = adminService.hostList(host);
-		mav.addObject("hostList", hostList);
+		HashMap<String, Object> map=new HashMap<String, Object>();
 		
+		int page = pagemaker.getPage() != null ? pagemaker.getPage() : 1;
+		pagemaker.setPage(page);
+		map.put("searchOption", searchOption);
+		map.put("searchKeyword", searchKeyword);
+		int totalCnt = adminService.hostListCnt(map); // DB연동_ 총 갯수 구해오기
+		int countPerPage = 4;
+		int countPerPaging = 3;
+
+		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
+		int last = first + countPerPage - 1;
+
+		map.put("first", first);
+		map.put("last", last);
+		
+		List<HostVO> hostList = adminService.hostList(map);
+		pagemaker.setCount(totalCnt, countPerPage, countPerPaging);
+		mav.addObject("hostList", hostList);
+		mav.addObject("pageMaker", pagemaker);
+		mav.addObject("searchOption", searchOption);
+		mav.addObject("searchKeyword", searchKeyword);
 		return mav;
 	}
 	
@@ -73,16 +118,34 @@ public class AdminController {
 		return mav;
 	}
 	
-	// 관리자의 게하 방 관리
-	@RequestMapping("/adminRoomList.gh")
-	public ModelAndView adminRoomList(AdminVO admin) throws Exception {
-											// roomList.jsp
+//	 관리자의 게하 방 관리
+	@RequestMapping("/adminroomList.gh")
+	public ModelAndView adminRoomList(PageMaker pagemaker, @RequestParam(value = "o", required = false) String searchOption,
+			@RequestParam(value = "k", required = false) String searchKeyword) throws Exception {
 		ModelAndView mav = new ModelAndView("roomList");
+		HashMap<String, Object> map=new HashMap<String, Object>();
 		
-		List<AdminVO> adminRoomList = adminService.adminRoomList(admin);
-		//logger.info(adminRoomList.toString());
+		int page = pagemaker.getPage() != null ? pagemaker.getPage() : 1;
+		pagemaker.setPage(page);
+		map.put("searchOption", searchOption);
+		map.put("searchKeyword", searchKeyword);
+		int totalCnt = adminService.roomListCnt(map); // DB연동_ 총 갯수 구해오기
+		int countPerPage = 3;
+		int countPerPaging = 3;
+
+		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
+		int last = first + countPerPage - 1;
+
+		map.put("first", first);
+		map.put("last", last);
 		
-		mav.addObject("adminRoomList", adminRoomList);
+		List<RoomVO> roomList = adminService.adminRoomList(map);
+		
+		pagemaker.setCount(totalCnt, countPerPage, countPerPaging);
+		mav.addObject("roomList", roomList);
+		mav.addObject("pageMaker", pagemaker);
+		mav.addObject("searchOption", searchOption);
+		mav.addObject("searchKeyword", searchKeyword);
 		
 		return mav;
 	}

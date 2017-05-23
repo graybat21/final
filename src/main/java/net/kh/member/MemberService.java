@@ -10,7 +10,7 @@ public interface MemberService {
 
 	public int memberGetCurrentNo() throws Exception;
 
-	public boolean emailCheck(String email) throws Exception;
+	public int emailCheck(String email) throws Exception;
 	
 	public Object modifyMyInfo(MemberVO member) throws Exception; //회원정보수정
 	

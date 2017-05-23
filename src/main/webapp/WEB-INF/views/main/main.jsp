@@ -443,7 +443,7 @@ button, input, optgroup, select, textarea {
 							<ul class="nav nav-tabs">
 
 								<li><a href="#tabhotel" data-toggle="tab"> <i
-										class="fa fa-hotel"></i> Hotel
+										class="fa"></i> GuestHouse
 								</a></li>
 
 							</ul>
@@ -464,12 +464,21 @@ function searchSubmit(){
 								<!--tabhotel-->
 								<div class="tab-pane fade in" id="tabhotel">
 									<form action="ghList.gh" id="searchForm" name="searchForm">
-									<h3>Search and Book Hotels</h3>
+									<h3>Search and Book GuestHouse</h3>
 									<ul class="list-inline list-unstyled">
 										<li><select class="select-one" name="area">
 												<option selected="selected">지역</option>
 												<option value="서울">서울</option>
 												<option value="경기">경기</option>
+												<option value="강원">강원</option>
+												<option value="충청">충청</option>
+												<option value="경상">경상</option>
+												<option value="전라">전라</option>
+												<option value="인천">인천</option>
+												<option value="광주">광주</option>
+												<option value="대전">대전</option>
+												<option value="대구">대구</option>
+												<option value="울산">울산</option>
 												<option value="부산">부산</option>
 												<option value="제주도">제주도</option>
 										</select></li>

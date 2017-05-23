@@ -46,7 +46,7 @@
 			SEQUENCE_NAME='SEQ_MEMBER_NO'	
 	</select>
 	
-	<select id="emailCheck" resultType="boolean" parameterType="String">
+	<select id="emailCheck" resultType="int" parameterType="String">
 		SELECT 
 			count(email) 
 		FROM 
