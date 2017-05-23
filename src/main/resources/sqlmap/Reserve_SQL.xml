@@ -9,6 +9,11 @@
 		where h.no = re.host_no and r.no = re.room_no
 	</select>
 
+	<select id="getReserveInfoByMemNo" resultType="hashmap" parameterType="int">
+		SELECT re.checkin, re.checkout, re.count, r.price, r.name room_name, h.name host_name, h.tel, h.imagename
+		FROM reservation re, host h, room r
+		WHERE re.mem_no = #{mem_no} and re.host_no = h.no and re.room_no = r.no
+	</select>
 	
 	<!-- <select id="roomGetCurrentNo" resultType="int">
 		SELECT

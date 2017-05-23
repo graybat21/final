@@ -16,12 +16,10 @@
 	
 	<insert id="memberInsert" parameterType="memberVO">
 		INSERT INTO MEMBER (
-			no, email, pw, 
-			name, phone, reg, auth
+			no, email, pw, name, phone, reg, auth
 		)
 		VALUES (
-			SEQ_MEMBER_NO.NEXTVAL, #{email}, #{pw},
-			#{name}, #{phone}, sysdate, #{auth}
+			SEQ_MEMBER_NO.NEXTVAL, #{email}, #{pw}, #{name}, #{phone}, sysdate, #{auth}
 		)
 	</insert>
 	
@@ -54,5 +52,10 @@
 		where 
 			email = #{email};
 	</select>
+	
+	<update id="modifyMyInfo" parameterType="memberVO">
+		UPDATE MEMBER SET phone = #{phone}, pw = #{newpw1} WHERE no = #{no};
+	</update>
+	
 </mapper>
 

@@ -1,5 +1,6 @@
 package net.kh.reserve;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,11 @@ public class ReserveServiceImpl implements ReserveService {
 	@Override
 	public List<Map<String, Object>> selectSearchHappy() throws Exception {
 		return reserveDao.selectSearchHappy();
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getReserveInfoByMemNo(int mem_no) throws Exception {
+		return reserveDao.getReserveInfoByMemNo(mem_no);
 	}
 
 }

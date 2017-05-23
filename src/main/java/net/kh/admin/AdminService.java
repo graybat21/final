@@ -6,6 +6,7 @@ import java.util.List;
 import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
 import net.kh.member.MemberVO;
+import net.kh.reserve.ReserveVO;
 import net.kh.room.RoomVO;
 
 public interface AdminService {
@@ -24,7 +25,15 @@ public interface AdminService {
 	List<RoomVO> adminRoomList(HashMap<String, Object> map) throws Exception;
 	int roomListCnt(HashMap<String, Object> map)throws Exception;
 	public int deleteRoom(int no) throws Exception;
+	public int deleteImage(int no) throws Exception;
 
 	// 특가관리
-	List<DiscountVO> adminDiscountList(DiscountVO discount) throws Exception;
+	List<DiscountVO> adminDiscountList(HashMap<String, Object> map) throws Exception;
+	int discountListCnt(HashMap<String, Object> map)throws Exception;
+	public int deleteDiscount(int no) throws Exception;
+	
+	//예약내역관리
+	List<ReserveVO> adminReserveList(HashMap<String, Object> map) throws Exception;
+	int reserveListCnt(HashMap<String, Object> map)throws Exception;
+	public int deleteReserve(int no) throws Exception;
 }

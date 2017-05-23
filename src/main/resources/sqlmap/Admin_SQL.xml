@@ -34,7 +34,7 @@
 	<select id="hostList" resultType="hostVO" parameterType="hashmap">
 		SELECT * FROM
 			(SELECT ROW_NUMBER() OVER(ORDER BY no DESC) RNUM,
-					no, email, pw, name, tel, reg, biz_no, 
+					no, email, pw, name, tel, reg, biz_no bizno, 
 					addr1, addr2, zip, imagename, auth
 				FROM host
 				<if test="searchKeyword != null || searchKeyword == ''">
@@ -90,14 +90,65 @@
 		</if>
 	</select>
 	<!-- 관리자 게하 룸 강제 삭제 -->
+	<update id="deleteImage" parameterType="int">
+		DELETE FROM image WHERE room_no=#{no}
+	</update>
+	
 	<update id="deleteRoom" parameterType="int">
 		DELETE FROM room WHERE no=#{no}
 	</update>
 	
+	
 	<!-- 관리자 특가 관리 목록 -->
-	<select id="adminDiscountList" resultType="discountVO" parameterType="int">
-		SELECT * FROM discount ORDER BY no DESC
+	<select id="adminDiscountList" resultType="adminDiscountVO" parameterType="int">
+		SELECT * FROM
+			(SELECT ROW_NUMBER() OVER (ORDER BY d.no DESC) RNUM,
+					r.name, r.price, i.filename, d.no, d.room_no roomno, d.starttime, d.endtime, d.newprice, d.reg
+				FROM room r, image i, discount d
+				<if test="searchKeyword != null || searchKeyword == ''">
+	    		WHERE ${searchOption} like '%${searchKeyword}%'
+	  			</if>
+			) X
+		WHERE X.RNUM BETWEEN #{first} and #{last}
 	</select>
+	
+	<select id="discountListCnt" resultType="int">
+		SELECT count(*) FROM discount
+		<if test="searchKeyword != null || searchKeyword == ''">
+   		WHERE ${searchOption} LIKE '%${searchKeyword}%'
+		</if>
+	</select>	
+	
+	<!-- 관리자 특가 강제 삭제 -->
+	<update id="deleteDiscount" parameterType="int">
+		DELETE FROM discount WHERE no=#{no}
+	</update>
+	
+	<!-- 관리자 예약내역관리 목록 -->
+	<select id="adminReserveList" resultType="reserveVO">
+		<!-- SELECT * FROM reservation ORDER BY no DESC -->
+		SELECT * FROM
+			(SELECT ROW_NUMBER() OVER (ORDER BY no DESC) RNUM,
+					no, host_no hostno, room_no roomno, count, checkin, checkout, reg, mem_no memno
+				FROM reservation
+				<if test="searchKeyword != null || searchKeyword == ''">
+	    		WHERE ${searchOption} like '%${searchKeyword}%'
+	  			</if>
+			) X
+		WHERE X.RNUM BETWEEN #{first} and #{last}		
+	</select>
+	
+	<select id="reserveListCnt" resultType="int">
+		SELECT count(*) FROM reservation
+		<if test="searchKeyword != null || searchKeyword == ''">
+   		WHERE ${searchOption} LIKE '%${searchKeyword}%'
+		</if>
+	</select>	
+	
+	<!-- 관리자 예약 내역 강제 삭제 -->
+	<update id="deleteReserve" parameterType="int">
+		DELETE FROM reservation WHERE no=#{no}
+	</update>
 	
 	
 </mapper>

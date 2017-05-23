@@ -119,13 +119,13 @@ public class MemberController {
   		MemberVO memberVO = new MemberVO();
 		session.getAttribute("session_member_id");
   		if (session.getAttribute("session_member_id") != null) {
-  			memberService.modifyMyInfo(member);
+  			if (member.getNewpw1()==null) {
+  				member.setNewpw1(member.getPw());
+  			}
+  			String encryptPassword = passwordEncoder.encode(member.getNewpw1());
+  			memberVO.setPw(encryptPassword);
+  			memberService.modifyMyInfo(memberVO);
   			mav.addObject("member",memberVO);
-  			mav.setViewName("redirect:/main.gh");
-  			return mav;
-//  			String id = (String) session.getAttribute("session_member_id");
-//  			member = memberService.getMember(id);
-
   			mav.setViewName("memberModify");
   			return mav;
   		} else {
