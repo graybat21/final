@@ -15,6 +15,7 @@
 	<select id="wishList" resultType="hashmap" parameterType="hashmap">
 		select w.mem_no,
 			w.host_no,
+			h.imagename,
 			h.name,
 			h.addr1,
 			h.addr2,
