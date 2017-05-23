@@ -102,15 +102,7 @@
 
 <!-- 좌측의 마이페이지 메뉴바 -->
             <div class="my_menu" style="display:none">
-               <h3>마이페이지</h3>
-               <ul>
-                  <li><a href="https://www.goodchoice.kr/mypage/myZzim">찜</a></li>
-
-
-                  <li><a href="https://www.goodchoice.kr/mypage/myReserve" class="active">예약내역</a></li>
-
-                  <li><a href="https://www.goodchoice.kr/mypage/myInfo">내정보수정</a></li>
-               </ul>
+              <%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
             </div>
 <!-- 마이페이지 메뉴 -->
             

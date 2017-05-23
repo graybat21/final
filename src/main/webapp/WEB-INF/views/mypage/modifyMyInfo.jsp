@@ -68,7 +68,7 @@
 									<tr>
 										<th>이메일</th>
 										<td>
-											${session_email } / ${mem.email } / ${host.email }																		
+											${mem.email == null ? host.email : mem.email }				
 											<a class="btn_logout" href="withdrawal.gh">회원탈퇴</a>
 										</td>
 									</tr>
@@ -116,7 +116,6 @@
 				</div>
 				<!-- //마이페이지 콘텐츠 -->
 			</div>
-</div>
 		<!-- //마이페이지 wrap -->
 	</article>
 	<!-- //(공통)contentsWrap -->

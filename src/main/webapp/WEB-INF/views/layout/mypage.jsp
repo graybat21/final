@@ -8,12 +8,12 @@
 	<h3>마이페이지</h3>
 	<ul>
 		<li><a href="wishList.gh">찜 </a></li>
-		<li><a href="#">예약내역</a></li>
+		<li><a href="myReservation.gh">예약내역</a></li>
 		<li><a href="modifyMyInfo.gh">내정보수정</a></li>
 	</ul>
 	<h3>QNA</h3>
 	<ul>
-		<li><a href="qnaList.gh" class="active">QNA리스트</a></li>
+		<li><a href="qnaList.gh">QNA리스트</a></li>
 		<li><a href="qnaList.gh">QNA내가쓴글</a></li>
 	</ul>
 	</c:if>
