@@ -147,7 +147,7 @@
 	
 	<!-- 관리자 예약 내역 강제 삭제 -->
 	<update id="deleteReserve" parameterType="int">
-		DELETE FROM reservation WHERE no_no=#{no}
+		DELETE FROM reservation WHERE no=#{no}
 	</update>
 	
 	
