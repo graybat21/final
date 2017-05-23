@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -57,8 +58,45 @@ public class QnaController {
 
 		return "qna/qnaList/QNA"; //qna/qnaList
 	}
+	
+	// 내가 쓴 글목록
+	@RequestMapping(value = "/myqnaList.gh")
+	public String myqnaListMan(PageMaker pagemaker, Model model ,HttpServletRequest request) throws Exception {
 
-	// 글쓰기
+		int page = 1;
+		int totalCnt = 0;
+		int countPerPage = 5;
+		int countPerPaging = 5;
+		
+		page = pagemaker.getPage() != null ? pagemaker.getPage() : 1;
+		pagemaker.setPage(page);
+
+		totalCnt = qnaService.selectListCnt(); // DB연동_ 총 갯수 구해오기
+		pagemaker.setCount(totalCnt, countPerPage,countPerPaging);
+
+		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
+		int last = first + countPerPage - 1;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("first", first);	
+		map.put("last", last);
+		
+		HttpSession session = request.getSession();
+		if (session.getAttribute("session_mem_name") !=null) {
+			map.put("name",session.getAttribute("session_mem_name"));
+			
+		}else
+			map.put("name",session.getAttribute("session_host_name"));
+
+		List<QnaVO> list = qnaService.myqnaList(map);
+
+		model.addAttribute("qnaList", list);
+		model.addAttribute("qnaPageMaker", pagemaker);
+
+		return "mypage/myqnaList/MYQNA";
+	}
+
+	// 글쓰기	
 	@RequestMapping(value = "/qnaWrite.gh", method = RequestMethod.GET)
 	public ModelAndView qnaWriteBoy(QnaVO qnaVo) throws Exception {
 		mav.setViewName("qna/qnaWrite/게'하 QnA문의하기");
