@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import net.kh.GuestHi.Search;
 import net.kh.reserve.ReserveService;
 
 @Controller
@@ -38,15 +37,23 @@ public class MainController {
 
 		from.setHours(13);
 		to.setHours(12);
+		
 		reserve = validDateSearch(reserve, from, to); // 날짜 검색에 걸리는것 뺌
 		reserve = validPriceSearch(reserve, search.getMax_price());
-		reserve = validCountSearch(reserve, search.getParticipant());
 		reserve = validAddressSearch(reserve, search.getArea());
+		reserve = validCountSearch(reserve, search.getParticipant());
 		mav.addObject("reserve", reserve);
 		mav.addObject(search);
 		return mav;
 	}
 
+	@RequestMapping("/ghDetail.gh")
+	public String ghDetail()throws Exception{
+		// 호스트 정보를 받아서 보내줌
+		
+		return "guesthouse/ghDetail/방 상세보기";
+	}
+	
 	@SuppressWarnings("deprecation")
 	private List<Map<String, Object>> validDateSearch(List<Map<String, Object>> reserve, Date from, Date to) {
 		Date checkin;
@@ -60,7 +67,7 @@ public class MainController {
 			if (((Date) reserve.get(i).get("CHECKOUT")).before(from)
 					|| ((Date) reserve.get(i).get("CHECKIN")).after(to)) {
 			} else {
-				System.out.println("날짜 불만족 삭제" + i);
+				System.out.println("날짜 불만족 삭제" + reserve.get(i).get("NAME"));
 				reserve.remove(i);
 			}
 		}
@@ -72,7 +79,7 @@ public class MainController {
 		for (int i = sizeOfList - 1; i >= 0; i--) {
 			if (Integer.parseInt((String) reserve.get(i).get("PRICE")) > max_price) {
 				reserve.remove(i);
-				System.out.println("가격불만족 삭제" + i);
+				System.out.println("가격불만족 삭제" + reserve.get(i).get("NAME"));
 			}
 		}
 		return reserve;
@@ -88,7 +95,7 @@ public class MainController {
 			System.out.println(max + "..." + count);
 			if (max - count < participants) {
 				reserve.remove(i);
-				System.out.println("인원수불만족 삭제 " + i);
+				System.out.println("인원수불만족 삭제 " + reserve.get(i).get("NAME"));
 			}
 		}
 		return reserve;
@@ -101,7 +108,7 @@ public class MainController {
 			addr1 = (String) reserve.get(i).get("ADDR1");
 			if (!addr1.contains(area)) {
 				reserve.remove(i);
-				System.out.println("주소 불만족 삭제 " + i);
+				System.out.println("주소 불만족 삭제 " + reserve.get(i).get("NAME"));
 			}
 		}
 		return reserve;

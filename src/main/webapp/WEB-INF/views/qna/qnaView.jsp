@@ -50,6 +50,10 @@
 	<button type="button" onclick="qnaModify()" class="btn btn-primary">수정</button>
 	<button type="button" onclick="qnaDelete()" class="btn btn-primary">삭제</button>
 	</c:if>
+	<c:if test="${session_host_name != null }">
+	<button type="button" onclick="qnaModify()" class="btn btn-primary">수정</button>
+	<button type="button" onclick="qnaDelete()" class="btn btn-primary">삭제</button>
+	</c:if>
 	<c:if test="${session_mem_name =='1'}">
 	<button type="button" onclick="qnaRepl()" class="btn btn-primary">답변</button>
 	</c:if>

@@ -9,7 +9,21 @@
 </head>
 
 <body>
+<article id="contentsWrap">
+		<div class="my_wrap row row_cont">
+			<div class="my_menu" style="display: none">
+				<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
+			</div>
 
+			<div class="my_contents">
+				<!-- my_cont_wrap  얘가 오른쪽 페이지 줄짧게 만드는?애 없애면 길어짐 -->
+				<div class="my_cont_wrap">
+					<!-- 내정보 수정 -->
+					<div class="myinfo_title">
+						<strong>방등록</strong>
+						<!-- <span>회원정보를 수정할 수 있습니다.</span> -->
+					</div>
+					<div class="myinfo_table ">
 	<table border=1 width="1200px">
 		<thead>
 			<tr>
@@ -32,7 +46,22 @@
 		</c:forEach>
 		</tbody>
 	</table>
+</div>
+					<div class="myinfo_table ">
+						<table>
+							<tr>
+								<td>
+									<button id="btn-upload" type="submit"
+										onclick="location.href='roomList.gh'">방 등록</button> <br>
+								</td>
+							</tr>
+						</table>
+					</div>
 
+				</div>
+			</div>
+		</div>
+	</article>
 
 </body>
 </html>

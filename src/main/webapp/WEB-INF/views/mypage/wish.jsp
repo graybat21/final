@@ -45,14 +45,7 @@
 					<!-- 마이페이지 메뉴 -->
 					<!-- 좌측 네비게이션 -->
 					<div class="my_menu" style="display: none">
-						<h3>마이페이지</h3>
-						<ul>
-							<li><a href="https://www.goodchoice.kr/mypage/myZzim"
-								class="active">찜</a></li>
-							<li><a href="https://www.goodchoice.kr/mypage/myReserve">예약내역</a></li>
-
-							<li><a href="https://www.goodchoice.kr/mypage/myInfo">내정보수정</a></li>
-						</ul>
+						<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
 					</div>
 					<!-- //마이페이지 메뉴 -->
 					<!-- 마이페이지 콘텐츠 -->
@@ -84,10 +77,9 @@
 														<div class="ad_thumb">
 															<div class="img_wrap imgLiquidFill"
 																style="overflow: hidden; background-image: none;">
-																<span class="thumb_none"></span> <img
-																	<%-- src="${pageContext.request.contextPath}/resources/image/epilp_21.png" --%>
+																<span class="thumb_none"></span> 
+																<img src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}"
 																	alt="${list.NAME }"
-																<%-- 	onerror="this.src='${list.host_imagename }'" --%>
 																	style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
 																<span class="opacity"></span>
 																<!-- 그라데이션 배경 -->
@@ -101,11 +93,10 @@
 															<p class="score">${list.ADDR2 }</p>
 															<p class="score">${list.ZIP }</p>
 															<p class="price">${list.TEL }</p>
-															<p class="icon">
-																<span class="box_red">전화</span>
-															</p></div>
-															<p></p>
-														<a href="wishDelete.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" ><strong>X</strong> </a>
+															
+														</div>
+															<a href="wishDelete.gh?mem_no=${list.MEM_NO}&host_no=${list.HOST_NO}" >
+															<strong>X</strong> </a>
 												</a></li>
 												<!-- G4, 키워드 검색 -->
 											</ul>
@@ -117,10 +108,10 @@
 							<!-- //마이페이지 wrap -->
 							
 			<c:if test="${empty list }">
-			<div class="my_zzim_list">
-			<div class="list_none">
-				<h5>찜한 게스트하우스가 없습니다</h5>
-				<p>관심 있는 게스트하우스를 찜해놓으세요 더욱 빠르게 찾으실 수 있습니다</p>
+				<div class="my_zzim_list">
+				<div class="list_none">
+					<h5>찜한 게스트하우스가 없습니다</h5>
+					<p>관심 있는 게스트하우스를 찜해놓으세요 더욱 빠르게 찾으실 수 있습니다</p>
 				</div>
 				</div>
 			</c:if>
