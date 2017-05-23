@@ -30,7 +30,7 @@ public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-	String PATH = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
+	String PATH = "C:\\Users\\user2\\Downloads\\GuestHi\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject

@@ -105,7 +105,7 @@ td {
 		return confirm("선택한 회원을 탈퇴시키겠습니까?");
 	}
 </script>	
- 	<div class="svc_allwrap">
+ 	<%-- <div class="svc_allwrap">
 		<div class="svc_wrap row row_cont">
 			<div class="svc_contents">
 				<div class="svc_cont_wrap" style="min-height: 1127px;">
@@ -129,7 +129,7 @@ td {
 		</div></div></div></div></div>
     </section>
     <!-- /.content -->
-  </div>
+  </div> --%>
   <!-- /.content-wrapper -->
 
 </body>
