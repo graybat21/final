@@ -114,6 +114,28 @@ public class MemberController {
 		return "mypage/modifyMyInfo/개인회원 수정";
 	}
 	
+	@RequestMapping("modifyMyInfo.gh")
+  	public ModelAndView memberModify(@ModelAttribute("MemberVO") MemberVO member, BindingResult result, HttpSession session) {
+  		MemberVO memberVO = new MemberVO();
+		session.getAttribute("session_member_id");
+  		if (session.getAttribute("session_member_id") != null) {
+  			memberService.modifyMyInfo(member);
+  			mav.addObject("member",memberVO);
+  			mav.setViewName("redirect:/main.gh");
+  			return mav;
+//  			String id = (String) session.getAttribute("session_member_id");
+//  			member = memberService.getMember(id);
+
+  			mav.setViewName("memberModify");
+  			return mav;
+  		} else {
+  			mav.setViewName("main");
+  			return mav;
+  		}
+  	}
+
+
+	
 
 	@RequestMapping(value = "emailCheck.gh", method = RequestMethod.POST)
 	@ResponseBody
