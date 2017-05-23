@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko"><head>
 
@@ -41,8 +42,16 @@
 <!-- 페이지에서 1주일 1개월 3개월 클릭시 사용 -->
 <article id="contentsWrap">
    <script>
-   var nowdate = "2017-04-27";
+   var date = new Date();
+   var year  = date.getFullYear();
+   var month = date.getMonth() + 1; // 0부터 시작하므로 1더함 더함
+   var day   = date.getDate();
 
+   if (("" + month).length == 1) { month = "0" + month; }
+   if (("" + day).length   == 1) { day   = "0" + day;   }
+  
+   var nowdate = year +"-"+ month +"-"+  day;
+   
    function padLeft(nr, n, str){
       return Array(n-String(nr).length+1).join(str||'0')+nr;
    }
@@ -53,7 +62,6 @@
          $(this).addClass("active");
 
          var nowdatearr = nowdate.split('-');
-
          var predate = new Date(parseInt(nowdatearr[0]), parseInt(nowdatearr[1]), parseInt(nowdatearr[2]));
 
          switch($(this).attr("id")) {
@@ -113,7 +121,7 @@
                   <div class="reserve_wrap" style="display:block">
 
 
-                     <div class="cal_wrap">
+                     <%-- <div class="cal_wrap">
                         <div class="left">
                            <span>조회 기간</span>
                            <a id="sel_day_week" class="sel_day active">1주일</a>
@@ -121,13 +129,15 @@
                            <a id="sel_day_month3" class="sel_day ">3개월</a>
                         </div>
                         <div class="right">
-                           <div class="date"><input id="reserve_date_01" name="srch_from" value="2017-04-20" readonly="readonly" class="hasDatepicker" type="text"></div>
+                           <div class="date">
+                           <input id="reserve_date_01" name="srch_from" value="${nowdate }" readonly="readonly" class="hasDatepicker" type="text"></div>
                            <span>~</span>
-                           <div class="date"><input id="reserve_date_02" name="srch_to" value="2017-04-27" readonly="readonly" class="hasDatepicker" type="text"></div>
+                           <div class="date">
+                           <input id="reserve_date_02" name="srch_to" value="${nowdate }" readonly="readonly" class="hasDatepicker" type="text"></div>
                            <a onclick="javascript:document.my_reserve_frm.submit();">검색</a>
                         </div>
                         <div class="clear">&nbsp;</div>
-                     </div>
+                     </div> --%>
 
                      <div class="vr_table_th">
                         <span>예약일자</span>
@@ -135,13 +145,25 @@
                         <span>총결제금액</span>
                         <span>상태</span>
                      </div>
-
+                     <c:forEach var="item" items="${reserve }">
+                     <div class="vr_table_td">
+                     	<li>
+                     	<span><fmt:formatDate value="${item.CHECKIN }" pattern="yyyy-MM-dd"/>&nbsp;
+                     	~&nbsp;<fmt:formatDate value="${item.CHECKOUT }" pattern="yyyy-MM-dd"/></span>
+                        <span>${item.HOST_NAME } / ${item.ROOM_NAME }</span>
+                        <span>${item.COUNT}&nbsp;명 &nbsp;&nbsp;총&nbsp;${item.TOTALPRICE }원</span>
+                        <span>${item.STATUS }</span>
+                        </li>
+                     </div>
+					</c:forEach>
+					<c:if test="${empty reserve }">
                      <div class="empty" colspan="4">
                         <div>
                            <b>예약된 내역이 없습니다.</b>
-                           예약하시고 다양한 회원혜택을 받아보세요.<br>
+                         	  예약하시고 다양한 회원혜택을 받아보세요.<br>
                         </div>
                      </div>
+                     </c:if>
                   </div>
                </div>
                <!-- //my_cont_wrap -->
