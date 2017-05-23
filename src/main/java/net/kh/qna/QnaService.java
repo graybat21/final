@@ -7,6 +7,9 @@ public interface QnaService {
 
 	// 글 리스트
 	List<QnaVO> qnaList(HashMap<String, Object> map) throws Exception;
+	
+	// 내가 쓴 글목록
+	List<QnaVO> myqnaList(HashMap<String, Object> map) throws Exception;
 
 	// 글쓰기
 	int qnaWrite(QnaVO qnaVO) throws Exception;
