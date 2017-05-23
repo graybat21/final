@@ -61,4 +61,9 @@ public class QnaServiceImpl implements QnaService {
 		return qnaDao.qnaRepl(qnaVO);
 	}
 
+	@Override
+	public List<QnaVO> myqnaList(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDao.myqnaList(map);
+	}
 }

@@ -28,7 +28,7 @@ td {
 </style>
 <script>	
 	function deleteMem() {
-		return confirm("선택한 기업 회원을 탈퇴시키겠습니까?");
+		return confirm("선택한 회원을 탈퇴시키겠습니까?");
 	}
 </script>	
 </head>

@@ -11,6 +11,7 @@ import net.kh.dao.AdminDao;
 import net.kh.discount.DiscountVO;
 import net.kh.host.HostVO;
 import net.kh.member.MemberVO;
+import net.kh.reserve.ReserveVO;
 import net.kh.room.RoomVO;
 
 @Service("adminService")
@@ -72,8 +73,43 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	@Transactional
-	public List<DiscountVO> adminDiscountList(DiscountVO discount) throws Exception {
-		return adminMapper.adminDiscountList(discount);
+	public int deleteImage(int no) throws Exception {
+		return adminMapper.deleteImage(no);
+	}
+
+	@Override
+	@Transactional
+	public List<DiscountVO> adminDiscountList(HashMap<String, Object> map) throws Exception {
+		return adminMapper.adminDiscountList(map);
+	}
+	
+	@Override
+	public int discountListCnt(HashMap<String, Object> map) throws Exception {
+		return adminMapper.discountListCnt(map);
+	}
+	
+	@Override
+	@Transactional
+	public int deleteDiscount(int no) throws Exception {
+		return adminMapper.deleteDiscount(no);
+	}
+	
+	
+	@Override
+	@Transactional
+	public List<ReserveVO> adminReserveList(HashMap<String, Object> map) throws Exception {
+		return adminMapper.adminReserveList(map);
+	}
+	
+	@Override
+	public int reserveListCnt(HashMap<String, Object> map) throws Exception {
+		return adminMapper.reserveListCnt(map);
+	}
+	
+	@Override
+	@Transactional
+	public int deleteReserve(int no) throws Exception {
+		return adminMapper.deleteReserve(no);
 	}
 
 }

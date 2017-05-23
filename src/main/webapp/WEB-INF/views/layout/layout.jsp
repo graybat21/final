@@ -45,6 +45,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/service.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/search.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/lightgallery.css">
+
+	
 <style>
 * {
 	vertical-align: top;
