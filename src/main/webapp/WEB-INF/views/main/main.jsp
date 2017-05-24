@@ -109,7 +109,7 @@
 				x : 7
 			}
 		} ], [ {
-			b : 900,
+			b : 900,	
 			d : 2000,
 			x : -379,
 			e : {
@@ -213,7 +213,7 @@
 	align-items: center;
 	justify-content: center;
 	display: flex;
-	float: left;
+	float: 500px;
 	transition: all linear 0.3s;
 	url:
 }
@@ -661,9 +661,9 @@ button, input, optgroup, select, textarea {
 
 	<c:forEach items="${list}" var="list">
 		<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent">
-			<img src="${pageContext.request.contextPath}/resources/image/${list.FILENAME}"	width="330" class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?host_no=${list.HOST_NO}'" />
+			<img src="${pageContext.request.contextPath}/resources/image/${list.IMAGENAME}"	width="330" class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?no=${list.NO}'" />
 			<h4 class="ngc">
-				<strong>${list.NAME}${list.HOST_NO}${list.HOST_NO}${list.HOST_NO}${list.HOST_NO}</strong>
+				<strong>${list.NO}///////////${list.IMAGENAME}<%-- ${list.NO} --%></strong>
 			</h4>
 			<div class="imageText">
 				<div class="text_border">
