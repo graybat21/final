@@ -11,7 +11,7 @@
 	</ul>
 	<h3>QNA</h3>
 	<ul>
-		<li><a href="qnaList.gh" class="active">QNA리스트</a></li>
+		<li><a href="qnaList.gh">QNA리스트</a></li>
 		<li><a href="myqnaList.gh">QNA 내가쓴글</a></li>
 	</ul>
 	</c:if>

@@ -1,9 +1,13 @@
 Manifest-Version: 1.0
 <<<<<<< HEAD
+<<<<<<< HEAD
 Built-By: Hye
 =======
 Built-By: Hi
 >>>>>>> bf87776a2c35f8b208fb03f4106a93fcbf713393
+=======
+Built-By: HEO
+>>>>>>> e819b3f48c272ad0e78ebfd30617f34985378326
 Build-Jdk: 1.8.0_111
 Created-By: Maven Integration for Eclipse
 
