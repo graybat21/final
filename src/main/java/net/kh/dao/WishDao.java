@@ -9,7 +9,7 @@ public interface WishDao {
 	
 	void insertWish(WishListVO wishList) throws Exception;
 
-	List<Map<String, Object>> wishList(Map<String,Object> map) throws Exception;
+	List<Map<String, Object>> wishList(int mem_no) throws Exception;
 	
 	void wishDelete(WishListVO wishList) throws Exception;
 	

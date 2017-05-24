@@ -133,7 +133,7 @@ select {border:1px solid #ccc;color:#707070;box-sizing:border-box}
 
 /* Header */
 header .header_area{position:relative;float:none;width:1200px;height:90px;margin:0 auto}
-header .header_area .header_logo{display:inline-block;width:131px;height:23px;padding-top:30px}
+header .header_area .header_logo{display:inline-block;width:131px;height:23px;}
 header .header_area .btn_search{display:inline-block;position:absolute;top:31px;left:175px;width:59px;height:20px;font-size:18px;color:#555}
 header .header_area .btn_search:after{content:"";position:absolute;top:2px;right:0;width:20px;height:20px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_gnb.gif') no-repeat 0 0;transition:0.4s}
 header .header_area .btn_search.active:after{content:"";position:absolute;top:2px;right:0;width:20px;height:20px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_gnb.gif') no-repeat 0 0;transform:rotate(180deg);}

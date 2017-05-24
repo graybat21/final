@@ -50,6 +50,8 @@ td {
 			<tr height="30px">
 				<th>특가 번호</th>
 				<th>방 번호</th>
+				<th>방 이름</th>
+				<th>썸네일</th>
 				<th>등록 시간</th>
 				<th>시작 시간</th>
 				<th>종료 시간</th>
@@ -63,6 +65,10 @@ td {
 						<tr height="50px">
 							<td>${discount.no }</td>
 							<td>${discount.room_no }</td>
+							<td>${discount.name }</td>
+							<td>
+							<img width="100px" src="./resources/upload/${discount.filename}" />
+							</td>
 							<td><fmt:formatDate value="${discount.reg }" pattern="yy.MM.dd kk:mm:ss"/></td>
 							<td><fmt:formatDate value="${discount.starttime }" pattern="yy.MM.dd kk:mm:ss"/></td>
 							<td><fmt:formatDate value="${discount.endtime }" pattern="yy.MM.dd kk:mm:ss"/></td>

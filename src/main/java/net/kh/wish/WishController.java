@@ -50,8 +50,10 @@ public class WishController {
 	}
 
 	@RequestMapping("/wishList.gh")
-	public String wishListHo(Map<String, Object> map, Model model) throws Exception {
-		List<Map<String, Object>> list = wishService.wishList(map);
+	public String wishListHo(HttpSession session, Model model) throws Exception {
+		int mem_no=(int) session.getAttribute("session_mem_no");
+		System.out.println(mem_no);
+		List<Map<String, Object>> list = wishService.wishList(mem_no);
 		logger.info(list.toString());
 		model.addAttribute("list", list);
 		return "mypage/wish/찜목록";
