@@ -301,14 +301,14 @@ $(document).ready(function(){
 });
 	function tabRoomDetail() {
 		
-		var no = $("#host_no").val();
+		var no = $("#no").val();
 
 		$(".search_menu *").removeClass('on');
 	//★	
 		$.ajax({
 			url:"/GuestHi/tabRoomDetail.gh",
 			type: "post",
-			data: {host_no: no},
+			data: {no: no},
 			success: function(data){
 				$(".ad_info_wrap").html(data);
 			},
@@ -344,7 +344,7 @@ $(document).ready(function(){
 	<!-- //업체 요약정보 -->
 	<div class="ad_info_wrap"></div>
 	<form name="value">
-	<input type="hidden" id="host_no" value="${detail}">
+	<input type="hidden" id="no" value="${detail}">
 	</form>
 </body>
 </html>

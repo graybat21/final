@@ -120,6 +120,7 @@ public class LoginController {
 		mav.addObject("member", new MemberVO());
 		mav.addObject("host", new HostVO());
 		mav.setViewName("main/main/LOGOUT");
+		mav.setViewName("redirect:/main.gh");
 		return mav;
 	}
 }

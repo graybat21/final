@@ -52,7 +52,7 @@ public class MainController {
 	}
 
 	@RequestMapping("/ghDetail.gh")
-	public String ghDetail(@RequestParam("host_no") int no, Model model)throws Exception{
+	public String ghDetail(@RequestParam("no") int no, Model model)throws Exception{
 		// 호스트 정보를 받아서 보내줌
 		model.addAttribute("detail", no);
 		
