@@ -12,7 +12,7 @@
 		where mem_no = #{mem_no} and host_no = #{host_no}
 	</select>
 
-	<select id="wishList" resultType="hashmap" parameterType="hashmap">
+	<select id="wishList" resultType="hashmap" parameterType="int">
 		select w.mem_no,
 			w.host_no,
 			h.imagename,
@@ -24,7 +24,7 @@
 		from wish w, host h, member m
 		where
 			h.no = w.host_no and
-			m.no = w.mem_no
+			m.no = w.mem_no and m.no = #{mem_no}
 	</select>
 
 	<!-- 찜 삭제 -->

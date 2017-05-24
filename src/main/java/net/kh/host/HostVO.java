@@ -13,6 +13,7 @@ public class HostVO {
 	private String tel;
 	private Date reg;
 	private String biz_no;
+	private String bizno;
 	private String addr1;
 	private String addr2;
 	private String zip;
@@ -20,6 +21,14 @@ public class HostVO {
 	private String imagename;
 	private String auth;
 	
+
+	public String getBizno() {
+		return bizno;
+	}
+
+	public void setBizno(String bizno) {
+		this.bizno = bizno;
+	}
 
 	public int getNo() {
 		return no;

@@ -10,6 +10,7 @@ public interface QnaDao {
 	// 글 목록
 	List<QnaVO> qnaList(HashMap<String, Object> map) throws Exception;
 
+	List<QnaVO> myqnaList(HashMap<String, Object> map) throws Exception;
 	// 글쓰기
 	int qnaWrite(QnaVO qnaVO) throws Exception;
 

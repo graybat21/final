@@ -17,9 +17,9 @@ public class WishServiceImpl implements WishService {
 	
 	@Override
 	@Transactional
-	public List<Map<String, Object>> wishList(Map<String,Object> map) throws Exception {
+	public List<Map<String, Object>> wishList(int mem_no) throws Exception {
 		// TODO Auto-generated method stub
-		return wishDao.wishList(map);
+		return wishDao.wishList(mem_no);
 	}
 	@Override
 	@Transactional

@@ -18,6 +18,24 @@
 		) X
 		where X.RNUM between #{first} and #{last}
 	</select>
+	
+	<!--내가 쓴 글목록 -->
+	<select id="myqnaList" resultType="qnaVO" parameterType="hashmap">
+		select *
+		from
+		(SELECT ROW_NUMBER() OVER(ORDER BY no DESC) RNUM,
+		no,
+		subject,
+		writer,
+		content,
+		reg,
+		ref,
+		restep
+		FROM QNA
+		ORDER BY ref DESC, restep ASC
+		) X
+		where X.RNUM between #{first} and #{last} and writer=#{name}
+	</select>
 
 	<!-- 글쓰기 -->
 	<insert id="qnaWrite" parameterType="qnaVO">
