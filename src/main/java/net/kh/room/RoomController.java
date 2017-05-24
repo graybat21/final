@@ -3,7 +3,6 @@ package net.kh.room;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -16,11 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-
-import net.kh.host.HostVO;
 
 /**
  * Handles requests for the application home page.
@@ -48,9 +46,26 @@ public class RoomController {
 	 * HTML private Paging paging; // 페이징 클래스의 변수 선언
 	 */
 
-	// json 데이터로 응답을 보내기 위한r
-
+	
 	@RequestMapping("/tabRoomDetail.gh")
+	// json 데이터로 응답을 보내기 위한r ---------여기ㅣㅣㅣㅣㅣㅣㅣㅣㅣ수정
+	public ModelAndView tabRoomDetail(HttpSession session, @RequestParam("host_no") String host_no) throws Exception {
+		ModelAndView mav = new ModelAndView("guesthouse/roomdetail");
+		// int host_no = (int)session.getAttribute("session_host_no");
+//		HostVO host = (HostVO) session.getAttribute("host");
+//		logger.info(host.toString());
+//		int host_no = host.getNo();
+		
+		int no = Integer.parseInt(host_no);;
+
+		List<RoomVO> roomList = roomService.getRoomInfoByHostNo(no);
+		
+		logger.info(roomList.toString());
+		mav.addObject("host_no", no);
+		mav.addObject("roomList", roomList);
+		return mav;
+	}
+	/*@RequestMapping("/tabRoomDetail.gh")
 	public ModelAndView tabRoomDetail(HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView("guesthouse/roomdetail");
 		// int host_no = (int)session.getAttribute("session_host_no");
@@ -62,7 +77,7 @@ public class RoomController {
 		mav.addObject("host_no", host_no);
 		mav.addObject("roomList", roomList);
 		return mav;
-	}
+	}*/
 
 	@RequestMapping("/roomInsertForm.gh")
 	public ModelAndView roomInsertForm() throws Exception {
