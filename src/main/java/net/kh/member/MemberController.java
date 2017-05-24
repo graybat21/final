@@ -114,17 +114,17 @@ public class MemberController {
 		return "mypage/modifyMyInfo/개인회원 수정";
 	}
 	
-	@RequestMapping("modifyMyInfo.gh")
+	@RequestMapping("modifyMyInfo2.gh")
   	public ModelAndView memberModify(@ModelAttribute("MemberVO") MemberVO member, BindingResult result, HttpSession session) {
   		MemberVO memberVO = new MemberVO();
 		session.getAttribute("session_member_id");
   		if (session.getAttribute("session_member_id") != null) {
-  			if (member.getNewpw1()==null) {
-  				member.setNewpw1(member.getPw());
-  			}
-  			String encryptPassword = passwordEncoder.encode(member.getNewpw1());
-  			memberVO.setPw(encryptPassword);
-  			memberService.modifyMyInfo(memberVO);
+//  			if (member.getNewpw1()==null) {
+//  				member.setNewpw1(member.getPw());
+//  			}
+//  			String encryptPassword = passwordEncoder.encode(member.getNewpw1());
+//  			memberVO.setPw(encryptPassword);
+//  			memberService.modifyMyInfo(memberVO);
   			mav.addObject("member",memberVO);
   			mav.setViewName("memberModify");
   			return mav;
@@ -133,8 +133,6 @@ public class MemberController {
   			return mav;
   		}
   	}
-
-
 	
 
 	@RequestMapping(value = "emailCheck.gh", method = RequestMethod.POST)
