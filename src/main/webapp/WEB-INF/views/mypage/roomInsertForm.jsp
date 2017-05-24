@@ -140,15 +140,6 @@
 							</table>
 						</form>
 					</div>
-					<!-- <div class="myinfo_table ">
-						<table>
-							<tr>
-								<td>
-									<button id="btn-upload" type="submit" onclick="location.href='roomList.gh'">등록</button> <br>
-								</td>
-							</tr>
-						</table>
-					</div> -->
 				</div>
 			</div>
 		</div>
