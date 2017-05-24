@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface MainService {
 
-	public List mainList() throws Exception;
+	public List main() throws Exception;
 	
 }

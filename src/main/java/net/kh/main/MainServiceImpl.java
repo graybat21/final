@@ -18,9 +18,11 @@ public class MainServiceImpl implements MainService {
 	private MainDAO mainMapper;
 	
 	@Override
-	public List<HashMap<String, Object>> mainList() throws Exception {
-		return mainMapper.mainList();
+	public List<HashMap<String, Object>> main() throws Exception {
+		return mainMapper.main();
 	}
+
+
 
 	
 }

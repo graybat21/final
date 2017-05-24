@@ -18,9 +18,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import net.kh.host.HostVO;
 import net.kh.reserve.ReserveService;
 
 @Controller
@@ -52,9 +52,8 @@ public class MainController {
 	}
 
 	@RequestMapping("/ghDetail.gh")
-	public String ghDetail(HostVO host, Model model)throws Exception{
+	public String ghDetail(@RequestParam("host_no") int no, Model model)throws Exception{
 		// 호스트 정보를 받아서 보내줌
-		int no = host.getNo();
 		model.addAttribute("detail", no);
 		
 		return "guesthouse/ghDetail/방 상세보기";
@@ -128,11 +127,11 @@ public class MainController {
 	
 	@Resource
 	private MainService main;
-	
+
 	@SuppressWarnings("unchecked")
-	@RequestMapping("/mainList.gh")
-	public String mainList(Model model) throws Exception{
-		List<HashMap<String, Object>> mainlist = main.mainList();
+	@RequestMapping("/main.gh")
+	public String main(Model model) throws Exception{
+		List<HashMap<String, Object>> mainlist = main.main();
 		model.addAttribute("list", mainlist);
 		return "main/main/ma";
 	}

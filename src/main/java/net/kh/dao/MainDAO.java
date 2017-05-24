@@ -5,6 +5,6 @@ import java.util.List;
 
 public interface MainDAO {
 	
-	List<HashMap<String, Object>> mainList() throws Exception;
+	List<HashMap<String, Object>> main() throws Exception;
 
 }

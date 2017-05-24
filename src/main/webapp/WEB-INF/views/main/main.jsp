@@ -663,7 +663,7 @@ button, input, optgroup, select, textarea {
 		<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent">
 			<img src="${pageContext.request.contextPath}/resources/image/${list.FILENAME}"	width="330" class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?host_no=${list.HOST_NO}'" />
 			<h4 class="ngc">
-				<strong>${list.NAME}</strong>
+				<strong>${list.NAME}${list.HOST_NO}${list.HOST_NO}${list.HOST_NO}${list.HOST_NO}</strong>
 			</h4>
 			<div class="imageText">
 				<div class="text_border">
