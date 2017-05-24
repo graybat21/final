@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -17,9 +16,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kh.host.HostVO;
 import net.kh.member.MemberVO;
 import net.kh.room.RoomService;
 import net.kh.room.RoomVO;
@@ -91,6 +90,44 @@ public class ReserveController {
 		return mav;
 	}
 
+	@RequestMapping("/myReserveList.gh")
+	public ModelAndView myReserveList(HttpSession session)throws Exception{
+		ModelAndView mav =new ModelAndView("mypage/reservation/예약된방목록");
+		HostVO host=(HostVO) session.getAttribute("host");
+		int host_no = host.getNo();
+		List<HashMap<String, Object>> list= reserveService.getReserveInfoByHostNo(host_no);
+		int totalPrice = 0;
+		int price = 0;
+		int count = 0;
+		Date checkin;
+		Date checkout;
+		Date now = new Date();
+		for (int i = list.size() - 1; i >=0 ; i--) {
+			count = Integer.parseInt(String.valueOf(list.get(i).get("COUNT")));
+			price = Integer.parseInt((String) list.get(i).get("PRICE"));
+			totalPrice = count * price;
+			list.get(i).put("TOTALPRICE", totalPrice);
+			checkin = (Date) list.get(i).get("CHECKIN");
+			checkout = (Date) list.get(i).get("CHECKOUT");
+			checkin.setHours(13);
+			checkout.setHours(12);
+			// status 칼럼 reservation 테이블에 추가해 줘서
+			// host or admin 에서 변화시킬수 있게 함.
+			if (now.after(checkout)) {
+				list.get(i).put("STATUS", "만료");
+			} else if (now.before(checkin)) {
+				list.get(i).put("STATUS", "입금");
+			} else {
+				list.get(i).put("STATUS", "이용중");
+			}
+//			if(checkin.after(srch_to) || checkout.before(srch_from)){
+//				list.remove(i);
+//			}
+		}
+		logger.info(list.toString());
+		mav.addObject("list", list);
+		return mav;
+	}
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
