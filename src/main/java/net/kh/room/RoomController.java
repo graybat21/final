@@ -3,7 +3,6 @@ package net.kh.room;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -16,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,7 +30,7 @@ public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-	String PATH = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload";
+	String PATH = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject
@@ -48,22 +48,23 @@ public class RoomController {
 	 * HTML private Paging paging; // 페이징 클래스의 변수 선언
 	 */
 
-	// json 데이터로 응답을 보내기 위한r
-
 	@RequestMapping("/tabRoomDetail.gh")
-	public ModelAndView tabRoomDetail(HttpSession session) throws Exception {
+	// json 데이터로 응답을 보내기 위한r ---------여기ㅣㅣㅣㅣㅣㅣㅣㅣㅣ수정
+	public ModelAndView tabRoomDetail(@RequestParam(value="host_no") int host_no) throws Exception {
 		ModelAndView mav = new ModelAndView("guesthouse/roomdetail");
-		// int host_no = (int)session.getAttribute("session_host_no");
-		HostVO host = (HostVO) session.getAttribute("host");
-		logger.info(host.toString());
-		int host_no = host.getNo();
+//		int host_no = no.getNo();
+		
+		System.out.println("얍얍"+host_no);
 		List<RoomVO> roomList = roomService.getRoomInfoByHostNo(host_no);
-		logger.info(roomList.toString());
+		System.out.println(roomList.toString()+"얍얍gm");
+	
 		mav.addObject("host_no", host_no);
 		mav.addObject("roomList", roomList);
 		return mav;
 	}
 
+	
+	
 	@RequestMapping("/roomInsertForm.gh")
 	public ModelAndView roomInsertForm() throws Exception {
 		ModelAndView model = new ModelAndView("mypage/roomInsertForm/룸 가입폼");
@@ -71,19 +72,6 @@ public class RoomController {
 		return model;
 	}
 
-	
-//	@RequestMapping(value="/roomInsert.gh", method=RequestMethod.POST)
-//	public ModelAndView roomInsert(RoomVO room)throws Exception{
-//		ModelAndView mav=new ModelAndView();
-//		
-//		try{
-//			String newFileName;
-//			MultipartFile mf=
-//		}
-//		
-//		return mav;
-//	}
-	
 	
 	
 	@RequestMapping(value = "/roomInsert.gh", method = RequestMethod.POST, produces = "text/plain")
@@ -145,8 +133,6 @@ public class RoomController {
 //		int no = roomService.roomGetCurrentNo()-1;//room_no
 		// int h_no = 21;
 		List<RoomVO> roomVO = roomService.getRoomInfoByHostNo(h_no); // room에있는no
-		
-		
 		List<ImageVO> image = imageService.getImageByHostNo(h_no); // 호스트넘버를 가져와야해
 
 		// session.setAttribute("image", image);

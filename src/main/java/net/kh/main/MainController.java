@@ -3,18 +3,22 @@ package net.kh.main;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.kh.reserve.ReserveService;
@@ -48,8 +52,9 @@ public class MainController {
 	}
 
 	@RequestMapping("/ghDetail.gh")
-	public String ghDetail()throws Exception{
+	public String ghDetail(@RequestParam("host_no") int no, Model model)throws Exception{
 		// 호스트 정보를 받아서 보내줌
+		model.addAttribute("detail", no);
 		
 		return "guesthouse/ghDetail/방 상세보기";
 	}
@@ -118,6 +123,17 @@ public class MainController {
 	protected void initBinder(WebDataBinder binder) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+	}
+	
+	@Resource
+	private MainService main;
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/main.gh")
+	public String main(Model model) throws Exception{
+		List<HashMap<String, Object>> mainlist = main.main();
+		model.addAttribute("list", mainlist);
+		return "main/main/ma";
 	}
 
 }
