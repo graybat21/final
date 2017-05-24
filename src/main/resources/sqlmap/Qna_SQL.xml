@@ -15,7 +15,7 @@
 		restep
 		FROM QNA
 		ORDER BY ref DESC, restep ASC
-		) X
+		) X	
 		where X.RNUM between #{first} and #{last}
 	</select>
 	
@@ -32,9 +32,10 @@
 		ref,
 		restep
 		FROM QNA
+		where writer=#{name}
 		ORDER BY ref DESC, restep ASC
 		) X
-		where X.RNUM between #{first} and #{last} and writer=#{name}
+		where X.RNUM between #{first} and #{last}
 	</select>
 
 	<!-- 글쓰기 -->
@@ -64,6 +65,10 @@
 
 	<select id="selectListCnt" resultType="int">
 		select count(*) from QNA
+	</select>
+	<select id="selectListCntByName" resultType="int" parameterType="String">
+		select count(*) from QNA
+		where writer = #{name}
 	</select>
 
 	<!-- 답변 글쓰기 -->

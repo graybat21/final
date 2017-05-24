@@ -56,6 +56,11 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
+	public int selectListCntByName(String name) throws Exception {
+		return qnaDao.selectListCntByName(name);
+	}
+
+	@Override
 	@Transactional
 	public int qnaRepl(QnaVO qnaVO) throws Exception {
 		return qnaDao.qnaRepl(qnaVO);
