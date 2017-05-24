@@ -34,7 +34,7 @@ public class HostController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HostController.class);
 
-	private String uploadPath = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload";
+	private String uploadPath = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
 
 	@Inject
 	private JavaMailSenderImpl javaMailSenderImpl;

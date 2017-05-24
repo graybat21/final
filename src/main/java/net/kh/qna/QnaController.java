@@ -24,9 +24,8 @@ import net.kh.utils.PageMaker;
 public class QnaController {
 	@Resource(name = "qnaService")
 	private QnaService qnaService;
-	
-	ModelAndView mav = new ModelAndView();
 
+	ModelAndView mav = new ModelAndView();
 
 	private static final Logger logger = LoggerFactory.getLogger(QnaController.class);
 
@@ -36,14 +35,15 @@ public class QnaController {
 
 		int page = 1;
 		int totalCnt = 0;
-		int countPerPage = 5;
+		int countPerPage = 10;
 		int countPerPaging = 5;
-		
+
 		page = pagemaker.getPage() != null ? pagemaker.getPage() : 1;
 		pagemaker.setPage(page);
 
 		totalCnt = qnaService.selectListCnt(); // DB연동_ 총 갯수 구해오기
-		pagemaker.setCount(totalCnt, countPerPage,countPerPaging);
+		
+		pagemaker.setCount(totalCnt, countPerPage, countPerPaging);
 
 		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
 		int last = first + countPerPage - 1;
@@ -56,37 +56,40 @@ public class QnaController {
 		model.addAttribute("qnaList", list);
 		model.addAttribute("qnaPageMaker", pagemaker);
 
-		return "qna/qnaList/QNA"; //qna/qnaList
+		return "qna/qnaList/QNA"; // qna/qnaList
 	}
-	
+
 	// 내가 쓴 글목록
 	@RequestMapping(value = "/myqnaList.gh")
-	public String myqnaListMan(PageMaker pagemaker, Model model ,HttpServletRequest request) throws Exception {
+	public String myqnaListMan(PageMaker pagemaker, Model model, HttpServletRequest request) throws Exception {
+		String name;
+		HttpSession session = request.getSession();
+		if (session.getAttribute("session_mem_name") != null) {
+			name = (String) session.getAttribute("session_mem_name");
+
+		} else
+			name = (String) session.getAttribute("session_host_name");
 
 		int page = 1;
 		int totalCnt = 0;
-		int countPerPage = 5;
+		int countPerPage = 10;
 		int countPerPaging = 5;
-		
+
 		page = pagemaker.getPage() != null ? pagemaker.getPage() : 1;
 		pagemaker.setPage(page);
 
-		totalCnt = qnaService.selectListCnt(); // DB연동_ 총 갯수 구해오기
-		pagemaker.setCount(totalCnt, countPerPage,countPerPaging);
+		totalCnt = qnaService.selectListCntByName(name); // DB연동_ 총 갯수 구해오기
+		pagemaker.setCount(totalCnt, countPerPage, countPerPaging);
 
 		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
 		int last = first + countPerPage - 1;
-		
+
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("first", first);	
+		map.put("first", first);
 		map.put("last", last);
-		
-		HttpSession session = request.getSession();
-		if (session.getAttribute("session_mem_name") !=null) {
-			map.put("name",session.getAttribute("session_mem_name"));
-			
-		}else
-			map.put("name",session.getAttribute("session_host_name"));
+
+		map.put("name", name);
+
 
 		List<QnaVO> list = qnaService.myqnaList(map);
 
@@ -96,7 +99,7 @@ public class QnaController {
 		return "mypage/myqnaList/MYQNA";
 	}
 
-	// 글쓰기	
+	// 글쓰기
 	@RequestMapping(value = "/qnaWrite.gh", method = RequestMethod.GET)
 	public ModelAndView qnaWriteBoy(QnaVO qnaVo) throws Exception {
 		mav.setViewName("qna/qnaWrite/게'하 QnA문의하기");
@@ -146,19 +149,20 @@ public class QnaController {
 		mav.setViewName("redirect:/qnaList.gh");
 		return mav;
 	}
-	
-	//답변글쓰기
-	@RequestMapping(value="qnaRepl.gh",method=RequestMethod.GET)
-	public ModelAndView qnaReplBrother(QnaVO qnaVO,int no) throws Exception{
+
+	// 답변글쓰기
+	@RequestMapping(value = "qnaRepl.gh", method = RequestMethod.GET)
+	public ModelAndView qnaReplBrother(QnaVO qnaVO, int no) throws Exception {
 		qnaService.qnaView(no);
 		qnaVO.getSubject();
 		qnaVO.setRestep(1);
-		mav.addObject("QnaVO",qnaVO);
+		mav.addObject("QnaVO", qnaVO);
 		mav.setViewName("qna/qnaRepl/답글작성");
 		return mav;
 	}
-	@RequestMapping(value="qnaRepl.gh",method=RequestMethod.POST)
-	public ModelAndView qnaReplSister(QnaVO qnaVO,int no ) throws Exception{
+
+	@RequestMapping(value = "qnaRepl.gh", method = RequestMethod.POST)
+	public ModelAndView qnaReplSister(QnaVO qnaVO, int no) throws Exception {
 		qnaVO.setRef(no);
 		qnaVO.setRestep(1);
 		qnaVO.getSubject().replaceAll("\r\n", "<br />");

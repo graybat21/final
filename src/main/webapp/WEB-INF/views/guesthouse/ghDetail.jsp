@@ -296,12 +296,30 @@
 <!-- Menu (search.js 138참고 )-->
 
 <script>
-$(function(){
+$(document).ready(function(){
 	tabRoomDetail();
-})
+});
 	function tabRoomDetail() {
+		
+		var no = $("#host_no").val();
+
 		$(".search_menu *").removeClass('on');
-		$(".ad_info_wrap").load("/GuestHi/tabRoomDetail.gh");
+	//★	
+		$.ajax({
+			url:"/GuestHi/tabRoomDetail.gh",
+			type: "post",
+			data: {host_no: no},
+			success: function(data){
+				$(".ad_info_wrap").html(data);
+			},
+			error: function(data){
+				alert(data.status);//404 , 500 , 400
+				alert(data.readyState);//3 = 일부분 응답, 4= 통신 2=보넀는데 응답이 없다 1=요청이안간다
+			}
+		});
+		
+		/* $(".ad_info_wrap").load("/GuestHi/tabRoomDetail.gh",{host_no: no},function(){},function(){alert("?");}); */
+		
 		$("#tabRoom").addClass('on');
 	}
 	function tabReserve() {
@@ -325,5 +343,8 @@ $(function(){
 
 	<!-- //업체 요약정보 -->
 	<div class="ad_info_wrap"></div>
+	<form name="value">
+	<input type="hidden" id="host_no" value="${detail}">
+	</form>
 </body>
 </html>
