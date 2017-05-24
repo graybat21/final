@@ -15,11 +15,12 @@ public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	private ReviewDao mapper;
 
-	// @Override
-	// @Transactional
-	// public ReviewVO reviewList(int no) throws Exception {
-	// return mapper.reviewList(no);
-	// }
+
+	@Override
+	public void writeReview(ReviewVO review) throws Exception {
+		mapper.writeReview(review);
+	}
+
 
 	@Override
 	@Transactional

@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kh.host.HostService;
+import net.kh.host.HostVO;
 import net.kh.reserve.ReserveService;
 
 @Controller
@@ -28,6 +30,8 @@ public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	@Inject
 	public ReserveService reserveService;
+	@Inject
+	public HostService hostService;
 
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/ghList.gh")
@@ -52,10 +56,18 @@ public class MainController {
 	}
 
 	@RequestMapping("/ghDetail.gh")
-	public String ghDetail(@RequestParam("host_no") int no, Model model)throws Exception{
+	public String ghDetail(@RequestParam("host_no") int no,@RequestParam(value="tab",defaultValue="1") int tab, Model model)throws Exception{
 		// 호스트 정보를 받아서 보내줌
-		model.addAttribute("detail", no);
 		
+		HostVO host=hostService.getHostInfoByHostNo(no);
+		logger.info(host.toString());
+//		String address=host.getAddr1()+host.getAddr2()+host.getZip();
+//		String tel = host.getTel();
+//		model.addAttribute("address",address);
+		
+		model.addAttribute("hostinfo",host);
+		model.addAttribute("host_no", no);
+		model.addAttribute("tab", tab);
 		return "guesthouse/ghDetail/방 상세보기";
 	}
 	

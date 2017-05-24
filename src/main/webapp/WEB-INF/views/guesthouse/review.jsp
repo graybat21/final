@@ -106,7 +106,29 @@
 }
 </style>
 		<!-- Menu (search.js 138참고 )-->
+	<script>
+	function writeReplyComment() {
+
+		var no = $("#host_no").val();
+	//★	
+		$.ajax({
+			url:"/GuestHi/writeReplyComment.gh",
+			type: "post",
+			data: {host_no: no},
+			success: function(data){
+				$(".ad_info_wrap").html(data);
+			},
+			error: function(data){
+				alert(data.status);//404 , 500 , 400
+				alert(data.readyState);//3 = 일부분 응답, 4= 통신 2=보넀는데 응답이 없다 1=요청이안간다
+			}
+		});
 		
+		/* $(".ad_info_wrap").load("/GuestHi/tabRoomDetail.gh",{host_no: no},function(){},function(){alert("?");}); */
+		
+		$("#tabRoom").addClass('on');
+	}
+	</script>
 		
 			<a id="bookmark6"></a>
 			<div class="ad_info_review row" id="reivew_area"
@@ -170,6 +192,10 @@
 	
 									<div class="review_cont">
 										${item.CONTENT } /&nbsp; ${item.ROOMNAME }이용
+										<c:if test="${host_no == session_host_no }">
+											<a id="tabRoom" href="javascript:writeReplyComment()" class="a_room">답변쓰기</a>
+											
+										</c:if>
 									</div> <!-- 이용후기 당첨자 아이콘 --> <!-- //이용후기 당첨자 아이콘 -->
 								</li>
 							<c:if test="${item.C_CONTENT != null }">
@@ -189,9 +215,9 @@
 									</div>
 								</li>
 							</c:if>
-							</c:forEach>
+						</c:forEach>
 							<c:if test="${mem != null }">
-								<form>
+								<form action="writeReview.gh">
 								<li class="review_write">
 									<div class="review_user_img">
 										<img
@@ -199,20 +225,28 @@
 											alt="">
 									</div>
 									<div class="review_user_info">
-										<span class="user_name">${mem.MEMBERNAME} &nbsp;님</span> <span
-											class="user_reg_date">현재시간</span>
+										<input type="hidden" name="writer" value="${session_mem_name }">
+										<span class="user_name">${session_mem_name } &nbsp;님</span> <span
+											class="user_reg_date"></span>
 									</div>
 									<div class="review_cont">
-										<input type="text" id="star" name="star">
-										<input type="submit">
+										<select name="r_no">
+											<c:forEach var="item1" items="${roomList}">
+												<option value="${item1.no }">${item1.name }</option>
+											</c:forEach>
+										</select>
+										<input type="hidden" name="host_no" value="${host_no }">
+										<input type="text" id="star" name="star" placeholder="별개수 입력">
+										<textarea rows="10" cols="100" name="content"></textarea>
+										<input type="submit" value="작성">
 									</div>
 								</li>
 								</form>
 							</c:if>
 						</ul>
-						 <div class="btn_wrap">
+						 <!-- <div class="btn_wrap">
 							<a href="javascript:;" class="btn_review_more">더 많은 리뷰보기</a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

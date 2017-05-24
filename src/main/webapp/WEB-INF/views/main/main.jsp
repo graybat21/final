@@ -512,7 +512,11 @@ button, input, optgroup, select, textarea {
 	pointer-events: none;
 }
 </style>
-
+<script>
+function searchSubmit(){
+	$('#searchForm').submit();
+}
+</script>
 
 </head>
 <body

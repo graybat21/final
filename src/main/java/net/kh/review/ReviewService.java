@@ -5,6 +5,7 @@ import java.util.Map;
 
 public interface ReviewService {
 
-	// public ReviewVO reviewList(int no) throws Exception;
+	public void writeReview(ReviewVO review) throws Exception;
+
 	public List<Map<String, Object>> reviewList(int no) throws Exception;
 }
