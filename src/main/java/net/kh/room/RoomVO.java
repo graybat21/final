@@ -12,6 +12,8 @@ public class RoomVO {
 	private Date reg;
 	private ImageVO image;
 	
+	private String hostno;
+	
 	private String filename;
 	
 
@@ -84,6 +86,14 @@ public class RoomVO {
 
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+
+	public String getHostno() {
+		return hostno;
+	}
+
+	public void setHostno(String hostno) {
+		this.hostno = hostno;
 	}
 
 	
