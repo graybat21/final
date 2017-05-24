@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="net.kh.dao.MainDAO">
+
+<select id="main" resultType="java.util.HashMap">
+select a.*,b.* from room a,image b where a.no = b.room_no
+</select>
+
+</mapper>

@@ -68,17 +68,17 @@
 					<div class="svc_paging">
 					<ul class="pageUL">
 						<c:if test="${qnaPageMaker.prev }">
-							<li><a href='qnaList.gh?page=${qnaPageMaker.start -1}'>이전</a></li>
+							<li><a href='myqnaList.gh?page=${qnaPageMaker.start -1}'>이전</a></li>
 						</c:if>
 						<c:forEach begin="${qnaPageMaker.start }" end="${qnaPageMaker.end}"
 							var="idx">
 							<li
 								class='<c:out value="${idx == qnaPageMaker.page?'current':''}"/>'>
-								<a href='qnaList.gh?page=${idx}'>${idx}</a>
+								<a href='myqnaList.gh?page=${idx}'>${idx}</a>
 							</li>
 						</c:forEach>
 						<c:if test="${qnaPageMaker.next }">
-							<li><a href='qnaList.gh?page=${qnaPageMaker.end +1}'>다음</a></li>
+							<li><a href='myqnaList.gh?page=${qnaPageMaker.end +1}'>다음</a></li>
 						</c:if>
 					</ul>
 					</div>
