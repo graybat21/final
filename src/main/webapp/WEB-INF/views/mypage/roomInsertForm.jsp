@@ -5,10 +5,9 @@
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>파일 업로드</title>
 <script src="<c:url value="/js/jquery-3.1.0.min.js"/>"></script>
 <script src="<c:url value="/js/jquery.form.min.js"/>"></script>
+<link href="${pageContext.request.contextPath}/css/board.css" rel="stylesheet">
 <script type="text/javascript">
 	//<![CDATA[
 	$(function() {
@@ -100,7 +99,7 @@
 				<div class="my_cont_wrap">
 					<!-- 내정보 수정 -->
 					<div class="myinfo_title">
-						<strong>방등록</strong>
+						<strong>방 등록하기</strong>
 						<!-- <span>회원정보를 수정할 수 있습니다.</span> -->
 					</div>
 					<div class="myinfo_table ">
@@ -134,7 +133,7 @@
 								<tr>
 								<th></th>
 								<td style="padding-left: 25%;">
-									<button id="btn-upload" type="submit" onclick="location.href='roomList.gh'" style="width:30%;">방 등록</button> <br>
+									<button id="btn-upload" type="submit" onclick="location.href='roomList.gh'" style="width:30%;">등록 완료</button> <br>
 								</td>
 								</tr>
 							</table>
