@@ -123,7 +123,7 @@
 					<tr>
 						<td></td><td></td>
 						<td style="vertical-align: middle; height: 70px;">
-							<button id="btn-upload" type="submit" style="width: 100%; height: 110% " onclick="location.href='roomList.gh'">새로운 방 등록하기</button>
+							<button id="btn-upload" type="submit" style="width: 100%; " onclick="location.href='roomInsertForm.gh'">새로운 방 등록하기</button>
 						</td><td></td><td></td>
 					</tr>
 				    </tbody>

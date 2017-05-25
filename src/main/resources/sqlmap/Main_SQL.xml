@@ -5,7 +5,7 @@
 <mapper namespace="net.kh.dao.MainDAO">
 
 <select id="main" resultType="java.util.HashMap">
-select a.*,b.* from room a,image b where a.no = b.room_no
+select * from host 
 </select>
 
 </mapper>

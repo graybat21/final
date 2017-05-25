@@ -50,14 +50,10 @@ public class RoomController {
 
 	@RequestMapping("/tabRoomDetail.gh")
 	// json 데이터로 응답을 보내기 위한r ---------여기ㅣㅣㅣㅣㅣㅣㅣㅣㅣ수정
-	public ModelAndView tabRoomDetail(@RequestParam(value="host_no") int host_no) throws Exception {
+	public ModelAndView tabRoomDetail(@RequestParam(value="no") int host_no) throws Exception {
 		ModelAndView mav = new ModelAndView("guesthouse/roomdetail");
-//		int host_no = no.getNo();
-		
 		System.out.println("얍얍"+host_no);
 		List<RoomVO> roomList = roomService.getRoomInfoByHostNo(host_no);
-		System.out.println(roomList.toString()+"얍얍gm");
-	
 		mav.addObject("host_no", host_no);
 		mav.addObject("roomList", roomList);
 		return mav;
