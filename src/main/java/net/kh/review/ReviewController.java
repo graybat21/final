@@ -62,6 +62,10 @@ public class ReviewController {
 		return mav;
 	}
 	
+	@RequestMapping("/insertReviewComment.gh")
+	public String insertReviewComment()throws Exception{
+		return "guesthouse/reviewComment";
+	}
 	@RequestMapping("/writeReplyComment.gh")
 	public ModelAndView writeReplyComment()throws Exception{
 		ModelAndView mav=new ModelAndView();

@@ -111,7 +111,7 @@
 
 		var no = $("#review_no").val();
 		
-		$(".ad_reply_comment").load("reviewComment.jsp");
+		$(".ad_reply_comment").load("reviewComment.gh");
 	//★	
 		/* $.ajax({
 			url:"/GuestHi/writeReplyComment.gh",
