@@ -11,4 +11,5 @@ public interface ReviewDao {
 
 	public List<Map<String, Object>> reviewList(int no) throws Exception;
 
+	public void updateReviewCommentByReviewNo(ReviewVO review) throws Exception;
 }

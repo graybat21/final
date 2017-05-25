@@ -27,4 +27,11 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<Map<String, Object>> reviewList(int no) throws Exception {
 		return mapper.reviewList(no);
 	}
+
+
+	@Override
+	public void updateReviewCommentByReviewNo(ReviewVO review) throws Exception {
+		mapper.updateReviewCommentByReviewNo(review);
+	}
+	
 }

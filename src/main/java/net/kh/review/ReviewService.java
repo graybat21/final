@@ -8,4 +8,5 @@ public interface ReviewService {
 	public void writeReview(ReviewVO review) throws Exception;
 
 	public List<Map<String, Object>> reviewList(int no) throws Exception;
+	public void updateReviewCommentByReviewNo(ReviewVO review) throws Exception;
 }

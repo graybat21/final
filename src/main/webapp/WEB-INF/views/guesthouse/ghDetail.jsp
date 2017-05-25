@@ -298,7 +298,6 @@
 <script>
 $(document).ready(function(){
 	var tab= "${tab}";
-	alert(tab);
 	if(tab == ''){
 		tab = 1;
 	}

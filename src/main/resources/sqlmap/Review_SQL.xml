@@ -30,13 +30,9 @@
 		ORDER BY v.reg DESC		
 	</select>	
 	
-	<!-- <select id="roomGetCurrentNo" resultType="int">
-		SELECT
-		LAST_NUMBER
-		FROM
-		USER_SEQUENCES
-		WHERE
-		SEQUENCE_NAME='SEQ_ROOM_NO'
-	</select> -->
+	<update id="updateReviewCommentByReviewNo" parameterType="reviewVO">
+		UPDATE review set c_content = ${c_content}, c_reg = sysdate
+		where no = ${no}
+	</update>		
 </mapper>
 	

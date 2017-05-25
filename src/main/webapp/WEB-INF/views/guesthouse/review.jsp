@@ -107,26 +107,27 @@
 </style>
 		<!-- Menu (search.js 138참고 )-->
 	<script>
-	function writeReplyComment() {
+	function insertReplyComment() {
 
-		var no = $("#host_no").val();
+		var no = $("#review_no").val();
+		
+		$(".ad_reply_comment").load("reviewComment.jsp");
 	//★	
-		$.ajax({
+		/* $.ajax({
 			url:"/GuestHi/writeReplyComment.gh",
 			type: "post",
-			data: {host_no: no},
+			data: {no : no},
 			success: function(data){
-				$(".ad_info_wrap").html(data);
+				$(".ad_reply_comment").html(data);
 			},
 			error: function(data){
 				alert(data.status);//404 , 500 , 400
-				alert(data.readyState);//3 = 일부분 응답, 4= 통신 2=보넀는데 응답이 없다 1=요청이안간다
+				alert("readyState : "+data.readyState);//3 = 일부분 응답, 4= 통신 2=보넀는데 응답이 없다 1=요청이안간다
 			}
-		});
+		}); */
 		
 		/* $(".ad_info_wrap").load("/GuestHi/tabRoomDetail.gh",{host_no: no},function(){},function(){alert("?");}); */
 		
-		$("#tabRoom").addClass('on');
 	}
 	</script>
 		
@@ -192,13 +193,21 @@
 	
 									<div class="review_cont">
 										${item.CONTENT } /&nbsp; ${item.ROOMNAME }이용
+										
 										<c:if test="${host_no == session_host_no }">
-											<a id="tabRoom" href="javascript:writeReplyComment()" class="a_room">답변쓰기</a>
-											
+											<input type="hidden" id="review_no" value="${item.NO }">
+											<a id="writeReplyCmt" href="javascript:insertReplyComment()" class="a_room">답변쓰기</a>
 										</c:if>
+										
 									</div> <!-- 이용후기 당첨자 아이콘 --> <!-- //이용후기 당첨자 아이콘 -->
 								</li>
+								
+								
+								<div class="ad_reply_comment"></div>
+								
+								
 							<c:if test="${item.C_CONTENT != null }">
+								
 								<li class="review_oner">
 									<div class="review_user_img">
 										<img

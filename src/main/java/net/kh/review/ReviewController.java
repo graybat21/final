@@ -52,5 +52,21 @@ public class ReviewController {
 		mav.addObject("host_no", review.getHost_no());
 		return mav;
 	}
+	
+	@RequestMapping("/writeReviewComment.gh")
+	public ModelAndView writeReviewComment(ReviewVO review)throws Exception{
+		ModelAndView mav=new ModelAndView("redirect:/ghDetail.gh?tab=3");
+		
+		reviewService.updateReviewCommentByReviewNo(review);
+		mav.addObject("host_no", review.getHost_no());
+		return mav;
+	}
+	
+	@RequestMapping("/writeReplyComment.gh")
+	public ModelAndView writeReplyComment()throws Exception{
+		ModelAndView mav=new ModelAndView();
+		
+		return mav;
+	}
 
 }
