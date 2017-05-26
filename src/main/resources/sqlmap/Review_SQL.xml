@@ -15,6 +15,7 @@
 	
 	<select id="reviewList" parameterType="int" resultType="hashmap">
 		SELECT 
+			v.no,
 			v.writer as membername, 
 			v.content, 
 			v.reg, 
@@ -31,8 +32,8 @@
 	</select>	
 	
 	<update id="updateReviewCommentByReviewNo" parameterType="reviewVO">
-		UPDATE review set c_content = ${c_content}, c_reg = sysdate
-		where no = ${no}
+		UPDATE review set c_content = #{c_content}, c_reg = sysdate
+		where no = #{no}
 	</update>		
 	<select id="hasReview" parameterType="int" resultType="boolean">
 		SELECT count(*) FROM review
