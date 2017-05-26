@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kh.host.HostService;
+import net.kh.host.HostVO;
 import net.kh.reserve.ReserveService;
 
 @Controller
@@ -29,6 +31,8 @@ public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	@Inject
 	public ReserveService reserveService;
+	@Inject
+	public HostService hostService;
 
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/ghList.gh")
@@ -53,10 +57,20 @@ public class MainController {
 	}
 
 	@RequestMapping("/ghDetail.gh")
-	public String ghDetail(@RequestParam("no") int no, Model model)throws Exception{
+	public String ghDetail(@RequestParam("host_no") int host_no,@RequestParam(value="tab",defaultValue="1") int tab, Model model)throws Exception{
 		// 호스트 정보를 받아서 보내줌
-		model.addAttribute("detail", no);
 		
+		HostVO host=hostService.getHostInfoByHostNo(host_no);
+		logger.info(host.toString());
+//		String address=host.getAddr1()+host.getAddr2()+host.getZip();
+//		String tel = host.getTel();
+//		model.addAttribute("address",address);
+		
+		model.addAttribute("hostinfo",host);
+		model.addAttribute("host_no", host_no);
+		model.addAttribute("tab", tab);
+		System.out.println(host_no);
+		System.out.println(tab);
 		return "guesthouse/ghDetail/방 상세보기";
 	}
 	
@@ -84,8 +98,8 @@ public class MainController {
 		int sizeOfList = reserve.size();
 		for (int i = sizeOfList - 1; i >= 0; i--) {
 			if (Integer.parseInt((String) reserve.get(i).get("PRICE")) > max_price) {
-				reserve.remove(i);
 				System.out.println("가격불만족 삭제" + reserve.get(i).get("NAME"));
+				reserve.remove(i);
 			}
 		}
 		return reserve;
@@ -100,8 +114,8 @@ public class MainController {
 			count = Integer.parseInt(String.valueOf(reserve.get(i).get("COUNT")));
 			System.out.println(max + "..." + count);
 			if (max - count < participants) {
-				reserve.remove(i);
 				System.out.println("인원수불만족 삭제 " + reserve.get(i).get("NAME"));
+				reserve.remove(i);
 			}
 		}
 		return reserve;
@@ -113,8 +127,8 @@ public class MainController {
 		for (int i = sizeOfList - 1; i >= 0; i--) {
 			addr1 = (String) reserve.get(i).get("ADDR1");
 			if (!addr1.contains(area)) {
-				reserve.remove(i);
 				System.out.println("주소 불만족 삭제 " + reserve.get(i).get("NAME"));
+				reserve.remove(i);
 			}
 		}
 		return reserve;
