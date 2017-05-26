@@ -57,18 +57,20 @@ public class MainController {
 	}
 
 	@RequestMapping("/ghDetail.gh")
-	public String ghDetail(@RequestParam("host_no") int no,@RequestParam(value="tab",defaultValue="1") int tab, Model model)throws Exception{
+	public String ghDetail(@RequestParam("host_no") int host_no,@RequestParam(value="tab",defaultValue="1") int tab, Model model)throws Exception{
 		// 호스트 정보를 받아서 보내줌
 		
-		HostVO host=hostService.getHostInfoByHostNo(no);
+		HostVO host=hostService.getHostInfoByHostNo(host_no);
 		logger.info(host.toString());
 //		String address=host.getAddr1()+host.getAddr2()+host.getZip();
 //		String tel = host.getTel();
 //		model.addAttribute("address",address);
 		
 		model.addAttribute("hostinfo",host);
-		model.addAttribute("host_no", no);
+		model.addAttribute("host_no", host_no);
 		model.addAttribute("tab", tab);
+		System.out.println(host_no);
+		System.out.println(tab);
 		return "guesthouse/ghDetail/방 상세보기";
 	}
 	

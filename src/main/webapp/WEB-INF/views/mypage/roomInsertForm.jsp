@@ -5,10 +5,9 @@
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>파일 업로드</title>
 <script src="<c:url value="/js/jquery-3.1.0.min.js"/>"></script>
 <script src="<c:url value="/js/jquery.form.min.js"/>"></script>
+<link href="${pageContext.request.contextPath}/css/board.css" rel="stylesheet">
 <script type="text/javascript">
 	//<![CDATA[
 	$(function() {
@@ -55,14 +54,12 @@
 		});
 	});
 	//]]>
-	/* 업로드폼 */
+/* 업로드폼 */
 	function fileFields() {
 		var x = document.getElementById('imageUpload');
 		x.onclick = function() {
 			var i = parseFloat(this.lastChild.id) + 1;
-
 			input = document.createElement("input");
-
 			input.setAttribute("type", "file");
 			input.setAttribute("name", 'file'); /* input name */
 			input.setAttribute("id", 'file' + i);
@@ -70,8 +67,8 @@
 			this.appendChild(input);
 		}
 	}
-	// Multiple onload function created by: Simon Willison
-	// http://simonwillison.net/2004/May/26/addLoadEvent/
+// Multiple onload function created by: Simon Willison
+// http://simonwillison.net/2004/May/26/addLoadEvent/
 	function addLoadEvent(func) {
 		var oldonload = window.onload;
 		if (typeof window.onload != 'function') {
@@ -90,7 +87,6 @@
 	});
 </script>
 </head>
-
 <body>
 	<article id="contentsWrap">
 		<div class="my_wrap row row_cont">
@@ -103,7 +99,7 @@
 				<div class="my_cont_wrap">
 					<!-- 내정보 수정 -->
 					<div class="myinfo_title">
-						<strong>방등록</strong>
+						<strong>방 등록하기</strong>
 						<!-- <span>회원정보를 수정할 수 있습니다.</span> -->
 					</div>
 					<div class="myinfo_table ">
@@ -115,37 +111,34 @@
 								<tr>
 									<th>방이름</th>
 									<td><input type="text" id="name" name="name"
-										required="required" size="15" maxlength="11" /></td>
+										required="required" size="25" maxlength="20" /></td>
 								</tr>
 								<tr>
 									<th>최대인원</th>
 									<td><input type="text" id="max" name="max"
-										required="required" size="15" maxlength="11" /></td>
+										required="required" size="25" maxlength="2" /></td>
 								</tr>
 								<tr>
 									<th>가격</th>
 									<td><input type="text" id="price" name="price"
-										required="required" size="15" maxlength="11" /></td>
+										required="required" size="25" maxlength="7" /></td>
 								</tr>
 								<tr>
 									<th>사진</th>
-									<td><a href="#" id="imageUpload"><input type="file"
-											name="file" id="file1" /></a></td>
+									<td>
+									<a href="#" id="imageUpload">
+										<input type="file" name="file" id="file1"/></a>
+									</td>
+								</tr>
+								<tr>
+								<th></th>
+								<td style="padding-left: 25%;">
+									<button id="btn-upload" type="submit" onclick="location.href='roomList.gh'" style="width:30%;">등록 완료</button> <br>
+								</td>
 								</tr>
 							</table>
 						</form>
 					</div>
-					<div class="myinfo_table ">
-						<table>
-							<tr>
-								<td>
-									<button id="btn-upload" type="submit"
-										onclick="location.href='roomList.gh'">방 등록</button> <br>
-								</td>
-							</tr>
-						</table>
-					</div>
-
 				</div>
 			</div>
 		</div>

@@ -50,21 +50,15 @@ public class RoomController {
 
 	@RequestMapping("/tabRoomDetail.gh")
 	// json 데이터로 응답을 보내기 위한r ---------여기ㅣㅣㅣㅣㅣㅣㅣㅣㅣ수정
-	public ModelAndView tabRoomDetail(@RequestParam(value="host_no") int host_no) throws Exception {
+	public ModelAndView tabRoomDetail(@RequestParam(value = "host_no") int host_no) throws Exception {
 		ModelAndView mav = new ModelAndView("guesthouse/roomdetail");
-//		int host_no = no.getNo();
-		
-		System.out.println("얍얍"+host_no);
+		System.out.println("얍얍" + host_no);
 		List<RoomVO> roomList = roomService.getRoomInfoByHostNo(host_no);
-		System.out.println(roomList.toString()+"얍얍gm");
-	
 		mav.addObject("host_no", host_no);
 		mav.addObject("roomList", roomList);
 		return mav;
 	}
 
-	
-	
 	@RequestMapping("/roomInsertForm.gh")
 	public ModelAndView roomInsertForm() throws Exception {
 		ModelAndView model = new ModelAndView("mypage/roomInsertForm/룸 가입폼");
@@ -72,12 +66,9 @@ public class RoomController {
 		return model;
 	}
 
-	
-	
 	@RequestMapping(value = "/roomInsert.gh", method = RequestMethod.POST, produces = "text/plain")
 	public String upload(MultipartHttpServletRequest request, RoomVO room, HttpSession session) throws Exception {
 
-		
 		/*
 		 * Set PATHSET =
 		 * request.getSession().getServletContext().getResourcePaths("/");
@@ -123,17 +114,17 @@ public class RoomController {
 	}
 
 	@RequestMapping("/roomList.gh")
-	public String roomList(HttpServletRequest request, Model model)
-			throws Exception {
+	public String roomList(HttpServletRequest request, Model model) throws Exception {
 		// 호스트 넘버를 통해서 등록한 방정보를 불러온다.
 		// 각 방마다 대표이미지만 불러온다.
 		int h_no = (int) (request.getSession().getAttribute("session_host_no"));
-		
+
 		// int no = 152;
-//		int no = roomService.roomGetCurrentNo()-1;//room_no
+		// int no = roomService.roomGetCurrentNo()-1;//room_no
 		// int h_no = 21;
 		List<RoomVO> roomVO = roomService.getRoomInfoByHostNo(h_no); // room에있는no
-		List<ImageVO> image = imageService.getImageByHostNo(h_no); // 호스트넘버를 가져와야해
+		List<ImageVO> image = imageService.getImageByHostNo(h_no); // 호스트넘버를
+																	// 가져와야해
 
 		// session.setAttribute("image", image);
 		model.addAttribute("room", roomVO);

@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type">
-<title>게스트하우스리뷰</title>
 </head>
 <body class="pcweb" ondragstart="return false">
  	<!-- 페이지별 호출 소스 -->
@@ -305,11 +304,10 @@ $(document).ready(function(){
 });
 
 
-
 	function tabView(tab) {
 		var host_no = $("#host_no").val();
 		$(".search_menu *").removeClass('on');
-		
+
 		if(tab == 1){
 			$.ajax({
 				url:"/GuestHi/tabRoomDetail.gh",
