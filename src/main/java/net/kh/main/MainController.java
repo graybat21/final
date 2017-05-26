@@ -2,6 +2,7 @@ package net.kh.main;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -132,6 +133,7 @@ public class MainController {
 	@RequestMapping("/main.gh")
 	public String main(Model model) throws Exception{
 		List<HashMap<String, Object>> mainlist = main.main();
+		Collections.shuffle(mainlist);
 		model.addAttribute("list", mainlist);
 		return "main/main/ma";
 	}

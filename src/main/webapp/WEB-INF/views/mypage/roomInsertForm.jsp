@@ -55,12 +55,14 @@
 		});
 	});
 	//]]>
-/* 업로드폼 */
+	/* 업로드폼 */
 	function fileFields() {
 		var x = document.getElementById('imageUpload');
 		x.onclick = function() {
 			var i = parseFloat(this.lastChild.id) + 1;
+
 			input = document.createElement("input");
+
 			input.setAttribute("type", "file");
 			input.setAttribute("name", 'file'); /* input name */
 			input.setAttribute("id", 'file' + i);
@@ -68,8 +70,8 @@
 			this.appendChild(input);
 		}
 	}
-// Multiple onload function created by: Simon Willison
-// http://simonwillison.net/2004/May/26/addLoadEvent/
+	// Multiple onload function created by: Simon Willison
+	// http://simonwillison.net/2004/May/26/addLoadEvent/
 	function addLoadEvent(func) {
 		var oldonload = window.onload;
 		if (typeof window.onload != 'function') {
@@ -88,6 +90,7 @@
 	});
 </script>
 </head>
+
 <body>
 	<article id="contentsWrap">
 		<div class="my_wrap row row_cont">
@@ -108,37 +111,39 @@
 						<form name="infoform" id="uploadForm"
 							enctype="multipart/form-data" method="POST"
 							action="${pageContext.request.contextPath}/roomInsert.gh">
+							<input type="hidden" name="host_no" value="${h_no}">
 							<table>
 								<tr>
 									<th>방이름</th>
 									<td><input type="text" id="name" name="name"
-										required="required" size="25" maxlength="20" /></td>
+										required="required" size="15" maxlength="11" /></td>
 								</tr>
 								<tr>
 									<th>최대인원</th>
 									<td><input type="text" id="max" name="max"
-										required="required" size="25" maxlength="2" /></td>
+										required="required" size="15" maxlength="11" /></td>
 								</tr>
 								<tr>
 									<th>가격</th>
 									<td><input type="text" id="price" name="price"
-										required="required" size="25" maxlength="7" /></td>
+										required="required" size="15" maxlength="11" /></td>
 								</tr>
 								<tr>
 									<th>사진</th>
-									<td>
-									<a href="#" id="imageUpload">
-										<input type="file" name="file" id="file1"/></a>
-									</td>
-								</tr>
-								<tr>
-								<th></th>
-								<td style="padding-left: 25%;">
-									<button id="btn-upload" type="submit" onclick="location.href='roomList.gh'" style="width:30%;">방 등록</button> <br>
-								</td>
+									<td><a href="#" id="imageUpload"><input type="file"
+											name="file" id="file1" /></a></td>
 								</tr>
 							</table>
 						</form>
+					</div>
+					<div class="myinfo_table ">
+						<table>
+							<tr>
+								<td>
+									<button id="btn-upload" type="submit">방 등록</button> <br>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
