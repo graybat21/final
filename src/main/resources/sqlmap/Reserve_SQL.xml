@@ -15,6 +15,35 @@
 		WHERE re.mem_no = #{mem_no} and re.host_no = h.no and re.room_no = r.no
 	</select>
 	
+	<select id="getReserveInfoByHostNo" resultType="hashmap" parameterType="int">
+		SELECT 
+  			s.no, ss.r_no, ss.filename, ss.re_no, ss.r_name, ss.checkin, ss.checkout, ss.count, ss.price, ss.m_name, ss.m_no
+    	FROM
+      		(SELECT 
+      			min(i.no) no 
+			FROM 
+				image i, room r, reservation re, member m 
+			WHERE 
+				r.host_no = #{host_no}
+			AND i.room_no = r.no
+      		AND m.no = re.mem_no
+      		AND re.room_no = r.no
+			GROUP BY i.room_no) s,
+      		(SELECT 
+				i.no no, i.room_no r_no, i.filename filename, 
+				re.no re_no, re.checkin, re.checkout, re.count, 
+				r.name r_name, r.price, 
+				m.name m_name, m.no m_no
+			FROM 
+				image i, room r, reservation re, member m 
+			WHERE 
+				r.host_no = #{host_no}
+			AND i.room_no = r.no
+      		AND m.no = re.mem_no
+      		AND re.room_no = r.no
+			) ss
+      WHERE s.no = ss.no ORDER BY checkin
+	</select>
 	<!-- <select id="roomGetCurrentNo" resultType="int">
 		SELECT
 		LAST_NUMBER

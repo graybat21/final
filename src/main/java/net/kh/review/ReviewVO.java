@@ -17,7 +17,8 @@ public class ReviewVO {
 	
 	private String hostname;
 	private String roomname;
-
+	private String tab;
+	
 	public int getNo() {
 		return no;
 	}
@@ -112,6 +113,14 @@ public class ReviewVO {
 
 	public void setRoomname(String roomname) {
 		this.roomname = roomname;
+	}
+
+	public String getTab() {
+		return tab;
+	}
+
+	public void setTab(String tab) {
+		this.tab = tab;
 	}
 
 	@Override

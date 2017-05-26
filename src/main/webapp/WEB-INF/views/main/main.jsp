@@ -147,6 +147,7 @@
 
 		var jssor_1_options = {
 			$AutoPlay : 1,
+			/* 뀨 */
 			$SlideDuration : 800,
 			$SlideEasing : $Jease$.$OutQuint,
 			$CaptionSliderOptions : {
@@ -171,7 +172,7 @@
 				refSize = Math.min(refSize, 1920);
 				jssor_1_slider.$ScaleWidth(refSize);
 			} else {
-				window.setTimeout(ScaleSlider, 30);
+				window.setTimeout(ScaleSlider, 3000);
 			}
 		}
 		ScaleSlider();
@@ -512,7 +513,11 @@ button, input, optgroup, select, textarea {
 	pointer-events: none;
 }
 </style>
-
+<script>
+function searchSubmit(){
+	$('#searchForm').submit();
+}
+</script>
 
 </head>
 <body
@@ -559,7 +564,7 @@ button, input, optgroup, select, textarea {
 										<ul class="nav nav-tabs">
 
 											<li><a href="#tabhotel" data-toggle="tab"> <i
-													class="fa fa-hotel"></i> Hotel
+													class="fa fa-hotel"></i>GuestHouse
 											</a></li>
 
 										</ul>
@@ -571,51 +576,66 @@ button, input, optgroup, select, textarea {
 
 											<!--tabhotel-->
 											<div class="tab-pane fade in" id="tabhotel">
-												<h3>Search and Book Hotels</h3>
-												<ul class="list-inline list-unstyled">
-													<li><select class="select-one">
-															<option selected="selected">지역</option>
-															<option>서울</option>
-															<option>경기</option>
-															<option>부산</option>
-															<option>제주도</option>
-													</select></li>
-													<li>
-														<div class="form-group">
-															<input class="datepicker1" placeholder="Check In"
-																id="datepicker1" type="text">
-
-														</div>
-													</li>
-													<li>
-														<div class="form-group">
-															<input class="datepicker2" placeholder="Check Off"
-																id="datepicker2" type="text">
-															<!-- 	<input type="text" id="datepicker4"> -->
-															<!-- <img
+									<form action="ghList.gh" id="searchForm" name="searchForm">
+									<h3>Search and Book GuestHouse</h3>
+									<ul class="list-inline list-unstyled">
+										<li><select class="select-one" name="area">
+												<option selected="selected">지역</option>
+												<option value="서울">서울</option>
+												<option value="경기">경기</option>
+												<option value="강원">강원</option>
+												<option value="충청">충청</option>
+												<option value="경상">경상</option>
+												<option value="전라">전라</option>
+												<option value="인천">인천</option>
+												<option value="광주">광주</option>
+												<option value="대전">대전</option>
+												<option value="대구">대구</option>
+												<option value="울산">울산</option>
+												<option value="부산">부산</option>
+												<option value="제주도">제주도</option>
+										</select></li>
+										<li>
+											<div class="form-group">
+												<input class="datepicker1"
+													placeholder="Check In" id="datepicker1" name="from" type="text">
+												<!-- 
+													<img
 													class="ui-datepicker-trigger" src="image/icon-calendar.png"
 													alt="Select date" title="Select date"> -->
-														</div>
-													</li>
-													<li><select class="select-one">
-															<option selected="selected">인원</option>
-															<option>1 Guest</option>
-															<option>2 Guest</option>
-															<option>No One</option>
-
-													</select></li>
-													<li>
-														<div class="form-group">
-															<input class="form-control" placeholder="최대가격"
-																type="text">
-														</div>
-													</li>
-													<!--   search now -->
-													<li><a
-														href="http://teamworktec.com/demo/travel-gateway/html/hotel/hotels_list_one/left_sidebar.html"
-														class="btn btn-search-travel">검 색</a></li>
-												</ul>
 											</div>
+										</li>
+										<li>
+											<div class="form-group">
+												<input class="datepicker2"
+													placeholder="Check Off" id="datepicker2" name="to" type="text">
+												<!-- 	<input type="text" id="datepicker4"> -->
+												<!-- <img
+													class="ui-datepicker-trigger" src="image/icon-calendar.png"
+													alt="Select date" title="Select date"> -->
+											</div>
+										</li>
+										<li><select class="select-one" name="participant">
+												<option selected="selected">인원</option>
+												<option value="1">1 Guest</option>
+												<option value="2">2 Guest</option>
+												<option value="3">3 Guest</option>
+												<option value="4">4 Guest</option>
+												<option value="5">5 Guest</option>
+										</select></li>
+										<li>
+											<div class="form-group">
+												<input class="form-control"
+													placeholder="최대가격" type="text" name="max_price">
+											</div>
+										</li>
+										<!--   search now -->
+										<li><a
+											href="javascript:searchSubmit()"
+											class="btn btn-search-travel">검   색</a></li>
+									</ul>
+									</form>
+								</div>
 
 
 										</div>
@@ -661,9 +681,10 @@ button, input, optgroup, select, textarea {
 
 	<c:forEach items="${list}" var="list">
 		<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent">
-			<img src="${pageContext.request.contextPath}/resources/image/${list.IMAGENAME}"	width="330" class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?no=${list.NO}'" />
+			<img src="${pageContext.request.contextPath}/resources/image/${list.IMAGENAME}"	width="330" 
+			class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'" />
 			<h4 class="ngc">
-				<strong>${list.NO}///////////${list.IMAGENAME}<%-- ${list.NO} --%></strong>
+				<strong>${list.NO}/${list.NAME}<%-- ${list.NO} --%></strong>
 			</h4>
 			<div class="imageText">
 				<div class="text_border">
