@@ -50,7 +50,6 @@
 		WHERE 
 			SEQUENCE_NAME='SEQ_HOST_NO'	
 	</select>
-	
-	
+
 </mapper>
 
