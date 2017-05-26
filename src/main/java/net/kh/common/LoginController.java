@@ -74,7 +74,7 @@ public class LoginController {
 	
 				session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
 	
-				mav.setViewName("member/loginSuccess/로그인 성공");
+				mav.setViewName("member/loginSuccess/濡�洹몄�� �깃났");
 				logger.info(resultMember.toString());
 				return mav;
 			}else{
@@ -96,12 +96,12 @@ public class LoginController {
 				session.setAttribute("session_host_email", resultHost.getEmail());
 				session.setAttribute("session_host_name", resultHost.getName());
 				session.setAttribute("session_host_no", resultHost.getNo());
-				session.setAttribute("host", resultHost); //자바빈
+				session.setAttribute("host", resultHost); //��諛�鍮�
 				session.setAttribute("session_addr1", resultHost.getAddr1());
 				session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
 	
 				logger.info(resultHost.toString());
-				mav.setViewName("member/loginSuccess/로그인 성공 host");
+				mav.setViewName("member/loginSuccess/濡�洹몄�� �깃났 host");
 				return mav;
 			}
 		} catch (NullPointerException e) {
@@ -115,7 +115,9 @@ public class LoginController {
 
 		HttpSession session = request.getSession(false);
 		if (session != null) {
+			session.removeAttribute("session_host_no");
 			session.invalidate();
+			System.out.println("hostno?"+request.getSession().getAttribute("session_host_no"));
 		}
 		mav.addObject("member", new MemberVO());
 		mav.addObject("host", new HostVO());
