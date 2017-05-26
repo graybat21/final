@@ -8,6 +8,53 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/detail.css">
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.bpopup.min.js"></script>
+	
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('.trigger').click(function(){
+			$('showLayerImg, #overlay').show();
+			$('showLayerImg').css("top", Math.max(0, $(window).scrollTop() + 200)+"px");
+				+ $(window).scrollTop())+"px");
+		});
+		
+		$('#overlay, .close').click(function(e){
+			e.preventDefault();
+			$('showLayerImg, #overlay').hide();
+		});
+	});
+</script>
+
+<style type="text/css">
+	
+	#overlay {
+		background: #000;
+		bottom: 0;
+		left: 0;
+		opacity: 0.5;
+		filter: alpha(opacity = 50);
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: 99;
+		display: none;
+	}
+
+	showLayerImg {
+		width: 700px;
+		margin-bottom: 30px;
+		background-color: #fff;
+		border: solid 1px #ccc;
+		position: absolute;
+		top: 260px;
+		left: 50%;
+		margin-left: -200px;
+		box-shadow: 0px 1px 20px #333;
+		z-index: 100;
+		display: none;
+	}
+</style>
 </head>
 <body class="pcweb" ondragstart="return false">
  	<!-- 페이지별 호출 소스 -->
@@ -29,13 +76,16 @@
 						<ul class="room_list">
 							<c:forEach var="item" items="${roomList }" varStatus="status">
 							<li>
+					<div id="overlay">
 								<a href="javascript:showLayerImg('thum', 0,'/adimg_new/1667/27820/bcf79b3068d1372f1395eea640ba16bd.jpg');">
 								<div class="room_img">
+							
 									<div class="img_wrap imgLiquidFill">
 										<span class="thumb_none"></span>
 										<img src="http://placehold.it/588x300" style="display: block;">
 										<!-- <img src="http://placehold.it/588x300" data-src="http://placehold.it/588x300" class="" data-original="http://placehold.it/588x300" style="display: block;"> -->
 									</div>
+								
 								</div>
 								<p class="room_name">
 									${item.name }
@@ -48,6 +98,7 @@
 								</div>
 
 								</a>
+						</div>
 							</li>
 							</c:forEach>
 						</ul>
