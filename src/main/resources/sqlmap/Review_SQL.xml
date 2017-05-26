@@ -6,21 +6,16 @@
 	<!-- <select id="memberLogin" resultType="memberVO"> SELECT no, email, pw, 
 		name, phone, reg, auth FROM MEMBER WHERE email = #{email} </select> -->
 
-	<!-- <insert id="reviewInsert" parameterType="reviewVO"> 하나씩들어가는거   결과값이 VO로 가는거
-		INSERT INTO review (
-		no,
-		name, max,
-		price, host_no, reg
-		)
-		VALUES (
-		SEQ_ROOM_NO.NEXTVAL, #{name},
-		#{max},
-		#{price}, #{host_no}, sysdate
-		)
-	</insert> -->
+	<insert id="writeReview" parameterType="reviewVO">
+		INSERT INTO review 
+			(no, writer, content, reg, star, host_no, r_no, ref)
+		VALUES 
+			(SEQ_REVIEW_NO.NEXTVAL, #{writer}, #{content}, sysdate, #{star}, #{host_no}, #{r_no}, 0)
+	</insert>
 	
 	<select id="reviewList" parameterType="int" resultType="hashmap">
 		SELECT 
+			v.no,
 			v.writer as membername, 
 			v.content, 
 			v.reg, 
@@ -32,16 +27,21 @@
 		FROM review v, host h, room r
 		WHERE v.host_no = #{no}
 			AND v.r_no = r.no
-			AND h.no = r.host_no		
+			AND h.no = r.host_no
+		ORDER BY v.reg DESC		
 	</select>	
 	
-	<!-- <select id="roomGetCurrentNo" resultType="int">
-		SELECT
-		LAST_NUMBER
-		FROM
-		USER_SEQUENCES
-		WHERE
-		SEQUENCE_NAME='SEQ_ROOM_NO'
-	</select> -->
+	<update id="updateReviewCommentByReviewNo" parameterType="reviewVO">
+		UPDATE review set c_content = #{c_content}, c_reg = sysdate
+		where no = #{no}
+	</update>		
+	<select id="hasReview" parameterType="int" resultType="boolean">
+		SELECT count(*) FROM review
+		WHERE host_no = #{host_no}
+	</select>
+	<select id="averageStar" parameterType="int" resultType="int">
+		SELECT avg(star) FROM review
+		WHERE host_no = #{host_no} 
+	</select>
 </mapper>
 	

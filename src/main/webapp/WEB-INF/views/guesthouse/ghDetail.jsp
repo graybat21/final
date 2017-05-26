@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type">
-<title>게스트하우스리뷰</title>
 </head>
 <body class="pcweb" ondragstart="return false">
  	<!-- 페이지별 호출 소스 -->
@@ -143,9 +142,9 @@
 	<div class="new_info row">
 	<div id="map" style="width: 350px; height: 200px; float: right;"></div>
 		<div class="cont">
-			<h3>게스트하우스 이름</h3>
-			<p class="address btn_copy">주소 블라블라</p>
-			<p class="tel">☎ 1234567899</p>
+			<h3>${hostinfo.name}</h3>
+			<p class="address btn_copy">${hostinfo.addr1 }&nbsp; ${hostinfo.addr2 } &nbsp;${hostinfo.zip }</p>
+			<p class="tel">☎ ${hostinfo.tel }</p>
 			<a href="wishAdd.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" class="btn_zzim ">찜하기</a>
 		</div>
 		
@@ -296,34 +295,84 @@
 <!-- Menu (search.js 138참고 )-->
 
 <script>
-$(function(){
-	tabRoomDetail();
-})
-	function tabRoomDetail() {
-		$(".search_menu *").removeClass('on');
-		$(".ad_info_wrap").load("/GuestHi/tabRoomDetail.gh");
-		$("#tabRoom").addClass('on');
+$(document).ready(function(){
+	var tab= "${tab}";
+	if(tab == ''){
+		tab = 1;
 	}
-	function tabReserve() {
+	tabView(tab);
+});
+
+
+	function tabView(tab) {
+		var host_no = $("#host_no").val();
 		$(".search_menu *").removeClass('on');
-		$(".ad_info_wrap").load("/GuestHi/tabReserve.gh");
-		$("#tabReserve").addClass('on');
-	}
-	function tabReview() {
-		$(".search_menu *").removeClass('on');
-		$(".ad_info_wrap").load("/GuestHi/tabReview.gh");
-		$("#tabReview").addClass('on');
+
+		if(tab == 1){
+			$.ajax({
+				url:"/GuestHi/tabRoomDetail.gh",
+				type: "post",
+				data: {host_no: host_no},
+				success: function(data){
+					$(".ad_info_wrap").html(data);
+				},
+				error: function(data){
+					alert(data.status);//404 , 500 , 400
+					alert(data.readyState);//3 = 일부분 응답, 4= 통신 2=보넀는데 응답이 없다 1=요청이안간다
+				}
+			});
+			
+			/* $(".ad_info_wrap").load("/GuestHi/tabRoomDetail.gh",{host_no: no},function(){},function(){alert("?");}); */
+			
+			$("#tabRoom").addClass('on');
+		}
+		if(tab == 2){
+			$.ajax({
+				url:"/GuestHi/tabReserve.gh",
+				type: "post",
+				data: {host_no: host_no},
+				success: function(data){
+					$(".ad_info_wrap").html(data);
+				},
+				error: function(data){
+					alert(data.status);//404 , 500 , 400
+					alert(data.readyState);//3 = 일부분 응답, 4= 통신 2=보넀는데 응답이 없다 1=요청이안간다
+				}
+			});
+			
+			$("#tabReserve").addClass('on');
+		}
+		if(tab == 3){
+			$.ajax({
+				url:"/GuestHi/tabReview.gh",
+				type: "post",
+				data: {host_no: host_no},
+				success: function(data){
+					$(".ad_info_wrap").html(data);
+				},
+				error: function(data){
+					alert(data.status);//404 , 500 , 400
+					alert(data.readyState);//3 = 일부분 응답, 4= 통신 2=보넀는데 응답이 없다 1=요청이안간다
+				}
+			});
+			$("#tabReview").addClass('on');
+		}
+	//★	
 	}
 </script>
 <div class="search_menu">
 	<ul>
-		<li><a id="tabRoom" href="javascript:tabRoomDetail()" class="a_room">객실정보</a></li>
-		<li><a id="tabReserve" href="javascript:tabReserve()" class="a_reserve">예약</a></li>
-		<li><a id="tabReview" href="javascript:tabReview()" class="a_review">리뷰</a></li>
+		<li><a id="tabRoom" href="javascript:tabView(1)" class="a_room">객실정보</a></li>
+		<li><a id="tabReserve" href="javascript:tabView(2)" class="a_reserve">예약</a></li>
+		<li><a id="tabReview" href="javascript:tabView(3)" class="a_review">리뷰</a></li>
 	</ul>
 </div>			
 
-	<!-- //업체 요약정보 -->
 	<div class="ad_info_wrap"></div>
+	
+	<form name="value">
+	<input type="hidden" id="host_no" value="${host_no}">
+	<input type="hidden" id="tab" value="${tab }">
+	</form>
 </body>
 </html>

@@ -111,6 +111,7 @@
 						<form name="infoform" id="uploadForm"
 							enctype="multipart/form-data" method="POST"
 							action="${pageContext.request.contextPath}/roomInsert.gh">
+							<input type="hidden" name="host_no" value="${h_no}">
 							<table>
 								<tr>
 									<th>방이름</th>
@@ -139,13 +140,11 @@
 						<table>
 							<tr>
 								<td>
-									<button id="btn-upload" type="submit"
-										onclick="location.href='roomList.gh'">방 등록</button> <br>
+									<button id="btn-upload" type="submit">방 등록</button> <br>
 								</td>
 							</tr>
 						</table>
 					</div>
-
 				</div>
 			</div>
 		</div>

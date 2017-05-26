@@ -13,7 +13,9 @@
 		WHERE 
 			email = #{email} 
 	</select>
-	
+	<select id="getHostInfoByHostNo" parameterType="int" resultType="hostVO">
+		select * from host where no = #{no}
+	</select>
 	<!-- <insert id="hostInsert" parameterType="hashmap"> -->
 	<insert id="hostInsert" parameterType="hostVO">
 		INSERT INTO HOST (
