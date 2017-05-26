@@ -2,6 +2,7 @@ package net.kh.main;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -95,8 +96,8 @@ public class MainController {
 		int sizeOfList = reserve.size();
 		for (int i = sizeOfList - 1; i >= 0; i--) {
 			if (Integer.parseInt((String) reserve.get(i).get("PRICE")) > max_price) {
-				reserve.remove(i);
 				System.out.println("가격불만족 삭제" + reserve.get(i).get("NAME"));
+				reserve.remove(i);
 			}
 		}
 		return reserve;
@@ -111,8 +112,8 @@ public class MainController {
 			count = Integer.parseInt(String.valueOf(reserve.get(i).get("COUNT")));
 			System.out.println(max + "..." + count);
 			if (max - count < participants) {
-				reserve.remove(i);
 				System.out.println("인원수불만족 삭제 " + reserve.get(i).get("NAME"));
+				reserve.remove(i);
 			}
 		}
 		return reserve;
@@ -124,8 +125,8 @@ public class MainController {
 		for (int i = sizeOfList - 1; i >= 0; i--) {
 			addr1 = (String) reserve.get(i).get("ADDR1");
 			if (!addr1.contains(area)) {
-				reserve.remove(i);
 				System.out.println("주소 불만족 삭제 " + reserve.get(i).get("NAME"));
+				reserve.remove(i);
 			}
 		}
 		return reserve;
@@ -144,6 +145,7 @@ public class MainController {
 	@RequestMapping("/main.gh")
 	public String main(Model model) throws Exception{
 		List<HashMap<String, Object>> mainlist = main.main();
+		Collections.shuffle(mainlist);
 		model.addAttribute("list", mainlist);
 		return "main/main/ma";
 	}

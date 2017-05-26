@@ -307,14 +307,14 @@ $(document).ready(function(){
 
 
 	function tabView(tab) {
-		var no = $("#host_no").val();
+		var host_no = $("#host_no").val();
 		$(".search_menu *").removeClass('on');
 		
 		if(tab == 1){
 			$.ajax({
 				url:"/GuestHi/tabRoomDetail.gh",
 				type: "post",
-				data: {host_no: no},
+				data: {host_no: host_no},
 				success: function(data){
 					$(".ad_info_wrap").html(data);
 				},
@@ -332,7 +332,7 @@ $(document).ready(function(){
 			$.ajax({
 				url:"/GuestHi/tabReserve.gh",
 				type: "post",
-				data: {host_no: no},
+				data: {host_no: host_no},
 				success: function(data){
 					$(".ad_info_wrap").html(data);
 				},
@@ -348,7 +348,7 @@ $(document).ready(function(){
 			$.ajax({
 				url:"/GuestHi/tabReview.gh",
 				type: "post",
-				data: {host_no: no},
+				data: {host_no: host_no},
 				success: function(data){
 					$(".ad_info_wrap").html(data);
 				},
@@ -370,8 +370,8 @@ $(document).ready(function(){
 	</ul>
 </div>			
 
-	<!-- //업체 요약정보 -->
 	<div class="ad_info_wrap"></div>
+	
 	<form name="value">
 	<input type="hidden" id="host_no" value="${host_no}">
 	<input type="hidden" id="tab" value="${tab }">

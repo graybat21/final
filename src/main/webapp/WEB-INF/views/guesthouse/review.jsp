@@ -107,11 +107,8 @@
 </style>
 		<!-- Menu (search.js 138참고 )-->
 	<script>
-	function insertReplyComment() {
-
-		var no = $("#review_no").val();
-		
-		$(".ad_reply_comment").load("reviewComment.gh");
+	function insertReplyComment(no, hostno) {
+		$(".ad_reply_comment").load("insertReviewComment.gh", {hostno : hostno, no : no} );
 	//★	
 		/* $.ajax({
 			url:"/GuestHi/writeReplyComment.gh",
@@ -144,10 +141,10 @@
 						<ul class="score_list">
 							<li class="score_average"><strong>평균</strong>
 								<div class="score_wrap">
-									<p class="score_star star_50"></p>
-									<span class="score_num">9.8</span>
+									<p class="score_star star_${classStar }"></p>
+									<span class="score_num">${averageStar }</span>
 								</div></li>
-							<li class="top"><strong>시설</strong>
+							<!-- <li class="top"><strong>시설</strong>
 								<div class="score_wrap">
 									<p class="score_star star_50"></p>
 									<span class="score_num">9.8</span>
@@ -161,7 +158,7 @@
 								<div class="score_wrap">
 									<p class="score_star star_50"></p>
 									<span class="score_num">9.9</span>
-								</div></li>
+								</div></li> -->
 						</ul>
 					</div>
 
@@ -188,15 +185,14 @@
 	
 									<div class="score_wrap">
 										<p class="score_star star_${item.STAR }"></p>
-										<span class="score_num">${item.STAR }</span>
+										<span class="score_num">${item.STAR / 5 }</span>
 									</div>
 	
 									<div class="review_cont">
 										${item.CONTENT } /&nbsp; ${item.ROOMNAME }이용
 										
 										<c:if test="${host_no == session_host_no }">
-											<input type="hidden" id="review_no" value="${item.NO }">
-											<a id="writeReplyCmt" href="javascript:insertReplyComment()" class="a_room">답변쓰기</a>
+											<a id="writeReplyCmt" href="javascript:insertReplyComment(${item.NO }, ${host_no })" class="a_room">답변쓰기</a>
 										</c:if>
 										
 									</div> <!-- 이용후기 당첨자 아이콘 --> <!-- //이용후기 당첨자 아이콘 -->

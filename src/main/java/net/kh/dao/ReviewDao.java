@@ -12,4 +12,7 @@ public interface ReviewDao {
 	public List<Map<String, Object>> reviewList(int no) throws Exception;
 
 	public void updateReviewCommentByReviewNo(ReviewVO review) throws Exception;
+
+	public boolean hasReview(int host_no) throws Exception;
+	public int averageStar(int host_no) throws Exception;
 }

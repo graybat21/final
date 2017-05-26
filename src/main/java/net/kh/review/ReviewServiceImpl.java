@@ -33,5 +33,17 @@ public class ReviewServiceImpl implements ReviewService {
 	public void updateReviewCommentByReviewNo(ReviewVO review) throws Exception {
 		mapper.updateReviewCommentByReviewNo(review);
 	}
+
+
+	@Override
+	public boolean hasReview(int host_no) throws Exception {
+		return mapper.hasReview(host_no);
+	}
+
+
+	@Override
+	public int averageStar(int host_no) throws Exception {
+		return mapper.averageStar(host_no);
+	}
 	
 }

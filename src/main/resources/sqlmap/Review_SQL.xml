@@ -34,5 +34,13 @@
 		UPDATE review set c_content = ${c_content}, c_reg = sysdate
 		where no = ${no}
 	</update>		
+	<select id="hasReview" parameterType="int" resultType="boolean">
+		SELECT count(*) FROM review
+		WHERE host_no = #{host_no}
+	</select>
+	<select id="averageStar" parameterType="int" resultType="int">
+		SELECT avg(star) FROM review
+		WHERE host_no = #{host_no} 
+	</select>
 </mapper>
 	

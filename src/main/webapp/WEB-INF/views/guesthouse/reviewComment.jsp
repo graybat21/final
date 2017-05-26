@@ -14,6 +14,8 @@
 
 	<div class="review_cont">
 		<textarea rows="10" cols="100" name="c_content"></textarea>
+		<input type="hidden" value="${no }" name="no">
+		<input type="hidden" value="${hostno }" name="host_no">
 		<input type="submit" value="작성">
 	</div>
 	</form>
