@@ -10,4 +10,5 @@ public interface ReserveDao {
 
 	public List<Map<String, Object>> selectSearchHappy() throws Exception;
 	public List<HashMap<String, Object>> getReserveInfoByMemNo(int mem_no) throws Exception;
+	public List<HashMap<String, Object>> getReserveInfoByHostNo(int host_no) throws Exception;
 }

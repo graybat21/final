@@ -21,6 +21,11 @@ public class HostServiceImpl implements HostService {
 	}
 
 	@Override
+	public HostVO getHostInfoByHostNo(int no) throws Exception {
+		return hostMapper.getHostInfoByHostNo(no);
+	}
+
+	@Override
 	@Transactional
 	public boolean hostInsert(HostVO host) throws Exception {
 		return hostMapper.hostInsert(host);

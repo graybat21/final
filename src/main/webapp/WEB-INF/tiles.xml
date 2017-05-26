@@ -35,6 +35,9 @@
 	<definition name="guesthouse/roomdetail" template="/WEB-INF/views/guesthouse/roomdetail.jsp">
         <put-attribute name="content" value=""/>  
     </definition>
+	<definition name="guesthouse/reviewComment" template="/WEB-INF/views/guesthouse/reviewComment.jsp">
+        <put-attribute name="content" value=""/>  
+    </definition>
 
 
 </tiles-definitions>

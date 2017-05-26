@@ -26,4 +26,9 @@ public class ReserveServiceImpl implements ReserveService {
 		return reserveDao.getReserveInfoByMemNo(mem_no);
 	}
 
+	@Override
+	public List<HashMap<String, Object>> getReserveInfoByHostNo(int host_no) throws Exception {
+		return reserveDao.getReserveInfoByHostNo(host_no);
+	}
+
 }
