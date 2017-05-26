@@ -147,6 +147,7 @@
 
 		var jssor_1_options = {
 			$AutoPlay : 1,
+			/* 뀨 */
 			$SlideDuration : 800,
 			$SlideEasing : $Jease$.$OutQuint,
 			$CaptionSliderOptions : {
@@ -171,7 +172,7 @@
 				refSize = Math.min(refSize, 1920);
 				jssor_1_slider.$ScaleWidth(refSize);
 			} else {
-				window.setTimeout(ScaleSlider, 30);
+				window.setTimeout(ScaleSlider, 3000);
 			}
 		}
 		ScaleSlider();
