@@ -29,4 +29,10 @@ public interface QnaDao {
 
 	// 답변글쓰기
 	int qnaRepl(QnaVO qnaVO) throws Exception;
+	
+	
+	//restep
+		int updateRef(QnaVO qnaVO) throws Exception;
+		
+		int refMax() throws Exception;
 }

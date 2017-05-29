@@ -71,4 +71,16 @@ public class QnaServiceImpl implements QnaService {
 		// TODO Auto-generated method stub
 		return qnaDao.myqnaList(map);
 	}
+
+	@Override
+	public int updateRef(QnaVO qnaVO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDao.updateRef(qnaVO);
+	}
+
+	@Override
+	public int refMax() throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDao.refMax();
+	}
 }

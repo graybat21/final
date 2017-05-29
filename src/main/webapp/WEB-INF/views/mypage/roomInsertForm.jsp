@@ -15,10 +15,9 @@
 		$("#btn-upload").on("click", function() {
 			if (($("#file1").val() == "" || $("#file1").val() == null)) {
 				alert("파일 첫 번째가 없습니다.");
-			} /* else if (($("#file2").val() == "" || $("#file2").val() == null)) {
-										alert("파일 두 번째가 없습니다.");
-									} */else {
-
+			 /* else if (($("#file2").val() == "" || $("#file2").val() == null)) {
+												alert("파일 두 번째가 없습니다."); } */
+			} else {
 				var form = new FormData(document.getElementById('uploadForm'));
 				$.ajax({
 					url : "${pageContext.request.contextPath}/roomInsert.gh", //컨트롤러 URL
@@ -28,10 +27,12 @@
 					contentType : false,
 					type : 'POST',
 					success : function(response) {
-						alert("success");
-						console.log(response);
+						alert("성공성공성공");
+						/* location.reload(); */
+						/* console.log(response); */
 					},
 					error : function(jqXHR) {
+						alert("실패했지만 올라가 ㅎㅎㅎㅎ");
 						alert(jqXHR.responseText);
 					}
 				});

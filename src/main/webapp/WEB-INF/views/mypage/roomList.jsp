@@ -6,6 +6,7 @@
 <html lang="ko">
 <head>
 
+
 </head>
 
 <body>
@@ -37,11 +38,11 @@
 		<tbody>
 		<c:forEach var="item" items="${room }" varStatus="status">
 		<tr>
-			<td>${item.name}</td>
+			<td>${item.name} </td>
 			<td>${item.max }</td>
 			<td>${item.price}</td>
 			<td>${item.no}</td>
-			<td><img src="./resources/upload/${image[status.count].filename}" width="100px" height="100px"/></td>
+			<td><img src="./resources/upload/${image[status.index-1].filename}" width="100px" height="100px"/></td>
 		</tr>
 		</c:forEach>
 		</tbody>
@@ -51,8 +52,7 @@
 						<table>
 							<tr>
 								<td>
-									<button id="btn-upload" type="submit"
-										onclick="location.href='roomList.gh'">방 등록</button> <br>
+									<button id="btn-upload" type="submit">방 등록</button> <br>
 								</td>
 							</tr>
 						</table>
