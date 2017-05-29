@@ -12,10 +12,11 @@ public class RoomVO {
 	private Date reg;
 	private ImageVO image;
 
+	private String hostno;
+
 	private String filename;
 
 	public int getNo() {
-
 		return no;
 	}
 
@@ -71,6 +72,14 @@ public class RoomVO {
 		this.image = image;
 	}
 
+	public String getHostno() {
+		return hostno;
+	}
+
+	public void setHostno(String hostno) {
+		this.hostno = hostno;
+	}
+
 	public String getFilename() {
 		return filename;
 	}
@@ -82,8 +91,7 @@ public class RoomVO {
 	@Override
 	public String toString() {
 		return "\nRoomVO [no=" + no + ", name=" + name + ", max=" + max + ", price=" + price + ", host_no=" + host_no
-				+ ", reg=" + reg + ", image=" + image + ", filename=" + filename + "]";
+				+ ", reg=" + reg + ", image=" + image + ", hostno=" + hostno + ", filename=" + filename + "]";
 	}
-
 
 }

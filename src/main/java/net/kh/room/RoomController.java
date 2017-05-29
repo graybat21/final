@@ -11,6 +11,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -39,7 +43,7 @@ public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-	String PATH = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
+	String PATH = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject
@@ -64,25 +68,19 @@ public class RoomController {
 			@RequestParam(value = "to", required = false) Date to) throws Exception {
 		ModelAndView mav = new ModelAndView("guesthouse/roomdetail");
 		List<RoomVO> roomList = roomService.getRoomInfoByHostNo(host_no);
+		List<RoomVO> bigImage = roomService.getRoomBigImage(host_no);
 		List<Integer> roomNo = null;
-		List<Integer> removeRoomNo = null;
+		List<Integer> removeRoomNo = new ArrayList<>();
 		logger.info("\nfrom : " + from.toString());
 		if (from != null) {
-			// List<HashMap<String, Object>> reserveList =
-			// roomService.getRoomAndReserveInfoByHostNo(host_no);
-			System.out.println("roomNo 받기전");
 			roomNo = roomService.getRoomNoInReservation(host_no);
-			logger.info(roomNo.toString());
-			System.out.println("roomNo 받은후");
-			System.out.println("검색으로 roomList 받기 전");
 
 			roomList = validSearch(roomList, roomNo, host_no, from, to);
-
-			System.out.println("검색후 roomList 받음");
 		}
 
 		mav.addObject("host_no", host_no);
 		mav.addObject("roomList", roomList);
+		mav.addObject("bigImage", bigImage);
 		return mav;
 	}
 
@@ -157,7 +155,6 @@ public class RoomController {
 	public String upload(MultipartHttpServletRequest request, RoomVO room, HttpSession session) throws Exception {
 
 		ModelAndView model = new ModelAndView();
-		System.out.println("1");
 		// board insert
 		roomService.roomInsert2(room);
 
@@ -188,10 +185,11 @@ public class RoomController {
 				imageService.imageInsert(image);
 
 				model.addObject("roomNumber", image.getRoom_no());
+				
+				
 			}
 
 		}
-		System.out.println("2");
 		return "redirect:roomList.gh";
 	}
 
@@ -201,15 +199,14 @@ public class RoomController {
 		// 각 방마다 대표이미지만 불러온다.
 		int h_no = (int) (request.getSession().getAttribute("session_host_no"));
 
-		System.out.println("3");
 		List<RoomVO> roomVO = roomService.getRoomInfoByHostNo(h_no); // room에있는no
 		List<ImageVO> image = imageService.getImageByHostNo(h_no); // 호스트넘버를
 																	// 가져와야해
-		System.out.println("4");
-		System.out.println(image.toString());
+		logger.info(image.toString());
 		// session.setAttribute("image", image);
 		model.addAttribute("room", roomVO);
 		model.addAttribute("image", image);
+		
 
 		return "mypage/roomList/방리스트";
 	}

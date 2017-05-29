@@ -60,7 +60,7 @@
 	<select id="adminRoomList" resultType="roomVO" parameterType="hashmap">
 		SELECT * FROM (
 			SELECT ROW_NUMBER() OVER (ORDER BY no DESC) RNUM, 
-				no, name, max, price, host_no, filename 
+				no, name, max, price, host_no hostno, filename 
 			FROM (
 				SELECT ss.room_no no, ss.name, ss.max, ss.price, ss.host_no, ss.filename 
 				FROM (

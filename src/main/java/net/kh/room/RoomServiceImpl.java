@@ -42,9 +42,21 @@ public class RoomServiceImpl implements RoomService {
 		return roomMapper.getRoomInfoByHostNo(no);
 	}
 
+//	@Override
+//	public List<HashMap<String, Object>> getRoomAndReserveInfoByHostNo(int host_no) throws Exception {
+//		return roomMapper.getRoomAndReserveInfoByHostNo(host_no);
+//	}
 	@Override
-	public List<HashMap<String, Object>> getRoomAndReserveInfoByHostNo(int host_no) throws Exception {
-		return roomMapper.getRoomAndReserveInfoByHostNo(host_no);
+	public List<RoomVO> getRoomBigImage(int no) throws Exception {
+		return roomMapper.getRoomBigImage(no);
+	}
+
+
+
+	@Override
+	public List<RoomVO> getRoomBigImage2(Map map) throws Exception {
+		// TODO Auto-generated method stub
+		return roomMapper.getRoomBigImage2(map);
 	}
 
 	@Override
@@ -58,9 +70,9 @@ public class RoomServiceImpl implements RoomService {
 		return roomMapper.getCountByDate(map);
 	}
 
-	@Override
-	public int getMaxByRoomNo(int no) throws Exception {
-		return roomMapper.getMaxByRoomNo(no);
-	}
+//	@Override
+//	public int getMaxByRoomNo(int no) throws Exception {
+//		return roomMapper.getMaxByRoomNo(no);
+//	}
 
 }

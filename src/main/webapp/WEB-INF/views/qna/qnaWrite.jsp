@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 
-<title>QnA문의 게'하!</title>
+
+
+
+
+
+<title>QnA문의 게하!</title>
 </head>
 <body class="pcweb" oncontextmenu="return false"
 	ondragstart="return false">
-
 	<div id="allWrap">
 		<script>
 			$(document)
@@ -107,14 +112,17 @@
 										<p>
 
 											<label><input class="ipt_inq_tel numOnly"
-												name="subject" placeholder="제목을 입력해주세요" maxlength="11">
+												name="subject" placeholder="제목을 입력해주세요" maxlength="40">
 											</label>
 									</div>
 									<div class="inq_input">
 										<textarea name="content" placeholder="문의하실 내용을 입력해주세요."></textarea>
+
 									</div>
 
-
+									<input type="hidden" name="num" value="${qnaVO.no}" /> <input
+										type="hidden" name="ref" value="${qnaVO.ref}" /> <input
+										type="hidden" name="restep" value="${qnaVO.restep}" />
 
 									<div class="inq_btn">
 										<input type="submit" class="btn_inq_reg" value="문의하기">

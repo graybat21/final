@@ -35,7 +35,7 @@ public class HostController {
 	private static final Logger logger = LoggerFactory.getLogger(HostController.class);
 
 	private String uploadPath = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
-
+	/*c70ae73c18dc4c838e0e6cd8b148d81b.jpg*/
 	@Inject
 	private JavaMailSenderImpl javaMailSenderImpl;
 
@@ -202,5 +202,10 @@ public class HostController {
 
 	private String getUuid() {
 		return UUID.randomUUID().toString().replaceAll("-", "");
+	}
+	
+	@RequestMapping("modifyMyInfoHost.gh")
+	public String modifyMyInfo() {
+		return "mypage/modifyMyInfoHost/기업회원 수정";
 	}
 }

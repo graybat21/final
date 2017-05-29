@@ -28,7 +28,7 @@
 	</select>
 
 	<select id="roomList" parameterType="int" resultType="roomVO">
-		select * from room where no = #{no}
+		select * from room where no = #{no} order by no
 	</select>
 	<select id="getRoomAndReserveInfoByHostNo" parameterType="int" resultType="hashmap">
 		SELECT 
@@ -49,12 +49,25 @@
 		AND r.host_no = #{host_no}
 	</select>
 	<select id="getRoomInfoByHostNo" parameterType="int" resultType="roomVO">
-		select * from room where host_no = #{no}
-		order by no
+			SELECT ss.room_no no, ss.name, ss.max, ss.price, ss.host_no hostno, ss.filename 
+				FROM (
+					SELECT min(i.no) no 
+					FROM image i INNER JOIN room r 
+					ON i.room_no = r.no 
+					WHERE r.host_no=#{no}
+					GROUP BY i.room_no
+				) s,
+				(
+				SELECT i.no no, i.ROOM_NO room_no, i.FILENAME filename, r.max max, r.name name, r.price price, r.host_no host_no 
+				FROM image i INNER JOIN room r 
+				ON i.room_no = r.no 
+				WHERE r.host_no =#{no}
+				) ss
+			WHERE s.no = ss.no ORDER BY ss.room_no DESC
 	</select>
-	<select id="getMaxByRoomNo" parameterType="int" resultType="int">
+	<!-- <select id="getMaxByRoomNo" parameterType="int" resultType="int">
 		select max from room where no = #{no}
-	</select>
+	</select> -->
 	
 	<select id="getCountByDate" parameterType="hashmap" resultType="hashmap">
 		SELECT 
@@ -91,11 +104,17 @@
     		AND no = #{room_no}
     		) ss
 	</select>
-	<!-- 방번호에 대한것만 가져오자나여...
-	방번호로 가져오면 안되고
-	기업회원에 대한걸로 가져와야 하자나여..
-	이걸로 쿼리를 짜야해여 -->
 	
+	<!-- 방 상세보기 이미지들 불러오기 -->
+	<select id="getRoomBigImage" parameterType="int" resultType="roomVO">
+		SELECT * FROM image i INNER JOIN room r ON i.room_no = r.no 
+		WHERE r.host_no=#{no}  ORDER BY i.no DESC		
+	</select>
+	
+	<select id="getRoomBigImage2" parameterType="java.util.HashMap" resultType="roomVO">
+		SELECT * FROM image i INNER JOIN room r ON i.room_no = r.no 
+		WHERE r.host_no=#{no} and i.room_no = #{room_no} ORDER BY i.no DESC		
+	</select>
 	
 </mapper>
 	
