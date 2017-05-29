@@ -15,4 +15,8 @@ public interface RoomDao {
 	RoomVO roomList(int no) throws Exception;
 	
 	List<RoomVO> getRoomInfoByHostNo(int no)throws Exception;
+
+	List<RoomVO> getRoomBigImage(int no)throws Exception;
+	
+	List<RoomVO> getRoomBigImage2(Map map)throws Exception;
 }

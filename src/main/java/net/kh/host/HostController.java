@@ -203,4 +203,9 @@ public class HostController {
 	private String getUuid() {
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
+	
+	@RequestMapping("modifyMyInfoHost.gh")
+	public String modifyMyInfo() {
+		return "mypage/modifyMyInfoHost/기업회원 수정";
+	}
 }

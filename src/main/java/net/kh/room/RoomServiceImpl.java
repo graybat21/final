@@ -51,6 +51,18 @@ public class RoomServiceImpl implements RoomService {
 		return roomMapper.getRoomInfoByHostNo(no);
 	}
 
+	@Override
+	public List<RoomVO> getRoomBigImage(int no) throws Exception {
+		return roomMapper.getRoomBigImage(no);
+	}
+
+
+
+	@Override
+	public List<RoomVO> getRoomBigImage2(Map map) throws Exception {
+		// TODO Auto-generated method stub
+		return roomMapper.getRoomBigImage2(map);
+	}
 
 
 	

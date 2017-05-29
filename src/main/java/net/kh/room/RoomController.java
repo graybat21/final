@@ -1,8 +1,10 @@
 package net.kh.room;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -28,7 +30,7 @@ public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-	String PATH = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
+	String PATH = "C:\\java_eclipse\\work\\guestHi\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject
@@ -50,12 +52,19 @@ public class RoomController {
 	// json 데이터로 응답을 보내기 위한r ---------여기ㅣㅣㅣㅣㅣㅣㅣㅣㅣ수정
 	public ModelAndView tabRoomDetail(@RequestParam(value = "host_no") int host_no) throws Exception {
 		ModelAndView mav = new ModelAndView("guesthouse/roomdetail");
-		System.out.println("얍얍" + host_no);
+		System.out.println("얍얍얍얍" + host_no);
+		/*Map map = new HashMap();
+		map.put("host_no", host_no);
+		map.put("room_no", room_no);*/
 		List<RoomVO> roomList = roomService.getRoomInfoByHostNo(host_no);
+		
+		List<RoomVO> bigImage = roomService.getRoomBigImage(host_no);
+		
 		System.out.println(roomList.toString() + "얍얍gm");
 
 		mav.addObject("host_no", host_no);
 		mav.addObject("roomList", roomList);
+		mav.addObject("bigImage", bigImage);
 		return mav;
 	}
 
