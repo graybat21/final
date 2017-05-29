@@ -1,6 +1,7 @@
 package net.kh.host;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public interface HostService {
 
@@ -12,5 +13,7 @@ public interface HostService {
 	public boolean hostAuthOk(HostVO host) throws Exception; // ����
 
 	public int hostGetCurrentNo() throws Exception; // ���� no ��ȣ ���ϱ�
+	
+	public String deletePwChk(Map map) throws Exception;
 
 }

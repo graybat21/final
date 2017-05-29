@@ -69,7 +69,7 @@
 										<th>이메일</th>
 										<td>
 											${mem.email == null ? host.email : mem.email }				
-											<a class="btn_logout" href="deleteform.gh">회원탈퇴</a>
+											<a class="btn_logout" href="memdeleteform.gh">회원탈퇴</a>
 										</td>
 									</tr>
 									
