@@ -30,9 +30,66 @@
 	<select id="roomList" parameterType="int" resultType="roomVO">
 		select * from room where no = #{no}
 	</select>
+	<select id="getRoomAndReserveInfoByHostNo" parameterType="int" resultType="hashmap">
+		SELECT 
+  			r.no, r.max,  
+  			re.count, re.checkin, re.checkout
+		FROM 
+			room r, reservation re 
+		WHERE 
+			re.room_no = r.no 
+		and r.host_no = re.host_no 
+		and r.host_no = #{host_no}
+	</select>
+	<select id="getRoomNoInReservation" parameterType="int" resultType="Integer">
+		SELECT distinct r.no 
+		FROM room r, reservation re
+		WHERE re.room_no = r.no 
+		AND r.host_no = re.host_no 
+		AND r.host_no = #{host_no}
+	</select>
 	<select id="getRoomInfoByHostNo" parameterType="int" resultType="roomVO">
 		select * from room where host_no = #{no}
 		order by no
+	</select>
+	<select id="getMaxByRoomNo" parameterType="int" resultType="int">
+		select max from room where no = #{no}
+	</select>
+	
+	<select id="getCountByDate" parameterType="hashmap" resultType="hashmap">
+		SELECT 
+			distinct s.no, s.max, sumcount
+		FROM
+			(SELECT 
+				* 
+			FROM    
+    			(SELECT 
+  					r.no, r.max, re.count, re.checkin, re.checkout
+				FROM 
+					room r, reservation re 
+				WHERE
+					re.room_no = r.no 
+				AND r.host_no = re.host_no 
+				and r.host_no = #{host_no}
+				)
+			WHERE #{d} BETWEEN checkin AND checkout
+    		AND no = #{room_no}
+    		) s,
+			(SELECT 
+				sum(count) sumcount 
+			FROM    
+    			(SELECT 
+  					r.no, r.max, re.count, re.checkin, re.checkout
+				FROM 
+					room r, reservation re 
+				WHERE 
+					re.room_no = r.no 
+				AND r.host_no = re.host_no 
+				AND r.host_no = #{host_no}
+				)
+			WHERE #{d} BETWEEN checkin AND checkout
+    		AND no = #{room_no}
+    		) ss
 	</select>
 	<!-- 방번호에 대한것만 가져오자나여...
 	방번호로 가져오면 안되고

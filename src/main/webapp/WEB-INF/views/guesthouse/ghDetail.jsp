@@ -277,19 +277,40 @@
     });
     
 </script>
+<script>
+
+function searchRoom(){
+/* var from = document.getElementById("datepicker1").value;
+var to = document.getElementById("datepicker2").value;
+ */
+ var from = $("#datepicker1").val();
+ var to = $("#datepicker2").val();
+ alert(from);
+	alert(to);
+	tabView(1);
+}
+</script>
 <div class="reserve_select">
 	<div class="row">
-				<div class="date">
+		<div class="date">
 			<div>
-				<span><input id="datepicker1" class="datepicker picker__input" placeholder="" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text"><input name="date1" value="날짜" type="hidden"></span>
+				<span>
+				<input id="datepicker1" class="datepicker picker__input" placeholder="" 
+				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text">
+				<input id="from" name="from" value="from" type="hidden">
+				</span>
 			</div>
 		</div>
 		<div class="date">
 			<div>
-				<span><input id="datepicker2" class="datepicker picker__input" value="" readonly="" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text"><input name="date2" value="날짜" type="hidden"></span>
+				<span>
+				<input id="datepicker2" class="datepicker picker__input" value="" readonly="" 
+				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text">
+				<input id="to" name="to" value="to" type="hidden">
+				</span>
 			</div>
 		</div>
-			<a id="btn_reservego" class="btn_reservego">방 검색</a>
+			<a id="btn_reservego" class="btn_reservego" href="javascript:searchRoom()">방 검색</a>
 		</div>
 </div>
 <!-- Menu (search.js 138참고 )-->
@@ -306,13 +327,16 @@ $(document).ready(function(){
 
 	function tabView(tab) {
 		var host_no = $("#host_no").val();
+		var from = $("#datepicker1").val();
+		 var to = $("#datepicker2").val();
+		 
 		$(".search_menu *").removeClass('on');
 
 		if(tab == 1){
 			$.ajax({
 				url:"/GuestHi/tabRoomDetail.gh",
 				type: "post",
-				data: {host_no: host_no},
+				data: {host_no: host_no, from: from, to: to},
 				success: function(data){
 					$(".ad_info_wrap").html(data);
 				},

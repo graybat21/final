@@ -148,7 +148,7 @@
 		var jssor_1_options = {
 			$AutoPlay : 1,
 			/* 뀨 */
-			$SlideDuration : 800,
+			$SlideDuration : 8000000000,
 			$SlideEasing : $Jease$.$OutQuint,
 			$CaptionSliderOptions : {
 				$Class : $JssorCaptionSlideo$,

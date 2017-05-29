@@ -84,8 +84,8 @@ public class MainController {
 			checkout = (Date) reserve.get(i).get("CHECKOUT");
 			checkin.setHours(13);
 			checkout.setHours(12);
-			if (((Date) reserve.get(i).get("CHECKOUT")).before(from)
-					|| ((Date) reserve.get(i).get("CHECKIN")).after(to)) {
+			if (checkout.before(from) || checkin.after(to)) {
+				
 			} else {
 				System.out.println("날짜 불만족 삭제" + reserve.get(i).get("NAME"));
 				reserve.remove(i);
