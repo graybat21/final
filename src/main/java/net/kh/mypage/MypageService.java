@@ -1,5 +1,10 @@
 package net.kh.mypage;
 
-public interface MypageService {
+import java.util.HashMap;
+import java.util.List;
 
+import net.kh.member.MemberVO;
+
+public interface MypageService {
+	
 }

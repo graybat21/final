@@ -14,9 +14,11 @@ public interface MemberService {
 
 	public int emailCheck(String email) throws Exception;
 	
-	public Object modifyMyInfo(MemberVO member) throws Exception; //회원정보수정
+	public Object modify(MemberVO member) throws Exception; //회원정보수정
 	
 	public String deletePwChk(Map map) throws Exception;
+	
+	public MemberVO selectMemberByNo(int no) throws Exception;
 	
 	// public MemberVO emailFindByName(MemberVO member); // 占싱몌옙占쏙옙찾占쏙옙
 	//
