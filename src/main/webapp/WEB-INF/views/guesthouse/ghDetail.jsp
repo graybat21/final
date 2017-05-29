@@ -335,6 +335,7 @@ $(document).ready(function(){
 					$(".ad_info_wrap").html(data);
 				},
 				error: function(data){
+					alert("얍얍")
 					alert(data.status);//404 , 500 , 400
 					alert(data.readyState);//3 = 일부분 응답, 4= 통신 2=보넀는데 응답이 없다 1=요청이안간다
 				}

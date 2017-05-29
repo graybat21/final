@@ -44,7 +44,7 @@ public class ReserveController {
 		mav.addObject(member);
 		
 		int host_no = 21;
-		RoomVO room = (RoomVO) roomService.getRoomInfoByHostNo(host_no);
+		List<RoomVO> room = roomService.getRoomInfoByHostNo(host_no);
 		mav.addObject(room);
 		return mav;
 	}

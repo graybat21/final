@@ -563,8 +563,7 @@ function searchSubmit(){
 									<div class="panel-heading">
 										<ul class="nav nav-tabs">
 
-											<li><a href="#tabhotel" data-toggle="tab"> <i
-													class="fa fa-hotel"></i>GuestHouse
+											<li><a href="#tabhotel" data-toggle="tab"> GuestHouse
 											</a></li>
 
 										</ul>
@@ -681,7 +680,7 @@ function searchSubmit(){
 
 	<c:forEach items="${list}" var="list">
 		<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent">
-			<img src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}"	width="330" 
+			<img src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}" width="330" height="330" 
 			class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'" />
 			<h4 class="ngc">
 				<strong>${list.NO}/${list.NAME}<%-- ${list.NO} --%></strong>
