@@ -139,7 +139,8 @@ body.modal-open {
 .popup-slider-for,
 .main-image {
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 60px;
+  padding-top: 60px;
 }
 
 .popup-slider-for .slick-slide img {
@@ -150,7 +151,7 @@ body.modal-open {
 
 .popup-slider-nav .thumbnail-image {
   position: relative;
-  margin: 0 5px;
+  margin: 20px 20px;
   cursor: pointer;
 }
 
@@ -231,6 +232,7 @@ body.modal-open {
 
 .close-btn {
   background-color: transparent;
+  padding-top: 100px;
   color: #fff;
   position: absolute;
   right: 30px;
@@ -300,7 +302,7 @@ body.modal-open {
 									<div class="img_wrap imgLiquidFill">
 										<span class="thumb_none"></span>
 				
-										<img src="http://placehold.it/588x300" style="display: block;">
+										<img src="./resources/upload/${item.filename }" style="display: block;">
 										<!-- <img src="http://placehold.it/588x300" data-src="http://placehold.it/588x300" class="" data-original="http://placehold.it/588x300" style="display: block;"> -->
 					
 									</div>
@@ -317,11 +319,38 @@ body.modal-open {
 								</div>
 
 								</a>
+							
+							
+								
+<div class="modal popup-image-gallery" id="popup-image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="btn close-btn" title="Close" data-dismiss="modal" aria-label="Close">&#10006;</span></button>
+        <div class="popup-slider-for">
+          
+          <div class="main-image">
+            <img src="./resources/upload/${item.filename }"/>
+          </div>
+          
+        </div>
+			<c:forEach var="image" items="${bigImage }">
+        <h5 class="pagingInfo"></h5>
+        <div class="popup-slider-nav hidden-xs">
+          <div class="thumbnail-image">
+            <img src="./resources/upload/${image.filename }"/>
+          </div>
+          
+			</c:forEach>				
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
 						
 							</li>
 							</c:forEach>
-							
-							
 						</ul>
 					</div>
 				</div>
