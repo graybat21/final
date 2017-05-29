@@ -101,15 +101,21 @@ public class QnaController {
 
 	// 글쓰기
 	@RequestMapping(value = "/qnaWrite.gh", method = RequestMethod.GET)
-	public ModelAndView qnaWriteBoy(QnaVO qnaVo) throws Exception {
+	public ModelAndView qnaWriteBoy(QnaVO qnaVO) throws Exception {
 		mav.setViewName("qna/qnaWrite/게'하 QnA문의하기");
+		mav.addObject("qnaVO", qnaVO); //추가
 		return mav;
 	}
 
 	@RequestMapping(value = "/qnaWrite.gh", method = RequestMethod.POST)
 	public String qnaWriteMan(QnaVO qnaVO) throws Exception {
+		int newRef = this.qnaService.refMax();
+		qnaVO.setRef(newRef);
+		
+		
 		qnaService.qnaWrite(qnaVO);
 		return "redirect:/qnaList.gh";
+		
 	}
 
 	// 상세보기
@@ -169,6 +175,15 @@ public class QnaController {
 		logger.info(qnaVO.toString());
 		qnaService.qnaRepl(qnaVO);
 		mav.setViewName("redirect:/qnaList.gh");
+		return mav;
+	}
+	
+	//추가
+	@RequestMapping(value = "updateRef.gh")
+	public ModelAndView qnaRestep(QnaVO qnaVO, int no) throws Exception {
+
+		mav.setViewName("redirect:/qnaList.gh");
+
 		return mav;
 	}
 
