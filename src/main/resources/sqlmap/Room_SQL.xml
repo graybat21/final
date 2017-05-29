@@ -28,7 +28,7 @@
 	</select>
 
 	<select id="roomList" parameterType="int" resultType="roomVO">
-		select * from room where no = #{no}
+		select * from room where no = #{no} order by no
 	</select>
 	<select id="getRoomInfoByHostNo" parameterType="int" resultType="roomVO">
 		<!-- select * from room where host_no = #{no}

@@ -27,4 +27,9 @@ public interface QnaService {
 	int selectListCntByName(String name) throws Exception;
 	//답변글쓰기
 	int qnaRepl(QnaVO qnaVO) throws Exception;
+	
+	
+	int updateRef(QnaVO qnaVO) throws Exception;
+	
+	int refMax() throws Exception;
 }

@@ -85,7 +85,6 @@ public class RoomController {
 	public String upload(MultipartHttpServletRequest request, RoomVO room, HttpSession session) throws Exception {
 
 		ModelAndView model = new ModelAndView();
-		System.out.println("1");
 		// board insert
 		roomService.roomInsert2(room);
 
@@ -116,10 +115,11 @@ public class RoomController {
 				imageService.imageInsert(image);
 
 				model.addObject("roomNumber", image.getRoom_no());
+				
+				
 			}
 
 		}
-		System.out.println("2");
 		return "redirect:roomList.gh";
 	}
 
@@ -129,15 +129,14 @@ public class RoomController {
 		// 각 방마다 대표이미지만 불러온다.
 		int h_no = (int) (request.getSession().getAttribute("session_host_no"));
 
-		System.out.println("3");
 		List<RoomVO> roomVO = roomService.getRoomInfoByHostNo(h_no); // room에있는no
 		List<ImageVO> image = imageService.getImageByHostNo(h_no); // 호스트넘버를
 																	// 가져와야해
-		System.out.println("4");
-		System.out.println(image.toString());
+		logger.info(image.toString());
 		// session.setAttribute("image", image);
 		model.addAttribute("room", roomVO);
 		model.addAttribute("image", image);
+		
 
 		return "mypage/roomList/방리스트";
 	}

@@ -18,7 +18,7 @@
 	<h3>마이페이지</h3>
 	<ul>
 		<li><a href="myReserveList.gh">예약내역</a></li>
-		<li><a href="modifyMyInfo.gh">내정보수정</a></li>
+		<li><a href="modifyMyInfoHost.gh">내정보수정</a></li>
 	</ul>
 	<h3>방관리</h3>
 	<ul>

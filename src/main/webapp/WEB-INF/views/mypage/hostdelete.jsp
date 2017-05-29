@@ -55,13 +55,8 @@
 								<ul>
 									<li><span>1.</span>현재 사용하고 계신 계정 정보는 복구가 불가합니다.</li>
 									<li><span>2.</span>탈퇴후 회원정보 및 개인 서비스 이용 기록은 모두 삭제됩니다.<br>(업체 혜택받기 내역, 포인트 적립내역, 쿠폰 적립내역, 메시지함, 친구초대 내역)</li>
-									<li>
-										<span>3.</span>적립된 포인트는 모두 소멸됩니다. 소멸된 포인트는 어떠한 경우에도 복구 할 수 없습니다.
-										<!-- 잔여포인트-->
-										<div><b>잔여포인트</b>0원</div>
-									</li>
 <!-- 									<li><span>4.</span>탈퇴 후, 이용후기 및 게시판형 서비스에 등록하신 게시물은 삭제되지 않고 유지됩니다.<br/>     게시물 삭제를 원하시는 경우 반드시 삭제 후 회원탈퇴를 진행해 주세요.</li> -->
-									<li><span>4.</span>탈퇴후, 기존 가입 휴대기기로 재 가입 시 첫 혜택을 받을 수 없습니다. (신규 회원 쿠폰, 첫 혜택받기 1000 포인트, 첫 리뷰 작성 1000 포인트 등)</li>
+									<li><span>3.</span>탈퇴후, 기존 가입 휴대기기로 재 가입 시 첫 혜택을 받을 수 없습니다. (신규 회원 쿠폰, 첫 혜택받기 1000 포인트, 첫 리뷰 작성 1000 포인트 등)</li>
 								</ul>
 							</div>
 
@@ -71,11 +66,11 @@
 								<b>본인확인 및 보안을 위해 비밀번호 확인을 해주세요.</b>
 								<div class="pw_box">
 									<input id="pass" placeholder="비밀번호를 입력해주세요" type="password">
-									<a id="passChk2" href="javascript:;" onclick='return checkdeletechk("${sessionScope.session_mem_no}")'>확인</a>
+									<a id="passChk2" href="javascript:;" onclick='return checkdeletechk("${sessionScope.session_host_no}")'>확인</a>
 								</div>
 							</div>
 							<script type="text/javascript">
-							function checkdeletechk(session_mem_no){
+							function checkdeletechk(session_host_no){
 								var pass = $("#pass").val();
 								
 								if ( $('#pass').val() == '' )///
@@ -87,14 +82,14 @@
 								
 								
 									$.ajax({
-										url: 'chkPW.gh',
+										url: 'hostchkPW.gh',
 										type: 'POST',
 										dataType: 'text',
-										data: { password: pass, session_mem_no: session_mem_no },
+										data: { password: pass, session_host_no: session_host_no },
 										success: function(data) {
 											if(data=='1'){
 												alert("확인되었습니다.");
-												str = '<a id="userOutBtn" href="delete.gh?no='+ session_mem_no +'" onclick="return godelete()">탈퇴하기</a>';
+												str = '<a id="userOutBtn" href="hostdelete.gh?no='+ session_host_no +'" onclick="return godelete()">탈퇴하기</a>';
 												$(".btn_center").html(str);
 												agree = '<input id="argeeBtn" value="agree" type="checkbox">유의사항을 모두 확인하였으며, 해당 내용에 동의합니다.';
 												$(".agree > label").html(agree);
