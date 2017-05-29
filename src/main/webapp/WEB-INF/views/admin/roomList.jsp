@@ -75,7 +75,7 @@ td {
 					<c:forEach items="${roomList }" var="room">
 						<tr height="50px">
 							<td>${room.no }</td>
-							<td>${room.host_no }</td>
+							<td>${room.hostno }</td>
 							<td><img src="./resources/upload/${room.filename }" width="100px" height="100px"/></td>
 							<td>${room.name }</td>
 							<td>${room.max }</td>

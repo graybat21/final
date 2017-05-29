@@ -176,7 +176,7 @@
 									// 주소로 좌표를 검색합니다
 									geocoder
 											.addr2coord(
-													'서울시 마포구 연남로1길 37${session.addr1}',
+													'${hostinfo.addr1 }',
 													function(status, result) {
 
 														// 정상적으로 검색이 완료됐으면 
@@ -196,7 +196,7 @@
 															// 인포윈도우로 장소에 대한 설명을 표시합니다
 															var infowindow = new daum.maps.InfoWindow(
 																	{
-																		content : '<div style="width:150px;text-align:center;padding:6px 0;">${sessionScope.name}</div>'
+																		content : '<div style="width:150px;text-align:center;padding:6px 0;">${hostinfo.name}</div>'
 																	});
 															infowindow
 																	.open(map,

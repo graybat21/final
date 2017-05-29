@@ -1,6 +1,7 @@
 package net.kh.room;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface RoomService {
@@ -14,4 +15,7 @@ public interface RoomService {
 	
 	public List<RoomVO> getRoomInfoByHostNo(int no)throws Exception;
 	
+	public List<RoomVO> getRoomBigImage(int no)throws Exception;
+	
+	public List<RoomVO> getRoomBigImage2(Map map)throws Exception;
 }

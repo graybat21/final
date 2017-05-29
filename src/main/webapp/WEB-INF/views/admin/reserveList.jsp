@@ -88,7 +88,7 @@ td {
 									<c:param name="no" value="${r.no }" />
 								</c:url>
 								
-							<a href="${deleteReserve }"><input type="button" value="탈 퇴" onclick="return deleteReserve()"></a></td>
+							<a href="${deleteReserve }"><input type="button" value="삭 제" onclick="return deleteReserve()"></a></td>
 						</tr>
 					</c:forEach>
 

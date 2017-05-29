@@ -50,6 +50,10 @@
 		WHERE 
 			SEQUENCE_NAME='SEQ_HOST_NO'	
 	</select>
+	
+	<select id="deletePwChk" resultType="String" parameterType="java.util.Map">
+	select pw from host where no = #{session_host_no}
+	</select>
 
 </mapper>
 
