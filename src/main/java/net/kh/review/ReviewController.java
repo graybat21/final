@@ -73,6 +73,9 @@ public class ReviewController {
 	public ModelAndView writeReviewComment(ReviewVO review) throws Exception {
 		ModelAndView mav = new ModelAndView("forward:/ghDetail.gh?tab=3");
 		logger.info(review.toString());
+		
+		// 현재 선택한 리뷰글의 글번호를 가져워서 reviewVO 에 담아줘야 한다.
+		
 		reviewService.updateReviewCommentByReviewNo(review);
 		// mav.addObject("host_no", review.getHost_no());
 

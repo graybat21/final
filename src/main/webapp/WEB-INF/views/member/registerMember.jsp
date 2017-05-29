@@ -64,7 +64,6 @@
             <h3>이메일 회원가입</h3>
             <div class="user_cont_wrap">
             <form class="form-horizontal" action="${pageContext.request.contextPath}/join/joinA.gh" method="post">
-            
                <div class="form-group"><div class="control-group">
                   <label class="col-sm-3 control-label">Email</label>
                   <div class="col-sm-6"><div class="controls">

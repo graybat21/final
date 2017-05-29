@@ -108,7 +108,7 @@
 		<!-- Menu (search.js 138참고 )-->
 	<script>
 	function insertReplyComment(no, hostno) {
-		$(".ad_reply_comment").load("insertReviewComment.gh", {hostno : hostno, no : no} );
+		$("#ad_reply_comment_"+no).load("insertReviewComment.gh", {hostno : hostno, no : no} );
 	//★	
 		/* $.ajax({
 			url:"/GuestHi/writeReplyComment.gh",
@@ -199,7 +199,7 @@
 								</li>
 								
 								
-								<div class="ad_reply_comment"></div>
+								<div class="ad_reply_comment" id="ad_reply_comment_${item.NO }"></div>
 								
 								
 							<c:if test="${item.C_CONTENT != null }">

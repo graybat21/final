@@ -1,5 +1,7 @@
 package net.kh.member;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,4 +47,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.modifyMyInfo(member);
 	}
 
+	@Override
+	public String deletePwChk(Map map) throws Exception {
+		return memberMapper.deletePwChk(map);
+	}
+
+	
 }

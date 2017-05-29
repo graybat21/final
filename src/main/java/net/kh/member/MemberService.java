@@ -1,5 +1,7 @@
 package net.kh.member;
 
+import java.util.Map;
+
 public interface MemberService {
 
 	public MemberVO memberLogin(MemberVO member) throws Exception; // 占싸깍옙占쏙옙
@@ -13,6 +15,8 @@ public interface MemberService {
 	public int emailCheck(String email) throws Exception;
 	
 	public Object modifyMyInfo(MemberVO member) throws Exception; //회원정보수정
+	
+	public String deletePwChk(Map map) throws Exception;
 	
 	// public MemberVO emailFindByName(MemberVO member); // 占싱몌옙占쏙옙찾占쏙옙
 	//

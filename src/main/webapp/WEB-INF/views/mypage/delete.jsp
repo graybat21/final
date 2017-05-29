@@ -7,62 +7,20 @@
 
 <body class="pcweb" oncontextmenu="return false" ondragstart="return false">
 
-
 <div id="allWrap">
 
 	<script type="text/javascript">
-	$(document).ready(function(){
+	function godelete(){
 
-		//탈퇴하기
-		$('#userOutBtn').click(function(e){
-			e.preventDefault();
-
-			if($('#password_chk').val() != 'Y'){
-				alert('비밀번호 확인을 해주세요.');
-				return false;
-			}
-						
-			if($('#argeeBtn:checked').val() != 'argee'){
+		if($('#argeeBtn:checked').val() != 'agree'){
 				alert('탈퇴 유의사항에 동의해 주세요.');
 				return false;
 			}
 
-			if(!confirm('정말 탈퇴하시겠습니까?\n탈퇴 후, 재가입시 제한을 받을 수 있습니다.')) return false;
-
-			var rs_type = $('.reason input[name=reason_type]:checked').val();
-			var rs_txt = $('.reason input[name=reason_type]:checked').parent().text();
-
-			if(rs_type == '6'){
-				rs_txt = $('#reason_txt').val();
+			if(confirm('정말 탈퇴하시겠습니까?\n탈퇴 후, 재가입시 제한을 받을 수 있습니다.') == false){
+				return false;
 			}
-
-			$.ajax({
-				type: 'POST',
-				async: false,
-				cache: false,
-				url: '/mypage/userOut',
-				dataType: 'json',
-				data: { 
-					'reason_type' : rs_type
-					,'reason_txt' : rs_txt
-				},
-				success: function(data) {
-					if(data.rtv == false){
-						alert(confirm_msg['ajax_fail']);
-						location.reload(true);
-					}else {
-						alert('탈퇴처리가 완료되었습니다.');
-						location.replace('/user/logout');
-					}
-					
-				},
-				error: function(e) {
-					alert(confirm_msg['ajax_fail']);
-					location.reload(true);
-				}
-			});
-		});
-	});
+	}
 	</script>
 	
 	<!-- (공통)contentsWrap -->
@@ -71,8 +29,6 @@
 		
 		<!-- 마이페이지 wrap -->
 		<div class="my_allwrap">
-			
-			
 <!-- 			<div class="bg_left"></div>
 			<div class="bg_right"></div> -->
 			
@@ -114,64 +70,54 @@
 							<div class="m_pw">
 								<b>본인확인 및 보안을 위해 비밀번호 확인을 해주세요.</b>
 								<div class="pw_box">
-									<input id="password" placeholder="비밀번호를 입력해주세요" type="password">
-									<input id="password_chk" value="N" type="hidden">
-									<a id="passChk" href="">확인</a>
+									<input id="pass" placeholder="비밀번호를 입력해주세요" type="password">
+									<a id="passChk2" href="javascript:;" onclick='return checkdeletechk("${sessionScope.session_mem_no}")'>확인</a>
 								</div>
 							</div>
 							<script type="text/javascript">
-							$(document).ready(function(){
-								//비밀번호 확인
-								$('#passChk').click(function(e) {
-									e.preventDefault();
-									if ( $('#password').val() == '' )
-									{
-										alert('비밀번호를 입력해주세요.');
-										$('#password').focus();
-										return;
-									}
+							function checkdeletechk(session_mem_no){
+								var pass = $("#pass").val();
+								
+								if ( $('#pass').val() == '' )///
+								{
+									alert('비밀번호를 입력해주세요.');
+									$('#password_chk2').focus();
+									return false;
+								}
+								
 								
 									$.ajax({
+										url: 'chkPW.gh',
 										type: 'POST',
-										async: false,
-										cache: false,
-										url: '/mypage/chkPW',
-										dataType: 'json',
-										data: { 'upw': $('#password').val() },
+										dataType: 'text',
+										data: { password: pass, session_mem_no: session_mem_no },
 										success: function(data) {
-											//console.log(data);
-											if ( data.rtv == true )
-											{
-												alert('확인되었습니다.');
-												$('#password_chk').val('Y');
-
-												$('#passChk').hide();
-												$('#password').attr('readonly',true);
+											if(data=='1'){
+												alert("확인되었습니다.");
+												str = '<a id="userOutBtn" href="delete.gh?no='+ session_mem_no +'" onclick="return godelete()">탈퇴하기</a>';
+												$(".btn_center").html(str);
+												agree = '<input id="argeeBtn" value="agree" type="checkbox">유의사항을 모두 확인하였으며, 해당 내용에 동의합니다.';
+												$(".agree > label").html(agree);
+											}else if(data=='0'){
+												alert("비밀번호가 일치하지 않습니다.");
+												$(".btn_center").html("");
 											}
-											else
-											{
-												alert('비밀번호가 일치하지 않습니다.');
-												$('#password').focus();
-												return;
-											}
+											
 										},
 										error: function(e) {
-											console.log(e);
+											alert(e.status);//404경로 500오타나  400 값 (일반적으로 파라미터나 요청값) 200//성공 문제없다 
+											alert(e.readyState);//1 = 요청 실패? 2=요청 보넀는데 응답 없다 3= 지금 응답 일부분 받고 끝  4= 응답전부다받았다
 											alert(confirm_msg['ajax_fail']);
 											//location.reload(true);
 										}
 									});
-								});
-							});
+								}
 							</script>
 							<div class="agree">
 								<label>
-									<input id="argeeBtn" value="argee" type="checkbox">유의사항을 모두 확인하였으며, 해당 내용에 동의합니다.
 								</label>
 							</div>
-
 							<div class="btn_center">
-								<a id="userOutBtn" href="">탈퇴하기</a>
 							</div>
 
 						</div>
@@ -186,7 +132,11 @@
 		</div>
 		<!-- //마이페이지 wrap -->
 		
-		
+		<!-- 
+		비밀번호 틀리면 0 주고 비밀번호 일치하면 1을 주고
+		0이면 틀렸다고 알림창, 탈퇴버튼 비활성화
+		1이면 확인되었습니다.알림창, 탈퇴버튼 활성화
+		 -->
 		
 	</article>
 	<!-- //(공통)contentsWrap -->

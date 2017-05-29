@@ -4,7 +4,6 @@
 <html lang="ko">
 <head>
 
-
 </head>
 <body>
 	<div class="my_wrap row row_cont">
@@ -19,4 +18,5 @@
 			</div>
 		</article>
 	</div>
+	
 </html>
