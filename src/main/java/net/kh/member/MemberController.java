@@ -60,6 +60,7 @@ public class MemberController {
 			mav.setViewName("redirect:/joinChoice.gh");
 			return mav;
 		}
+		
 		String encryptPassword = passwordEncoder.encode(member.getPw());
 		member.setPw(encryptPassword);
 
@@ -109,10 +110,6 @@ public class MemberController {
 //		return mav;
 //	}
 	
-	@RequestMapping("modifyMyInfo.gh")
-	public String modifyMyInfo() {
-		return "mypage/modifyMyInfo/개인회원 수정";
-	}
 
 	@RequestMapping(value = "emailCheck.gh", method = RequestMethod.POST)
 	@ResponseBody
