@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.kh.admin.AdminService;
 import net.kh.member.MemberService;
+import net.kh.member.MemberVO;
 
 /**
  * Handles requests for the application home page.
@@ -50,16 +51,41 @@ public class MypageController {
 
 	}
 	
+	@RequestMapping("modifyMyInfo.gh")
+	public String modifyMyInfo() {
+		logger.info("modifyMyInfo - modifyMyInfo.gh");
+		return "mypage/modifyMyInfo/개인회원 수정";
+	}
+	
+	@RequestMapping("modify.gh")
+	public ModelAndView modify(@RequestParam("no") int no, @RequestParam("password") String password,@RequestParam("tel") String tel,HttpSession session) throws Exception {
+			logger.info("modify - modify.gh");
+			String encryptPassword = passwordEncoder.encode(password);
+//			System.out.println(" 변경할 비밀번호 ? "+password);
+//			System.out.println(" 변경할 비밀번호 ? "+encryptPassword);
+			MemberVO member = memberService.selectMemberByNo(no);
+			member.setPw(encryptPassword);
+			member.setPhone(tel);
+			memberService.modify(member);
+			
+			member = memberService.selectMemberByNo(no);
+			session.removeAttribute("mem");
+			session.setAttribute("mem", member);
+			
+			mav.setViewName("redirect:/modifyMyInfo.gh");
+			return mav;
+	}
+	
 	@RequestMapping("/deleteform.gh")
 	public String deleteform(){
-		logger.info("회원탈퇴하기");
-		return "mypage/delete/회원탈퇴";
+		logger.info("deleteForm.gh - log");
+		return "mypage/delete/회원 탈퇴";
 	}
 	
 	@RequestMapping("/delete.gh")
 	public ModelAndView delete(@RequestParam("no") int no,HttpSession session) throws Exception{
-		session.invalidate();//로그아웃 처리
-		adminService.deleteMember(no);//탈퇴 처리
+		session.invalidate();//세션초기화
+		adminService.deleteMember(no);//삭제
 		mav.setViewName("redirect:/main.gh");
 		return mav;
 	}
@@ -74,7 +100,7 @@ public class MypageController {
 		Map<String, Object> map = new HashMap();
 		map.put("session_mem_no",session_mem_no);
 		
-		//비밀번호 일치하면 1, 일치하지 않으면 0
+		//鍮꾨�踰덊샇 �씪移섑븯硫� 1, �씪移섑븯吏� �븡�쑝硫� 0
 		String passwordChk = memberService.deletePwChk(map);
 		
 		if(passwordEncoder.matches(password, passwordChk)){
@@ -92,7 +118,7 @@ public class MypageController {
 			pw.close();
 		
 		}catch(Exception ex){
-			System.out.println("비밀번호 확인 실패다");
+			System.out.println("鍮꾨�踰덊샇 �솗�씤 �떎�뙣�떎");
 		}
 		
 		

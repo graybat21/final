@@ -1,6 +1,7 @@
 package net.kh.host;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,12 @@ public class HostServiceImpl implements HostService {
 	@Override
 	public int hostGetCurrentNo() throws Exception {
 		return hostMapper.hostGetCurrentNo();
+	}
+
+	@Override
+	public String deletePwChk(Map map) throws Exception {
+		// TODO Auto-generated method stub
+		return hostMapper.deletePwChk(map);
 	}
 
 }

@@ -16,8 +16,10 @@ public interface MemberDao {
 
 	int emailCheck(String email) throws Exception;
 	
-	MemberVO modifyMyInfo(MemberVO member) throws Exception;
+	boolean modify(MemberVO member) throws Exception;
 	
 	String deletePwChk(Map<String, Object> map) throws Exception;
+
+	MemberVO selectMemberByNo(int no);
 
 }

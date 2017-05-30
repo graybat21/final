@@ -148,7 +148,7 @@
 		var jssor_1_options = {
 			$AutoPlay : 1,
 			/* 뀨 */
-			$SlideDuration : 800,
+			$SlideDuration : 8000000000,
 			$SlideEasing : $Jease$.$OutQuint,
 			$CaptionSliderOptions : {
 				$Class : $JssorCaptionSlideo$,
@@ -172,7 +172,7 @@
 				refSize = Math.min(refSize, 1920);
 				jssor_1_slider.$ScaleWidth(refSize);
 			} else {
-				window.setTimeout(ScaleSlider, 3000);
+				window.setTimeout(ScaleSlider, 30);
 			}
 		}
 		ScaleSlider();
@@ -681,7 +681,7 @@ function searchSubmit(){
 
 	<c:forEach items="${list}" var="list">
 		<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent">
-			<img src="${pageContext.request.contextPath}/resources/image/${list.IMAGENAME}"	width="330" 
+			<img src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}"	width="330" 
 			class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'" />
 			<h4 class="ngc">
 				<strong>${list.NO}/${list.NAME}<%-- ${list.NO} --%></strong>
@@ -718,7 +718,7 @@ function searchSubmit(){
         
 
 
-
+	
 
 
 
