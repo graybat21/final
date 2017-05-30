@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: grayb
 Build-Jdk: 1.8.0_121
-=======
-Built-By: HEO
-Build-Jdk: 1.8.0_111
->>>>>>> 915d826dbc90efb02692c3691a1720560d67c810
 Created-By: Maven Integration for Eclipse
 
