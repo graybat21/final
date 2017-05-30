@@ -45,7 +45,6 @@ function validate(session_mem_no){
 		data: { password: pass, session_mem_no: session_mem_no },
 		success: function(data) {
 			if(data=='1'){
-				alert("확인되었습니다.");
 				/* alert($(#infoform.pw.value)); */
 				//새로운 비번이 지정x
 				if(document.infoform.newpw1.value==""||document.infoform.newpw1.value==null){
@@ -55,6 +54,7 @@ function validate(session_mem_no){
 					var pw = document.infoform.newpw1.value;
 				}
 				location.href='modify.gh?&no='+ session_mem_no +'&password='+pw+'&tel='+document.infoform.phone.value;
+				alert("수정이 완료되었습니다.");
 			}else if(data=='0'){
 				alert("기존 비밀번호가 일치하지 않습니다.");
 				return false;

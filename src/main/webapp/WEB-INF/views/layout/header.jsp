@@ -177,14 +177,17 @@
 						<ul>
 							<li class="nav_nick">
 								<div class="my_info">
-									<span class="nickname"> <a href="${pageContext.request.contextPath}/logout.gh">
-									${session_mem_name != null ? session_mem_name : session_host_name}&nbsp;님</a></span>
-									<span class="my_img"> <img
-										src="${pageContext.request.contextPath}/resources/image/ic_menu_user_default.png">
+									<span class="nickname" style="cursor: default;"> 
+									${session_mem_name != null ? session_mem_name : session_host_name}&nbsp;님
+									</span>
+									<span class="my_img"> 
+									<a href="${pageContext.request.contextPath}/logout.gh">
+									<img src="${pageContext.request.contextPath}/resources/image/ic_menu_user_default.png">
+									</a>
 									</span>
 								</div>
 							</li>
-							<!-- 마이페이지 연결 아직 안함. -->
+									
 							<li class="link_02"><a
 								href="myPage.gh">마이페이지</a></li>
 
