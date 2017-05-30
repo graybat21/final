@@ -53,6 +53,18 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteHost(int no) throws Exception {
 		return adminMapper.deleteHost(no);
 	}
+	
+	@Override
+	@Transactional
+	public int deleteHostRoom(int no) throws Exception {
+		return adminMapper.deleteHostRoom(no);
+	}
+	
+	@Override
+	@Transactional
+	public int deleteHostImage(int no) throws Exception {
+		return adminMapper.deleteHostImage(no);
+	}
 
 	@Override
 	@Transactional

@@ -48,6 +48,18 @@
 	<update id="deleteHost" parameterType="int">
 		DELETE FROM host WHERE no=#{no}
 	</update>
+	
+		<!-- 호스트 강제 탈퇴에 따른 호스트 방 강제 삭제 -->
+	<update id="deleteHostRoom" parameterType="int">
+		DELETE FROM room WHERE host_no=#{no}
+	</update>
+	
+		<!-- 호스트 강제 탈퇴에 따른 호스트 방 이미지 강제 삭제 -->
+	<update id="deleteHostImage">
+		DELETE FROM image i WHERE EXISTS (SELECT * FROM room r WHERE r.host_no=#{no} and r.no=i.room_no)
+	</update>
+	
+	
 	<!-- 호스트 전체 가입수 -->
 	<select id="hostListCnt" resultType="int">
 		SELECT count(*) FROM host
