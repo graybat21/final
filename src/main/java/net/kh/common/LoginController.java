@@ -74,7 +74,7 @@ public class LoginController {
 	
 				session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
 	
-				mav.setViewName("member/loginSuccess/濡�洹몄�� �깃났");
+				mav.setViewName("member/loginSuccess/로그인 성공");
 				logger.info(resultMember.toString());
 				return mav;
 			}else{
@@ -101,7 +101,7 @@ public class LoginController {
 				session.setAttribute("TOKEN_SAVE_CHECK", "TRUE"); // ???
 	
 				logger.info(resultHost.toString());
-				mav.setViewName("member/loginSuccess/濡�洹몄�� �깃났 host");
+				mav.setViewName("member/loginSuccess/로그인 성공 host");
 				return mav;
 			}
 		} catch (NullPointerException e) {
