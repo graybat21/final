@@ -70,7 +70,7 @@ public class RoomController {
 		List<RoomVO> roomList = roomService.getRoomInfoByHostNo(host_no);
 		List<RoomVO> bigImage = roomService.getRoomBigImage(host_no);
 		List<Integer> roomNo = null;
-		List<Integer> removeRoomNo = new ArrayList<>();
+//		List<Integer> removeRoomNo = new ArrayList<>();
 		logger.info("\nfrom : " + from.toString());
 		if (from != null) {
 			roomNo = roomService.getRoomNoInReservation(host_no);
