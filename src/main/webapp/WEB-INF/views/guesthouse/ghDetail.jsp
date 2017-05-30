@@ -285,9 +285,7 @@ var to = document.getElementById("datepicker2").value;
  */
  var from = $("#datepicker1").val();
  var to = $("#datepicker2").val();
- alert(from);
-	alert(to);
-	tabView(1);
+	tabView(tab);
 }
 </script>
 <div class="reserve_select">
