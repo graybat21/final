@@ -165,8 +165,8 @@
 								href="${pageContext.request.contextPath}/joinChoice.gh">회원가입</a></li>
 							<!-- <li class="link_03"><a href="#"
                      onclick="guest_reserve_open();return false;" class="m_reserve">예약내역</a></li> -->
-							<li class="link_04"><a
-								href="${pageContext.request.contextPath}/noticeList.gh">고객센터</a></li>
+							<li class="link_03"><a
+								href="${pageContext.request.contextPath}/noticeList.gh">공지사항</a></li>
 						</ul>
 					</nav>
 				</c:if>
@@ -187,15 +187,46 @@
 									</span>
 								</div>
 							</li>
+							<c:if test="${session_mem_email == 'admin' && session_mem_no == '1' }">
+							<li class="link_02">
+								<a href="adminmemberList.gh">관리자페이지</a></li>
+							<li class="link_04">
+								<a href="qnaList.gh">QnA</a></li>
+							</c:if>		
+							<c:if test="${session_mem_email != 'admin' || session_mem_no != '1' }">
+							<li class="link_02">
+								<a href="myPage.gh">마이페이지</a></li>
+							</c:if>
+							<li class="link_03"><a
+								href="noticeList.gh">공지사항</a></li>
+						</ul>
+					</nav>
+				</c:if>
+				
+				<%-- <c:if test="${session_mem_email == 'admin' && session_mem_no == '1' }">
+					<nav class="nav_sub">
+						<ul>
+							<li class="nav_nick">
+								<div class="my_info">
+									<span class="nickname" style="cursor: default;"> 
+									${session_mem_name}&nbsp;님
+									</span>
+									<span class="my_img"> 
+									<a href="${pageContext.request.contextPath}/logout.gh">
+									<img src="${pageContext.request.contextPath}/resources/image/ic_menu_user_default.png">
+									</a>
+									</span>
+								</div>
+							</li>
 									
 							<li class="link_02"><a
-								href="myPage.gh">마이페이지</a></li>
+								href="adminmemberList.gh">관리자페이지</a></li>
 
 							<li class="link_04"><a
 								href="noticeList.gh">고객센터</a></li>
 						</ul>
 					</nav>
-				</c:if>
+				</c:if> --%>
 				<!-- 헤더의 닉네임 누르면 나타나는 팝업 창 -->
 
 				<!-- 마이페이지 플로팅 팝업 -->

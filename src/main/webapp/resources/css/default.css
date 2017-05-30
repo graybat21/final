@@ -701,7 +701,7 @@ header .btn_m_srch{display:none}
 */
 #footerWrap .foot_desktop{position:relative;overflow:hidden;padding:0 15px}
 #footerWrap .foot_desktop .logo{position:absolute;top:54px;left:17px;width:197px;height:36px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 0 no-repeat;background-size:290px auto;text-indent:-9999px}
-#footerWrap .foot_desktop .left_cont{float:left;width:37%;padding-top:120px;padding-left: 50px;color:#909090;font-size:13px;line-height:1.6}
+#footerWrap .foot_desktop .left_cont{float:left;width:37%;padding-top:120px;color:#909090;font-size:13px;line-height:1.6}
 #footerWrap .foot_desktop .left_cont .padding_r{padding-right:20px}
 #footerWrap .foot_desktop .left_cont .address{padding-bottom:30px;letter-spacing:-1px}
 #footerWrap .foot_desktop .left_cont b{display:block;padding-bottom:8px;font-size:17px}
