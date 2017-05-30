@@ -25,11 +25,11 @@
 	var alat = "37.70929718";
 	var alng = "127.1109074";
 	showMap();
-
+	var J = jQuery;
+	
 	$(document).ready(function(){
-		var uno = "";
-		var ano = "1987";
-		var userfavor = "N";
+		var mem_no = $("#mem_no");
+		var host_no = $("#host_no");
 
 		// 지도노출
 		showMap();
@@ -37,9 +37,9 @@
 		// 찜하기
 		$(".btn_zzim").click(function() {
 
-			if ( !uno )
+			if ( !mno )
 			{
-				location.href = '/user/login?refer=search/detailview/'+ano;
+				location.href = 'redirect:/ghDetail.gh';
 				return;
 			}
 
@@ -47,25 +47,20 @@
 				type: 'POST',
 				async: false,
 				cache: false,
-				url: '/search/userAdFavorSet',
+				url: '/wishAdd.gh',
 				dataType: 'json',
-				data: { 'uno': uno, 'ano': ano , 'userfavor' : userfavor},
+				data: {'mem_no' : mem_no , 'host_no' : host_no},
 				success: function(data) { 
-					var zzim_cnt = Number($("#top_zzim").text());
-
 					if(data.rtv == true){
-						if(data.mode == "I"){
+						 if(data.mem_no == session_mem_no){
 							$(".btn_zzim").addClass("active");
 							//$(".btn_zzim span").text("찜");
-							$(".top_zzim").html(zzim_cnt+1);
-							userfavor = "Y";
-						}else{
+							
+						} else{
 							$(".btn_zzim").removeClass("active");
 							//$(".btn_zzim span").text("찜하기");
-							$(".top_zzim").html(zzim_cnt-1);
-							userfavor = "N";
+						} 
 						}
-					}
 				},
 				error: function(e) {
 					console.log(e);
@@ -142,10 +137,15 @@
 	<div class="new_info row">
 	<div id="map" style="width: 350px; height: 200px; float: right;"></div>
 		<div class="cont">
+
+
+			<%-- href="wishAdd.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" --%>
+
 			<h3>${hostinfo.name}</h3>
 			<p class="address btn_copy">${hostinfo.addr1 }&nbsp; ${hostinfo.addr2 } &nbsp;${hostinfo.zip }</p>
 			<p class="tel">☎ ${hostinfo.tel }</p>
-			<a href="wishAdd.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" class="btn_zzim ">찜하기</a>
+			<a class="btn_zzim">찜하기</a></div>
+<%-- 			<a href="wishAdd.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" class="btn_zzim ">찜하기</a> --%>
 		</div>
 		
 		<!-- 주소 -->
@@ -210,24 +210,7 @@
 								</script>
 							</div>
 						</div>
-					</div>
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
+					</div>				
 					
 		<!-- <div id="maparea" class="map" style="overflow: hidden; background: transparent url(&quot;https://i1.daumcdn.net/dmaps/apis/loading_n.png&quot;) repeat scroll 0% 0%;">
 		<div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; cursor: url(&quot;https://i1.daumcdn.net/dmaps/apis/cursor/openhand.cur.ico&quot;) 7 5, url(&quot;https://i1.daumcdn.net/dmaps/apis/cursor/openhand.cur.ico&quot;), default;">

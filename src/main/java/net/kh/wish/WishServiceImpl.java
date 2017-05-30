@@ -1,5 +1,6 @@
 package net.kh.wish;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +18,9 @@ public class WishServiceImpl implements WishService {
 	
 	@Override
 	@Transactional
-	public List<Map<String, Object>> wishList(int mem_no) throws Exception {
-		// TODO Auto-generated method stub
+
+	public List<HashMap<String, Object>> wishList(int mem_no) throws Exception {
+
 		return wishDao.wishList(mem_no);
 	}
 	@Override

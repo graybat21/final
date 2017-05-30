@@ -9,20 +9,8 @@
 <title>게스트하우스리뷰</title>
 
 <!-- 공통 CSS  -->
-<link rel="stylesheet" type="text/css"
-	href="/howaboutthis/folder/default.css">
-<link rel="stylesheet" type="text/css"
-	href="/howaboutthis/folder/owl_003.css">
-	<!-- 페이지별 화면 load -->
-	<link rel="stylesheet" type="text/css" href="/folder/lightgallery.css">
-	<!-- 페이지별 호출 소스 -->
-	<link rel="stylesheet" type="text/css" href="/folder/search.css">
-	<link rel="stylesheet" type="text/css" href="/folder/default_002.css">
 </head>
-<body class="pcweb" oncontextmenu="return false"
-	ondragstart="return false">
-	
-
+<body class="pcweb" oncontextmenu="return false" ondragstart="return false">
 			<div class="ad_info_wrap">
 				<!-- 예약 -->
 				<a id="bookmark2"></a>
@@ -30,23 +18,11 @@
 					<div class="info_title">
 						<h4>예약(i.date - o.date)</h4>
 					</div>
-					<div class="reserve">
-
-						<!-- 예약 -->
-						<script src="https://mup.mobilians.co.kr/js/ext/ext_inc_comm.js"></script>
-						<script src="/js/app/daily_order_inicis.js?rand=1476499599"></script>
-						<script src="/js/app/daily_order_view_web.js"></script>
-						<script src="/js/app/jquery.total-storage.min.js"></script>
-						<script src="/js/app/iscroll.js?rand=1476499599"></script>
-						<link rel="stylesheet"
-							href="/css/app/owl.carousel.css?rand=1476499599">
-						<script src="/js/app/owl.carousel.min.js?rand=1476499599"></script>
-						<!-- Left Content -->
+					<div class="reserve">				
 						<div class="left">
 							<!-- 리턴 URL -->
 							<input name="returnUrl" value="/search/detailView/1987"
 								type="hidden">
-
 							<!-- Change Room -->
 							<div id="chg_room">
 								<!-- 반복 -->
@@ -74,29 +50,26 @@
 						</div>
 						<!-- Right Content -->
 						<div id="reserve_detail_view" class="right">
-
 							<!-- 예약자  -->
 							<div class="wrap_div">
 								<div class="list_inp bd_none">
 									<h5>예약자 이름</h5>
 									<div class="bd_b">
-										<input class="inp_txt" name="do_from_name"
-											placeholder="이름자동입력" maxlength="20" value="" type="text"
-											readonly="readonly">
+										<input class="inp_txt" name="mem_name"
+											 maxlength="20" value="${session_mem_name}" type="text"
+											>
 									</div>
 								</div>
 								<div class="list_inp bd_none">
 									<h5>휴대폰 번호</h5>
 									<div class="bd_b">
-										<input class="inp_txt" name="do_from_tel" id="do_from_tel"
-											placeholder="휴대폰 번호 자동입력" maxlength="13" value="" type="tel"
+										<input class="inp_txt" name="tel" id="tel" 
+										maxlength="13" value="010-" type="tel"
 											readonly="readonly">
 									</div>
 								</div>
 							</div>
 
-							<!-- 할인 -->
-							<!-- 비회원 -->
 							<div class="wrap_div">
 								<div class="list_inp">
 									<h5>입금 계좌</h5>

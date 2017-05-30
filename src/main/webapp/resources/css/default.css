@@ -50,10 +50,6 @@ html {font-family:'Nanum Gothic', '나눔고딕', '맑은고딕', '돋움', Dotu
 html, button, input, select, textarea {font-family:'Nanum Gothic', '나눔고딕', '맑은고딕', '돋움', Dotum ,sans-serif;font-weight:400;font-size: 100%}
 body {margin: 0;padding:0}
 *{-webkit-tap-highlight-color: rgba(0,0,0,0);}
-/* Links */
-a {text-decoration:none;color:#353535;cursor:pointer}
-a:focus, a:active, a:hover {outline:0;text-decoration:none;color:#353535}
-a[href^="tel"] {font-style:normal}
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {font-size:100%;margin:0;padding:0}

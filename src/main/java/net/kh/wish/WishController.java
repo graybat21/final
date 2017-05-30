@@ -1,5 +1,6 @@
 package net.kh.wish;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,8 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -25,26 +28,28 @@ public class WishController {
 	@Inject
 	private WishService wishService;
 	ModelAndView mav = new ModelAndView();
-
+	
+@ResponseBody
 	@RequestMapping("/wishAdd.gh")
-	public ModelAndView wishAddMan(@RequestParam(value = "session_mem_no") int mem_no,
-			@RequestParam(value = "session_host_no") int host_no, WishListVO wishList, HttpSession session)
+	public ModelAndView wishAddMan(@RequestBody int mem_no,@RequestBody int host_no, WishListVO wishList)
 			throws Exception {
+		/*@RequestMapping("/wishAdd.gh")
+		 * public ModelAndView wishAddMan(@RequestParam(value = "session_mem_no") int mem_no,
+				@RequestParam(value = "session_host_no") int host_no, WishListVO wishList, HttpSession session)
+				throws Exception {*/
 		/*
 		 * Integer mem_no = (Integer) session.getAttribute("session_no"); String
 		 * a = String.valueOf(session.getAttribute("host_no")); Integer host_no
 		 * = Integer.parseInt(a);
-		 */ if (mem_no == 0) {
-			mav.setViewName("mypage/wishFail/오류");
-			return mav;
-		}
+		 */ 
+		System.out.println(host_no);
 		wishList.setHost_no(host_no);
 		wishList.setMem_no(mem_no);
 
 		wishService.insertWish(wishList);
 		mav.addObject("host_no", host_no);
 		mav.addObject("list", wishList);
-		mav.setViewName("redirect:/wishList.gh");
+		mav.setViewName("redirect:/ghDetail.gh");
 		return mav;
 
 	}
@@ -53,7 +58,7 @@ public class WishController {
 	public String wishListHo(HttpSession session, Model model) throws Exception {
 		int mem_no=(int) session.getAttribute("session_mem_no");
 		System.out.println(mem_no);
-		List<Map<String, Object>> list = wishService.wishList(mem_no);
+		List<HashMap<String, Object>> list = wishService.wishList(mem_no);
 		logger.info(list.toString());
 		model.addAttribute("list", list);
 		return "mypage/wish/찜목록";

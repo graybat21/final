@@ -40,12 +40,12 @@ public class ReserveController {
 	public ModelAndView tabReserve(HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView("guesthouse/reserve");
 
-		MemberVO member = (MemberVO)session.getAttribute("mem");
+/*		MemberVO member = (MemberVO)session.getAttribute("mem");
 		mav.addObject(member);
 		
 		int host_no = 21;
 		RoomVO room = (RoomVO) roomService.getRoomInfoByHostNo(host_no);
-		mav.addObject(room);
+		mav.addObject(room);*/
 		return mav;
 	}
 
