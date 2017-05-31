@@ -593,7 +593,7 @@ function searchSubmit(){
 												<option value="대구">대구</option>
 												<option value="울산">울산</option>
 												<option value="부산">부산</option>
-												<option value="제주도">제주도</option>
+												<option value="제주">제주</option>
 										</select></li>
 										<li>
 											<div class="form-group">

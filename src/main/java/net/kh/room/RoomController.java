@@ -1,6 +1,16 @@
 package net.kh.room;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -13,8 +23,11 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +43,7 @@ public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-	String PATH = "C:\\java_eclipse\\work\\guestHi\\src\\main\\webapp\\resources\\upload";
+	String PATH = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject
@@ -50,22 +63,79 @@ public class RoomController {
 
 	@RequestMapping("/tabRoomDetail.gh")
 	// json 데이터로 응답을 보내기 위한r ---------여기ㅣㅣㅣㅣㅣㅣㅣㅣㅣ수정
-	public ModelAndView tabRoomDetail(@RequestParam(value = "host_no") int host_no) throws Exception {
+	public ModelAndView tabRoomDetail(@RequestParam(value = "host_no") int host_no,
+			@RequestParam(value = "from", required = false) Date from,
+			@RequestParam(value = "to", required = false) Date to) throws Exception {
 		ModelAndView mav = new ModelAndView("guesthouse/roomdetail");
-		System.out.println("얍얍얍얍" + host_no);
-		/*Map map = new HashMap();
-		map.put("host_no", host_no);
-		map.put("room_no", room_no);*/
 		List<RoomVO> roomList = roomService.getRoomInfoByHostNo(host_no);
-		
 		List<RoomVO> bigImage = roomService.getRoomBigImage(host_no);
-		
-		System.out.println(roomList.toString() + "얍얍gm");
+		List<Integer> roomNo = null;
+//		List<Integer> removeRoomNo = new ArrayList<>();
+		logger.info("\nfrom : " + from.toString());
+		if (from != null) {
+			roomNo = roomService.getRoomNoInReservation(host_no);
+
+			roomList = validSearch(roomList, roomNo, host_no, from, to);
+		}
 
 		mav.addObject("host_no", host_no);
 		mav.addObject("roomList", roomList);
 		mav.addObject("bigImage", bigImage);
 		return mav;
+	}
+
+	private List<RoomVO> validSearch(List<RoomVO> roomList, List<Integer> roomNo, int host_no, Date from, Date to)
+			throws Exception {
+
+		// 두번째 방법으로 from~to 사이 날짜를 개별적으로 검사한다.
+		// 각 날짜에 예약한 인원수를 구해서 빼는 방식으로 검사한다.
+		Calendar cal1 = Calendar.getInstance();
+		cal1.setTime(from);
+		long diff = to.getTime() - from.getTime();
+		long diffDays = diff / (24 * 60 * 60 * 1000);
+		int countOfDays = Math.round(diffDays);
+		System.out.println("날짜간격 : " + countOfDays);
+		int max = 0;
+		int sum = 0;
+		int rest = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		List<Integer> removeRoomNo = new ArrayList<>();
+		map.put("host_no", host_no);
+		for (int i = 0; i < countOfDays; i++) {
+			cal1.add(Calendar.DATE, 1);
+			map.put("d", cal1.getTime());
+			logger.info("검색하는 날짜 : " + cal1.getTime().toString());
+			for (int j = roomNo.size() - 1; j >= 0; j--) {
+				map.put("room_no", roomNo.get(j));
+				HashMap<String, Object> getInfoByDate = roomService.getCountByDate(map);
+				if (getInfoByDate != null) {
+					max = Integer.parseInt(getInfoByDate.get("MAX").toString());
+					sum = Integer.parseInt(getInfoByDate.get("SUMCOUNT").toString());
+					rest = max - sum;
+					if (rest <= 0) {
+						System.out.println("제거할 방번호 구함.");
+						int roomNo2=(int) map.get("room_no");
+						System.out.println(roomNo2);
+						removeRoomNo.add(roomNo2);
+					}
+					
+				}
+			}
+		}
+		System.out.println();
+		logger.info(removeRoomNo.toString());
+		System.out.println();
+		if(removeRoomNo != null){
+			for (int i = roomList.size() - 1; i >= 0; i--) {
+				for(int j = removeRoomNo.size()-1 ; j>=0;j--){
+					if (roomList.get(i).getNo() == removeRoomNo.get(j).intValue()) {
+						roomList.remove(i);
+						System.out.println(removeRoomNo.get(j) + "제거 성공");
+					}
+				}
+			}
+		}
+		return roomList;
 	}
 
 	@RequestMapping("/roomInsertForm.gh")
@@ -146,4 +216,9 @@ public class RoomController {
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
 
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+	}
 }

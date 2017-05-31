@@ -20,8 +20,6 @@ public class AdminVO {
 		return "AdminVO [no=" + no + ", name=" + name + ", max=" + max + ", price=" + price + ", host_no=" + host_no
 				+ ", reg=" + reg + ", room_no=" + room_no + ", filename=" + filename + ", filesize=" + filesize +"]";
 	}
-	
-	
 
 	public int getNo() {
 		return no;

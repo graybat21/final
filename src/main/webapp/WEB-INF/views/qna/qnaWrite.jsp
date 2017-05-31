@@ -10,7 +10,7 @@
 
 
 
-<title>QnA문의 게하!</title>
+<title>QnA문의 쓰기</title>
 </head>
 <body class="pcweb" oncontextmenu="return false"
 	ondragstart="return false">
@@ -110,7 +110,6 @@
 									</div>
 									<div class="inq_tel">
 										<p>
-
 											<label><input class="ipt_inq_tel numOnly"
 												name="subject" placeholder="제목을 입력해주세요" maxlength="40">
 											</label>
@@ -126,22 +125,17 @@
 
 									<div class="inq_btn">
 										<input type="submit" class="btn_inq_reg" value="문의하기">
-										<span onclick="history.go(-1);"><input type="button"
-											class="btn_inq_reg" value="뒤로가기"></span>
+										<span onclick="history.go(-1);">
+										<input type="button" class="btn_inq_reg" value="뒤로가기"></span>
 									</div>
-
 								</div>
-
 							</form>
 						</div>
 					</div>
 					<!-- //svc_cont_wrap -->
-
-
 				</div>
 				<!-- //서비스 콘텐츠 -->
 			</div>
-
 		</div>
 		<!-- //서비스 wrap -->
 	</article>

@@ -12,7 +12,6 @@
 		FROM MEMBER
 		WHERE
 		email = #{email}
-
 	</select>
 
 	<insert id="memberInsert" parameterType="memberVO">
@@ -53,10 +52,15 @@
 		where
 		email = #{email}
 	</select>
-
-	<update id="modifyMyInfo" parameterType="memberVO">
+	
+	<select id="selectMemberByNo" resultType="memberVO" parameterType="int">
+		SELECT * FROM MEMBER
+		WHERE no = #{no}
+	</select>
+	
+	<update id="modify" parameterType="memberVO">
 		UPDATE MEMBER SET 
-		phone= #{phone}, pw = #{newpw1} WHERE no = #{no}
+		phone= #{phone}, pw = #{pw} WHERE no = #{no}
 	</update>
 	
 	<select id="deletePwChk" resultType="String" parameterType="java.util.Map">

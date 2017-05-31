@@ -20,6 +20,8 @@ public interface AdminService {
 	List<HostVO> hostList(HashMap<String, Object> map) throws Exception;
 	int hostListCnt(HashMap<String, Object> map)throws Exception;
 	public int deleteHost(int no) throws Exception;
+	public int deleteHostRoom(int no) throws Exception;
+	public int deleteHostImage(int no) throws Exception;
 
 	// 방 관리
 	List<RoomVO> adminRoomList(HashMap<String, Object> map) throws Exception;

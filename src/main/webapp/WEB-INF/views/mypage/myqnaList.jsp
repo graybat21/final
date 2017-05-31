@@ -11,7 +11,18 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible">
 <meta http-equiv="Content-Type">
-
+<style type="text/css">
+.button {
+    background-color: #E32E4E; /* 여기어때컬러 */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+</style>
 </head>
 <body>
 	<!-- (공통)contentsWrap -->
@@ -57,10 +68,11 @@
 												<td align="right"><gray><fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" /></gray></td>
     </tr>
 								</c:forEach>
-        
-
     </tbody>
 </table>
+        			<div align="right" >
+							<a href="qnaWrite.gh" class="button"><strong>글쓰기</strong></a>
+					</div>
 					</div>
 			
 					

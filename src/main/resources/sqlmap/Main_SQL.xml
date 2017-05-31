@@ -4,8 +4,11 @@
 
 <mapper namespace="net.kh.dao.MainDAO">
 
-<select id="main" resultType="java.util.HashMap">
-select * from host 
-</select>
+	<select id="main" resultType="java.util.HashMap">
+		SELECT distinct h.*
+		FROM host h, room r
+		WHERE h.no = r.host_no
+		order by h.no
+	</select>
 
 </mapper>
