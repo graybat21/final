@@ -75,9 +75,9 @@
 	});
 </script>
 <script>
-function searchSubmit(){
-	$('#searchForm').submit();
-}
+	function searchSubmit() {
+		$('#searchForm').submit();
+	}
 </script>
 </head>
 <!-- 조건 검색 폼에 사용되는 JS, CSS -->
@@ -245,76 +245,69 @@ checkout : ${item.CHECKOUT}<br>
 		<link
 			href="${pageContext.request.contextPath}/resources/css/checkbox.css"
 			rel="stylesheet">
-	
-
-
 		<!-- 검색 wrap -->
 		<div class="search_allwrap">
-
 			<!-- 리스트 -->
-<c:forEach items="${list}" var="list">
+			<c:forEach items="${list}" var="list">
+				<div class="srch_list_wrap">
+					<div id="toppreloader" class="preloader" style="display: none;">
+						<img src="${pageContext.request.contextPath}/resources/upload/1234.jpg" class="loading_img">
+					</div>
+					<div class="srch_result">
+						<div class="srch_group ui_0">
+							<style type="text/css">
+.ad_top {
+	display: none;
+}
+</style>
 
-
-			<div class="srch_list_wrap">
-				<div id="toppreloader" class="preloader" style="display: none;">
-					<img src="/ghtest/list_files/run.gif" class="loading_img">
-				</div>
-
-				<div class="srch_result">
-					<div class="srch_group ui_0">
-
-						<style type="text/css">
-							.ad_top {
-								display: none;
-							}
-						</style>
-
-						<div class="srch_list list_g5">
+							<div class="srch_list list_g5">
 
 
 
-							<ul>
-								<li><a class="link" data-ano="4556" data-uitype="2"
-									data-adtype="4" data-viewtype="4">
-										<div class="ad_thumb">
-											<div class="img_wrap imgLiquidFill">
-												<img
-													src="${pageContext.request.contextPath}/resources/upload/132.jpg"
-													alt="공백" onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'"
-													onerror="this.src='${pageContext.request.contextPath}/resources/upload/error.png'">
-												<span class="opacity"></span>
-												<!-- 그라데이션 배경 -->
+								<ul>
+									<li><a class="link" data-ano="4556" data-uitype="2"
+										data-adtype="4" data-viewtype="4">
+											<div class="ad_thumb">
+												<div class="img_wrap imgLiquidFill">
+													<img
+														src="${pageContext.request.contextPath}/resources/upload/132.jpg"
+														alt="공백"
+														onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'"
+														onerror="this.src='${pageContext.request.contextPath}/resources/upload/error.png'">
+													<span class="opacity"></span>
+													<!-- 그라데이션 배경 -->
+												</div>
 											</div>
-										</div>
 
-										<div class="txt">
-											<p class="name">
-												${list.NAME }<span>${list.addr1 }${list.addr2 }</span>&nbsp;
+											<div class="txt">
+												<p class="name">
+													${list.NAME }<span>${list.addr1 }${list.addr2 }</span>&nbsp;
 
-											</p>
-											<!--예약가-->
-											<p class="price">숙박예약 50,000원~</p>
+												</p>
+												<!--예약가-->
+												<p class="price">숙박예약 50,000원~</p>
 
-											<p></p>
-										</div>
-								</a></li>
-							</ul>
+												<p></p>
+											</div>
+									</a></li>
+								</ul>
+
+							</div>
+
+
+
+
 
 						</div>
-						
-						
-						
-						
-						
+
+
+
+
+
 					</div>
-
-
-					
-
-
 				</div>
-			</div>
-			
+
 			</c:forEach>
 			<!-- //리스트 -->
 		</div>
