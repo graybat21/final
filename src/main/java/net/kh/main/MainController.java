@@ -46,11 +46,11 @@ public class MainController {
 
 		from.setHours(13);
 		to.setHours(12);
-		
-		reserve = validDateSearch(reserve, from, to); // 날짜 검색에 걸리는것 뺌
+		logger.info(reserve.toString());
 		reserve = validPriceSearch(reserve, search.getMax_price());
 		reserve = validAddressSearch(reserve, search.getArea());
 		reserve = validCountSearch(reserve, search.getParticipant());
+//		reserve = validDateSearch(reserve, from, to); // 날짜 검색에 걸리는것 뺌
 		mav.addObject("reserve", reserve);
 		mav.addObject(search);
 		return mav;
@@ -108,12 +108,9 @@ public class MainController {
 	private List<Map<String, Object>> validCountSearch(List<Map<String, Object>> reserve, int participants) {
 		int sizeOfList = reserve.size();
 		int max;
-		int count;
 		for (int i = sizeOfList - 1; i >= 0; i--) {
 			max = Integer.parseInt(String.valueOf(reserve.get(i).get("MAX")));
-			count = Integer.parseInt(String.valueOf(reserve.get(i).get("COUNT")));
-			System.out.println(max + "..." + count);
-			if (max - count < participants) {
+			if (max < participants) {
 				System.out.println("인원수불만족 삭제 " + reserve.get(i).get("NAME"));
 				reserve.remove(i);
 			}
