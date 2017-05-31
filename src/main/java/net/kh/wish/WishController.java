@@ -28,14 +28,14 @@ public class WishController {
 
 	@RequestMapping("/wishAdd.gh")
 	public ModelAndView wishAddMan(@RequestParam(value = "session_mem_no") int mem_no,
-			@RequestParam(value = "session_host_no") int host_no, WishListVO wishList, HttpSession session)
+			@RequestParam(value = "host_no") int host_no, WishListVO wishList, HttpSession session)
 			throws Exception {
 		/*
 		 * Integer mem_no = (Integer) session.getAttribute("session_no"); String
 		 * a = String.valueOf(session.getAttribute("host_no")); Integer host_no
 		 * = Integer.parseInt(a);
 		 */ if (mem_no == 0) {
-			mav.setViewName("mypage/wishFail/오류");
+			mav.setViewName("mypage/wishFail/�ㅻ�");
 			return mav;
 		}
 		wishList.setHost_no(host_no);
@@ -56,7 +56,7 @@ public class WishController {
 		List<Map<String, Object>> list = wishService.wishList(mem_no);
 		logger.info(list.toString());
 		model.addAttribute("list", list);
-		return "mypage/wish/찜목록";
+		return "mypage/wish/李�紐⑸�";
 
 	}
 

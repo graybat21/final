@@ -9,6 +9,7 @@ encoding//src/main/java/net/kh/member/MemberService.java=UTF-8
 encoding//src/main/java/net/kh/mypage/MypageController.java=UTF-8
 encoding//src/main/java/net/kh/qna/QnaController.java=UTF-8
 encoding//src/main/java/net/kh/review/ReviewService.java=UTF-8
+encoding//src/main/java/net/kh/wish/WishController.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/guesthouse/reviewComment.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/layout/header.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/layout/mypage.jsp=UTF-8

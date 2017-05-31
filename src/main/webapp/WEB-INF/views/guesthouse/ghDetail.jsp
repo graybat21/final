@@ -145,7 +145,8 @@
 			<h3>${hostinfo.name}</h3>
 			<p class="address btn_copy">${hostinfo.addr1 }&nbsp; ${hostinfo.addr2 } &nbsp;${hostinfo.zip }</p>
 			<p class="tel">☎ ${hostinfo.tel }</p>
-			<a href="wishAdd.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" class="btn_zzim ">찜하기</a>
+			<a href="wishAdd.gh?session_mem_no=${session_mem_no}&host_no=${host_no}" class="btn_zzim ">찜하기</a>
+			<%-- <a href="javascript:alert(${session_mem_no});alert(${host_no});" class="btn_zzim">찜하기</a> --%>
 		</div>
 		
 		<!-- 주소 -->
