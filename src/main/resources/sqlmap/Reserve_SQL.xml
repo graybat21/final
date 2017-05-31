@@ -11,17 +11,16 @@
 		GROUP BY host_no, h.addr1 
 		ORDER BY host_no
 	</select>
-	<select id="validSearch" parameterType="int" resultType="int">
+	<select id="validSearch" parameterType="hashmap" resultType="Integer">
 		<![CDATA[
 		SELECT 
 			distinct host_no 
 		FROM (
 			SELECT * FROM reservation 
-			WHERE host_no = #{host_no}
 			)
 		WHERE 
-			checkin < to 
-		OR checkout > from
+			checkin < #{to} 
+		OR checkout > #{from}
 		]]>
 	</select>
 
