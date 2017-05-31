@@ -34,10 +34,13 @@ public class WishController {
 		 * Integer mem_no = (Integer) session.getAttribute("session_no"); String
 		 * a = String.valueOf(session.getAttribute("host_no")); Integer host_no
 		 * = Integer.parseInt(a);
-		 */ if (mem_no == 0) {
-			mav.setViewName("mypage/wishFail/�ㅻ�");
+		 */ 
+		
+		if (mem_no == 0) {
+			mav.setViewName("mypage/wishFail/실패");
 			return mav;
 		}
+		
 		wishList.setHost_no(host_no);
 		wishList.setMem_no(mem_no);
 

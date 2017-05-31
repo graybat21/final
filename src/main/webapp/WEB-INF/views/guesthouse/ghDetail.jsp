@@ -36,43 +36,7 @@
 
 		// 찜하기
 		$(".btn_zzim").click(function() {
-
-			if ( !uno )
-			{
-				location.href = '/user/login?refer=search/detailview/'+ano;
-				return;
-			}
-
-			$.ajax({
-				type: 'POST',
-				async: false,
-				cache: false,
-				url: '/search/userAdFavorSet',
-				dataType: 'json',
-				data: { 'uno': uno, 'ano': ano , 'userfavor' : userfavor},
-				success: function(data) { 
-					var zzim_cnt = Number($("#top_zzim").text());
-
-					if(data.rtv == true){
-						if(data.mode == "I"){
-							$(".btn_zzim").addClass("active");
-							//$(".btn_zzim span").text("찜");
-							$(".top_zzim").html(zzim_cnt+1);
-							userfavor = "Y";
-						}else{
-							$(".btn_zzim").removeClass("active");
-							//$(".btn_zzim span").text("찜하기");
-							$(".top_zzim").html(zzim_cnt-1);
-							userfavor = "N";
-						}
-					}
-				},
-				error: function(e) {
-					console.log(e);
-					alert('다시 시도하여 주세요.');
-				}
-			});
-
+			alert("알럿럿");
 		});
 
 		// 이용후기 영역 이동
@@ -145,6 +109,9 @@
 			<h3>${hostinfo.name}</h3>
 			<p class="address btn_copy">${hostinfo.addr1 }&nbsp; ${hostinfo.addr2 } &nbsp;${hostinfo.zip }</p>
 			<p class="tel">☎ ${hostinfo.tel }</p>
+			
+			<c:if>
+			</c:if>
 			<a href="wishAdd.gh?session_mem_no=${session_mem_no}&host_no=${host_no}" class="btn_zzim ">찜하기</a>
 			<%-- <a href="javascript:alert(${session_mem_no});alert(${host_no});" class="btn_zzim">찜하기</a> --%>
 		</div>
@@ -212,23 +179,6 @@
 							</div>
 						</div>
 					</div>
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 					
 		<!-- <div id="maparea" class="map" style="overflow: hidden; background: transparent url(&quot;https://i1.daumcdn.net/dmaps/apis/loading_n.png&quot;) repeat scroll 0% 0%;">
 		<div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; cursor: url(&quot;https://i1.daumcdn.net/dmaps/apis/cursor/openhand.cur.ico&quot;) 7 5, url(&quot;https://i1.daumcdn.net/dmaps/apis/cursor/openhand.cur.ico&quot;), default;">

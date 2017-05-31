@@ -4,6 +4,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java/net/kh/common/LoginController.java=UTF-8
 encoding//src/main/java/net/kh/dao/MemberDao.java=UTF-8
+encoding//src/main/java/net/kh/main/MainController.java=UTF-8
 encoding//src/main/java/net/kh/member/MemberController.java=UTF-8
 encoding//src/main/java/net/kh/member/MemberService.java=UTF-8
 encoding//src/main/java/net/kh/mypage/MypageController.java=UTF-8

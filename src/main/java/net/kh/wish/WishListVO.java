@@ -22,7 +22,6 @@ package net.kh.wish;
 			return "WishListVO [mem_no=" + mem_no + ", host_no=" + host_no + "]";
 		}
 
-
 		}
 
 
