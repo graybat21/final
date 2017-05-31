@@ -20,10 +20,10 @@ public interface AdminDao {
 
 	// 호스트 관리
 	List<HostVO> hostList(HashMap<String, Object> map) throws Exception;
-
 	int hostListCnt(HashMap<String, Object> map) throws Exception;
-
 	int deleteHost(int no) throws Exception;
+	int deleteHostRoom(int no) throws Exception;
+	int deleteHostImage(int no) throws Exception;
 
 	// 방관리
 	List<RoomVO> adminRoomList(HashMap<String, Object> map) throws Exception;

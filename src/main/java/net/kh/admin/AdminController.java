@@ -111,6 +111,9 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		String no = request.getParameter("no");
 		adminService.deleteHost(Integer.parseInt(no));
+		adminService.deleteHostRoom(Integer.parseInt(no));
+		adminService.deleteHostImage(Integer.parseInt(no));
+		
 		mav.setViewName("redirect:/adminhostList.gh");
 		
 		return mav;

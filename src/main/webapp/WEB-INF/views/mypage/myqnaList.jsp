@@ -11,7 +11,18 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible">
 <meta http-equiv="Content-Type">
-
+<style type="text/css">
+.button {
+    background-color: #E32E4E; /* 여기어때컬러 */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+</style>
 </head>
 <body>
 	<!-- (공통)contentsWrap -->
@@ -49,7 +60,7 @@
 									 		    <td align="left"><strong><a href="${viewURL }">${list.no }</a></strong></td>
 												<td align="left"><strong><a href="${viewURL }">
 												<c:if test="${list.restep==1}">&nbsp;
-													<img src="https://www.google.co.kr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjPsYv94efTAhVIvbwKHVZyDQkQjRwIBw&url=http%3A%2F%2Fwww.applebeebook.co.kr%2Fm%2Fgoods%2Fview.php%3Fgoodsno%3D1043&psig=AFQjCNF890lFQ5VPiPi_r2rP7EvAjRSOiQ&ust=1494589515835847">
+													<img src="${pageContext.request.contextPath}/image/answer.png">
 													</c:if>
 												${list.subject }
 												</a></strong></td>
@@ -57,10 +68,11 @@
 												<td align="right"><gray><fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" /></gray></td>
     </tr>
 								</c:forEach>
-        
-
     </tbody>
 </table>
+        			<div align="right" >
+							<a href="qnaWrite.gh" class="button"><strong>글쓰기</strong></a>
+					</div>
 					</div>
 			
 					
