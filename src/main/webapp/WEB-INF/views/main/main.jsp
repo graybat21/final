@@ -53,6 +53,22 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script>
+
+$(function() {
+	$("#searchSubmit()").on("click", function() {
+		if (($("#area").val() == "" || $("#area").val() == "지역")) {
+			alert("지역 입력해주세요.");
+		}else if (($("#datepicker1").val() == "" || $("#datepicker1").val() == null)) {
+			alert("시작날짜를 입력해주세요");
+		}else if (($("#datepicker2").val() == "" || $("#datepicker2").val() == null)) {
+			alert("마지막 날짜를 입력해 주세요");
+		}else if (($("#participant").val() == "" || $("#participant").val() == "인원")) {
+			alert("인원을 입력해 주세요.");
+		}else if (($("#max_price").val() == "" || $("#max_price").val() == null)) {
+			alert("최대가격을 입력해주세요.");
+
+</script>
+<script>
 	$(function() {
 		// 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
 		// 종료일(toDate)은 시작일(fromDate) 이전 날짜 선택 불가
@@ -684,41 +700,22 @@ function searchSubmit(){
 
 
 <!-- 게하리스트 -->
-
-<%-- 
 <c:forEach items="${list}" var="list">
+<!-- <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent"> -->
 		<div class="srch_list_wrap">
-				<div id="toppreloader" class="preloader" style="display: none;">
-					<img src="/ghtest/list_files/run.gif" class="loading_img">
-				</div>
-
 				<div class="srch_result">
 					<div class="srch_group ui_0">
-
-						<style type="text/css">
-							.ad_top {
-								display: none;
-							}
-						</style>
-
 						<div class="srch_list list_g5">
-
-
-
 							<ul>
-								<li><a class="link" data-ano="4556" data-uitype="2"
-									data-adtype="4" data-viewtype="4">
+								<li><a class="link" >
 										<div class="ad_thumb">
 											<div class="img_wrap imgLiquidFill">
 												<img
 													src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}"
-													onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'">
-													
-												<span class="opacity"></span>
-												<!-- 그라데이션 배경 -->
+													onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'" width="330px">
 											</div>
 										</div>
-
+									<br/>
 										<div class="txt">
 											<p class="name">
 												${list.NO}/${list.NAME}<span></span>&nbsp;
@@ -737,61 +734,7 @@ function searchSubmit(){
 				</div>
 			</div>
 			</div>
-			</c:forEach> --%>
-
-
-
-
-
-	
-	
-	<c:forEach items="${list}" var="list">
-			<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent">
-				<img src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}" width="330" height="330" 
-				class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'" />
-				<h4 class="ngc">
-					<strong>${list.NO}/${list.NAME}${list.NO}</strong>
-				</h4>
-				<div class="imageText">
-					<div class="text_border">
-						<strong> <!--          <p class="ngc" id="demo"></p> -->
-						</strong>
-					</div>
-					<p class="ngc" id="demo[${itemStat.index }]"></p>
-				</div>
-			</div>
-	
-		</c:forEach>
-	
-
-
-
-
-
-
-
-	<%--   <c:forEach var="list" items="${roomList}">
-    <tr>
-									<c:url var="viewURL" value="noticeView.gh">
-										<c:param name="no" value="${list.no }" />
-									</c:url>
-									 		
-												<td align="left"><strong><a href="${viewURL }">${list.subject }</a></strong></td>
-
-												<td align="right"><gray><fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" /></gray></td>
-    </tr>
-								</c:forEach> --%>
-        
-
-
-	
-
-
-
-
-
-
-
+			</c:forEach>
 
 
 </body>

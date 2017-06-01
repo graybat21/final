@@ -8,15 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import net.kh.dao.ImageDao;
 import net.kh.dao.RoomDao;
-import net.kh.member.MemberVO;
-import net.kh.qna.QnaVO;
 
 @Service("roomService")
 public class RoomServiceImpl implements RoomService {
 
 	@Autowired
 	private RoomDao roomMapper;
+	
+	@Autowired
+	private ImageDao imageMapper;
 
 	@Override
 	@Transactional
@@ -69,6 +71,21 @@ public class RoomServiceImpl implements RoomService {
 	public HashMap<String, Object> getCountByDate(HashMap<String, Object> map) throws Exception {
 		return roomMapper.getCountByDate(map);
 	}
+
+	@Override
+	public String getRoomImage(Map<String, Object> map) throws Exception {
+		String str = "";
+		System.out.println(map.get("room_no"));
+		List<String> list = imageMapper.getRoomImage(map);
+		
+		for(int i=0;i<list.size();i++){
+			str += list.get(i)+",";
+		}
+		
+		return str;
+	}
+	
+	
 
 //	@Override
 //	public int getMaxByRoomNo(int no) throws Exception {
