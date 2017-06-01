@@ -56,11 +56,13 @@ public class ReserveController {
 		if (from != null) {
 			roomNo = roomService.getRoomNoInReservation(host_no);
 
+
 			roomList = validSearch(roomList, roomNo, host_no, from, to);
 		}
 
 		mav.addObject("roomList", roomList);
 		mav.addObject("bigImage", bigImage);
+
 		return mav;
 	}
 	private List<RoomVO> validSearch(List<RoomVO> roomList, List<Integer> roomNo, int host_no, Date from, Date to)

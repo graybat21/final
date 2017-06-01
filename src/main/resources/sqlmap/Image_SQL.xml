@@ -42,5 +42,11 @@
 			s.no = ss.no
 		ORDER BY no
 	</select>
+	
+	
+	<select id="getRoomImage" parameterType="java.util.Map" resultType="String">
+	select FILENAME FROM IMAGE WHERE ROOM_NO = #{room_no} ORDER BY no
+	</select>
+	
 </mapper>
 	
