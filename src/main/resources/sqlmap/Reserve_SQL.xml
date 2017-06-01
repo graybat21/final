@@ -4,9 +4,25 @@
 
 <mapper namespace="net.kh.dao.ReserveDao">
 	<select id="selectSearchHappy" resultType="hashmap"> 
-		select h.addr1, h.name, r.price, r.max, re.checkin, re.checkout, re.count 
-		from host h, room r, reservation re
-		where h.no = re.host_no and r.no = re.room_no
+		SELECT 
+			r.host_no, max(r.max) max, max(r.price) price, h.addr1, h.imagename
+      FROM room r, host h
+      WHERE r.host_no=h.no
+      GROUP BY host_no, h.addr1, h.imagename
+
+      ORDER BY host_no
+	</select>
+	<select id="validSearch" parameterType="hashmap" resultType="Integer">
+		<![CDATA[
+		SELECT 
+			distinct host_no 
+		FROM (
+			SELECT * FROM reservation 
+			)
+		WHERE 
+			checkin < #{to} 
+		OR checkout > #{from}
+		]]>
 	</select>
 
 	<select id="getReserveInfoByMemNo" resultType="hashmap" parameterType="int">

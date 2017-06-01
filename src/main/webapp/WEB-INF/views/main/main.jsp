@@ -54,6 +54,22 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script>
+
+$(function() {
+	$("#searchSubmit()").on("click", function() {
+		if (($("#area").val() == "" || $("#area").val() == "지역")) {
+			alert("지역 입력해주세요.");
+		}else if (($("#datepicker1").val() == "" || $("#datepicker1").val() == null)) {
+			alert("시작날짜를 입력해주세요");
+		}else if (($("#datepicker2").val() == "" || $("#datepicker2").val() == null)) {
+			alert("마지막 날짜를 입력해 주세요");
+		}else if (($("#participant").val() == "" || $("#participant").val() == "인원")) {
+			alert("인원을 입력해 주세요.");
+		}else if (($("#max_price").val() == "" || $("#max_price").val() == null)) {
+			alert("최대가격을 입력해주세요.");
+
+</script>
+<script>
 	$(function() {
 		// 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
 		// 종료일(toDate)은 시작일(fromDate) 이전 날짜 선택 불가
@@ -561,11 +577,11 @@ function searchSubmit(){
 							<div class="main-fill ">
 								<!--tabs-->
 								<div class="panel">
+								<!-- 여기 클릭하면 뛰어나옴 -->
 									<div class="panel-heading">
 										<ul class="nav nav-tabs">
 
-											<li><a href="#tabhotel" data-toggle="tab"> <i
-													class="fa fa-hotel"></i>GuestHouse
+											<li><a href="#tabhotel" data-toggle="tab"> GuestHouse
 											</a></li>
 
 										</ul>
@@ -594,7 +610,7 @@ function searchSubmit(){
 												<option value="대구">대구</option>
 												<option value="울산">울산</option>
 												<option value="부산">부산</option>
-												<option value="제주도">제주도</option>
+												<option value="제주">제주</option>
 										</select></li>
 										<li>
 											<div class="form-group">
@@ -680,53 +696,46 @@ function searchSubmit(){
 
 
 
-	<c:forEach items="${list}" var="list">
-		<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent">
-			<img src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}"	width="330" 
-			class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'" />
-			<h4 class="ngc">
-				<strong>${list.NO}/${list.NAME}<%-- ${list.NO} --%></strong>
-			</h4>
-			<div class="imageText">
-				<div class="text_border">
-					<strong> <!--          <p class="ngc" id="demo"></p> -->
-					</strong>
-				</div>
-				<%-- <p class="ngc" id="demo[${itemStat.index }]"></p> --%>
-			</div>
-		</div>
-
-	</c:forEach>
-
-
-
-
-
-
-
-
-	<%--   <c:forEach var="list" items="${roomList}">
-    <tr>
-									<c:url var="viewURL" value="noticeView.gh">
-										<c:param name="no" value="${list.no }" />
-									</c:url>
-									 		
-												<td align="left"><strong><a href="${viewURL }">${list.subject }</a></strong></td>
-
-												<td align="right"><gray><fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" /></gray></td>
-    </tr>
-								</c:forEach> --%>
-        
-
-
 	
 
 
 
+<!-- 게하리스트 -->
+<c:forEach items="${list}" var="list">
+<!-- <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent"> -->
+		<div class="srch_list_wrap">
+				<div class="srch_result">
+					<div class="srch_group ui_0">
+						<div class="srch_list list_g5">
+							<ul>
+								<li><a class="link" >
+										<div class="ad_thumb">
+											<div class="img_wrap imgLiquidFill">
+												<img
+													src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}"
+													onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'" width="330px">
+											</div>
+										</div>
+									<br/>
+										<div class="txt">
+											<p class="name">
+												${list.NO}/${list.NAME}<span></span>&nbsp;
 
+											</p>
+											<!--예약가-->
+											<p class="price">숙박예약 50,000원~</p>
 
+											<p></p>
+										</div>
+								</a></li>
+							</ul>
 
-
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			</c:forEach>
 
 
 </body>

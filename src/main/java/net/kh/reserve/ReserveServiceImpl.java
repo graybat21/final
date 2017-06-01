@@ -31,4 +31,9 @@ public class ReserveServiceImpl implements ReserveService {
 		return reserveDao.getReserveInfoByHostNo(host_no);
 	}
 
+	@Override
+	public List<Integer> validSearch(HashMap<String, Object> map) throws Exception {
+		return reserveDao.validSearch(map);
+	}
+
 }

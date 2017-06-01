@@ -38,19 +38,20 @@ public class MainController {
 	@RequestMapping("/ghList.gh")
 	public ModelAndView ghList(Search search) throws Exception {
 		ModelAndView mav = new ModelAndView("main/ghList/검색리스트");
-
 		List<Map<String, Object>> reserve = reserveService.selectSearchHappy();
 		// List<Date> dateList = new ArrayList<Date>();
+		HashMap<String, Object> map=new HashMap<String, Object>();
 		Date from = search.getFrom();
 		Date to = search.getTo();
-
 		from.setHours(13);
 		to.setHours(12);
-		
-		reserve = validDateSearch(reserve, from, to); // 날짜 검색에 걸리는것 뺌
+		map.put("from", from);
+		map.put("to", to);
+		logger.info(reserve.toString());
 		reserve = validPriceSearch(reserve, search.getMax_price());
 		reserve = validAddressSearch(reserve, search.getArea());
 		reserve = validCountSearch(reserve, search.getParticipant());
+		reserve = validDateSearch(reserve, map); // 날짜 검색에 걸리는것 뺌
 		mav.addObject("reserve", reserve);
 		mav.addObject(search);
 		return mav;
@@ -74,23 +75,35 @@ public class MainController {
 		return "guesthouse/ghDetail/방 상세보기";
 	}
 	
-	@SuppressWarnings("deprecation")
-	private List<Map<String, Object>> validDateSearch(List<Map<String, Object>> reserve, Date from, Date to) {
-		Date checkin;
-		Date checkout;
+	private List<Map<String, Object>> validDateSearch(List<Map<String, Object>> reserve,HashMap<String, Object> map) throws Exception {
+		
+		List<Integer> invalidHostNo = reserveService.validSearch(map);
+		int sizeOfInvalidHostNo = invalidHostNo.size();
 		int sizeOfList = reserve.size();
-		for (int i = sizeOfList - 1; i >= 0; i--) {
-			checkin = (Date) reserve.get(i).get("CHECKIN");
-			checkout = (Date) reserve.get(i).get("CHECKOUT");
-			checkin.setHours(13);
-			checkout.setHours(12);
-			if (checkout.before(from) || checkin.after(to)) {
-				
-			} else {
-				System.out.println("날짜 불만족 삭제" + reserve.get(i).get("NAME"));
-				reserve.remove(i);
+		for(int i=sizeOfList -1 ; i>=0;i--){
+			for(int j=sizeOfInvalidHostNo-1;j>=0;j--){
+				if(invalidHostNo.get(j).intValue() == Integer.parseInt(String.valueOf(reserve.get(i).get("HOST_NO")))){
+					System.out.println("날짜불만족 삭제" + reserve.get(i).get("HOST_NO"));
+					reserve.remove(i);
+					j=0;
+				}
 			}
 		}
+		
+//		Date checkin;
+//		Date checkout;
+//		for (int i = sizeOfList - 1; i >= 0; i--) {
+//			checkin = (Date) reserve.get(i).get("CHECKIN");
+//			checkout = (Date) reserve.get(i).get("CHECKOUT");
+//			checkin.setHours(13);
+//			checkout.setHours(12);
+//			if (checkout.before(from) || checkin.after(to)) {
+//				
+//			} else {
+//				System.out.println("날짜 불만족 삭제" + reserve.get(i).get("NAME"));
+//				reserve.remove(i);
+//			}
+//		}
 		return reserve;
 	}
 
@@ -108,12 +121,9 @@ public class MainController {
 	private List<Map<String, Object>> validCountSearch(List<Map<String, Object>> reserve, int participants) {
 		int sizeOfList = reserve.size();
 		int max;
-		int count;
 		for (int i = sizeOfList - 1; i >= 0; i--) {
 			max = Integer.parseInt(String.valueOf(reserve.get(i).get("MAX")));
-			count = Integer.parseInt(String.valueOf(reserve.get(i).get("COUNT")));
-			System.out.println(max + "..." + count);
-			if (max - count < participants) {
+			if (max < participants) {
 				System.out.println("인원수불만족 삭제 " + reserve.get(i).get("NAME"));
 				reserve.remove(i);
 			}

@@ -29,7 +29,7 @@
 				<div class="svc_cont_wrap" style="min-height: 1127px;">
 					<div class="svc_inquiry_list">
 					
-				 	<c:forEach items="${list}" var="clist"> 
+				 	<c:forEach items="${list}" var="clist">
 						<ul>
 						
 							<li>

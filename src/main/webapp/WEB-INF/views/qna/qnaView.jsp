@@ -7,7 +7,19 @@
 <head>
 <link href="${pageContext.request.contextPath}/css/board.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>qna상세보기</title>
+<title>QNA 본문 내용 </title>
+<style type="text/css">
+.button {
+    background-color: #E32E4E; /* 여기어때컬러 */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+</style>
 </head>
 <body>
 
@@ -46,18 +58,14 @@
 			</tr>
 	</table>
 	
-	<c:if test="${session_mem_name != null }">
-	<button type="button" onclick="qnaModify()" class="btn btn-primary">수정</button>
-	<button type="button" onclick="qnaDelete()" class="btn btn-primary">삭제</button>
+	<c:if test="${session_mem_name != null&&session_mem_no =='1' }">
+		<c:if test="${qnaVO.writer=='관리자'}">
+		<a onclick="javascript:qnaModify()" class="button"><strong>수정</strong></a>
+		</c:if>
+	<a onclick="javascript:qnaDelete()" class="button"><strong>삭제</strong></a>
+	<a onclick="javascript:qnaRepl()" class="button"><strong>답변</strong></a>
+	<a onclick="javascript:qnaList()" class="button"><strong>목록</strong></a>
 	</c:if>
-	<c:if test="${session_host_name != null }">
-	<button type="button" onclick="qnaModify()" class="btn btn-primary">수정</button>
-	<button type="button" onclick="qnaDelete()" class="btn btn-primary">삭제</button>
-	</c:if>
-	<c:if test="${session_mem_name =='1'}">
-	<button type="button" onclick="qnaRepl()" class="btn btn-primary">답변</button>
-	</c:if>
-	<button type="button" onclick="qnaList()" class="btn btn-primary">목록</button>
 	
 				</div>
 
