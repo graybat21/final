@@ -108,13 +108,14 @@
 	<!-- 방 상세보기 이미지들 불러오기 -->
 	<select id="getRoomBigImage" parameterType="int" resultType="roomVO">
 		SELECT * FROM image i INNER JOIN room r ON i.room_no = r.no 
-		WHERE r.host_no=#{no}  ORDER BY i.no DESC		
+		WHERE r.host_no=#{no} and i.room_no=#{room_no} ORDER BY i.no DESC		
 	</select>
 	
 	<select id="getRoomBigImage2" parameterType="java.util.HashMap" resultType="roomVO">
 		SELECT * FROM image i INNER JOIN room r ON i.room_no = r.no 
 		WHERE r.host_no=#{no} and i.room_no = #{room_no} ORDER BY i.no DESC		
 	</select>
+	
 	
 </mapper>
 	

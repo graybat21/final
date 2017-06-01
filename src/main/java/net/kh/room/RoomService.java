@@ -20,4 +20,6 @@ public interface RoomService {
 	public List<RoomVO> getRoomBigImage(int no)throws Exception;
 	
 	public List<RoomVO> getRoomBigImage2(Map map)throws Exception;
+	
+	public String getRoomImage(Map<String, Object> map) throws Exception;
 }
