@@ -36,8 +36,8 @@ label.chk-label{
 
 .ad_new_info{overflow:hidden;position:relative;}
 .ad_new_info .new_info{float:none;padding:0 15px;}
-.ad_new_info .new_info .cont{min-height:226px;padding-bottom:15px;font-size:0.9375rem;line-height:1.6;}
-.ad_new_info .new_info .cont h3{height:35px;padding-top:19px;font-size:1.25rem;font-weight:bold;color:#353535;}
+.ad_new_info .new_info .cont{min-height:226px;padding-bottom:15px;line-height:1.6;}
+.ad_new_info .new_info .cont h3{height:35px;padding-top:19px;font-weight:bold;color:#353535;}
 .ad_new_info .new_info .cont .review{color:#00b4ff;}
 .ad_new_info .new_info .cont .address,.ad_new_info .new_info .cont .tel{padding-right:525px;}
 .ad_new_info .new_info .cont .address a{display:inline-block;float:right;position:relative;top:2px;width:75px;height:20px;margin-left:5px;background:url('https://img.goodchoice.kr/images/web_v2/search/txt_address.png') no-repeat 0 0;background-size:75px 20px;text-indent:-9999px;}
@@ -173,7 +173,7 @@ label.chk-label{
 	.fix_quick_m{padding-bottom:2px;;}
 	.link_tab ul li:nth-child(4) a,.link_tab ul li:nth-child(5) a,.link_tab ul li:nth-child(6) a{border-bottom:1px solid #eee;}
 	.reserve_wrap .info_title{display:none;}
-	.ad_new_info h3 b{top:3px;padding:2px 7px 0 7px;font-size:0.75rem}
+	.ad_new_info h3 b{top:3px;padding:2px 7px 0 7px;}
 	.ad_new_info .new_info .cont .address,.ad_new_info .new_info .cont .tel{font-size:13px;}
 	.top_banner{display:block;}
 	.top_banner img{max-width:100%}
@@ -213,7 +213,7 @@ label.chk-label{
 .reserve .chg_room a{display:block;padding:12px 15px 12px 70px;border:1px solid #d0d0d0;background:#fff;}
 .reserve .chg_room h5{height:30px;font-size:1.125rem;font-weight:bold;}
 .reserve .chg_room h5 span{display:inline-block;position:relative;top:-2px;margin-left:5px;padding:2px 4px;border-radius:3px;border:1px solid #333;color:#333;font-size:0.75rem;}
-.room_list .room_name span{display:inline-block;display:none;position:relative;top:0;margin-left:5px;padding:2px 4px;border-radius:3px;border:1px solid #333;color:#333;font-size:0.75rem;}
+.room_list .room_name span{display:inline-block;display:none;position:relative;top:0;margin-left:5px;padding:2px 4px;border-radius:3px;border:1px solid #333;color:#333;}
 .reserve .chg_room h5 span.cp,.room_list .room_name span.cp{border:1px solid #f62a4b;background:#f62a4b;color:#fff;}
 .reserve .chg_room ul li{margin-bottom:5px;font-size:0.875rem;color:#909090;}
 .reserve .chg_room ul li span{display:inline-block;width:78px;}

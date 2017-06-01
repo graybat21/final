@@ -33,5 +33,13 @@ public class WishServiceImpl implements WishService {
 		// TODO Auto-generated method stub
 		 wishDao.wishDelete(wishList);
 	}
+	@Override
+	@Transactional
+	public List<Map<String, Object>> wishList1(WishListVO wishVO) throws Exception {
+		// TODO Auto-generated method stub
+		return wishDao.wishList1(wishVO);
+	}
+	
+
 	
 }

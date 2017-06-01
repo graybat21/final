@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import net.kh.host.HostService;
 import net.kh.host.HostVO;
 import net.kh.reserve.ReserveService;
+import net.kh.wish.WishListVO;
 import net.kh.wish.WishService;
 
 @Controller
@@ -78,19 +79,26 @@ public class MainController {
 		System.out.println(host_no);
 		System.out.println(tab);
 		
-		//위시리스트 불러오기
+
 		
+		//위시리스트 불러오기
 //		System.out.println(session.getAttribute("session_mem_no")+"번번");
 //		System.out.println(session.getAttribute("session_host_no")+"번번번");
 		if (session.getAttribute("session_mem_no") != null || session.getAttribute("session_host_no") != null) {
-			int mem_no = (int) session.getAttribute("session_mem_no");
-			List<Map<Integer, Integer>> wishlist = wishService.wishList(mem_no);
-			logger.info(wishlist.toString());
-			wishlist.iterator().
-			model.addAttribute("wishlist", wishlist);
-			
+			int mem_no = (session.getAttribute("session_mem_no")==null ? (int)session.getAttribute("session_host_no"):(int)session.getAttribute("session_mem_no"));
 			System.out.println(mem_no + "가 " + host_no + "열람중");
-		}
+			WishListVO wishVO = new WishListVO();
+			wishVO.setMem_no(mem_no);
+			wishVO.setHost_no(host_no);
+			System.out.println(wishVO.toString());
+			
+			List<Map<String, Object>> isOnWishList = wishService.wishList1(wishVO);
+			System.out.println(isOnWishList.size());
+			if(isOnWishList.size()>0){
+				System.out.println(mem_no+"가 "+host_no+"찜했음이미");
+			}
+			model.addAttribute("isOnWishList", isOnWishList);
+		}//위시리스트불러오기
 
 		return "guesthouse/ghDetail/게스트하우스 상세보기";
 	}

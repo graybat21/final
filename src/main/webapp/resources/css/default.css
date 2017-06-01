@@ -291,7 +291,7 @@ header .btn_m_srch{display:none}
 #footerWrap .foot_desktop .left_cont .mark_04{width:46px;height:64px;margin-right:0;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -264px -120px no-repeat;background-size:314px auto}
 #footerWrap .foot_desktop .right_cont{float:right;width:63%;background:url('https://img.goodchoice.kr/images/web_v2/common/footer_line.gif') no-repeat 0 56px}
 #footerWrap .foot_desktop .right_cont div{position:relative;padding:120px 0 0 60px;font-size:13px;color:#909090;line-height:1.6}
-#footerWrap .foot_desktop .right_cont div:after{content:"";display:inline-block;position:absolute;top:55px;right:0;width:278px;height:80px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -70px no-repeat}
+/* #footerWrap .foot_desktop .right_cont div:after{content:"";display:inline-block;position:absolute;top:55px;right:0;width:278px;height:80px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -70px no-repeat} */
 #footerWrap .foot_desktop .right_cont div ol li{margin-bottom:2px}
 #footerWrap .foot_desktop .right_cont div ol li span{font-size:12px}
 #footerWrap .foot_desktop .right_cont .icon_cont{display:block;position:relative;padding:0 0 10px 43px;font-size:17px} 
@@ -714,7 +714,7 @@ header .btn_m_srch{display:none}
 #footerWrap .foot_desktop .left_cont .mark_04{width:46px;height:64px;margin-right:0;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -264px -120px no-repeat;background-size:314px auto}
 #footerWrap .foot_desktop .right_cont{float:right;width:63%;background:url('https://img.goodchoice.kr/images/web_v2/common/footer_line.gif') no-repeat 0 56px}
 #footerWrap .foot_desktop .right_cont div{position:relative;padding:120px 0 0 60px;font-size:13px;color:#909090;line-height:1.6}
-#footerWrap .foot_desktop .right_cont div:after{content:"";display:inline-block;position:absolute;top:55px;right:0;width:278px;height:80px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -70px no-repeat}
+/* #footerWrap .foot_desktop .right_cont div:after{content:"";display:inline-block;position:absolute;top:55px;right:0;width:278px;height:80px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -70px no-repeat} */
 #footerWrap .foot_desktop .right_cont div ol li{margin-bottom:2px}
 #footerWrap .foot_desktop .right_cont div ol li span{font-size:12px}
 #footerWrap .foot_desktop .right_cont .icon_cont{display:block;position:relative;padding:0 0 10px 43px;font-size:17px} 

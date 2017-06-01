@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
-<%@page pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
@@ -98,6 +100,49 @@
 
 
 	}
+	
+	
+	function addWish(){
+		var session_no = $("#session_no").val();
+		var host_no = $("#host_no").val();
+		if(session_no!=null||${sessionScope.session_host_no!=null}){
+			if(${sessionScope.session_host_no!=null}){
+				alert("기업회원은 사용할 수 없는 기능입니다.");
+				return false;
+			}
+			var con = confirm("관심상품에 등록하시겠습니까? 등록 완료 후 찜 리스트로 이동합니다.");
+			if(con==true){
+				location.href="wishAdd.gh?session_mem_no="+session_no+"&host_no="+host_no;
+			}else {
+				return false;
+			}
+		}else{
+			alert("멤버로 로그인 후에 가능합니다. 로그인 해 주세요");
+			return false;
+		}
+	}
+	
+	function deleteWish(){
+		var session_no = $("#session_no").val();
+		var host_no = $("#host_no").val();
+		if(session_no!=null||${sessionScope.session_host_no!=null}){
+			if(${sessionScope.session_host_no!=null}){
+				alert("기업회원은 사용할 수 없는 기능입니다.");
+				return false;
+			}
+			
+			var con = confirm("관심상품에서 해지하시겠습니까? 등록 완료 후 찜 리스트로 이동합니다.");
+			
+			if(con==true){
+				location.href="wishDelete.gh?session_mem_no="+session_no+"&host_no="+host_no;
+			}else {
+				return false;
+			}
+		}else{
+			alert("멤버로 로그인 후에 가능합니다. 로그인 해 주세요");
+			return false;
+		}
+	}
 </script>
 
 
@@ -109,10 +154,21 @@
 			<h3>${hostinfo.name}</h3>
 			<p class="address btn_copy">${hostinfo.addr1 }&nbsp; ${hostinfo.addr2 } &nbsp;${hostinfo.zip }</p>
 			<p class="tel">☎ ${hostinfo.tel }</p>
-			
-			<c:if>
+			<!-- 찜 등록된 게하 -->
+			<c:if test="${fn:length(isOnWishList) > 0}">
+			<a onclick="return deleteWish();" class="btn_zzim active">찜 해지</a>
 			</c:if>
-			<a href="wishAdd.gh?session_mem_no=${session_mem_no}&host_no=${host_no}" class="btn_zzim ">찜하기</a>
+			
+			<!-- 찜 미등록된 게하 -->
+			<c:if test="${fn:length(isOnWishList) == 0}">
+			<a onclick="return addWish();" class="btn_zzim">찜 하기</a>
+			</c:if>
+			
+			
+			<%-- <c:if test="${fn:length(isOnWishList) > 0}">
+			위시리스트!!!
+			</c:if>
+			${isOnWishList} --%>
 			<%-- <a href="javascript:alert(${session_mem_no});alert(${host_no});" class="btn_zzim">찜하기</a> --%>
 		</div>
 		
@@ -347,6 +403,7 @@ $(document).ready(function(){
 	<form name="value">
 	<input type="hidden" id="host_no" value="${host_no}">
 	<input type="hidden" id="tab" value="${tab }">
+	<input type="hidden" id="session_no" value="${sessionScope.session_mem_no}">
 	</form>
 </body>
 </html>

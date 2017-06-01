@@ -60,19 +60,24 @@ public class WishController {
 		logger.info(list.toString());
 		model.addAttribute("list", list);
 		return "mypage/wish/李�紐⑸�";
-
+		
 	}
 
 	@RequestMapping("/wishDelete.gh")
-	public ModelAndView wishListBye(@RequestParam String mem_no, @RequestParam String host_no) throws Exception {
-
+	public ModelAndView wishListBye(@RequestParam(value = "host_no") int host_no, HttpSession session) throws Exception {
+		
+		int mem_no = (session.getAttribute("session_mem_no")==null ? (int)session.getAttribute("session_host_no"):(int)session.getAttribute("session_mem_no"));
+		System.out.println(mem_no + "가 " + host_no + "를 위시리스트에서 내림");
+		
 		WishListVO wishList = new WishListVO();
-		wishList.setHost_no(Integer.parseInt(host_no));
-		wishList.setMem_no(Integer.parseInt(mem_no));
+		wishList.setHost_no(host_no);
+		wishList.setMem_no(mem_no);
 		wishService.wishDelete(wishList);
 		mav.addObject("list", wishList);
 		mav.setViewName("redirect:/wishList.gh");
 		return mav;
+		
+		
 	}
 
 }

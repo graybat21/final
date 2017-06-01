@@ -13,5 +13,6 @@ public interface WishDao {
 	
 	void wishDelete(WishListVO wishList) throws Exception;
 	
+	List<Map<String, Object>> wishList1(WishListVO wishVO) throws Exception;
 }
  
