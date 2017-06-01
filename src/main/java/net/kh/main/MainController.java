@@ -38,7 +38,6 @@ public class MainController {
 	@RequestMapping("/ghList.gh")
 	public ModelAndView ghList(Search search) throws Exception {
 		ModelAndView mav = new ModelAndView("main/ghList/검색리스트");
-
 		List<Map<String, Object>> reserve = reserveService.selectSearchHappy();
 		// List<Date> dateList = new ArrayList<Date>();
 		HashMap<String, Object> map=new HashMap<String, Object>();

@@ -24,15 +24,8 @@
 	type="text/css" />
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
-	type="text/css" />
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script>
 	$(function() {
 		// 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
@@ -126,17 +119,8 @@
 	<br> to : ${search.to}
 	<br> ${search.max_price}
 	<br> ${search.participant}
-	<br> 이거군
 	<hr>
-	<%-- <c:forEach var="item" items="${reserve }">
-방주소 : ${item.ADDR1}<br>
-호스트이름 : ${item.NAME}<br>
-인당가격 : ${item.PRICE}<br>
-방의최대인원수 : ${item.MAX}<br>
-checkin : ${item.CHECKIN}<br>
-checkout : ${item.CHECKOUT}<br>
-예약인원 : ${item.COUNT}<br>
-	</c:forEach> --%>
+	
 
 
 	<!-- <div id="allWrap"> -->
@@ -144,8 +128,6 @@ checkout : ${item.CHECKOUT}<br>
 	<!-- 페이지별 화면 load -->
 
 	<!-- (공통)contentsWrap -->
-	<article id="contentsWrap">
-		<h2 class="hide">지역별 검색 결과</h2>
 
 		<!-- 검색 조건 폼 -->
 
@@ -212,16 +194,6 @@ checkout : ${item.CHECKOUT}<br>
 												</div></li>
 
 
-											<!-- <li><select class="select-one">
-												<option>1 Children</option>
-												<option selected="selected">1 Children</option>
-												<option>2 Children</option>
-												<option>3 Children</option>
-												<option>No One</option>
-
-										</select></li> -->
-
-
 											<li><a href="javascript:searchSubmit()"
 												class="btn btn-search-travel">검 색</a></li>
 											<!--   search now -->
@@ -240,53 +212,39 @@ checkout : ${item.CHECKOUT}<br>
 
 
 		<!-- 위에까지 -->
-
+<div>
+	</div>	
 		<!-- 상세 조건 검색 -->
-		<link
-			href="${pageContext.request.contextPath}/resources/css/checkbox.css"
-			rel="stylesheet">
-		<!-- 검색 wrap -->
-		<div class="search_allwrap">
-			<!-- 리스트 -->
-			<c:forEach items="${list}" var="list">
+
+			<c:forEach items="${reserve}" var="item">
 				<div class="srch_list_wrap">
-					<div id="toppreloader" class="preloader" style="display: none;">
-						<img src="${pageContext.request.contextPath}/resources/upload/1234.jpg" class="loading_img">
-					</div>
 					<div class="srch_result">
 						<div class="srch_group ui_0">
-							<style type="text/css">
-.ad_top {
-	display: none;
-}
-</style>
 
 							<div class="srch_list list_g5">
 
 
 
 								<ul>
-									<li><a class="link" data-ano="4556" data-uitype="2"
-										data-adtype="4" data-viewtype="4">
+									<li><a class="link" >
 											<div class="ad_thumb">
 												<div class="img_wrap imgLiquidFill">
-													<img
-														src="${pageContext.request.contextPath}/resources/upload/132.jpg"
-														alt="공백"
-														onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'"
-														onerror="this.src='${pageContext.request.contextPath}/resources/upload/error.png'">
-													<span class="opacity"></span>
-													<!-- 그라데이션 배경 -->
+												<img
+													src="${pageContext.request.contextPath}/resources/upload/${item.IMAGENAME}"
+													onclick="javascript:location.href='ghDetail.gh?host_no=${item.HOST_NO}'" width="330px">
+											
 												</div>
 											</div>
 
 											<div class="txt">
 												<p class="name">
-													${list.NAME }<span>${list.addr1 }${list.addr2 }</span>&nbsp;
+													${item.NAME }<span>${item.ADDR1 }</span>&nbsp;
 
 												</p>
 												<!--예약가-->
-												<p class="price">숙박예약 50,000원~</p>
+												
+												<p class="price">숙박예약 : ${item.PRICE}</p>
+												<p class="price">방의최대인원수 : ${item.MAX} </p>
 
 												<p></p>
 											</div>
@@ -294,8 +252,7 @@ checkout : ${item.CHECKOUT}<br>
 								</ul>
 
 							</div>
-
-
+</div>
 
 
 
@@ -307,8 +264,7 @@ checkout : ${item.CHECKOUT}<br>
 
 					</div>
 				</div>
-
-			</c:forEach>
+</c:forEach>
 			<!-- //리스트 -->
 		</div>
 		<!-- //검색 wrap -->

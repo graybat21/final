@@ -15,6 +15,7 @@ public class ReserveVO {
 	private int memno;
 	private int hostno;
 	private int roomno;
+	
 
 	public int getNo() {
 		return no;
