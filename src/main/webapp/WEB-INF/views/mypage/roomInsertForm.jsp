@@ -11,14 +11,18 @@
 <script src="<c:url value="/js/jquery.form.min.js"/>"></script>
 <script type="text/javascript">
 	//<![CDATA[
+		var userId = $("#userId").val();
 	$(function() {
 		$("#btn-upload").on("click", function() {
-			if (($("#file1").val() == "" || $("#file1").val() == null)) {
-				alert("파일 첫 번째가 없습니다.");
-			} /* else if (($("#file2").val() == "" || $("#file2").val() == null)) {
-										alert("파일 두 번째가 없습니다.");
-									} */else {
-
+			if (($("#name").val() == "" || $("#name").val() == null)) {
+				alert("방 이름을 입력하세요.");
+			}else if (($("#max").val() == "" || $("#max").val() == null)) {
+				alert("최대인원을 설정하세요.");
+			}else if (($("#price").val() == "" || $("#price").val() == null)) {
+				alert("가격을 설정하세요.");
+			}else if (($("#file1").val() == "" || $("#file1").val() == null)) {
+				alert("한 개 이상의 이미지를 첨부하세요.");
+			}else {
 				var form = new FormData(document.getElementById('uploadForm'));
 				$.ajax({
 					url : "${pageContext.request.contextPath}/roomInsert.gh", //컨트롤러 URL
@@ -31,30 +35,14 @@
 						alert("success");
 						console.log(response);
 					},
-					error : function(jqXHR) {
-						alert(jqXHR.responseText);
+					error :function(){
+						alert("등록되었습니다.등록된 방 목록으로 이동합니다.");
+						window.location.href = "roomList.gh";
 					}
 				});
-				/*
-
-				 $('#uploadForm').ajaxSubmit({
-				 url: "/pentode/upload.do", //컨트롤러 URL
-				 dataType: 'json',
-				 processData: false,
-				 contentType: false,
-				 type: 'POST',
-				 success: function (response) {
-				 alert("success");
-				 console.log(response);
-				 },error: function (jqXHR) {
-				 alert(jqXHR.responseText);
-				 }
-				 });
-				 */
 			}
-		});
-	});
-	//]]>
+		});//onclick_function
+	});//function()
 	/* 업로드폼 */
 	function fileFields() {
 		var x = document.getElementById('imageUpload');
@@ -103,7 +91,7 @@
 				<div class="my_cont_wrap">
 					<!-- 내정보 수정 -->
 					<div class="myinfo_title">
-						<strong>방등록</strong>
+						<strong>방 등록하기</strong>
 						<!-- <span>회원정보를 수정할 수 있습니다.</span> -->
 					</div>
 					<div class="myinfo_table ">
@@ -121,12 +109,12 @@
 								<tr>
 									<th>최대인원</th>
 									<td><input type="text" id="max" name="max"
-										required="required" size="15" maxlength="11" /></td>
+										required="required" size="15" maxlength="3" /></td>
 								</tr>
 								<tr>
 									<th>가격</th>
 									<td><input type="text" id="price" name="price"
-										required="required" size="15" maxlength="11" /></td>
+										required="required" size="15" maxlength="7" /></td>
 								</tr>
 								<tr>
 									<th>사진</th>
@@ -139,8 +127,9 @@
 					<div class="myinfo_table ">
 						<table>
 							<tr>
+								<td></td>
 								<td>
-									<button id="btn-upload" type="submit">방 등록</button> <br>
+									<button id="btn-upload" type="submit" style="width:20%;">방 등록완료</button> <br>
 								</td>
 							</tr>
 						</table>

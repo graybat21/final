@@ -7,6 +7,10 @@
 		<li><a href="wishList.gh">찜 </a></li>
 		<li><a href="myReservation.gh">예약내역</a></li>
 		<li><a href="modifyMyInfo.gh">내정보수정</a></li>
+		
+		<li><a href="myMessage.gh">메시지함<c:if test="${REF}">
+		<img class="ic_new" src="${pageContext.request.contextPath}/image/ic_new.png"/></c:if></a>
+		</li>
 	</ul>
 	<h3>QNA</h3>
 	<ul>

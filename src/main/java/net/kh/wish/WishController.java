@@ -31,26 +31,17 @@ public class WishController {
 	
 @ResponseBody
 	@RequestMapping("/wishAdd.gh")
-	public ModelAndView wishAddMan(@RequestBody int mem_no,@RequestBody int host_no, WishListVO wishList)
+	public int wishAddMan(@RequestParam(value="mem_no") int mem_no,@RequestParam("host_no") int host_no, WishListVO wishList)
 			throws Exception {
-		/*@RequestMapping("/wishAdd.gh")
-		 * public ModelAndView wishAddMan(@RequestParam(value = "session_mem_no") int mem_no,
-				@RequestParam(value = "session_host_no") int host_no, WishListVO wishList, HttpSession session)
-				throws Exception {*/
-		/*
-		 * Integer mem_no = (Integer) session.getAttribute("session_no"); String
-		 * a = String.valueOf(session.getAttribute("host_no")); Integer host_no
-		 * = Integer.parseInt(a);
-		 */ 
+	
+	
 		System.out.println(host_no);
 		wishList.setHost_no(host_no);
 		wishList.setMem_no(mem_no);
 
 		wishService.insertWish(wishList);
-		mav.addObject("host_no", host_no);
-		mav.addObject("list", wishList);
-		mav.setViewName("redirect:/ghDetail.gh");
-		return mav;
+		
+		return 1;
 
 	}
 

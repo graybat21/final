@@ -14,5 +14,13 @@ public interface RoomDao {
 
 	RoomVO roomList(int no) throws Exception;
 	
+	List<Integer> getRoomNoInReservation(int host_no)throws Exception;
+	
+	HashMap<String, Object> getCountByDate(HashMap<String, Object> map)throws Exception;
+	
 	List<RoomVO> getRoomInfoByHostNo(int no)throws Exception;
+
+	List<RoomVO> getRoomBigImage(int no)throws Exception;
+	
+	List<RoomVO> getRoomBigImage2(Map map)throws Exception;
 }

@@ -41,8 +41,8 @@
 	<!-- 글쓰기 -->
 	<insert id="qnaWrite" parameterType="qnaVO">
 		insert into QNA(no, writer,
-		content, reg, restep, subject) values(SEQ_QNA_NO.NEXTVAL, #{writer},
-		#{content}, sysdate, #{restep}, #{subject})
+		content, reg, ref, restep, subject) values(SEQ_QNA_NO.NEXTVAL, #{writer},
+		#{content}, sysdate, #{ref}, #{restep}, #{subject})
 	</insert>
 
 	<!--글 상세보기 -->
@@ -77,4 +77,14 @@
 		values(SEQ_QNA_NO.NEXTVAL, #{writer}, #{content}, sysdate, #{ref},
 		#{restep}, #{subject})
 	</insert>
+	
+	
+	<update id="updateRef" parameterType="java.util.Map">
+		update qna set restep=restep+1 where ref= #{ref} and restep > #{restep}
+	</update>
+	
+	<select id="refMax" resultType="int">
+	select max(no)+1 as ref from qna
+	<!-- SELECT NVL(MAX(REF)+1, '1')AS REF FROM QNA -->
+	</select>
 </mapper>

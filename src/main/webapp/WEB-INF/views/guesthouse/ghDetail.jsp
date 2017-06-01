@@ -28,47 +28,12 @@
 	var J = jQuery;
 	
 	$(document).ready(function(){
-		var mem_no = $("#mem_no");
-		var host_no = $("#host_no");
+		var mem_no = $("#mem_no").val();
+		var host_no = $("#host_no").val();
 
 		// 지도노출
 		showMap();
 
-		// 찜하기
-		$(".btn_zzim").click(function() {
-
-			if ( !mno )
-			{
-				location.href = 'redirect:/ghDetail.gh';
-				return;
-			}
-
-			$.ajax({
-				type: 'POST',
-				async: false,
-				cache: false,
-				url: '/wishAdd.gh',
-				dataType: 'json',
-				data: {'mem_no' : mem_no , 'host_no' : host_no},
-				success: function(data) { 
-					if(data.rtv == true){
-						 if(data.mem_no == session_mem_no){
-							$(".btn_zzim").addClass("active");
-							//$(".btn_zzim span").text("찜");
-							
-						} else{
-							$(".btn_zzim").removeClass("active");
-							//$(".btn_zzim span").text("찜하기");
-						} 
-						}
-				},
-				error: function(e) {
-					console.log(e);
-					alert('다시 시도하여 주세요.');
-				}
-			});
-
-		});
 
 		// 이용후기 영역 이동
 		$("#goReview").click(function(){
@@ -144,16 +109,44 @@
 			<h3>${hostinfo.name}</h3>
 			<p class="address btn_copy">${hostinfo.addr1 }&nbsp; ${hostinfo.addr2 } &nbsp;${hostinfo.zip }</p>
 			<p class="tel">☎ ${hostinfo.tel }</p>
-			<a class="btn_zzim">찜하기</a></div>
+			<script>
+			// 찜하기
+			function insertzzim(){
+				
+				var mem_no = $("#mem_no").val();
+				var host_no = $("#host_no").val();
+				
+				alert(mem_no);
+				
+				if ( mem_no == null )
+				{
+					location.href = 'redirect:/ghDetail.gh';
+					return;
+				}
+
+				$.ajax({
+					type: 'POST',
+					url: 'wishAdd.gh',
+					data: {'mem_no' : mem_no , 'host_no' : host_no},
+					success: function(data) { 
+					},
+					error: function(e) {
+						alert(e.status);
+						alert(e.readyState);
+						alert('다시 시도하여 주세요.');
+					}
+				});
+
+			}
+			</script>
+			<a href="javascript:;" class="btn_zzim" onclick="insertzzim()">찜하기</a></div>
 <%-- 			<a href="wishAdd.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" class="btn_zzim ">찜하기</a> --%>
 		</div>
 		
 		<!-- 주소 -->
-
 					<div style="position: absolute; z-index: 1; left: 0px; top: 0px;">
 						<div style="position: absolute;">
 							<div style="position: absolute; z-index: 1; left: 0px; top: 0px;">
-
 								<script type="text/javascript"
 									src="//apis.daum.net/maps/maps3.js?apikey=777b98fd0553ecb180492b79d3bd2d7c&libraries=services"></script>
 								<script>
@@ -176,7 +169,7 @@
 									// 주소로 좌표를 검색합니다
 									geocoder
 											.addr2coord(
-													'서울시 마포구 연남로1길 37${session.addr1}',
+													'${hostinfo.addr1 }',
 													function(status, result) {
 
 														// 정상적으로 검색이 완료됐으면 
@@ -196,7 +189,7 @@
 															// 인포윈도우로 장소에 대한 설명을 표시합니다
 															var infowindow = new daum.maps.InfoWindow(
 																	{
-																		content : '<div style="width:150px;text-align:center;padding:6px 0;">${sessionScope.name}</div>'
+																		content : '<div style="width:150px;text-align:center;padding:6px 0;">${hostinfo.name}</div>'
 																	});
 															infowindow
 																	.open(map,
@@ -260,19 +253,38 @@
     });
     
 </script>
+<script>
+
+function searchRoom(){
+/* var from = document.getElementById("datepicker1").value;
+var to = document.getElementById("datepicker2").value;
+ */
+ var from = $("#datepicker1").val();
+ var to = $("#datepicker2").val();
+	tabView(tab);
+}
+</script>
 <div class="reserve_select">
 	<div class="row">
-				<div class="date">
+		<div class="date">
 			<div>
-				<span><input id="datepicker1" class="datepicker picker__input" placeholder="" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text"><input name="date1" value="날짜" type="hidden"></span>
+				<span>
+				<input id="datepicker1" class="datepicker picker__input" placeholder="" 
+				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text">
+				<input id="from" name="from" value="from" type="hidden">
+				</span>
 			</div>
 		</div>
 		<div class="date">
 			<div>
-				<span><input id="datepicker2" class="datepicker picker__input" value="" readonly="" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text"><input name="date2" value="날짜" type="hidden"></span>
+				<span>
+				<input id="datepicker2" class="datepicker picker__input" value="" readonly="" 
+				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text">
+				<input id="to" name="to" value="to" type="hidden">
+				</span>
 			</div>
 		</div>
-			<a id="btn_reservego" class="btn_reservego">방 검색</a>
+			<a id="btn_reservego" class="btn_reservego" href="javascript:searchRoom()">방 검색</a>
 		</div>
 </div>
 <!-- Menu (search.js 138참고 )-->
@@ -289,13 +301,16 @@ $(document).ready(function(){
 
 	function tabView(tab) {
 		var host_no = $("#host_no").val();
+		var from = $("#datepicker1").val();
+		 var to = $("#datepicker2").val();
+		 
 		$(".search_menu *").removeClass('on');
 
 		if(tab == 1){
 			$.ajax({
 				url:"/GuestHi/tabRoomDetail.gh",
 				type: "post",
-				data: {host_no: host_no},
+				data: {host_no: host_no, from: from, to: to},
 				success: function(data){
 					$(".ad_info_wrap").html(data);
 				},
@@ -356,6 +371,7 @@ $(document).ready(function(){
 	<form name="value">
 	<input type="hidden" id="host_no" value="${host_no}">
 	<input type="hidden" id="tab" value="${tab }">
+	<input type="hidden" id="mem_no" value="${sessionScope.session_mem_no}">
 	</form>
 </body>
 </html>
