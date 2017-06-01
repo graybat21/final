@@ -8,7 +8,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type">
 
-<!-- 공통 CSS  -->
 <link rel="stylesheet" type="text/css"
 	href="/howaboutthis/folder/default.css">
 <link rel="stylesheet" type="text/css"
@@ -94,9 +93,6 @@
 				<script src="/js/app/owl.carousel.min.js?rand=1476499599"></script>
 				<!-- Left Content -->
 				<div class="left">
-					<!-- 리턴 URL -->
-					<input name="returnUrl" value="/search/detailView/1987"
-						type="hidden">
 
 					<!-- Change Room -->
 					<div id="chg_room">
@@ -127,12 +123,9 @@
 						</c:if>
 						</c:forEach>
 						
-					</div>
-				</div>
-				<!-- Right Content -->
-				<div id="reserve_detail_view" class="right">
-
-					<!-- 예약자  -->
+						<!-- Right Content -->
+						<div id="reserve_detail_view" class="right">
+							<!-- 예약자  -->
 					<div class="wrap_div">
 						<div class="list_inp bd_none">
 							<h5>예약자 이름</h5>
@@ -177,7 +170,9 @@
 						<div class="info_txt">
 							<p class="first_pd">
 								총 주문금액<span class="total_price">
+								
 								<input type="text" id="totalPrice">
+								
 								원</span>
 							</p>
 							<!-- 유저 일때만 출력 2016-08-31 by.sim-->
@@ -186,7 +181,9 @@
 							</p>
 							<p>
 								<b class="org">최종 결제 금액</b><span class="total_val">
+								
 								<input type="text" id="finalPrice">
+								
 								원</span>
 							</p>
 						</div>

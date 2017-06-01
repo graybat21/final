@@ -17,7 +17,6 @@ public class WishListVO {
 	}
 
 	public void setHost_no(int host_no) {
-		System.out.println(host_no + "sethost_no");
 		this.host_no = host_no;
 	}
 

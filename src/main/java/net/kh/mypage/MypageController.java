@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import net.kh.admin.AdminService;
 import net.kh.member.MemberService;
 import net.kh.member.MemberVO;
+import net.kh.review.ReviewService;
 
 /**
  * Handles requests for the application home page.
@@ -34,6 +35,9 @@ public class MypageController {
 	@Resource
 	private MemberService memberService;
 	
+	@Resource
+	private ReviewService reviewService;
+	
 	@Inject
 	BCryptPasswordEncoder passwordEncoder;
 	
@@ -42,11 +46,14 @@ public class MypageController {
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @throws Exception 
 	 */
 	@RequestMapping("/myPage.gh")
-	public String noticeList(Model model) {
+	public String noticeList(HttpSession session,Model model) throws Exception {
 		logger.info("MypageController - myPage.gh");
-
+		String writer = (String)session.getAttribute("session_mem_name");
+		boolean hasREF = reviewService.selectREF(writer);
+		model.addAttribute("REF",hasREF);
 		return "mypage/mypage/MY PAGE";
 
 	}

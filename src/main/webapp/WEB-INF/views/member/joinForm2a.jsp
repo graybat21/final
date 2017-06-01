@@ -29,8 +29,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/check.js"></script>
 
 <script>
-</script>
 
+</script>
 
 <!-- 핸드폰번호 입력 관련 -->
 <script>

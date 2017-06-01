@@ -44,7 +44,6 @@
 				<div class="svc_title svc_notice">
 					<h4>QnA</h4>
 				</div>
-
 				<!-- svc_cont_wrap -->
 				<div class="svc_cont_wrap" style="min-height: 1127px;">
 					<div class="svc_list">
