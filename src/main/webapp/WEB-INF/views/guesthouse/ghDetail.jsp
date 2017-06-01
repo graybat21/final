@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
-<%@page pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
@@ -25,15 +27,19 @@
 	var alat = "37.70929718";
 	var alng = "127.1109074";
 	showMap();
-	var J = jQuery;
-	
+
 	$(document).ready(function(){
-		var mem_no = $("#mem_no").val();
-		var host_no = $("#host_no").val();
+		var uno = "";
+		var ano = "1987";
+		var userfavor = "N";
 
 		// 지도노출
 		showMap();
 
+		// 찜하기
+		$(".btn_zzim").click(function() {
+			alert("알럿럿");
+		});
 
 		// 이용후기 영역 이동
 		$("#goReview").click(function(){
@@ -94,6 +100,49 @@
 
 
 	}
+	
+	
+	function addWish(){
+		var session_no = $("#session_no").val();
+		var host_no = $("#host_no").val();
+		if(session_no!=null||${sessionScope.session_host_no!=null}){
+			if(${sessionScope.session_host_no!=null}){
+				alert("기업회원은 사용할 수 없는 기능입니다.");
+				return false;
+			}
+			var con = confirm("관심상품에 등록하시겠습니까? 등록 완료 후 찜 리스트로 이동합니다.");
+			if(con==true){
+				location.href="wishAdd.gh?session_mem_no="+session_no+"&host_no="+host_no;
+			}else {
+				return false;
+			}
+		}else{
+			alert("멤버로 로그인 후에 가능합니다. 로그인 해 주세요");
+			return false;
+		}
+	}
+	
+	function deleteWish(){
+		var session_no = $("#session_no").val();
+		var host_no = $("#host_no").val();
+		if(session_no!=null||${sessionScope.session_host_no!=null}){
+			if(${sessionScope.session_host_no!=null}){
+				alert("기업회원은 사용할 수 없는 기능입니다.");
+				return false;
+			}
+			
+			var con = confirm("관심상품에서 해지하시겠습니까? 등록 완료 후 찜 리스트로 이동합니다.");
+			
+			if(con==true){
+				location.href="wishDelete.gh?session_mem_no="+session_no+"&host_no="+host_no;
+			}else {
+				return false;
+			}
+		}else{
+			alert("멤버로 로그인 후에 가능합니다. 로그인 해 주세요");
+			return false;
+		}
+	}
 </script>
 
 
@@ -102,51 +151,33 @@
 	<div class="new_info row">
 	<div id="map" style="width: 350px; height: 200px; float: right;"></div>
 		<div class="cont">
-
-
-			<%-- href="wishAdd.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" --%>
-
 			<h3>${hostinfo.name}</h3>
 			<p class="address btn_copy">${hostinfo.addr1 }&nbsp; ${hostinfo.addr2 } &nbsp;${hostinfo.zip }</p>
 			<p class="tel">☎ ${hostinfo.tel }</p>
-			<script>
-			// 찜하기
-			function insertzzim(){
-				
-				var mem_no = $("#mem_no").val();
-				var host_no = $("#host_no").val();
-				
-				alert(mem_no);
-				
-				if ( mem_no == null )
-				{
-					location.href = 'redirect:/ghDetail.gh';
-					return;
-				}
-
-				$.ajax({
-					type: 'POST',
-					url: 'wishAdd.gh',
-					data: {'mem_no' : mem_no , 'host_no' : host_no},
-					success: function(data) { 
-					},
-					error: function(e) {
-						alert(e.status);
-						alert(e.readyState);
-						alert('다시 시도하여 주세요.');
-					}
-				});
-
-			}
-			</script>
-			<a href="javascript:;" class="btn_zzim" onclick="insertzzim()">찜하기</a></div>
-<%-- 			<a href="wishAdd.gh?session_mem_no=${sessionScope.session_mem_no}&session_host_no=${sessionScope.session_host_no}" class="btn_zzim ">찜하기</a> --%>
+			<!-- 찜 등록된 게하 -->
+			<c:if test="${fn:length(isOnWishList) > 0}">
+			<a onclick="return deleteWish();" class="btn_zzim active">찜 해지</a>
+			</c:if>
+			
+			<!-- 찜 미등록된 게하 -->
+			<c:if test="${fn:length(isOnWishList) == 0}">
+			<a onclick="return addWish();" class="btn_zzim">찜 하기</a>
+			</c:if>
+			
+			
+			<%-- <c:if test="${fn:length(isOnWishList) > 0}">
+			위시리스트!!!
+			</c:if>
+			${isOnWishList} --%>
+			<%-- <a href="javascript:alert(${session_mem_no});alert(${host_no});" class="btn_zzim">찜하기</a> --%>
 		</div>
 		
 		<!-- 주소 -->
+
 					<div style="position: absolute; z-index: 1; left: 0px; top: 0px;">
 						<div style="position: absolute;">
 							<div style="position: absolute; z-index: 1; left: 0px; top: 0px;">
+
 								<script type="text/javascript"
 									src="//apis.daum.net/maps/maps3.js?apikey=777b98fd0553ecb180492b79d3bd2d7c&libraries=services"></script>
 								<script>
@@ -203,7 +234,7 @@
 								</script>
 							</div>
 						</div>
-					</div>				
+					</div>
 					
 		<!-- <div id="maparea" class="map" style="overflow: hidden; background: transparent url(&quot;https://i1.daumcdn.net/dmaps/apis/loading_n.png&quot;) repeat scroll 0% 0%;">
 		<div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; cursor: url(&quot;https://i1.daumcdn.net/dmaps/apis/cursor/openhand.cur.ico&quot;) 7 5, url(&quot;https://i1.daumcdn.net/dmaps/apis/cursor/openhand.cur.ico&quot;), default;">
@@ -372,7 +403,7 @@ $(document).ready(function(){
 	<form name="value">
 	<input type="hidden" id="host_no" value="${host_no}">
 	<input type="hidden" id="tab" value="${tab }">
-	<input type="hidden" id="mem_no" value="${sessionScope.session_mem_no}">
+	<input type="hidden" id="session_no" value="${sessionScope.session_mem_no}">
 	</form>
 </body>
 </html>

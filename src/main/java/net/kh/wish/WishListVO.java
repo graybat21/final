@@ -14,14 +14,13 @@ package net.kh.wish;
 			return host_no;
 		}
 		public void setHost_no(int host_no) {
-			System.out.println(host_no+"sethost_no");
+			//System.out.println(host_no+"set host_no");
 			this.host_no = host_no;
 		}
 		@Override
 		public String toString() {
-			return "WishListVO [mem_no=" + mem_no + ", host_no=" + host_no + "]";
+			return "WISHLIST»óÅÂ [mem_no=" + mem_no + ", host_no=" + host_no + "]";
 		}
-
 
 		}
 
