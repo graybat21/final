@@ -41,7 +41,8 @@ public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-	String PATH = "C:\\java_eclipse\\work\\guestHi\\src\\main\\webapp\\resources\\upload";
+    String PATH = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload";
+
 
 	// @Resource(name = "roomService")
 	@Inject

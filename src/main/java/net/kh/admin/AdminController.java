@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,6 +29,10 @@ public class AdminController {
 	@Resource(name="adminService")
 	private AdminService adminService;
 	
+	@RequestMapping(value = "adminLogin", method = RequestMethod.GET)
+	public String loginForm() {
+		return "login/loginAdmin";
+	}
 	
 	// 관리자의 회원관리 - 회원 목록
 	@RequestMapping("/adminmemberList.gh")

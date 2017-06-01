@@ -160,4 +160,6 @@ public class MemberController {
 	private String getUuid() {
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
+	
+	
 }
