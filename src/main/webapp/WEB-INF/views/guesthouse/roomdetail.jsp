@@ -15,47 +15,54 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" rel="stylesheet">
+
+
+
 <script type="text/javascript">
 
-//Slick controls
 $('#popup-image-gallery').on('shown.bs.modal', function() {
-  $('.popup-slider-for').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-    fade: true,
-    asNavFor: '.popup-slider-nav',
-    // adaptiveHeight: true,
-  });
-  $('.popup-slider-nav').slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    asNavFor: '.popup-slider-for',
-    dots: false,
-    arrows: false,
-    focusOnSelect: true,
-    variableWidth: true,
-    centerMode: true,
-    infinite: true,
-  });
-});
-// Slick.js: Get current and total slides (ie. 3/5)
-var $status = $('.pagingInfo');
-var $slickElement = $('.popup-slider-for');
+	  $('.popup-slider-for').slick({
+	    slidesToShow: 1,
+	    slidesToScroll: 1,
+	    //Hye 추가
+	    /* autoplay: true,
+	    autoplaySpeed: 1000, */
+	    //Hye 여기까지
+	    arrows: true,
+	    fade: true,
+	    asNavFor: '.popup-slider-nav'
+	    // adaptiveHeight: true,
+	  });
+	  $('.popup-slider-nav').slick({
+	    slidesToShow: 8,
+	    slidesToScroll: 1,
+	    asNavFor: '.popup-slider-for',
+	    dots: false,
+	    arrows: false,
+	    focusOnSelect: true,
+	    variableWidth: true,
+	    centerMode: true,
+	    infinite: true
+	  });
+	});
+	// Slick.js: Get current and total slides (ie. 3/5)
+	var $status = $('.pagingInfo');
+	var $slickElement = $('.popup-slider-for');
 
-$slickElement.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
-  //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
-  var i = (currentSlide ? currentSlide : 0) + 1;
-  $status.text(i + '/' + slick.slideCount);
-});
+	$slickElement.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
+	  //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+	  var i = (currentSlide ? currentSlide : 0) + 1;
+	  $status.text(i + '/' + slick.slideCount);
+	});
 
-// Slick slider sync situation
-var slides = $(".popup-slider-for .slick-track > .slick-slide").length;
-$('.popup-slider-for').on('afterChange', function(event, slick, currentSlide, nextSlide) {
-  var inFocus = $('.popup-slider-for .slick-current').attr('data-slick-index');
-  $('.popup-slider-nav .slick-current').removeClass('slick-current');
-  $('.popup-slider-nav .slick-slide[data-slick-index="' + inFocus + '"]').trigger('click');
-});
+	// Slick slider sync situation
+	var slides = $(".popup-slider-for .slick-track > .slick-slide").length;
+	$('.popup-slider-for').on('afterChange', function(event, slick, currentSlide, nextSlide) {
+	  var inFocus = $('.popup-slider-for .slick-current').attr('data-slick-index');
+	  $('.popup-slider-nav .slick-current').removeClass('slick-current');
+	  $('.popup-slider-nav .slick-slide[data-slick-index="' + inFocus + '"]').trigger('click');
+	});
+
 
 </script>
 
@@ -291,11 +298,42 @@ body.modal-open {
 					<div class="info_cont container">
 						<ul class="room_list">
 						
+						<script>
+						 function detailShot(room_no,status){
+
+							$.ajax({
+							url:"RoomImage.gh",
+							type: "post",
+							dataType:"text",
+							data:{room_no:room_no},
+							success: function(data){
+								var array = data.split(",");
+								var mimg = '';
+										$("#imgthumbnail").html("");
+								for( var i in array){
+									mimg = '<img src="./resources/upload/'+array[0]+'"/>';
+									if(i!=0 && i!=(array.length-1)){
+										$("#imgthumbnail").prepend('<div class="thumbnail-image"><img src="./resources/upload/'+array[i]+'"/></div>');
+									}
+								}
+								$(".main-image").html("");
+									$(".main-image").html(mimg);
+							},
+							error: function(data){
+								alert(data.Status);
+								alert(data.readyState);
+							}
+						});
 						
+						
+						
+					} 
+					
+
+					</script>
 							<c:forEach var="item" items="${roomList }" varStatus="status">
 							<li>
-					
-								<a href="#" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#popup-image-gallery" tabindex="0">
+								<a href="#" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#popup-image-gallery" tabindex="0" onclick='detailShot("${item.no}","${status.index}")'>
 								<div class="room_img">
 								
 							
@@ -319,37 +357,30 @@ body.modal-open {
 								</div>
 
 								</a>
-							
-							
 								
 <div class="modal popup-image-gallery" id="popup-image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
+      
         <button type="button" class="btn close-btn" title="Close" data-dismiss="modal" aria-label="Close">&#10006;</span></button>
         <div class="popup-slider-for">
           
           <div class="main-image">
-            <img src="./resources/upload/${item.filename }"/>
+         <!--  팝업 중간 큰이미지 위치 -->
           </div>
           
         </div>
-			<c:forEach var="image" items="${bigImage }">
         <h5 class="pagingInfo"></h5>
-        <div class="popup-slider-nav hidden-xs">
-          <div class="thumbnail-image">
-            <img src="./resources/upload/${image.filename }"/>
-          </div>
-          
-			</c:forEach>				
+        <div id="imgthumbnail" class="popup-slider-nav hidden-xs">
+          <!-- 아래 슬라이더 이미지 위치 -->
         </div>
         
       </div>
     </div>
   </div>
 </div>
-						
-							</li>
+</li>
 							</c:forEach>
 						</ul>
 					</div>
