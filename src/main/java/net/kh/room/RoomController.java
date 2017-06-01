@@ -77,7 +77,7 @@ public class RoomController {
 
 			roomList = validSearch(roomList, roomNo, host_no, from, to);
 		}
-
+		logger.info(roomList.toString());
 		mav.addObject("host_no", host_no);
 		mav.addObject("roomList", roomList);
 		mav.addObject("bigImage", bigImage);
@@ -118,7 +118,6 @@ public class RoomController {
 						System.out.println(roomNo2);
 						removeRoomNo.add(roomNo2);
 					}
-					
 				}
 			}
 		}
@@ -129,8 +128,8 @@ public class RoomController {
 			for (int i = roomList.size() - 1; i >= 0; i--) {
 				for(int j = removeRoomNo.size()-1 ; j>=0;j--){
 					if (roomList.get(i).getNo() == removeRoomNo.get(j).intValue()) {
-						roomList.remove(i);
 						System.out.println(removeRoomNo.get(j) + "제거 성공");
+						roomList.remove(i);
 					}
 				}
 			}

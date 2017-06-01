@@ -58,7 +58,7 @@ public class ReserveController {
 
 			roomList = validSearch(roomList, roomNo, host_no, from, to);
 		}
-
+		logger.info(roomList.toString());
 		mav.addObject("roomList", roomList);
 		mav.addObject("bigImage", bigImage);
 		return mav;
@@ -77,7 +77,6 @@ public class ReserveController {
 		int sum = 0;
 		int rest = 0;
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<HashMap<String, Object>> map2 = new ArrayList<HashMap<String, Object>>();
 		List<Integer> removeRoomNo = new ArrayList<>();
 		map.put("host_no", host_no);
 		for (int i = 0; i < countOfDays; i++) {
@@ -87,12 +86,12 @@ public class ReserveController {
 			for (int j = roomNo.size() - 1; j >= 0; j--) {
 				map.put("room_no", roomNo.get(j));
 				HashMap<String, Object> getInfoByDate = roomService.getCountByDate(map);
+				logger.info("날짜를 통해 얻은 최대인원수 등 : "+getInfoByDate);
 				if (getInfoByDate != null) {
 					max = Integer.parseInt(getInfoByDate.get("MAX").toString());
 					sum = Integer.parseInt(getInfoByDate.get("SUMCOUNT").toString());
-					
-					if(max - sum > 0){
-					}else {
+					rest = max - sum;
+					if (rest <= 0) {
 						System.out.println("제거할 방번호 구함.");
 						int roomNo2=(int) map.get("room_no");
 						System.out.println(roomNo2);
@@ -102,7 +101,7 @@ public class ReserveController {
 			}
 		}
 		System.out.println();
-		logger.info(map2.toString());
+		logger.info(removeRoomNo.toString());
 		System.out.println();
 		if(removeRoomNo != null){
 			for (int i = roomList.size() - 1; i >= 0; i--) {

@@ -18,6 +18,57 @@
 <!-- 페이지별 호출 소스 -->
 <link rel="stylesheet" type="text/css" href="/folder/search.css">
 <link rel="stylesheet" type="text/css" href="/folder/default_002.css">
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/spinner.js"></script> --%>
+<script>
+
+	var end = $('#roomEnd').val();
+	
+	function onlyNumber(event){
+		event = event || window.event;
+		var keyID = (event.which) ? event.which : event.keyCode;
+		if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+			return;
+		else
+			return false;
+	}
+	function removeChar(event) {
+		event = event || window.event;
+		var keyID = (event.which) ? event.which : event.keyCode;
+		if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+			return;
+		else
+			event.target.value = event.target.value.replace(/[^0-9]/g, "");
+		
+		
+		for(var i=1; i<end+1; i++){
+			var count = $('#count_'+i).val();
+			var price = $('#price_'+i).val();
+			$('#tprice_'+i).val(count * price);
+			$('#check_'+i).val(count * price);
+		}
+	}
+	
+	$(function(){
+		
+		$('.room').on('click',function(){
+			var total = 0;
+			for(var i=1; i<= end ;i++ ){
+				if($('#check_'+i).is(":checked")){
+					total = total + parseInt($('#check_'+i).val());
+					$('#totalPrice').val(total);
+					$('#finalPrice').val(total);
+				}
+			}
+			if($('.room').is(":checked") == false){
+				$('#totalPrice').val(0);
+				$('#finalPrice').val(0);
+			}				
+		});
+		
+	});
+	
+	
+</script>
 </head>
 <body class="pcweb" oncontextmenu="return false"
 	ondragstart="return false">
@@ -55,11 +106,25 @@
 							data-dpod_no="9381178" data-chkin="2017.05.12 (금) 17:00"
 							data-chkout="2017.05.13 (토) 12:00" data-refund_time="14:00"
 							data-sale-type="2" data-armg-no="24019">
-							<a href="javascript:;"> <input name="armgno" value="24019"
-								type="checkbox" class="room"> ${item.name } <strong> <b>${item.price }원${item.max }</b>
-							</strong>
+							<a href="javascript:totalPriceChange();"> <input id="check_${status.count }"
+								type="checkbox" class="room" name="chk" > ${item.name } 
+								<strong> <b>${item.price }
+								<input type="hidden" id="price_${status.count }" value="${item.price }">
+								원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="text" id="count_${status.count }" value="" width="3"
+								onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' />명&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="text" id="tprice_${status.count }" value="" width="3" readonly/></b></strong>
+								
 							</a>
+							<!-- <div class="wan-spinner wan-spinner-3">
+								<a href="javascript:void(0)" class="minus">-</a> -->
+								
+								<!-- <a href="javascript:void(0)" class="plus">+</a>
+							</div> -->
 						</div>
+						<c:if test="${status.last }">
+							<input type="hidden" id="roomEnd" value="${status.count }">
+						</c:if>
 						</c:forEach>
 						
 					</div>
@@ -94,15 +159,14 @@
 							<h5>입금 계좌</h5>
 							<div>
 								<input class="inp_txt" name="do_from_name" placeholder="호스트계좌번호"
-									maxlength="20" value="" type="text" readonly="readonly">
+									maxlength="20" value="" type="text">
 							</div>
 						</div>
 						<div class="list_inp bd_none">
 							<h5>은행 및 예금주</h5>
 							<div>
 								<input class="inp_txt" name="do_from_name"
-									placeholder="은행 / 예금주" maxlength="20" value="" type="text"
-									readonly="readonly">
+									placeholder="은행 / 예금주" maxlength="20" value="" type="text">
 							</div>
 						</div>
 					</div>
@@ -112,14 +176,18 @@
 						<!-- 앱 HTML 그대로 가져옴 by.KYH -->
 						<div class="info_txt">
 							<p class="first_pd">
-								총 주문금액<span class="total_price">0원</span>
+								총 주문금액<span class="total_price">
+								<input type="text" id="totalPrice">
+								원</span>
 							</p>
 							<!-- 유저 일때만 출력 2016-08-31 by.sim-->
 							<p class="total_dc">
 								<b>총 할인금액</b><span class="org" id="show_total_price">- 0원</span>
 							</p>
 							<p>
-								<b class="org">최종 결제 금액</b><span class="total_val">0원</span>
+								<b class="org">최종 결제 금액</b><span class="total_val">
+								<input type="text" id="finalPrice">
+								원</span>
 							</p>
 						</div>
 					</div>
