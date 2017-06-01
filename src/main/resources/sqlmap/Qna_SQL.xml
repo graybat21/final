@@ -21,6 +21,23 @@
 	
 	<!--내가 쓴 글목록 -->
 	<select id="myqnaList" resultType="qnaVO" parameterType="hashmap">
+		select * from
+			(SELECT ROW_NUMBER() OVER(ORDER BY no DESC) RNUM,
+			no,
+			subject,
+			writer,
+			content,
+			reg,
+			ref,
+			restep 
+			FROM QNA
+			where REF in (select REF from QNA where writer=#{name})
+			ORDER BY REF DESC, RESTEP ASC
+			) X
+			where X.RNUM between #{first} and #{last}
+		<!-- select * from QNA where ref in (select ref from QNA where writer=#{name}) order by REF DESC, RESTEP ASC; -->
+	</select>
+	<!-- <select id="myqnaList" resultType="qnaVO" parameterType="hashmap">
 		select *
 		from
 		(SELECT ROW_NUMBER() OVER(ORDER BY no DESC) RNUM,
@@ -36,7 +53,7 @@
 		ORDER BY ref DESC, restep ASC
 		) X
 		where X.RNUM between #{first} and #{last}
-	</select>
+	</select> -->
 
 	<!-- 글쓰기 -->
 	<insert id="qnaWrite" parameterType="qnaVO">
@@ -53,8 +70,7 @@
 
 	<!-- 수정하기 -->
 	<update id="qnaModify" parameterType="qnaVO">
-		update QNA set subject
-		=#{subject}, content =#{content} where no =#{no}
+		update QNA set subject=#{subject}, content =#{content} where no =#{no}
 	</update>
 
 	<!-- 글 삭제 -->
@@ -66,9 +82,9 @@
 	<select id="selectListCnt" resultType="int">
 		select count(*) from QNA
 	</select>
+	
 	<select id="selectListCntByName" resultType="int" parameterType="String">
-		select count(*) from QNA
-		where writer = #{name}
+		select count(*) from QNA where REF in (select REF from QNA where writer = #{name} ) order by REF DESC, RESTEP ASC
 	</select>
 
 	<!-- 답변 글쓰기 -->

@@ -12,7 +12,18 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible">
 <meta http-equiv="Content-Type">
-
+<style type="text/css">
+.button {
+    background-color: #E32E4E; /* 여기어때컬러 */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+</style>
 </head>
 <body>
 	<!-- (공통)contentsWrap -->
@@ -21,9 +32,10 @@
 		<div class="svc_wrap row row_cont">
 			<!-- 서비스 메뉴 -->
 			<div class="svc_menu" style="display: none;">
+			<%-- <c:if test="${session_mem_email!='admin'&&session_mem_no!='1' }"> --%>
 				<!-- min-height: 1530px; -->
-
 				<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
+		<%-- 	</c:if> --%>
 			</div>
 			<!-- //서비스 메뉴 -->
 
@@ -56,7 +68,7 @@
 													<img
 															src="${pageContext.request.contextPath}/image/answer.png">
 													</c:if> ${list.subject }
-											</a></strong></td>
+										</a></strong></td>
 											
 										<td align="left"><strong><a href="${viewURL }">${list.writer }</a></strong></td>
 										<td align="right"><gray>
@@ -71,9 +83,11 @@
 						</table>
 						
 					</div>
-					<div class="">
-						<a href="qnaWrite.gh" class=""><strong>글쓰기</strong> </a>
+					<!-- 글쓰기는 myQNALIST에서만  -->
+					<!-- <div align="right" >
+							<a href="qnaWrite.gh" class="button"><strong>글쓰기</strong></a>
 					</div>
+				 -->
 
 					<!-- 페이징 -->
 					<div class="svc_paging">

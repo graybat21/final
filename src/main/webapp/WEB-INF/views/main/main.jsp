@@ -560,11 +560,11 @@ function searchSubmit(){
 							<div class="main-fill ">
 								<!--tabs-->
 								<div class="panel">
+								<!-- 여기 클릭하면 뛰어나옴 -->
 									<div class="panel-heading">
 										<ul class="nav nav-tabs">
 
-											<li><a href="#tabhotel" data-toggle="tab"> <i
-													class="fa fa-hotel"></i>GuestHouse
+											<li><a href="#tabhotel" data-toggle="tab"> GuestHouse
 											</a></li>
 
 										</ul>
@@ -593,7 +593,7 @@ function searchSubmit(){
 												<option value="대구">대구</option>
 												<option value="울산">울산</option>
 												<option value="부산">부산</option>
-												<option value="제주도">제주도</option>
+												<option value="제주">제주</option>
 										</select></li>
 										<li>
 											<div class="form-group">
@@ -679,24 +679,90 @@ function searchSubmit(){
 
 
 
-	<c:forEach items="${list}" var="list">
-		<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent">
-			<img src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}"	width="330" 
-			class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'" />
-			<h4 class="ngc">
-				<strong>${list.NO}/${list.NAME}<%-- ${list.NO} --%></strong>
-			</h4>
-			<div class="imageText">
-				<div class="text_border">
-					<strong> <!--          <p class="ngc" id="demo"></p> -->
-					</strong>
+	
+
+
+
+<!-- 게하리스트 -->
+
+<%-- 
+<c:forEach items="${list}" var="list">
+		<div class="srch_list_wrap">
+				<div id="toppreloader" class="preloader" style="display: none;">
+					<img src="/ghtest/list_files/run.gif" class="loading_img">
 				</div>
-				<%-- <p class="ngc" id="demo[${itemStat.index }]"></p> --%>
+
+				<div class="srch_result">
+					<div class="srch_group ui_0">
+
+						<style type="text/css">
+							.ad_top {
+								display: none;
+							}
+						</style>
+
+						<div class="srch_list list_g5">
+
+
+
+							<ul>
+								<li><a class="link" data-ano="4556" data-uitype="2"
+									data-adtype="4" data-viewtype="4">
+										<div class="ad_thumb">
+											<div class="img_wrap imgLiquidFill">
+												<img
+													src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}"
+													onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'">
+													
+												<span class="opacity"></span>
+												<!-- 그라데이션 배경 -->
+											</div>
+										</div>
+
+										<div class="txt">
+											<p class="name">
+												${list.NO}/${list.NAME}<span></span>&nbsp;
+
+											</p>
+											<!--예약가-->
+											<p class="price">숙박예약 50,000원~</p>
+
+											<p></p>
+										</div>
+								</a></li>
+							</ul>
+
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
+			</div>
+			</c:forEach> --%>
 
-	</c:forEach>
 
+
+
+
+	
+	
+	<c:forEach items="${list}" var="list">
+			<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent">
+				<img src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}" width="330" height="330" 
+				class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'" />
+				<h4 class="ngc">
+					<strong>${list.NO}/${list.NAME}${list.NO}</strong>
+				</h4>
+				<div class="imageText">
+					<div class="text_border">
+						<strong> <!--          <p class="ngc" id="demo"></p> -->
+						</strong>
+					</div>
+					<p class="ngc" id="demo[${itemStat.index }]"></p>
+				</div>
+			</div>
+	
+		</c:forEach>
+	
 
 
 
