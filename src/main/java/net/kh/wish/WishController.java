@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class WishController {
- 
+
 	private static final Logger logger = LoggerFactory.getLogger(WishController.class);
 
 	@Inject
@@ -61,7 +61,7 @@ public class WishController {
 		model.addAttribute("list", list);
 		return "mypage/wish/李�紐⑸�";
 		
-	} 
+	}
 
 	@RequestMapping("/wishDelete.gh")
 	public ModelAndView wishListBye(@RequestParam(value = "host_no") int host_no, HttpSession session) throws Exception {
