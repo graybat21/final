@@ -33,16 +33,17 @@ import net.kh.wish.WishService;
 public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	@Inject
-	public ReserveService reserveService;
+	private ReserveService reserveService;
 	@Inject
-	public HostService hostService;
+	private HostService hostService;
 	@Inject
-	public WishService wishService;
+	private WishService wishService;
 
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/ghList.gh")
 	public ModelAndView ghList(Search search) throws Exception {
-		ModelAndView mav = new ModelAndView("main/ghList/검색리스트");
+		ModelAndView mav = new ModelAndView("main/ghList/寃���由ъ�ㅽ��");
+
 		List<Map<String, Object>> reserve = reserveService.selectSearchHappy();
 		// List<Date> dateList = new ArrayList<Date>();
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -56,7 +57,7 @@ public class MainController {
 		reserve = validPriceSearch(reserve, search.getMax_price());
 		reserve = validAddressSearch(reserve, search.getArea());
 		reserve = validCountSearch(reserve, search.getParticipant());
-		reserve = validDateSearch(reserve, map); // 날짜 검색에 걸리는것 뺌
+		reserve = validDateSearch(reserve, map); // ��吏� 寃����� 嫄몃━��寃� 類�
 		mav.addObject("reserve", reserve);
 		mav.addObject(search);
 		return mav;
@@ -83,6 +84,7 @@ public class MainController {
 		if (session.getAttribute("session_mem_no") != null || session.getAttribute("session_host_no") != null) {
 			int mem_no = (session.getAttribute("session_mem_no") == null ? (int) session.getAttribute("session_host_no")
 					: (int) session.getAttribute("session_mem_no"));
+
 			System.out.println(mem_no + "가 " + host_no + "열람중");
 			WishListVO wishVO = new WishListVO();
 			wishVO.setMem_no(mem_no);
@@ -116,21 +118,6 @@ public class MainController {
 				}
 			}
 		}
-
-		// Date checkin;
-		// Date checkout;
-		// for (int i = sizeOfList - 1; i >= 0; i--) {
-		// checkin = (Date) reserve.get(i).get("CHECKIN");
-		// checkout = (Date) reserve.get(i).get("CHECKOUT");
-		// checkin.setHours(13);
-		// checkout.setHours(12);
-		// if (checkout.before(from) || checkin.after(to)) {
-		//
-		// } else {
-		// System.out.println("날짜 불만족 삭제" + reserve.get(i).get("NAME"));
-		// reserve.remove(i);
-		// }
-		// }
 		return reserve;
 	}
 
@@ -138,7 +125,7 @@ public class MainController {
 		int sizeOfList = reserve.size();
 		for (int i = sizeOfList - 1; i >= 0; i--) {
 			if (Integer.parseInt((String) reserve.get(i).get("PRICE")) > max_price) {
-				System.out.println("가격불만족 삭제" + reserve.get(i).get("NAME"));
+				System.out.println("validPriceSearch" + reserve.get(i).get("NAME"));
 				reserve.remove(i);
 			}
 		}
@@ -151,7 +138,7 @@ public class MainController {
 		for (int i = sizeOfList - 1; i >= 0; i--) {
 			max = Integer.parseInt(String.valueOf(reserve.get(i).get("MAX")));
 			if (max < participants) {
-				System.out.println("인원수불만족 삭제 " + reserve.get(i).get("NAME"));
+				System.out.println("validCountSearch" + reserve.get(i).get("NAME"));
 				reserve.remove(i);
 			}
 		}
@@ -164,7 +151,7 @@ public class MainController {
 		for (int i = sizeOfList - 1; i >= 0; i--) {
 			addr1 = (String) reserve.get(i).get("ADDR1");
 			if (!addr1.contains(area)) {
-				System.out.println("주소 불만족 삭제 " + reserve.get(i).get("NAME"));
+				System.out.println("validAddressSearch" + reserve.get(i).get("NAME"));
 				reserve.remove(i);
 			}
 		}
@@ -186,7 +173,7 @@ public class MainController {
 		List<HashMap<String, Object>> mainlist = main.main();
 		Collections.shuffle(mainlist);
 		model.addAttribute("list", mainlist);
-		return "main/main/ma";
+		return "main/main/메인 화면";
 	}
 
 }
