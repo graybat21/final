@@ -9,6 +9,34 @@
 <meta http-equiv="Content-Type">
 
 <!-- 공통 CSS  -->
+<<<<<<< HEAD
+</head>
+<body class="pcweb" oncontextmenu="return false" ondragstart="return false">
+			<div class="ad_info_wrap">
+				<!-- 예약 -->
+				<a id="bookmark2"></a>
+				<div class="reserve_wrap row" style="display: block;">
+					<div class="info_title">
+						<h4>예약(i.date - o.date)</h4>
+					</div>
+					<div class="reserve">				
+						<div class="left">
+							<!-- 리턴 URL -->
+							<input name="returnUrl" value="/search/detailView/1987"
+								type="hidden">
+							<!-- Change Room -->
+							<div id="chg_room">
+								<!-- 반복 -->
+								<div id="armgno24019" class="chg_room" data-armgname="room1"
+									data-dpod_no="9381178" data-chkin="2017.05.12 (금) 17:00"
+									data-chkout="2017.05.13 (토) 12:00" data-refund_time="14:00"
+									data-sale-type="2" data-armg-no="24019">
+									<a href="javascript:;"> <input name="armgno" value="24019"
+										type="radio" class="room"> 방1 <strong> <b>100,000원</b>
+									</strong>
+									</a>
+								</div>
+=======
 <link rel="stylesheet" type="text/css"
 	href="/howaboutthis/folder/default.css">
 <link rel="stylesheet" type="text/css"
@@ -46,6 +74,7 @@
 					<!-- 리턴 URL -->
 					<input name="returnUrl" value="/search/detailView/1987"
 						type="hidden">
+>>>>>>> 6abaab82cf7cd359154bae924d4100ee61f855e0
 
 					<!-- Change Room -->
 					<div id="chg_room">
@@ -60,6 +89,47 @@
 							</strong>
 							</a>
 						</div>
+<<<<<<< HEAD
+						<!-- Right Content -->
+						<div id="reserve_detail_view" class="right">
+							<!-- 예약자  -->
+							<div class="wrap_div">
+								<div class="list_inp bd_none">
+									<h5>예약자 이름</h5>
+									<div class="bd_b">
+										<input class="inp_txt" name="mem_name"
+											 maxlength="20" value="${session_mem_name}" type="text"
+											>
+									</div>
+								</div>
+								<div class="list_inp bd_none">
+									<h5>휴대폰 번호</h5>
+									<div class="bd_b">
+										<input class="inp_txt" name="tel" id="tel" 
+										maxlength="13" value="010-" type="tel"
+											readonly="readonly">
+									</div>
+								</div>
+							</div>
+
+							<div class="wrap_div">
+								<div class="list_inp">
+									<h5>입금 계좌</h5>
+									<div>
+										<input class="inp_txt" name="do_from_name"
+											placeholder="호스트계좌번호" maxlength="20" value="" type="text"
+											readonly="readonly">
+									</div>
+								</div>
+								<div class="list_inp bd_none">
+									<h5>은행 및 예금주</h5>
+									<div>
+										<input class="inp_txt" name="do_from_name"
+											placeholder="은행 / 예금주" maxlength="20" value="" type="text"
+											readonly="readonly">
+									</div>
+								</div>
+=======
 						</c:forEach>
 						
 					</div>
@@ -83,6 +153,7 @@
 								<input class="inp_txt" name="do_from_tel" id="do_from_tel"
 									placeholder="휴대폰 번호 자동입력" maxlength="13"
 									value="${member.phone }" type="tel" readonly="readonly">
+>>>>>>> 6abaab82cf7cd359154bae924d4100ee61f855e0
 							</div>
 						</div>
 					</div>
