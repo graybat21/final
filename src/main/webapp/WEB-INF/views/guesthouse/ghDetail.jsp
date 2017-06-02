@@ -290,6 +290,8 @@ function searchRoom(){
 /* var from = document.getElementById("datepicker1").value;
 var to = document.getElementById("datepicker2").value;
  */
+ /* var tab= "${tab}"; */
+ var tab = $('#tab').val();
  var from = $("#datepicker1").val();
  var to = $("#datepicker2").val();
 	tabView(tab);
@@ -333,8 +335,9 @@ $(document).ready(function(){
 	function tabView(tab) {
 		var host_no = $("#host_no").val();
 		var from = $("#datepicker1").val();
-		 var to = $("#datepicker2").val();
-		 
+		var to = $("#datepicker2").val();
+		
+		$('#tab').val(tab);
 		$(".search_menu *").removeClass('on');
 
 		if(tab == 1){
@@ -359,7 +362,7 @@ $(document).ready(function(){
 			$.ajax({
 				url:"/GuestHi/tabReserve.gh",
 				type: "post",
-				data: {host_no: host_no},
+				data: {host_no: host_no, from: from, to: to},
 				success: function(data){
 					$(".ad_info_wrap").html(data);
 				},

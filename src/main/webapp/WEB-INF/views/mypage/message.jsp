@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>메시지함</title>
 </head>
 <body>
 	<!-- (공통)contentsWrap -->

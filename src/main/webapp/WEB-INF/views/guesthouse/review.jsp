@@ -241,7 +241,26 @@
 											</c:forEach>
 										</select>
 										<input type="hidden" name="host_no" value="${host_no }">
-										<input type="text" id="star" name="star" placeholder="별개수 입력">
+										<input type="text" id="star" name="star" placeholder="별개수 입력" 
+										onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' style='ime-mode:disabled;'>
+	<script>
+		function onlyNumber(event){
+			event = event || window.event;
+			var keyID = (event.which) ? event.which : event.keyCode;
+			if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+				return;
+			else
+				return false;
+		}
+		function removeChar(event) {
+			event = event || window.event;
+			var keyID = (event.which) ? event.which : event.keyCode;
+			if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+				return;
+			else
+				event.target.value = event.target.value.replace(/[^0-9]/g, "");
+		}
+	</script>
 										<textarea rows="10" cols="100" name="content"></textarea>
 										<input type="submit" value="작성">
 									</div>

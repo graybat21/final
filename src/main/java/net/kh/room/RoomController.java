@@ -7,14 +7,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -43,7 +37,7 @@ public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-	String PATH = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
+	String PATH = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject
@@ -70,14 +64,14 @@ public class RoomController {
 		List<RoomVO> roomList = roomService.getRoomInfoByHostNo(host_no);
 		List<RoomVO> bigImage = roomService.getRoomBigImage(host_no);
 		List<Integer> roomNo = null;
-//		List<Integer> removeRoomNo = new ArrayList<>();
+		// List<Integer> removeRoomNo = new ArrayList<>();
 		logger.info("\nfrom : " + from.toString());
 		if (from != null) {
 			roomNo = roomService.getRoomNoInReservation(host_no);
 
 			roomList = validSearch(roomList, roomNo, host_no, from, to);
 		}
-
+		logger.info(roomList.toString());
 		mav.addObject("host_no", host_no);
 		mav.addObject("roomList", roomList);
 		mav.addObject("bigImage", bigImage);
@@ -114,23 +108,22 @@ public class RoomController {
 					rest = max - sum;
 					if (rest <= 0) {
 						System.out.println("제거할 방번호 구함.");
-						int roomNo2=(int) map.get("room_no");
+						int roomNo2 = (int) map.get("room_no");
 						System.out.println(roomNo2);
 						removeRoomNo.add(roomNo2);
 					}
-					
 				}
 			}
 		}
 		System.out.println();
 		logger.info(removeRoomNo.toString());
 		System.out.println();
-		if(removeRoomNo != null){
+		if (removeRoomNo != null) {
 			for (int i = roomList.size() - 1; i >= 0; i--) {
-				for(int j = removeRoomNo.size()-1 ; j>=0;j--){
+				for (int j = removeRoomNo.size() - 1; j >= 0; j--) {
 					if (roomList.get(i).getNo() == removeRoomNo.get(j).intValue()) {
-						roomList.remove(i);
 						System.out.println(removeRoomNo.get(j) + "제거 성공");
+						roomList.remove(i);
 					}
 				}
 			}
@@ -185,8 +178,7 @@ public class RoomController {
 				imageService.imageInsert(image);
 
 				model.addObject("roomNumber", image.getRoom_no());
-				
-				
+
 			}
 
 		}
@@ -206,7 +198,6 @@ public class RoomController {
 		// session.setAttribute("image", image);
 		model.addAttribute("room", roomVO);
 		model.addAttribute("image", image);
-		
 
 		return "mypage/roomList/방리스트";
 	}

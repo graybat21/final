@@ -1,7 +1,7 @@
 package net.kh.wish;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -56,7 +56,7 @@ public class WishController {
 	public String wishListHo(HttpSession session, Model model) throws Exception {
 		int mem_no=(int) session.getAttribute("session_mem_no");
 		System.out.println(mem_no);
-		List<Map<String, Object>> list = wishService.wishList(mem_no);
+		List<HashMap<String, Object>> list = wishService.wishList(mem_no);
 		logger.info(list.toString());
 		model.addAttribute("list", list);
 		return "mypage/wish/李�紐⑸�";

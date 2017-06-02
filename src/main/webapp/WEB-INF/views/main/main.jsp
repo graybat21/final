@@ -695,15 +695,10 @@ function searchSubmit(){
 	</div>
 
 
-
-	
-
-
-
-<!-- 게하리스트 -->
-<c:forEach items="${list}" var="list">
-<!-- <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent"> -->
-		<div class="srch_list_wrap">
+		<!-- 게하리스트 -->
+		<c:forEach items="${list}" var="list">
+		<!-- <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent"> -->
+			<div class="srch_list_wrap">
 				<div class="srch_result">
 					<div class="srch_group ui_0">
 						<div class="srch_list list_g5">
@@ -734,8 +729,7 @@ function searchSubmit(){
 					</div>
 				</div>
 			</div>
-			</div>
-			</c:forEach>
+		</c:forEach>
 
 
 </body>
