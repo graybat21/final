@@ -71,9 +71,6 @@ public class MainController {
 
 		HostVO host = hostService.getHostInfoByHostNo(host_no);
 		logger.info(host.toString());
-		// String address=host.getAddr1()+host.getAddr2()+host.getZip();
-		// String tel = host.getTel();
-		// model.addAttribute("address",address);
 
 		model.addAttribute("hostinfo", host);
 		model.addAttribute("host_no", host_no);
