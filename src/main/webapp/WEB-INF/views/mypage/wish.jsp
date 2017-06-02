@@ -61,21 +61,20 @@
 								<div class="srch_list_wrap">
 
 									<div class="srch_list ">
-										<c:forEach var="list" items="${list}">
+										<c:forEach var="wlist" items="${list}">
 											<c:url var="viewURL" value="ghDetail.gh">
-												<c:param name="host_no" value="${list.HOST_NO }" />
-												<c:param name="mem_no" value="${list.MEM_NO }" />
+												<c:param name="host_no" value="${wlist.HOST_NO }" />
 											</c:url>
 											<!-- 리스트 TYPE1 -->
 											<ul>
 												<li><a class="link" data-ano="5913" data-uitype=""
 													data-adtype="2" data-viewtype=""
-													href="">
+													href="${viewURL }">
 														 <div class="ad_thumb">
 															<div class="img_wrap imgLiquidFill"
 																style="overflow: hidden; background-image: none;">
 																<span class="thumb_none"></span> 
-																<img src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}"
+																<img src="${pageContext.request.contextPath}/resources/upload/${wlist.IMAGENAME}"
 																	style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
 																<span class="opacity"></span>
 																<!-- 그라데이션 배경 -->
@@ -85,11 +84,11 @@
 														</div>
 																
 														<div class="txt">	
-															<p class="name">${list.NAME }
-															<p class="score">${list.ADDR1 }</p>
-															<p class="score">${list.ADDR2 }</p>
-															<p class="score">${list.ZIP }</p>												
-															<p class="price">${list.TEL }</p>																		
+															<p class="name">${wlist.NAME }
+															<p class="score">${wlist.ADDR1 }</p>
+															<p class="score">${wlist.ADDR2 }</p>
+															<p class="score">${wlist.ZIP }</p>												
+															<p class="price">${wlist.TEL }</p>																		
 														</div>
 														
 												</a>
