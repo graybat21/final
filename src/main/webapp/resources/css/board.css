@@ -1,6 +1,6 @@
 table.type07 {
     border-collapse: collapse;
-    text-align: center;
+    text-align: left;
     line-height: 1.5;
     margin: 20px 10px;
     width: 100%;
@@ -10,6 +10,12 @@ table.type07 td {
     padding: 10px;
     vertical-align: top;
     border-bottom: 1px solid #ccc;
+}
+
+body a {
+    color: #353535;
+    text-decoration: none;
+	
 }
 
 gray {

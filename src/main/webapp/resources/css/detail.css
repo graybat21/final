@@ -4,6 +4,7 @@
 	width: 280px;
 	padding-right: 20px;
 	float: left;
+	padding-bottom: 10px
 }
 
 .sub-section {
@@ -26,8 +27,8 @@
 }
 
 .about-hotel .sub-section-header {
-	font-size: 18px;
-	font-weight: 500;
+	font-size: 16px;
+	font-weight: bold;
 	width: 240px;
 }
 

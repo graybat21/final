@@ -1,16 +1,13 @@
 package net.kh.room;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -19,6 +16,7 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -43,7 +41,7 @@ public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-	String PATH = "C:\\Java\\Final\\src\\main\\webapp\\resources\\upload";
+	String PATH = "C:\\java_eclipse\\work\\guestHi\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject
@@ -70,20 +68,39 @@ public class RoomController {
 		List<RoomVO> roomList = roomService.getRoomInfoByHostNo(host_no);
 		List<RoomVO> bigImage = roomService.getRoomBigImage(host_no);
 		List<Integer> roomNo = null;
-//		List<Integer> removeRoomNo = new ArrayList<>();
+		// List<Integer> removeRoomNo = new ArrayList<>();
 		logger.info("\nfrom : " + from.toString());
 		if (from != null) {
 			roomNo = roomService.getRoomNoInReservation(host_no);
 
 			roomList = validSearch(roomList, roomNo, host_no, from, to);
 		}
-
+		logger.info(roomList.toString());
 		mav.addObject("host_no", host_no);
 		mav.addObject("roomList", roomList);
 		mav.addObject("bigImage", bigImage);
 		return mav;
 	}
 
+    @RequestMapping("/RoomImage.gh")
+    public void roomImage(@RequestParam(value="room_no") int room_no,HttpServletResponse response) throws Exception{
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        map.put("room_no", room_no);
+ 
+        try{
+            String str = roomService.getRoomImage(map);
+
+            PrintWriter out = response.getWriter();
+            out.write(str);
+            out.flush();
+            out.close();
+
+        }catch(IOException e){
+            System.out.println("이미지 안불러와진다.RoomImage.gh");
+        }
+    }
+        
 	private List<RoomVO> validSearch(List<RoomVO> roomList, List<Integer> roomNo, int host_no, Date from, Date to)
 			throws Exception {
 
@@ -114,23 +131,22 @@ public class RoomController {
 					rest = max - sum;
 					if (rest <= 0) {
 						System.out.println("제거할 방번호 구함.");
-						int roomNo2=(int) map.get("room_no");
+						int roomNo2 = (int) map.get("room_no");
 						System.out.println(roomNo2);
 						removeRoomNo.add(roomNo2);
 					}
-					
 				}
 			}
 		}
 		System.out.println();
 		logger.info(removeRoomNo.toString());
 		System.out.println();
-		if(removeRoomNo != null){
+		if (removeRoomNo != null) {
 			for (int i = roomList.size() - 1; i >= 0; i--) {
-				for(int j = removeRoomNo.size()-1 ; j>=0;j--){
+				for (int j = removeRoomNo.size() - 1; j >= 0; j--) {
 					if (roomList.get(i).getNo() == removeRoomNo.get(j).intValue()) {
-						roomList.remove(i);
 						System.out.println(removeRoomNo.get(j) + "제거 성공");
+						roomList.remove(i);
 					}
 				}
 			}
@@ -140,7 +156,7 @@ public class RoomController {
 
 	@RequestMapping("/roomInsertForm.gh")
 	public ModelAndView roomInsertForm(HttpServletRequest request) throws Exception {
-		ModelAndView model = new ModelAndView("mypage/roomInsertForm/룸 가입폼");
+		ModelAndView model = new ModelAndView("mypage/roomInsertForm/룸 등록");
 		/* model.addObject("host_no", 16); */
 
 		// 글 작성시 host_no 넘겨주기 위해서
@@ -184,8 +200,7 @@ public class RoomController {
 				imageService.imageInsert(image);
 
 				model.addObject("roomNumber", image.getRoom_no());
-				
-				
+
 			}
 
 		}
@@ -205,7 +220,6 @@ public class RoomController {
 		// session.setAttribute("image", image);
 		model.addAttribute("room", roomVO);
 		model.addAttribute("image", image);
-		
 
 		return "mypage/roomList/방리스트";
 	}

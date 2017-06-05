@@ -42,7 +42,7 @@
 	.myinfo_area .my_item_info li a span {float:right;display:inline-block;min-width:35px;margin-top:4px;font-size:0.75rem;text-align:right;}
 	.myinfo_area .my_item_info li.item_zzim {border-bottom:1px solid #ddd;}
 	.myinfo_area .my_item_info li.item_point {border-bottom:1px solid #ddd;}
-	.my_zzim_list .srch_list li a .ad_info .ad_addr {max-width:70%;}
+
 }
 
 /* 리스트 상단 보유현황 */
@@ -55,7 +55,7 @@
 .my_count p .pop_point_info {position:absolute;right:0;top:-2px;display:inline-block;padding:5px 15px 3px 5px;border:1px solid #ddd;border-radius:10px;font-size:0.75rem;background:#fff url('https://img.goodchoice.kr/images/web_v2/mypage/ic_pop_arrow.png') no-repeat 96% 50%;background-size:6px auto;}
 .my_zzim_list { margin: 14px -15px 0 -15px; }
 .my_zzim_list .srch_list_wrap .srch_list {padding:0;}
-.my_zzim_list .srch_list li a .ad_icon.ic_new {left:-6px;}
+
 .my_zzim_list .list_none {padding:100px 15px;text-align:center;}
 .my_zzim_list .list_none h5 {margin-bottom:15px;color:#353535;text-align:center;}
 .my_zzim_list .list_none p {color:#909090;font-size:0.875rem;line-height:1.5;}
@@ -325,8 +325,8 @@
 	.my_wrap .my_contents {float:left;width:78.902%;min-height:800px;border-left:1px ;}
 	.my_menu {border-bottom:none;}
 	.my_menu h3 {display:block;padding-left:15px;color:#343434;text-align:left;font-size:2rem;line-height:128px;}
-	.my_menu ul li a {margin-bottom:50px;padding:0 15px;text-align:left;border-bottom:none;font-size:1.125rem;background:none;}
-	.my_menu ul li a:hover, .my_menu ul li a.active {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_list_arrow_web.png') no-repeat 2px 48%;}
+	.my_menu ul li a {margin-bottom:35px;padding:0 15px;text-align:left;border-bottom:none;font-size:1.125rem;background:none;}
+	.my_menu ul li a:hover, .my_menu ul li a.active {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_list_arrow_web.png') no-repeat 2px 48%; text-decoration: none;}
 	.my_contents .my_title {height:124px;border-left:0px solid #e7e7e7;background:#fff url('https://img.goodchoice.kr/images/web_v2/mypage/bg_right.png') repeat-x 0 0;}
 	.my_contents .my_title h4,
 	.my_contents .my_title h4.active {display:none;visibility:hidden;text-indent:-9999px;font-size:0;background:none;}
@@ -376,7 +376,7 @@
 	.my_count p .txt_info {clear:both;display:block;margin:5px 0;color:#707070;font-size:0.75rem;position:absolute;left:320px;top:10px;}
 	.my_count p .txt_info.txt_point {padding-right:150px;}
 	.my_count p .pop_point_info {top:55px;padding:5px 20px 5px 10px;}
-	.my_zzim_list .srch_list li {width:50%;padding:0 5px;}
+
 
 	/* 테이블 리스트 */
 	.mypage_list {margin-top:50px;}

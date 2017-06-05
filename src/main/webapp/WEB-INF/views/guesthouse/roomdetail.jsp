@@ -12,57 +12,65 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"> -->
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" rel="stylesheet">
 
-
+<!-- 추가 -->
+<script src="${pageContext.request.contextPath}/resources/index_data/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26.js"></script>
+<script src="${pageContext.request.contextPath}/resources/index_data/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/resources/index_data/slick.js"></script>
+<script src="${pageContext.request.contextPath}/resources/index_data/bootstrap.js"></script>
+<%-- <link rel="stylesheet prefetch" href="${pageContext.request.contextPath}/resources/index_data/bootstrap.css"> --%>
+<link rel="stylesheet prefetch" href="${pageContext.request.contextPath}/resources/index_data/slick.css">
+<link rel="stylesheet prefetch" href="${pageContext.request.contextPath}/resources/index_data/slick-theme.css">
 
 <script type="text/javascript">
 
+//Slick controls
 $('#popup-image-gallery').on('shown.bs.modal', function() {
-	  $('.popup-slider-for').slick({
-	    slidesToShow: 1,
-	    slidesToScroll: 1,
-	    //Hye 추가
-	    /* autoplay: true,
-	    autoplaySpeed: 1000, */
-	    //Hye 여기까지
-	    arrows: true,
-	    fade: true,
-	    asNavFor: '.popup-slider-nav'
-	    // adaptiveHeight: true,
-	  });
-	  $('.popup-slider-nav').slick({
-	    slidesToShow: 8,
-	    slidesToScroll: 1,
-	    asNavFor: '.popup-slider-for',
-	    dots: false,
-	    arrows: false,
-	    focusOnSelect: true,
-	    variableWidth: true,
-	    centerMode: true,
-	    infinite: true
-	  });
-	});
-	// Slick.js: Get current and total slides (ie. 3/5)
-	var $status = $('.pagingInfo');
-	var $slickElement = $('.popup-slider-for');
+  $('.popup-slider-for').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    //Hye 추가
+    /* autoplay: true,
+    autoplaySpeed: 1000, */
+    //Hye 여기까지
+    arrows: true,
+    fade: true,
+    asNavFor: '.popup-slider-nav'
+    // adaptiveHeight: true,
+  });
+  $('.popup-slider-nav').slick({
+    slidesToShow: 8,
+    slidesToScroll: 1,
+    asNavFor: '.popup-slider-for',
+    dots: false,
+    arrows: false,
+    focusOnSelect: true,
+    variableWidth: true,
+    centerMode: true,
+    infinite: true
+  });
+});
+// Slick.js: Get current and total slides (ie. 3/5)
+var $status = $('.pagingInfo');
+var $slickElement = $('.popup-slider-for');
 
-	$slickElement.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
-	  //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
-	  var i = (currentSlide ? currentSlide : 0) + 1;
-	  $status.text(i + '/' + slick.slideCount);
-	});
+$slickElement.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
+  //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+  var i = (currentSlide ? currentSlide : 0) + 1;
+  $status.text(i + '/' + slick.slideCount);
+});
 
-	// Slick slider sync situation
-	var slides = $(".popup-slider-for .slick-track > .slick-slide").length;
-	$('.popup-slider-for').on('afterChange', function(event, slick, currentSlide, nextSlide) {
-	  var inFocus = $('.popup-slider-for .slick-current').attr('data-slick-index');
-	  $('.popup-slider-nav .slick-current').removeClass('slick-current');
-	  $('.popup-slider-nav .slick-slide[data-slick-index="' + inFocus + '"]').trigger('click');
-	});
-
+// Slick slider sync situation
+var slides = $(".popup-slider-for .slick-track > .slick-slide").length;
+$('.popup-slider-for').on('afterChange', function(event, slick, currentSlide, nextSlide) {
+  var inFocus = $('.popup-slider-for .slick-current').attr('data-slick-index');
+  $('.popup-slider-nav .slick-current').removeClass('slick-current');
+  $('.popup-slider-nav .slick-slide[data-slick-index="' + inFocus + '"]').trigger('click');
+});
 
 </script>
 
@@ -145,8 +153,8 @@ body.modal-open {
 
 .popup-slider-for,
 .main-image {
-  text-align: center;
-  margin-bottom: 60px;
+  margin: auto;
+  margin-bottom: 30px;
   padding-top: 60px;
 }
 
@@ -287,7 +295,7 @@ body.modal-open {
 
 				<!-- 객실정보 -->
 				<a id="bookmark1"></a>
-				<div class="ad_info_room row">
+				<div class="ad_info_room">
 					<div class="info_title margin_align">
 						<h4>객실정보</h4>
 						<p class="room_detail info_title_sub txt_option">
@@ -298,8 +306,8 @@ body.modal-open {
 					<div class="info_cont container">
 						<ul class="room_list">
 						
-						<script>
-						 function detailShot(room_no,status){
+					<script>
+						function detailShot(room_no,status){
 
 							$.ajax({
 							url:"RoomImage.gh",
@@ -309,13 +317,19 @@ body.modal-open {
 							success: function(data){
 								var array = data.split(",");
 								var mimg = '';
+								var src = '';
 										$("#imgthumbnail").html("");
 								for( var i in array){
 									mimg = '<img src="./resources/upload/'+array[0]+'"/>';
 									if(i!=0 && i!=(array.length-1)){
-										$("#imgthumbnail").prepend('<div class="thumbnail-image"><img src="./resources/upload/'+array[i]+'"/></div>');
+										var imgsrc = '<div class="thumbnail-image slick-slide slick-cloned"><img id="isrc"';
+											imgsrc += 'src="./resources/upload/'+array[i]+'"/></div>';
+										
+											src += imgsrc;
 									}
 								}
+								$("#imgthumbnail").html("");
+								$("#imgthumbnail").html(src);
 								$(".main-image").html("");
 									$(".main-image").html(mimg);
 							},
@@ -327,9 +341,7 @@ body.modal-open {
 						
 						
 						
-					} 
-					
-
+					}
 					</script>
 							<c:forEach var="item" items="${roomList }" varStatus="status">
 							<li>
@@ -362,40 +374,52 @@ body.modal-open {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-      
-        <button type="button" class="btn close-btn" title="Close" data-dismiss="modal" aria-label="Close">&#10006;</span></button>
-        <div class="popup-slider-for">
+        <button type="button" class="btn close-btn" title="Close" data-dismiss="modal" aria-label="Close">x</button>
+
+<!-- 추가 -->
+        <div class="popup-slider-for slick-initialized slick-slider">
+       <!--  <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;"> Previous</button> -->
+          <div aria-live="polite" class="slick-list draggable">
+          <div class="slick-track" style="opacity: 1; width: 15210px;" role="listbox">
+          	
+<!-- //추가 -->
+        <!-- <div class="popup-slider-for"> -->
           
-          <div class="main-image">
-         <!--  팝업 중간 큰이미지 위치 -->
+          <!-- <div class="main-image"> -->
+          <div class="main-image slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 100%; position: relative; left: 400px; top: 0px; z-index: 999; opacity: 1;" tabindex="-1" role="option" aria-describedby="slick-slide00">
+          <!-- 팝업 중간 큰이미지 위치 -->
           </div>
-          
         </div>
-        <h5 class="pagingInfo"></h5>
-        <div id="imgthumbnail" class="popup-slider-nav hidden-xs">
-          <!-- 아래 슬라이더 이미지 위치 -->
         </div>
         
+      <!-- <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;"> Next</button> -->
+      
       </div>
+      <!-- 전체 이미지 수 / 현재 이미지 수 -->
+    	<div class="popup-slider-nav hidden-xs slick-initialized slick-slider">
+    	<div aria-live="polite" class="slick-list draggable" style="padding: 0px 50px;">
+    	<div class="slick-track" style="opacity: 1; width: 100%; margin:0  auto;" role="listbox">
+    	
+        <div id="imgthumbnail">
+          <!-- 아래 슬라이더 이미지 위치 -->
+          
+        </div>
+      </div>
+      
+<!-- 추가 -->
     </div>
   </div>
+</div>
+</div>
+</div>
 </div>
 </li>
 							</c:forEach>
 						</ul>
 					</div>
-				</div>
+<!-- <div class="modal-backdrop in"></div> -->
 				
 				<!-- //객실정보 -->
-				<div class="ad_info_room row">
-					<div class="info_title margin_align">
-						<h4>객실정보</h4>
-						<p class="room_detail info_title_sub txt_option">
-							선택하신 날짜 객실 정보 입니다. <span class="info_title_group">(<span
-								class="txt_default">일반가</span>, <span class="txt_spacial">특별가</span>)
-							</span>
-						</p>
-					</div>
 					<div class="info_cont">
 						<div data-selenium="abouthotel-panel" id="abouthotel-panel"
 							class="section about-hotel scrollTo">
@@ -410,20 +434,14 @@ body.modal-open {
 										</div>
 										<div class="sub-section-right">
 											<div class="line-seperator"></div>
-											<div class="collapsed" style="max-height: 63px;">
+											<div class="collapsed" style="max-height: 100px; padding: 0 10px 10px 0">
 												<div>
 													<div class="hotel-desc">
 														후쿠오카 방문 시, 양질의 숙박과 훌륭한 서비스를 제공하는 본 숙소(게스트하우스 나카이마)에서 집과 같은
 														편안함을 느껴보시기 바랍니다. 이 곳에서 생동감 넘치는 도시의 많은 것을 최대로 즐길 수 있습니다.
 														숙소가 하카타 마치야 후루사토-칸, 쿠시다 쉬라인, 쿠시다-진자 등과 인접한 위치에 있기에 지역의 관광
 														명소와 볼거리를 구경하기 위해 멀리 갈 필요가 없습니다.<br>
-														<br> 본 숙소는 최고의 시설과 서비스 제공을 통해 투숙객이 편안함을 느끼도록 최선의 노력을
-														다하고 있습니다. 본 숙소는 최상의 편안함을 위해 세탁실, Wi-Fi (무료/전 객실), 일일 청소
-														서비스, 24시간 경비 서비스, Wi-Fi (공공 장소) 등을 제공합니다.<br>
-														<br> 본 숙소에는 멋스럽게 꾸며진 총 4개의 객실이 있으며, 대부분의 객실에 라커, 무선
-														인터넷(무료), 에어컨, 난방, 발코니/테라스 등이 구비되어 있습니다. 본 숙소 투숙 기간 다양한 여가
-														시설 등을 이용할 수 있습니다. 이상적인 위치와 시설이 잘 어우러진 본 숙소(게스트하우스 나카이마)는
-														여러모로 제격입니다.
+														
 													</div>
 													<div></div>
 												</div>
@@ -570,7 +588,7 @@ body.modal-open {
 										</div>
 									</div>
 									<div class="sub-section about-hotel-new"
-										id="abouthotel-usefulinfo" style="padding: 0px;">
+										id="abouthotel-usefulinfo" style="padding: 0 0 20px 0;">
 										<div class="sub-section-left">
 											<div class="line-seperator"></div>
 											<h2 class="sub-section-header" data-abouthotel-header="true">이용

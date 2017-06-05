@@ -48,15 +48,11 @@ audio:not([controls]) {display: none;height: 0}
 [hidden] {display: none}
 html {font-family:'Nanum Gothic', '나눔고딕', '맑은고딕', '돋움', Dotum ,sans-serif;font-weight:400;font-size: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}
 html, button, input, select, textarea {font-family:'Nanum Gothic', '나눔고딕', '맑은고딕', '돋움', Dotum ,sans-serif;font-weight:400;font-size: 100%}
-body {margin: 0;padding:0}
+body {margin: 0;padding:0;}
 *{-webkit-tap-highlight-color: rgba(0,0,0,0);}
-/* Links */
-a {text-decoration:none;color:#353535;cursor:pointer}
-a:focus, a:active, a:hover {outline:0;text-decoration:none;color:#353535}
-a[href^="tel"] {font-style:normal}
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {font-size:100%;margin:0;padding:0}
+h1, h2, h3, h4, h5, h6 {font-size:100%;margin-top:25px; margin-bottom: 10px; padding:0}
 abbr[title] {border-bottom: 1px dotted}
 b, strong {font-weight: 700}
 blockquote {margin:0}
@@ -122,7 +118,7 @@ select {border:1px solid #ccc;color:#707070;box-sizing:border-box}
 #allWrap {position:relative;width:100%;padding:0 0 0 0}
 #headerWrap{position:fixed;left:0;top:0;width:100%;background:#fff;z-index:6000}
 #contentsWrap {width:100%;min-height:550px;padding:0}
-.row {position:relative;width:100%;max-width:1240px;margin:0 auto;box-sizing:border-box}
+.row {position:relative;width:100%; margin:0 auto;box-sizing:border-box} /* ★★★ 여기에요 여기이이이ㅣ이이이이이ㅣ */
 .row.row_cont {clear:both;padding:0}
 .row.row_cont .section_title {margin:15px 0 0 15px;color:#353535;text-align:left}
 .row.row_cont .section_desc {position:absolute;left:58px;top:7px;margin-bottom:0;font-size:14px;font-size:0.875rem;color:#707070;text-align:center}
@@ -291,7 +287,7 @@ header .btn_m_srch{display:none}
 #footerWrap .foot_desktop .left_cont .mark_04{width:46px;height:64px;margin-right:0;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -264px -120px no-repeat;background-size:314px auto}
 #footerWrap .foot_desktop .right_cont{float:right;width:63%;background:url('https://img.goodchoice.kr/images/web_v2/common/footer_line.gif') no-repeat 0 56px}
 #footerWrap .foot_desktop .right_cont div{position:relative;padding:120px 0 0 60px;font-size:13px;color:#909090;line-height:1.6}
-#footerWrap .foot_desktop .right_cont div:after{content:"";display:inline-block;position:absolute;top:55px;right:0;width:278px;height:80px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -70px no-repeat}
+/* #footerWrap .foot_desktop .right_cont div:after{content:"";display:inline-block;position:absolute;top:55px;right:0;width:278px;height:80px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -70px no-repeat} */
 #footerWrap .foot_desktop .right_cont div ol li{margin-bottom:2px}
 #footerWrap .foot_desktop .right_cont div ol li span{font-size:12px}
 #footerWrap .foot_desktop .right_cont .icon_cont{display:block;position:relative;padding:0 0 10px 43px;font-size:17px} 
@@ -714,7 +710,7 @@ header .btn_m_srch{display:none}
 #footerWrap .foot_desktop .left_cont .mark_04{width:46px;height:64px;margin-right:0;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') -264px -120px no-repeat;background-size:314px auto}
 #footerWrap .foot_desktop .right_cont{float:right;width:63%;background:url('https://img.goodchoice.kr/images/web_v2/common/footer_line.gif') no-repeat 0 56px}
 #footerWrap .foot_desktop .right_cont div{position:relative;padding:120px 0 0 60px;font-size:13px;color:#909090;line-height:1.6}
-#footerWrap .foot_desktop .right_cont div:after{content:"";display:inline-block;position:absolute;top:55px;right:0;width:278px;height:80px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -70px no-repeat}
+/* #footerWrap .foot_desktop .right_cont div:after{content:"";display:inline-block;position:absolute;top:55px;right:0;width:278px;height:80px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_footer.png') 0 -70px no-repeat} */
 #footerWrap .foot_desktop .right_cont div ol li{margin-bottom:2px}
 #footerWrap .foot_desktop .right_cont div ol li span{font-size:12px}
 #footerWrap .foot_desktop .right_cont .icon_cont{display:block;position:relative;padding:0 0 10px 43px;font-size:17px} 

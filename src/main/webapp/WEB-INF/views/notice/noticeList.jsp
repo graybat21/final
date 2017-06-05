@@ -42,7 +42,7 @@
 								<c:param name="no" value="${list.no }" />
 								</c:url>
 								 		
-								<td align="left"><strong><a href="${viewURL }">${list.subject }</a></strong></td>
+								<td align="left"><a href="${viewURL}"><strong><p style="color:#000000; text-decoration: none !important;">${list.subject }</p></strong></a></td>
 								
 								<td align="right"><gray><fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" /></gray></td>
 								</tr>
@@ -50,7 +50,6 @@
 						     </tbody>
 						</table>
 					</div>
-
 				<div align="right" >
 					<c:if test="${session_mem_no == '1'&& session_mem_email == 'admin' }">
 						<a href="noticeWrite.gh" class="button"><strong>글쓰기</strong></a>
