@@ -20,6 +20,36 @@ public class PaymentVO {
 	private String mem_phone;
 	private String mem_name;
 	
+	private String checkin;
+	private String checkout;
+	public void setCheckin(String checkin) {
+		this.checkin = checkin;
+	}
+	public void setCheckout(String checkout) {
+		this.checkout = checkout;
+	}
+	public String getCheckin() {
+		return checkin;
+	}
+	public String getCheckout() {
+		return checkout;
+	}
+	
+//	private Date checkin;
+//	private Date checkout;
+//	public Date getCheckin() {
+//		return checkin;
+//	}
+//	public Date getCheckout() {
+//		return checkout;
+//	}
+//	public void setCheckin(Date checkin) {
+//		this.checkin = checkin;
+//	}
+//	public void setCheckout(Date checkout) {
+//		this.checkout = checkout;
+//	}
+	
 	
 	public int getNo() {
 		return no;
@@ -105,7 +135,7 @@ public class PaymentVO {
 				+ Arrays.toString(room_no) + ", count=" + Arrays.toString(count) + ", reg=" + reg + ", price="
 				+ Arrays.toString(price) + ", tprice=" + Arrays.toString(tprice) + ", finalPrice=" + finalPrice
 				+ ", mem_account=" + mem_account + ", mem_bank=" + mem_bank + ", mem_phone=" + mem_phone + ", mem_name="
-				+ mem_name + "]";
+				+ mem_name + ", checkin=" + checkin + ", checkout=" + checkout + "]";
 	}
 	
 	

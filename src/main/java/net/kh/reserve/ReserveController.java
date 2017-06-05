@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -57,7 +58,6 @@ public class ReserveController {
 		if (from != null) {
 			roomNo = roomService.getRoomNoInReservation(host_no);
 
-
 			roomList = validSearch(roomList, roomNo, host_no, from, to);
 		}
 		logger.info(roomList.toString());
@@ -69,6 +69,7 @@ public class ReserveController {
 
 		return mav;
 	}
+
 	private List<RoomVO> validSearch(List<RoomVO> roomList, List<Integer> roomNo, int host_no, Date from, Date to)
 			throws Exception {
 		// 두번째 방법으로 from~to 사이 날짜를 개별적으로 검사한다.
@@ -92,14 +93,14 @@ public class ReserveController {
 			for (int j = roomNo.size() - 1; j >= 0; j--) {
 				map.put("room_no", roomNo.get(j));
 				HashMap<String, Object> getInfoByDate = roomService.getCountByDate(map);
-				logger.info("날짜를 통해 얻은 최대인원수 등 : "+getInfoByDate);
+				logger.info("날짜를 통해 얻은 최대인원수 등 : " + getInfoByDate);
 				if (getInfoByDate != null) {
 					max = Integer.parseInt(getInfoByDate.get("MAX").toString());
 					sum = Integer.parseInt(getInfoByDate.get("SUMCOUNT").toString());
 					rest = max - sum;
 					if (rest <= 0) {
 						System.out.println("제거할 방번호 구함.");
-						int roomNo2=(int) map.get("room_no");
+						int roomNo2 = (int) map.get("room_no");
 						System.out.println(roomNo2);
 						removeRoomNo.add(roomNo2);
 					}
@@ -109,10 +110,10 @@ public class ReserveController {
 		System.out.println();
 		logger.info(removeRoomNo.toString());
 		System.out.println();
-		if(removeRoomNo != null){
+		if (removeRoomNo != null) {
 			for (int i = roomList.size() - 1; i >= 0; i--) {
-//				roomList.get(i).setMax((int) map2.get(i).get("REST"));
-				for(int j = removeRoomNo.size()-1 ; j>=0;j--){
+				// roomList.get(i).setMax((int) map2.get(i).get("REST"));
+				for (int j = removeRoomNo.size() - 1; j >= 0; j--) {
 					if (roomList.get(i).getNo() == removeRoomNo.get(j).intValue()) {
 						roomList.remove(i);
 						System.out.println(removeRoomNo.get(j) + "제거 성공");
@@ -203,28 +204,103 @@ public class ReserveController {
 		return mav;
 	}
 
+	
+	@SuppressWarnings({ "deprecation", "null" })
+	@RequestMapping(value = "/insertReservation.gh", method = RequestMethod.POST)
+	public ModelAndView insertReservation(PaymentVO payment/*,@RequestParam(value = "from", required = false) Date from,
+			@RequestParam(value = "to", required = false) Date to*/) throws Exception {
+		ModelAndView mav = new ModelAndView("guesthouse/reserveSuccess/예약 성공");
+		ReserveVO reserve = new ReserveVO();
+		List<ReserveVO> reserveList=null;
+		logger.info(payment.getCheckin());
+		logger.info(payment.getCheckout());
+//		DateFormat dFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+//		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA);
+//		Date checkin = payment.getCheckin();
+//		Date checkout = payment.getCheckout();
+		String[] checkinArray = payment.getCheckin().split(" ");
+		String[] checkoutArray = payment.getCheckout().split(" ");
+//		String checkinStr = checkinArray[5] + "-"+checkinArray[1]+"-"+checkinArray[2];
+//		String checkoutStr = checkoutArray[5] + "-"+checkoutArray[1]+"-"+checkoutArray[2];
+//		System.out.println(checkinStr);
+//		System.out.println(checkoutStr);
+//		Date transCheckout = dFormat.parse(payment.getCheckout());
+//		Date transCheckin = dFormat.parse(payment.getCheckin());
+//		Date transCheckin = dFormat.parse(checkinStr);
+		Date transCheckin = new Date(Integer.parseInt(checkinArray[5]), monthTrans(checkinArray[1]), Integer.parseInt(checkinArray[2]));
+		Date transCheckout = new Date(Integer.parseInt(checkoutArray[5]), monthTrans(checkoutArray[1]), Integer.parseInt(checkoutArray[2]));
+//		logger.info(transCheckin.toString(), transCheckout.toString());
+		int sizeOfRoom = payment.getRoom_no().length;
+		
+		reserve.setMem_no(payment.getMem_no());
+		reserve.setHost_no(payment.getHost_no());
+//		reserve.setCheckin(checkin);
+//		reserve.setCheckout(checkout);
+		reserve.setCheckin(transCheckin);
+		reserve.setCheckout(transCheckout);
+		for (int i = 0; i < sizeOfRoom; i++) {
+			reserve.setRoom_no(payment.getRoom_no()[i]);
+			reserve.setCount(payment.getCount()[i]);
+			if(payment.getCount()[i] != 0){
+				reserveService.insertReservation(reserve);
+//				reserveList.add(reserve);
+			}
+		}
+		logger.info(payment.toString());
+		mav.addObject("payment", payment);
+		mav.addObject("sizeOfRoom",sizeOfRoom);
+//		mav.addObject("reserveList",reserveList);
+		return mav;
+	}
+	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
-
-	@RequestMapping(value="/insertReservation.gh" , method = RequestMethod.POST)
-	public ModelAndView insertReservation(PaymentVO payment,@RequestParam("checkin") Date checkin,@RequestParam("checkout") Date checkout)throws Exception{
-		ModelAndView mav=new ModelAndView("guesthouse/reserveSuccess/예약 성공");
-		ReserveVO reserve = new ReserveVO();
-		logger.info(payment.toString());
-		int sizeOfRoom =payment.getRoom_no().length;
-		reserve.setMem_no(payment.getMem_no());
-		reserve.setHost_no(payment.getHost_no());
-		reserve.setCheckin(checkin);
-		reserve.setCheckout(checkout);
-		for(int i=0;i<sizeOfRoom;i++){
-			reserve.setRoom_no(payment.getRoom_no()[i]);
-			reserve.setCount(payment.getCount()[i]);
-			reserveService.insertReservation(reserve);
+	
+	private int monthTrans(String month){
+		int transMonth=0;
+		switch (month) {
+		case "Jan":
+			transMonth = 0;
+			break;
+		case "Fab":
+			transMonth = 1;
+			break;
+		case "Mar":
+			transMonth = 2;
+			break;
+		case "Apr":
+			transMonth = 3;
+			break;
+		case "May":
+			transMonth = 4;
+			break;
+		case "Jun":
+			transMonth = 5;
+			break;
+		case "Jul":
+			transMonth = 6;
+			break;
+		case "Aug":
+			transMonth = 7;
+			break;
+		case "Sep":
+			transMonth = 8;
+			break;
+		case "Oct":
+			transMonth = 9;
+			break;
+		case "Nov":
+			transMonth = 10;
+			break;
+		case "Dec":
+			transMonth = 11;
+			break;
+		default:
+			break;
 		}
-		mav.addObject("payment",payment);
-		return mav;
+		return transMonth;
 	}
 }

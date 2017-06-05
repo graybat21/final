@@ -67,7 +67,9 @@ $(function() {
 			alert("인원을 입력해 주세요.");
 		}else if (($("#max_price").val() == "" || $("#max_price").val() == null)) {
 			alert("최대가격을 입력해주세요.");
-
+		}
+	}
+});
 </script>
 <script>
 	$(function() {
