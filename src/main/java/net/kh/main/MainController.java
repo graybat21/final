@@ -89,7 +89,7 @@ public class MainController {
 			System.out.println(wishVO.toString());
 
 			List<Map<String, Object>> isOnWishList = wishService.wishList1(wishVO);
-			System.out.println(isOnWishList.size());
+			System.out.println("isonwishlist.size??"+isOnWishList.size());
 			if (isOnWishList.size() > 0) {
 				System.out.println(mem_no + "가 " + host_no + "찜했음이미");
 			}
