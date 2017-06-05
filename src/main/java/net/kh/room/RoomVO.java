@@ -15,12 +15,7 @@ public class RoomVO {
 	private String hostno;
 
 	private String filename;
-	
-	//room 정보 추가
-	private String roominfo;
-	private String service;
-	private String rules;
-	private String userinfo;
+
 
 	public int getNo() {
 		return no;
@@ -95,43 +90,10 @@ public class RoomVO {
 	}
 
 
-	public String getRoominfo() {
-		return roominfo;
-	}
-
-	public void setRoominfo(String roominfo) {
-		this.roominfo = roominfo;
-	}
-
-	public String getService() {
-		return service;
-	}
-
-	public void setService(String service) {
-		this.service = service;
-	}
-
-	public String getRules() {
-		return rules;
-	}
-
-	public void setRules(String rules) {
-		this.rules = rules;
-	}
-
-	public String getUserinfo() {
-		return userinfo;
-	}
-
-	public void setUserinfo(String userinfo) {
-		this.userinfo = userinfo;
-	}
-
 	@Override
 	public String toString() {
 		return "\nRoomVO [no=" + no + ", name=" + name + ", max=" + max + ", price=" + price + ", host_no=" + host_no
-				+ ", reg=" + reg + ", image=" + image + ", hostno=" + hostno + ", filename=" + filename + ", roominfo = "
-				+roominfo+", service = " +service+ ", rules = " +rules + ", userinfo = "+userinfo+"]";
+				+ ", reg=" + reg + ", image=" + image + ", hostno=" + hostno + ", filename=" + filename +"]";
 	}
 
 }
