@@ -103,13 +103,13 @@
 	
 	
 	function addWish(){
-		var session_no = $("#session_no").val();
-		var host_no = $("#host_no").val();
-		if(session_no!=null||${sessionScope.session_host_no!=null}){
+		if(session_no!=null||${sessionScope.session_mem_no!=null||sessionScope.session_host_no!=null}){
 			if(${sessionScope.session_host_no!=null}){
 				alert("기업회원은 사용할 수 없는 기능입니다.");
 				return false;
 			}
+			var session_no = $("#session_no").val();
+			var host_no = $("#host_no").val();
 			var con = confirm("관심상품에 등록하시겠습니까? 등록 완료 후 찜 리스트로 이동합니다.");
 			if(con==true){
 				location.href="wishAdd.gh?session_mem_no="+session_no+"&host_no="+host_no;
