@@ -1,6 +1,8 @@
 <%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<meta name="_csrf_header" content="X-CSRF-TOKEN" />
+<meta name="${_csrf.parameterName}" content="${_csrf.token}" />
 
   <header class="main-header">
     <!-- Logo -->

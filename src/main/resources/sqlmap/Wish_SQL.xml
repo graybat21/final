@@ -7,9 +7,8 @@
 		values(#{mem_no}, #{host_no})
 	</insert>
 
-	<select id="wishList1" resultType="wishListVO">
-		select * from WISH 
-		where mem_no = #{mem_no} and host_no = #{host_no}
+	<select id="wishList1" resultType="hashmap" parameterType="wishListVO">
+		select * from WISH where mem_no = #{mem_no} and host_no = #{host_no}
 	</select>
 
 	<select id="wishList" resultType="hashmap" parameterType="int">

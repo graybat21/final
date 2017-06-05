@@ -1,5 +1,6 @@
 package net.kh.review;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,5 +46,29 @@ public class ReviewServiceImpl implements ReviewService {
 	public int averageStar(int host_no) throws Exception {
 		return mapper.averageStar(host_no);
 	}
+
+
+	@Override
+	@Transactional
+	public List<HashMap<String,Object>> myMessage(ReviewVO review) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.myMessage(review);
+	}
+
+
+	@Override
+	public void myMessage2(int no) throws Exception {
+		// TODO Auto-generated method stub
+		mapper.myMessage2(no);
+		
+	}
+
+
+	@Override
+	public boolean selectREF(String writer) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.selectREF(writer);
+	}
+	
 	
 }

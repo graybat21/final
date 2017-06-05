@@ -87,7 +87,6 @@ public class QnaController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("first", first);
 		map.put("last", last);
-
 		map.put("name", name);
 
 

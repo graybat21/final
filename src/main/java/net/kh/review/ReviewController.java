@@ -1,5 +1,6 @@
 package net.kh.review;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,9 +12,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.kh.member.MemberVO;
 import net.kh.room.RoomService;
 import net.kh.room.RoomVO;
 
@@ -84,10 +87,32 @@ public class ReviewController {
 
 	@RequestMapping("/insertReviewComment.gh")
 	public String insertReviewComment(@RequestParam(value = "no", required = false) int no,
-			@RequestParam(value = "hostno", required = false) int hostno, Model model) throws Exception {
+			@RequestParam(value = "hostno", required = false) int hostno,   Model model) throws Exception {
+		
+	
+
 		model.addAttribute("no", no);
 		model.addAttribute("hostno", hostno);
 		return "guesthouse/reviewComment";
+	}
+	@RequestMapping("/myMessage.gh")
+	public ModelAndView myMessage(ReviewVO review,HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView("mypage/message/메세지함");
+		MemberVO member =(MemberVO) session.getAttribute("mem");
+		review.setWriter(member.getName());
+		List<HashMap<String,Object>> cList= reviewService.myMessage(review);
+		
+		for(int i=0; i<cList.size(); i++){
+			reviewService.myMessage2(Integer.parseInt( String.valueOf( cList.get(i).get("NO"))));
+		}
+		logger.info(cList.toString());
+		mav.addObject("list",cList);
+		return mav;
+	}
+	
+	@RequestMapping(value="checkReviewComment.gh", method=RequestMethod.POST)
+	public void checkReviewComment(@RequestParam(value="review_no") int review_no) throws Exception{
+		reviewService.myMessage2(review_no);
 	}
 
 }

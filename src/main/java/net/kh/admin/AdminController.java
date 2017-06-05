@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,6 +29,10 @@ public class AdminController {
 	@Resource(name="adminService")
 	private AdminService adminService;
 	
+	@RequestMapping(value = "adminLogin", method = RequestMethod.GET)
+	public String loginForm() {
+		return "login/loginAdmin";
+	}
 	
 	// 관리자의 회원관리 - 회원 목록
 	@RequestMapping("/adminmemberList.gh")
@@ -42,8 +47,8 @@ public class AdminController {
 		map.put("searchOption", searchOption);
 		map.put("searchKeyword", searchKeyword);
 		int totalCnt = adminService.memberListCnt(map); // DB연동_ 총 갯수 구해오기
-		int countPerPage = 5;
-		int countPerPaging = 3;
+		int countPerPage = 10;
+		int countPerPaging = 5;
 
 		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
 		int last = first + countPerPage - 1;
@@ -86,8 +91,8 @@ public class AdminController {
 		map.put("searchOption", searchOption);
 		map.put("searchKeyword", searchKeyword);
 		int totalCnt = adminService.hostListCnt(map); // DB연동_ 총 갯수 구해오기
-		int countPerPage = 4;
-		int countPerPaging = 3;
+		int countPerPage = 10;
+		int countPerPaging = 5;
 
 		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
 		int last = first + countPerPage - 1;
@@ -131,8 +136,8 @@ public class AdminController {
 		map.put("searchOption", searchOption);
 		map.put("searchKeyword", searchKeyword);
 		int totalCnt = adminService.roomListCnt(map); // DB연동_ 총 갯수 구해오기
-		int countPerPage = 3;
-		int countPerPaging = 3;
+		int countPerPage = 10;
+		int countPerPaging = 5;
 
 		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
 		int last = first + countPerPage - 1;
@@ -178,8 +183,8 @@ public class AdminController {
 		map.put("searchOption", searchOption);
 		map.put("searchKeyword", searchKeyword);
 		int totalCnt = adminService.discountListCnt(map); // DB연동_ 총 갯수 구해오기
-		int countPerPage = 3;
-		int countPerPaging = 3;
+		int countPerPage = 10;
+		int countPerPaging = 5;
 
 		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
 		int last = first + countPerPage - 1;
@@ -225,8 +230,8 @@ public class AdminController {
 		map.put("searchOption", searchOption);
 		map.put("searchKeyword", searchKeyword);
 		int totalCnt = adminService.reserveListCnt(map); // DB연동_ 총 갯수 구해오기
-		int countPerPage = 3;
-		int countPerPaging = 3;
+		int countPerPage = 10;
+		int countPerPaging = 5;
 		int first = ((pagemaker.getPage() - 1) * countPerPage) + 1;
 		int last = first + countPerPage - 1;
 

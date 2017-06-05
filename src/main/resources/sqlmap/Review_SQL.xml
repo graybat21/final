@@ -32,8 +32,8 @@
 	</select>	
 	
 	<update id="updateReviewCommentByReviewNo" parameterType="reviewVO">
-		UPDATE review set c_content = #{c_content}, c_reg = sysdate
-		where no = #{no}
+		UPDATE review set c_content = #{c_content}, c_reg = sysdate, ref=3
+				where no = #{no}
 	</update>		
 	<select id="hasReview" parameterType="int" resultType="boolean">
 		SELECT count(*) FROM review
@@ -43,5 +43,34 @@
 		SELECT avg(star) FROM review
 		WHERE host_no = #{host_no} 
 	</select>
+	
+	<select id="myMessage" resultType="java.util.HashMap"  parameterType="reviewVO">
+	SELECT r.no,
+			r.r_no,
+		   r.content,
+		   r.reg,
+		   r.c_content,
+		   r.c_reg
+	FROM review r,
+		 member m 
+	WHERE r.writer = m.name AND
+	      ref >= 2 AND
+	 	  m.name = #{writer}
+	 	  ORDER BY  r.reg DESC
+	 	  
+	</select>
+	
+<update id="myMessage2" parameterType="int">
+UPDATE  review set ref=2 
+where no = #{no}
+
+</update>
+
+<select id="selectREF" parameterType="String" resultType="boolean">
+select count(ref) 
+from review 
+where writer=#{writer} and ref=3
+</select>
+
 </mapper>
 	
