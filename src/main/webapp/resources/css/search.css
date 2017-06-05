@@ -796,10 +796,11 @@ label.chk-label{
 .srch_list.list_g5 li a .ad_thumb {position:static;display:block;width:100%}
 .srch_list.list_g5 li a .ad_thumb .img_wrap {display:block;width:100%;height:auto;position:relative;overflow:hidden;padding:51% 0 0 0}
 .srch_list.list_g5 li a .ad_thumb .img_wrap img {display:block;width:100%;height:100%;position:absolute;left:0;top:0;bottom:0;right:0}
-.srch_list.list_g5 .txt{position:absolute;bottom:10px;left:10px;z-index:10;}
-.srch_list.list_g5 .txt .name{display:block;padding-bottom:6px;font-size:1rem;color:#fff;}
+.srch_list.list_g5 .txt{position:absolute;bottom:13px;left:10px;z-index:10;}
+.srch_list.list_g5 .txt .name{display:block;padding-bottom:6px;font-size:1.1rem;color:#fff;}
 .srch_list.list_g5 .txt .name span{display:inline-block;padding-left:6px;font-size:0.6875rem;color:#cdcdcd;}
-.srch_list.list_g5 .txt .price{padding-bottom:3px;;font-size:0.8125rem;color:#ff8a00;}
+.srch_list.list_g5 .txt .price{padding-bottom:20px;;font-size:1.000rem;color:#000000;}
+.srch_list.list_g6 .txt .price{padding-bottom:20px;;font-size:1.000rem;color:#000000;}
 .srch_list.list_g5 .txt .price b{text-decoration:line-through;color:#c3c3c3;}
 .srch_list.list_g5 .txt .price .box_org{display:inline-block;background:#ff8a00;margin-left:7px;padding:2px;border-radius:4px;font-size:0.625rem;font-weight:normal;color:#fff;}
 .srch_list.list_g5 .txt .icon{display:block;margin-top:5px;font-size:0.625rem;font-weight:normal;color:#fff;}

@@ -109,9 +109,9 @@ public class QnaController {
 
 	@RequestMapping(value = "/qnaWrite.gh", method = RequestMethod.POST)
 	public String qnaWriteMan(QnaVO qnaVO) throws Exception {
+
 		int newRef = this.qnaService.refMax();
 		qnaVO.setRef(newRef);
-		
 		
 		qnaService.qnaWrite(qnaVO);
 		return "redirect:/myqnaList.gh";

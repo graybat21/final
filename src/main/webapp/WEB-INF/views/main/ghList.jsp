@@ -12,7 +12,7 @@
 <html lang="ko">
 <head>
 
-<title>서울 : 여기어때 - 국내 1위 숙박어플!</title>
+<title></title>
 <script>
 	$(function() {
 		$(".DatePicker").datepicker({});
@@ -120,7 +120,7 @@
 	<br> ${search.max_price}
 	<br> ${search.participant}
 	<hr>
-	
+
 
 
 	<!-- <div id="allWrap"> -->
@@ -129,148 +129,167 @@
 
 	<!-- (공통)contentsWrap -->
 
-		<!-- 검색 조건 폼 -->
+	<!-- 검색 조건 폼 -->
 
-		<div class="wrapper-inner">
+	<div class="wrapper-inner">
 
-			<div class="container">
-				<!--main-fill-->
-				<div class="main-fill ">
-					<!--tabs-->
-					<div class="panel">
+		<div class="container">
+			<!--main-fill-->
+			<div class="main-fill ">
+				<!--tabs-->
+				<div class="panel">
 
-						<!--panel-body-->
-						<div class="panel-body">
+					<!--panel-body-->
+					<div class="panel-body">
 
-							<!--tab-content-->
-							<div class="tab-content">
+						<!--tab-content-->
+						<div class="tab-content">
 
-								<!--tabhotel-->
-								<div class="tab-pane fade in active" id="tabhotel">
-									<form action="ghList.gh" id="searchForm" name="searchForm">
-										<h3>Search and Book Hotels</h3>
-										<ul class="list-inline list-unstyled">
-											<li><select class="select-one" name="area">
-													<option selected="selected">지역</option>
-													<option value="서울">서울</option>
-													<option value="경기">경기</option>
-													<option value="강원">강원</option>
-													<option value="충청">충청</option>
-													<option value="경상">경상</option>
-													<option value="전라">전라</option>
-													<option value="인천">인천</option>
-													<option value="광주">광주</option>
-													<option value="대전">대전</option>
-													<option value="대구">대구</option>
-													<option value="울산">울산</option>
-													<option value="부산">부산</option>
-													<option value="제주도">제주도</option>
-											</select></li>
-											<li>
-												<div class="form-group">
-													<input class="datepicker1" placeholder="Check In"
-														id="datepicker1" name="from" type="text">
-												</div>
-											</li>
-											<li>
-												<div class="form-group">
-													<input class="datepicker2" placeholder="Check Off"
-														id="datepicker2" name="to" type="text">
-												</div>
-											</li>
-											<li><select class="select-one" name="participant">
-													<option selected="selected">인원</option>
-													<option value="1">1 Guest</option>
-													<option value="2">2 Guest</option>
-													<option value="3">3 Guest</option>
-													<option value="4">4 Guest</option>
-													<option value="5">5 Guest</option>
+							<!--tabhotel-->
+							<div class="tab-pane fade in active" id="tabhotel">
+								<form action="ghList.gh" id="searchForm" name="searchForm">
+									<h3>GUEST HI</h3>
+									<ul class="list-inline list-unstyled">
+										<li><select class="select-one" name="area">
+												<option selected="selected">지역</option>
+												<option value="서울">서울</option>
+												<option value="경기">경기</option>
+												<option value="강원">강원</option>
+												<option value="충청">충청</option>
+												<option value="경상">경상</option>
+												<option value="전라">전라</option>
+												<option value="인천">인천</option>
+												<option value="광주">광주</option>
+												<option value="대전">대전</option>
+												<option value="대구">대구</option>
+												<option value="울산">울산</option>
+												<option value="부산">부산</option>
+												<option value="제주도">제주도</option>
+										</select></li>
+										<li>
+											<div class="form-group">
+												<input class="datepicker1" placeholder="Check In"
+													id="datepicker1" name="from" type="text">
+											</div>
+										</li>
+										<li>
+											<div class="form-group">
+												<input class="datepicker2" placeholder="Check Off"
+													id="datepicker2" name="to" type="text">
+											</div>
+										</li>
+										<li><select class="select-one" name="participant">
+												<option selected="selected">인원</option>
+												<option value="1">1 Guest</option>
+												<option value="2">2 Guest</option>
+												<option value="3">3 Guest</option>
+												<option value="4">4 Guest</option>
+												<option value="5">5 Guest</option>
 
-											</select></li>
+										</select></li>
 
-											<li><div class="form-group">
-													<input class="form-control" placeholder="최대가격" type="text"
-														name="max_price">
-												</div></li>
+										<li><div class="form-group">
+												<input class="form-control" placeholder="최대가격" type="text"
+													name="max_price">
+											</div></li>
 
 
-											<li><a href="javascript:searchSubmit()"
-												class="btn btn-search-travel">검 색</a></li>
-											<!--   search now -->
-										</ul>
-									</form>
-								</div>
-
+										<li><a href="javascript:searchSubmit()"
+											class="btn btn-search-travel">검 색</a></li>
+										<!--   search now -->
+									</ul>
+								</form>
 							</div>
+
 						</div>
-						<!--end panel body-->
 					</div>
-					<!--end tabs-->
+					<!--end panel body-->
 				</div>
+				<!--end tabs-->
 			</div>
 		</div>
+	</div>
 
 
-		<!-- 위에까지 -->
-<div>
-	</div>	
-		<!-- 상세 조건 검색 -->
-
-			<c:forEach items="${reserve}" var="item">
-				<div class="srch_list_wrap">
-					<div class="srch_result">
-						<div class="srch_group ui_0">
-
-							<div class="srch_list list_g5">
+	<!-- 위에까지 -->
+	<div></div>
+	<!-- 상세 조건 검색 -->
 
 
 
-								<ul>
-									<li><a class="link" >
-											<div class="ad_thumb">
-												<div class="img_wrap imgLiquidFill">
-												<img
-													src="${pageContext.request.contextPath}/resources/upload/${item.IMAGENAME}"
-													onclick="javascript:location.href='ghDetail.gh?host_no=${item.HOST_NO}'" width="330px">
-											
-												</div>
-											</div>
 
-											<div class="txt">
-												<p class="name">
-													${item.NAME }<span>${item.ADDR1 }</span>&nbsp;
-
-												</p>
-												<!--예약가-->
-												
-												<p class="price">숙박예약 : ${item.PRICE}</p>
-												<p class="price">방의최대인원수 : ${item.MAX} </p>
-
-												<p></p>
-											</div>
-									</a></li>
-								</ul>
-
-							</div>
-</div>
+	
+	<c:forEach items="${reserve}" var="item">
+			<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent">
+				<img src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}" width="330" height="330" 
+				class="img-thumbnail" onclick="javascript:location.href='ghDetail.gh?host_no=${list.HOST_NO}'" />
+				<h4 class="ngc">
+					<strong>${item.NAME } &nbsp;${item.ADDR1 } <br /> 숙박예약 :
+											${item.PRICE} <br /> 방의최대인원수 : ${item.MAX}
+											</strong>
+				</h4>
+				<div class="imageText">
+					<div class="text_border">
+						<strong> <!--          <p class="ngc" id="demo"></p> -->
+						</strong>
+					</div>
+					<p class="ngc" id="demo[${itemStat.index }]"></p>
+				</div>
+			</div>
+	
+		</c:forEach>
+		
+		
+		
 
 
+
+
+
+
+
+
+
+
+	<%-- <c:forEach items="${reserve}" var="item">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 filter recent">
+			<div class="srch_list_wrap">
+				<div class="srch_result">
+					<div class="srch_group ui_0">
+						<div class="srch_list list_g6">
+							<ul>
+								<li>
+									<div class="img_wrap imgLiquidFill">
+										<img
+											src="${pageContext.request.contextPath}/resources/upload/${item.IMAGENAME}"
+											onclick="javascript:location.href='ghDetail.gh?host_no=${item.HOST_NO}'"
+											width="330px">
+
+									</div>
+
+									<div class="txt">
+										<p class="price">
+											${item.NAME } &nbsp;${item.ADDR1 } <br /> 숙박예약 :
+											${item.PRICE} <br /> 방의최대인원수 : ${item.MAX}
+										</p>
+									</div>
+								</li>
+							</ul>
 
 						</div>
-
-
-
-
-
 					</div>
-				</div>
-</c:forEach>
-			<!-- //리스트 -->
-		</div>
-		<!-- //검색 wrap -->
-	</article>
-	<!-- //(공통)contentsWrap -->
 
+
+
+				</div>
+
+
+
+
+			</div>
+		</div>
+	</c:forEach>
+ --%>
 	<script type="text/javascript">
 		$(window).resize(function() {
 			if ($('body').hasClass('pcweb')) {
