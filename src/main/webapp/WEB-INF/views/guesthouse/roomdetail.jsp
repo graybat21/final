@@ -306,7 +306,7 @@ body.modal-open {
 					<div class="info_cont container">
 						<ul class="room_list">
 						
-						<script>
+					<script>
 						function detailShot(room_no,status){
 
 							$.ajax({

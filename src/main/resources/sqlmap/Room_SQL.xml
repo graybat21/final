@@ -10,12 +10,12 @@
 		INSERT INTO ROOM (
 		no,
 		name, max,
-		price, host_no, reg
+		price, host_no, reg, roominfo, service, rules, userinfo
 		)
 		VALUES (
 		SEQ_ROOM_NO.NEXTVAL, #{name},
 		#{max},
-		#{price}, #{host_no}, sysdate
+		#{price}, #{host_no}, sysdate, #{roominfo}, #{service}, #{rules}, #{userinfo}
 		)
 	</insert>
 	<select id="roomGetCurrentNo" resultType="int">

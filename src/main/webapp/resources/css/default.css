@@ -48,11 +48,11 @@ audio:not([controls]) {display: none;height: 0}
 [hidden] {display: none}
 html {font-family:'Nanum Gothic', '나눔고딕', '맑은고딕', '돋움', Dotum ,sans-serif;font-weight:400;font-size: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}
 html, button, input, select, textarea {font-family:'Nanum Gothic', '나눔고딕', '맑은고딕', '돋움', Dotum ,sans-serif;font-weight:400;font-size: 100%}
-body {margin: 0;padding:0}
+body {margin: 0;padding:0;}
 *{-webkit-tap-highlight-color: rgba(0,0,0,0);}
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {font-size:100%;margin:0;padding:0}
+h1, h2, h3, h4, h5, h6 {font-size:100%;margin-top:25px; margin-bottom: 10px; padding:0}
 abbr[title] {border-bottom: 1px dotted}
 b, strong {font-weight: 700}
 blockquote {margin:0}

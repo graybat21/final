@@ -946,12 +946,12 @@ label.chk-label{
 .ad_info_room .info_cont .room_list li .room_img .img_wrap .thumb_none {display:block;width:100%;height:100%;position:absolute;left:0;top:0;bottom:0;right:0;background:#eee url('https://img.goodchoice.kr/images/web_v2/search/ic_thumb_none.png') no-repeat 50% 50%;background-size:40px 40px}
 .ad_info_room .info_cont .room_list li .room_name {height:43px;margin:0 0 0 5px;font-size:1.125rem;font-weight:700;color:#353535}
 .ad_info_room .info_cont .room_list li .room_txt{height:40px;}
-.ad_info_room .info_cont .room_list li .room_info {color:#353535;font-size:0.875rem;line-height:1.5;margin:0 0 4px 5px}
+.ad_info_room .info_cont .room_list li .room_info {color:#353535;font-size:1.15rem;line-height:1.5;margin:0 0 4px 5px}
 .ad_info_room .info_cont .room_list li .room_info i{display:inline-block;width:15px;font-style:normal;color:#ccc;text-align:center;}
 .ad_info_room .info_cont .room_list li .room_info span {color:#707070}
 .ad_info_room .info_cont .room_list li .room_info strong {color:#e62a4a}
 .ad_info_room .info_cont .room_list li .room_info .txt_special{color:#009aea !important}
-.ad_info_room .info_cont .room_list li .reserve_ok{display:inline-block;position:absolute;top:auto;bottom:57px;right:20px;height:12px;border:1px solid #ff8a00;border-radius:3px;padding:2px 4px;font-size:0.75rem;font-weight:normal;color:#ff8a00;letter-spacing:-1px;}
+.ad_info_room .info_cont .room_list li .reserve_ok{display:inline-block;position:absolute;top:auto;bottom:34px;right:18px;border:1px solid #ff8a00;border-radius:3px;padding:2px 4px;font-size:1rem;font-weight:normal;color:#ff8a00;letter-spacing:-1px;}
 .ad_info_room .info_cont .room_list .early_cp{position:absolute;top:10px;right:20px;bottom:auto;left:auto;z-index:10;padding:10px;background:rgba(230,42,74,0.78);font-size:14px;line-height:1.4;color:#fff;text-align:center;}
 .room_list .room_name b{display:block;}
 .room_list .room_name b strong{display:inline-block;overflow:hidden;position:relative;top:0;text-overflow:ellipsis;white-space:nowrap;max-width:60%;vertical-align:top;}
@@ -1450,7 +1450,7 @@ label.chk-label{
 	.ad_info_room .info_cont .room_list li a {padding-bottom:10px;border:1px solid #ccc;background:#fff}
 	.ad_info_room .info_cont .room_list li .room_img {position:static;display:block;width:100%;height:auto;overflow:hidden}
 	.ad_info_room .info_cont .room_list li .room_img .img_wrap {padding:50.91% 0 0 0}
-	.ad_info_room .info_cont .room_list li .room_name {height:auto;min-height:20px;margin:11px 10px 6px 10px;font-size:15px}
+	.ad_info_room .info_cont .room_list li .room_name {height:auto;min-height:20px;margin:20px 10px 6px 10px;font-size:15px}
 	.ad_info_room .info_cont .room_list li .room_info {margin:0 10px;}
 	.ad_info_room .info_cont .room_list li .room_info i{display:inline-block;width:18px;font-style:normal;color:#e8e8e8;text-align:center;}
 

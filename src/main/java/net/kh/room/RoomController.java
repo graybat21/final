@@ -1,6 +1,8 @@
 package net.kh.room;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,10 +11,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -37,7 +41,7 @@ public class RoomController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
 
-	String PATH = "C:\\Java\\workspace_sts\\GuestHi\\src\\main\\webapp\\resources\\upload";
+	String PATH = "C:\\java_eclipse\\work\\guestHi\\src\\main\\webapp\\resources\\upload";
 
 	// @Resource(name = "roomService")
 	@Inject
@@ -78,6 +82,25 @@ public class RoomController {
 		return mav;
 	}
 
+    @RequestMapping("/RoomImage.gh")
+    public void roomImage(@RequestParam(value="room_no") int room_no,HttpServletResponse response) throws Exception{
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        map.put("room_no", room_no);
+ 
+        try{
+            String str = roomService.getRoomImage(map);
+
+            PrintWriter out = response.getWriter();
+            out.write(str);
+            out.flush();
+            out.close();
+
+        }catch(IOException e){
+            System.out.println("이미지 안불러와진다.RoomImage.gh");
+        }
+    }
+        
 	private List<RoomVO> validSearch(List<RoomVO> roomList, List<Integer> roomNo, int host_no, Date from, Date to)
 			throws Exception {
 
@@ -133,7 +156,7 @@ public class RoomController {
 
 	@RequestMapping("/roomInsertForm.gh")
 	public ModelAndView roomInsertForm(HttpServletRequest request) throws Exception {
-		ModelAndView model = new ModelAndView("mypage/roomInsertForm/룸 가입폼");
+		ModelAndView model = new ModelAndView("mypage/roomInsertForm/룸 등록");
 		/* model.addObject("host_no", 16); */
 
 		// 글 작성시 host_no 넘겨주기 위해서
