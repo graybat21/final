@@ -130,9 +130,7 @@
 				alert("기업회원은 사용할 수 없는 기능입니다.");
 				return false;
 			}
-			
 			var con = confirm("관심상품에서 해지하시겠습니까? 등록 완료 후 찜 리스트로 이동합니다.");
-			
 			if(con==true){
 				location.href="wishDelete.gh?session_mem_no="+session_no+"&host_no="+host_no;
 			}else {
@@ -144,7 +142,6 @@
 		}
 	}
 </script>
-
 
 <!-- 업체 정보 -->
 <div class="ad_new_info">
@@ -165,11 +162,6 @@
 			</c:if>
 			
 			
-			<%-- <c:if test="${fn:length(isOnWishList) > 0}">
-			위시리스트!!!
-			</c:if>
-			${isOnWishList} --%>
-			<%-- <a href="javascript:alert(${session_mem_no});alert(${host_no});" class="btn_zzim">찜하기</a> --%>
 		</div>
 		
 		<!-- 주소 -->

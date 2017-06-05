@@ -71,9 +71,6 @@ public class MainController {
 
 		HostVO host = hostService.getHostInfoByHostNo(host_no);
 		logger.info(host.toString());
-		// String address=host.getAddr1()+host.getAddr2()+host.getZip();
-		// String tel = host.getTel();
-		// model.addAttribute("address",address);
 
 		model.addAttribute("hostinfo", host);
 		model.addAttribute("host_no", host_no);
@@ -92,7 +89,7 @@ public class MainController {
 			System.out.println(wishVO.toString());
 
 			List<Map<String, Object>> isOnWishList = wishService.wishList1(wishVO);
-			System.out.println(isOnWishList.size());
+			System.out.println("isonwishlist.size??"+isOnWishList.size());
 			if (isOnWishList.size() > 0) {
 				System.out.println(mem_no + "가 " + host_no + "찜했음이미");
 			}

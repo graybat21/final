@@ -2,45 +2,50 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<style type="text/css">
+body{
+@font-face {
+  font-family: 'Jeju Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/jejugothic/v3/JejuGothic-Regular.eot);
+  src: url(//fonts.gstatic.com/ea/jejugothic/v3/JejuGothic-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/jejugothic/v3/JejuGothic-Regular.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/jejugothic/v3/JejuGothic-Regular.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/jejugothic/v3/JejuGothic-Regular.ttf) format('truetype');
+}
+body a{
+ text-decoration: none;
+}
+}
+</style>
+
+
+
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/mypage_files/mypage.css">
 </head>
 <body class="pcweb" oncontextmenu="return false"
 	ondragstart="return false">
 	<!-- 헤더 시작부분 -->
 	<div id="allWrap">
 		<!-- 페이지별 호출 소스 -->
-		<link rel="stylesheet" type="text/css"
-			href="${pageContext.request.contextPath}/resources/mypage_files/mypage.css">
 		<!-- //페이지별 호출 소스 -->
 		<!-- (공통)contentsWrap -->
 		<article id="contentsWrap">
 			<h2 class="hide">마이페이지</h2>
-
-			<!-- 페이지 navi -->
-			<script
-				src="${pageContext.request.contextPath}/resources/mypage_files/jquery_002.js"></script>
-			<script>
-				$(document).ready(function() {
-					$('.bxslider').bxSlider({
-						mode : 'vertical',
-						auto : true,
-						controls : false,
-						pager : false
-
-					});
-				});
-			</script>
+			
 			<!-- 진정한 마이페이지의 시작 -->
 			<!-- 마이페이지 wrap -->
 			<div class="my_allwrap">
 				<!-- <div class="bg_left"></div> -->
-				<!-- 바깥으로 빠져나가는 회색 선 없어짐. -->
 				<!-- <div class="bg_right"></div> -->
 				<div class="my_wrap row row_cont">
 					<!-- 마이페이지 메뉴 -->
-					<!-- 좌측 네비게이션 -->
 					<div class="my_menu" style="display: none">
 						<%@ include file="/WEB-INF/views/layout/mypage.jsp"%>
 					</div>
@@ -65,39 +70,38 @@
 											<c:url var="viewURL" value="ghDetail.gh">
 												<c:param name="host_no" value="${wlist.HOST_NO }" />
 											</c:url>
-											<!-- 리스트 TYPE1 -->
-											<ul>
-												<li><a class="link" data-ano="5913" data-uitype=""
-													data-adtype="2" data-viewtype=""
-													href="${viewURL }">
-														 <div class="ad_thumb">
-															<div class="img_wrap imgLiquidFill"
-																style="overflow: hidden; background-image: none;">
-																<span class="thumb_none"></span> 
-																<img src="${pageContext.request.contextPath}/resources/upload/${wlist.IMAGENAME}"
-																	style="opacity: 1; visibility: visible; max-width: none; max-height: none; width: auto; height: 100%; display: block; image-rendering: auto; margin-left: -69px; margin-top: 0px;">
-																<span class="opacity"></span>
-																<!-- 그라데이션 배경 -->
-																
-															</div>
-																
-														</div>
-																
-														<div class="txt">	
-															<p class="name">${wlist.NAME }
-															<p class="score">${wlist.ADDR1 }</p>
-															<p class="score">${wlist.ADDR2 }</p>
-															<p class="score">${wlist.ZIP }</p>												
-															<p class="price">${wlist.TEL }</p>																		
-														</div>
-														
-												</a>
-												<!-- G4, 키워드 검색 -->
-											</ul>
-										
+											
+											<c:url var="deleteWishURL" value="wishDelete.gh">
+												<c:param name="session_mem_no" value="${sessionScope.session_mem_no}"/>
+												<c:param name="host_no" value="${wlist.HOST_NO }" />
+											</c:url>
+											<table id="table" class="table">
+											<tr style="background-color: white;">
+											<td style="background-color: #ccc; width:330px; height: 180px; ">
+											<img src="${pageContext.request.contextPath}/resources/upload/${wlist.IMAGENAME}" style="width: 330px; height: 180px;">
+											</td>
+											<td width="25px"></td>
+											<td style="text-align: left; width: 520px;">
+											<br>
+											<a href="${viewURL }"><h1><font style=" color:#f32e4f; text-decoration: none; font-size: x-large "><b>${wlist.NAME }</b></font></h1></a>
+											
+											<font style="font-size: 11px; color: #ccc; ">
+											<br>
+											${wlist.ZIP }
+											<br>
+											${wlist.ADDR1 } ${wlist.ADDR2 }
+											<br>
+											☎ ${wlist.TEL }
+											</font>
+											</td>
+											<td width="30">
+											<br><a href= "${deleteWishURL}"><img src="${pageContext.request.contextPath}/resources/image/delete.png" width="20px"></a>
+											</td>
+											</tr>											
+											</table>
 										</c:forEach>
+										<div class="wrapper">
 									</div>
-									
 								</div>
 								<!-- //리스트 TYPE1 -->
 						
