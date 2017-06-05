@@ -140,7 +140,7 @@
 <!-- 업체 정보 -->
 <div class="ad_new_info">
 	<div class="new_info row">
-	<div id="map" style="width: 350px; height: 200px; float: right;"></div>
+	<div id="map" style="width: 380px; height: 280px; float: right;"></div>
 		<div class="cont">
 			<h3>${hostinfo.name}</h3>
 			<p class="address btn_copy">${hostinfo.addr1 }&nbsp; ${hostinfo.addr2 } &nbsp;${hostinfo.zip }</p>
@@ -294,7 +294,7 @@ var to = document.getElementById("datepicker2").value;
 			<div>
 				<span>
 				<input id="datepicker1" class="datepicker picker__input" placeholder="" 
-				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text">
+				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text" style="font-size:13px; font-weight: bold;">
 				<input id="from" name="from" value="from" type="hidden">
 				</span>
 			</div>
@@ -303,7 +303,7 @@ var to = document.getElementById("datepicker2").value;
 			<div>
 				<span>
 				<input id="datepicker2" class="datepicker picker__input" value="" readonly="" 
-				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text">
+				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text" style="font-size:13px; font-weight: bold;">
 				<input id="to" name="to" value="to" type="hidden">
 				</span>
 			</div>
