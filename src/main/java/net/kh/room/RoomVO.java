@@ -16,6 +16,7 @@ public class RoomVO {
 
 	private String filename;
 
+
 	public int getNo() {
 		return no;
 	}
@@ -88,10 +89,11 @@ public class RoomVO {
 		this.filename = filename;
 	}
 
+
 	@Override
 	public String toString() {
 		return "\nRoomVO [no=" + no + ", name=" + name + ", max=" + max + ", price=" + price + ", host_no=" + host_no
-				+ ", reg=" + reg + ", image=" + image + ", hostno=" + hostno + ", filename=" + filename + "]";
+				+ ", reg=" + reg + ", image=" + image + ", hostno=" + hostno + ", filename=" + filename +"]";
 	}
 
 }

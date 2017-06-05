@@ -103,13 +103,13 @@
 	
 	
 	function addWish(){
-		var session_no = $("#session_no").val();
-		var host_no = $("#host_no").val();
-		if(session_no!=null||${sessionScope.session_host_no!=null}){
+		if(session_no!=null||${sessionScope.session_mem_no!=null||sessionScope.session_host_no!=null}){
 			if(${sessionScope.session_host_no!=null}){
 				alert("기업회원은 사용할 수 없는 기능입니다.");
 				return false;
 			}
+			var session_no = $("#session_no").val();
+			var host_no = $("#host_no").val();
 			var con = confirm("관심상품에 등록하시겠습니까? 등록 완료 후 찜 리스트로 이동합니다.");
 			if(con==true){
 				location.href="wishAdd.gh?session_mem_no="+session_no+"&host_no="+host_no;
@@ -130,9 +130,7 @@
 				alert("기업회원은 사용할 수 없는 기능입니다.");
 				return false;
 			}
-			
 			var con = confirm("관심상품에서 해지하시겠습니까? 등록 완료 후 찜 리스트로 이동합니다.");
-			
 			if(con==true){
 				location.href="wishDelete.gh?session_mem_no="+session_no+"&host_no="+host_no;
 			}else {
@@ -145,11 +143,10 @@
 	}
 </script>
 
-
 <!-- 업체 정보 -->
 <div class="ad_new_info">
 	<div class="new_info row">
-	<div id="map" style="width: 350px; height: 200px; float: right;"></div>
+	<div id="map" style="width: 380px; height: 280px; float: right;"></div>
 		<div class="cont">
 			<h3>${hostinfo.name}</h3>
 			<p class="address btn_copy">${hostinfo.addr1 }&nbsp; ${hostinfo.addr2 } &nbsp;${hostinfo.zip }</p>
@@ -165,11 +162,6 @@
 			</c:if>
 			
 			
-			<%-- <c:if test="${fn:length(isOnWishList) > 0}">
-			위시리스트!!!
-			</c:if>
-			${isOnWishList} --%>
-			<%-- <a href="javascript:alert(${session_mem_no});alert(${host_no});" class="btn_zzim">찜하기</a> --%>
 		</div>
 		
 		<!-- 주소 -->
@@ -303,7 +295,7 @@ var to = document.getElementById("datepicker2").value;
 			<div>
 				<span>
 				<input id="datepicker1" class="datepicker picker__input" placeholder="" 
-				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text">
+				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text" style="font-size:13px; font-weight: bold;">
 				<input id="from" name="from" value="from" type="hidden">
 				</span>
 			</div>
@@ -312,7 +304,7 @@ var to = document.getElementById("datepicker2").value;
 			<div>
 				<span>
 				<input id="datepicker2" class="datepicker picker__input" value="" readonly="" 
-				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text">
+				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text" style="font-size:13px; font-weight: bold;">
 				<input id="to" name="to" value="to" type="hidden">
 				</span>
 			</div>

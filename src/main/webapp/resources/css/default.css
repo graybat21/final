@@ -48,11 +48,11 @@ audio:not([controls]) {display: none;height: 0}
 [hidden] {display: none}
 html {font-family:'Nanum Gothic', '나눔고딕', '맑은고딕', '돋움', Dotum ,sans-serif;font-weight:400;font-size: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}
 html, button, input, select, textarea {font-family:'Nanum Gothic', '나눔고딕', '맑은고딕', '돋움', Dotum ,sans-serif;font-weight:400;font-size: 100%}
-body {margin: 0;padding:0}
+body {margin: 0;padding:0;}
 *{-webkit-tap-highlight-color: rgba(0,0,0,0);}
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {font-size:100%;margin:0;padding:0}
+h1, h2, h3, h4, h5, h6 {font-size:100%;margin-top:25px; margin-bottom: 10px; padding:0}
 abbr[title] {border-bottom: 1px dotted}
 b, strong {font-weight: 700}
 blockquote {margin:0}
@@ -118,7 +118,7 @@ select {border:1px solid #ccc;color:#707070;box-sizing:border-box}
 #allWrap {position:relative;width:100%;padding:0 0 0 0}
 #headerWrap{position:fixed;left:0;top:0;width:100%;background:#fff;z-index:6000}
 #contentsWrap {width:100%;min-height:550px;padding:0}
-.row {position:relative;width:100%;max-width:1240px;margin:0 auto;box-sizing:border-box}
+.row {position:relative;width:100%; margin:0 auto;box-sizing:border-box} /* ★★★ 여기에요 여기이이이ㅣ이이이이이ㅣ */
 .row.row_cont {clear:both;padding:0}
 .row.row_cont .section_title {margin:15px 0 0 15px;color:#353535;text-align:left}
 .row.row_cont .section_desc {position:absolute;left:58px;top:7px;margin-bottom:0;font-size:14px;font-size:0.875rem;color:#707070;text-align:center}

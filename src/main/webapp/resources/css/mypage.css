@@ -325,8 +325,8 @@
 	.my_wrap .my_contents {float:left;width:78.902%;min-height:800px;border-left:1px ;}
 	.my_menu {border-bottom:none;}
 	.my_menu h3 {display:block;padding-left:15px;color:#343434;text-align:left;font-size:2rem;line-height:128px;}
-	.my_menu ul li a {margin-bottom:50px;padding:0 15px;text-align:left;border-bottom:none;font-size:1.125rem;background:none;}
-	.my_menu ul li a:hover, .my_menu ul li a.active {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_list_arrow_web.png') no-repeat 2px 48%;}
+	.my_menu ul li a {margin-bottom:35px;padding:0 15px;text-align:left;border-bottom:none;font-size:1.125rem;background:none;}
+	.my_menu ul li a:hover, .my_menu ul li a.active {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_list_arrow_web.png') no-repeat 2px 48%; text-decoration: none;}
 	.my_contents .my_title {height:124px;border-left:0px solid #e7e7e7;background:#fff url('https://img.goodchoice.kr/images/web_v2/mypage/bg_right.png') repeat-x 0 0;}
 	.my_contents .my_title h4,
 	.my_contents .my_title h4.active {display:none;visibility:hidden;text-indent:-9999px;font-size:0;background:none;}

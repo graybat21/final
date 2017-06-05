@@ -23,6 +23,7 @@
     display: inline-block;
     font-size: 16px;
 }
+
 </style>
 </head>
 <body>
@@ -50,26 +51,26 @@
 
 
 						<table class="type07">
-						
-							<tbody>
 							
+							<tbody>
+										
 								<c:forEach var="list" items="${qnaList}">
 
-									<tr>
+									<tr class="font">
 										<c:url var="viewURL" value="qnaView.gh">
 											<c:param name="no" value="${list.no }" />
 											
 										</c:url>
 
-										<td align="left"><strong><a href="${viewURL }">${list.no }</a></strong></td>
-										<td align="left"><strong><a href="${viewURL }">
+										<td>${list.no }</td>
+										<td><strong><a href="${viewURL }">
 													<c:if test="${list.restep==1}">&nbsp;
 													<img
 															src="${pageContext.request.contextPath}/image/answer.png">
 													</c:if> ${list.subject }
 										</a></strong></td>
 											
-										<td align="left"><strong><a href="${viewURL }">${list.writer }</a></strong></td>
+										<td>${list.writer }</td>
 										<td align="right"><gray>
 											<fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" /></gray></td>
 									</tr>
