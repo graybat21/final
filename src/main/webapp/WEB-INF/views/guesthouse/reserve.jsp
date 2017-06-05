@@ -66,7 +66,21 @@
 		
 	});
 	
-	
+	function goPayment(){
+		/* $.ajax({
+			url:"/GuestHi/insertReservation.gh",
+			type: "post",
+			data: {host_no: host_no},
+			success: function(data){
+				$(".ad_info_wrap").html(data);
+			},
+			error: function(data){
+				alert(data.status);//404 , 500 , 400
+				alert(data.readyState);//3 = 일부분 응답, 4= 통신 2=보넀는데 응답이 없다 1=요청이안간다
+			}
+		}); */
+		$('#payForm').submit();
+	}
 </script>
 </head>
 <body class="pcweb" oncontextmenu="return false"
@@ -78,19 +92,24 @@
 		<a id="bookmark2"></a>
 		<div class="reserve_wrap row" style="display: block;">
 			<div class="info_title">
-				<h4>예약(i.date - o.date)</h4>
+				<h4>예약(${from } - ${to })</h4>
 			</div>
 			<div class="reserve">
-
+				<form action="insertReservation.gh" id="payForm" method="post">
+				<input type="text" id="from" name="checkin" value="${from }">
+				<input type="text" id="to" name="checkout" value="${to }">
+				<input type="text" name="mem_no" value="${sessionScope.session_mem_no }">
+				<input type="text" name="host_no" value="${host_no }">
 				<!-- 예약 -->
-				<script src="https://mup.mobilians.co.kr/js/ext/ext_inc_comm.js"></script>
+				<!-- <script src="https://mup.mobilians.co.kr/js/ext/ext_inc_comm.js"></script>
 				<script src="/js/app/daily_order_inicis.js?rand=1476499599"></script>
 				<script src="/js/app/daily_order_view_web.js"></script>
 				<script src="/js/app/jquery.total-storage.min.js"></script>
 				<script src="/js/app/iscroll.js?rand=1476499599"></script>
 				<link rel="stylesheet"
 					href="/css/app/owl.carousel.css?rand=1476499599">
-				<script src="/js/app/owl.carousel.min.js?rand=1476499599"></script>
+				<script src="/js/app/owl.carousel.min.js?rand=1476499599"></script> -->
+				
 				<!-- Left Content -->
 				<div class="left">
 
@@ -98,19 +117,20 @@
 					<div id="chg_room">
 						<!-- 반복 -->
 						<c:forEach var="item" items="${roomList }" varStatus="status">
-						<div id="armgno24019" class="chg_room" data-armgname="room1"
+						<div id="armgno24019" class="chg_room">
+						<!-- data-armgname="room1"
 							data-dpod_no="9381178" data-chkin="2017.05.12 (금) 17:00"
 							data-chkout="2017.05.13 (토) 12:00" data-refund_time="14:00"
-							data-sale-type="2" data-armg-no="24019">
+							data-sale-type="2" data-armg-no="24019" -->
 							<a href="javascript:totalPriceChange();"> <input id="check_${status.count }"
 								type="checkbox" class="room" name="chk" > ${item.name } 
 								<strong> <b>${item.price }
-								<input type="hidden" id="price_${status.count }" value="${item.price }">
+								<input type="hidden" id="price_${status.count }" name="price" value="${item.price }">
 								원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" id="count_${status.count }" value="" width="3"
+								<input type="text" id="count_${status.count }" name="count" value="0"
 								onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' />명&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" id="tprice_${status.count }" value="" width="3" readonly/></b></strong>
-								
+								<input type="text" id="tprice_${status.count }" name="tprice" value="0" readonly/></b></strong>
+								<input type="text" name="room_no" value="${item.no }">
 							</a>
 							<!-- <div class="wan-spinner wan-spinner-3">
 								<a href="javascript:void(0)" class="minus">-</a> -->
@@ -122,16 +142,17 @@
 							<input type="hidden" id="roomEnd" value="${status.count }">
 						</c:if>
 						</c:forEach>
-						
+				</div></div>
+				
 						<!-- Right Content -->
-						<div id="reserve_detail_view" class="right">
+				<div id="reserve_detail_view" class="right">
 							<!-- 예약자  -->
 					<div class="wrap_div">
 						<div class="list_inp bd_none">
 							<h5>예약자 이름</h5>
 							<div class="bd_b">
 								<input class="inp_txt" name="do_from_name" placeholder="이름자동입력"
-									maxlength="20" value="${member.name }" type="text"
+									maxlength="20" value="${member.name }" type="text" name="mem_name"
 									readonly="readonly">
 							</div>
 						</div>
@@ -139,8 +160,8 @@
 							<h5>휴대폰 번호</h5>
 							<div class="bd_b">
 								<input class="inp_txt" name="do_from_tel" id="do_from_tel"
-									placeholder="휴대폰 번호 자동입력" maxlength="13"
-									value="${member.phone }" type="tel" readonly="readonly">
+									placeholder="휴대폰 번호 자동입력" maxlength="13" name="mem_phone"
+									value="${member.phone }" type="text" readonly="readonly">
 							</div>
 						</div>
 					</div>
@@ -152,14 +173,14 @@
 							<h5>입금 계좌</h5>
 							<div>
 								<input class="inp_txt" name="do_from_name" placeholder="호스트계좌번호"
-									maxlength="20" value="" type="text">
+									maxlength="20" value="" type="text" name="mem_account">
 							</div>
 						</div>
 						<div class="list_inp bd_none">
 							<h5>은행 및 예금주</h5>
 							<div>
 								<input class="inp_txt" name="do_from_name"
-									placeholder="은행 / 예금주" maxlength="20" value="" type="text">
+									placeholder="은행 / 예금주" maxlength="20" type="text" name="mem_bank">
 							</div>
 						</div>
 					</div>
@@ -171,7 +192,7 @@
 							<p class="first_pd">
 								총 주문금액<span class="total_price">
 								
-								<input type="text" id="totalPrice">
+								<input type="text" id="totalPrice" name="totalPrice">
 								
 								원</span>
 							</p>
@@ -182,7 +203,7 @@
 							<p>
 								<b class="org">최종 결제 금액</b><span class="total_val">
 								
-								<input type="text" id="finalPrice">
+								<input type="text" id="finalPrice" name="finalPrice">
 								
 								원</span>
 							</p>
@@ -199,12 +220,13 @@
 					</div>
 
 					<div class="pay_btn">
-						<a href="javascript:;" id="go_pay">결제하기</a>
+						<a href="javascript:goPayment();" id="go_pay">결제하기</a>
 					</div>
 				</div>
 
 				<div class="clear">&nbsp;</div>
-
+			
+				</form>
 			</div>
 		</div>
 	</div>

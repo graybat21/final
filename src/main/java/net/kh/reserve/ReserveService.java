@@ -11,5 +11,5 @@ public interface ReserveService {
 	public List<HashMap<String, Object>> getReserveInfoByHostNo(int host_no) throws Exception;
 
 	public List<Integer> validSearch(HashMap<String, Object> map) throws Exception;
-
+	public void insertReservation(ReserveVO reserve)throws Exception;
 }

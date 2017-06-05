@@ -184,7 +184,7 @@
 									</div>
 	
 									<div class="score_wrap">
-										<p class="score_star star_${item.STAR }"></p>
+										<p class="score_star star_${item.STAR == 5 ? '05' : item.STAR }"></p>
 										<span class="score_num">${item.STAR / 5 }</span>
 									</div>
 	

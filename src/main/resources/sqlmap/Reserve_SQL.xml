@@ -60,13 +60,10 @@
 			) ss
       WHERE s.no = ss.no ORDER BY checkin
 	</select>
-	<!-- <select id="roomGetCurrentNo" resultType="int">
-		SELECT
-		LAST_NUMBER
-		FROM
-		USER_SEQUENCES
-		WHERE
-		SEQUENCE_NAME='SEQ_ROOM_NO'
-	</select> -->
+	
+	<insert id="insertReservation" parameterType="reserveVO">
+		insert into reservation (no, host_no, room_no, count, checkin, checkout, reg, mem_no)
+		values(SEQ_RESERVATION_NO.NEXTVAL, #{host_no}, #{room_no}, #{count}, #{checkin}, #{checkout}, sysdate, #{mem_no})
+	</insert>
 </mapper>
 	

@@ -36,4 +36,9 @@ public class ReserveServiceImpl implements ReserveService {
 		return reserveDao.validSearch(map);
 	}
 
+	@Override
+	public void insertReservation(ReserveVO reserve) throws Exception {
+		reserveDao.insertReservation(reserve);
+	}
+
 }

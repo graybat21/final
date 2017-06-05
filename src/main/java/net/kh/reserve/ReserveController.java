@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -60,6 +61,9 @@ public class ReserveController {
 			roomList = validSearch(roomList, roomNo, host_no, from, to);
 		}
 		logger.info(roomList.toString());
+		mav.addObject("host_no", host_no);
+		mav.addObject("from", from);
+		mav.addObject("to", to);
 		mav.addObject("roomList", roomList);
 		mav.addObject("bigImage", bigImage);
 
@@ -205,4 +209,22 @@ public class ReserveController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
 
+	@RequestMapping(value="/insertReservation.gh" , method = RequestMethod.POST)
+	public ModelAndView insertReservation(PaymentVO payment,@RequestParam("checkin") Date checkin,@RequestParam("checkout") Date checkout)throws Exception{
+		ModelAndView mav=new ModelAndView("guesthouse/reserveSuccess/예약 성공");
+		ReserveVO reserve = new ReserveVO();
+		logger.info(payment.toString());
+		int sizeOfRoom =payment.getRoom_no().length;
+		reserve.setMem_no(payment.getMem_no());
+		reserve.setHost_no(payment.getHost_no());
+		reserve.setCheckin(checkin);
+		reserve.setCheckout(checkout);
+		for(int i=0;i<sizeOfRoom;i++){
+			reserve.setRoom_no(payment.getRoom_no()[i]);
+			reserve.setCount(payment.getCount()[i]);
+			reserveService.insertReservation(reserve);
+		}
+		mav.addObject("payment",payment);
+		return mav;
+	}
 }

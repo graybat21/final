@@ -374,7 +374,7 @@ $(document).ready(function(){
 			});
 			
 			$("#tabReserve").addClass('on');
-		}
+ 		}
 		if(tab == 3){
 			$.ajax({
 				url:"/GuestHi/tabReview.gh",
