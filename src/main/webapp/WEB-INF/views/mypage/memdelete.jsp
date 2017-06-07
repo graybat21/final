@@ -82,14 +82,14 @@
 								
 								
 									$.ajax({
-										url: 'memchkPW.gh',
+										url: 'chkPW.gh',
 										type: 'POST',
 										dataType: 'text',
 										data: { password: pass, session_mem_no: session_mem_no },
 										success: function(data) {
 											if(data=='1'){
 												alert("확인되었습니다.");
-												str = '<a id="userOutBtn" href="memdelete.gh?no='+ session_mem_no +'" onclick="return godelete()">탈퇴하기</a>';
+												str = '<a id="userOutBtn" href="delete.gh?no='+ session_mem_no +'" onclick="return godelete()">탈퇴하기</a>';
 												$(".btn_center").html(str);
 												agree = '<input id="argeeBtn" value="agree" type="checkbox">유의사항을 모두 확인하였으며, 해당 내용에 동의합니다.';
 												$(".agree > label").html(agree);

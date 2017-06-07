@@ -18,4 +18,7 @@ public interface HostDao {
 	
 	String deletePwChk(Map<String, Object> map) throws Exception;
 	
+	boolean modify(HostVO host) throws Exception;
+	
+	HostVO selectHostByNo(int no);
 }
