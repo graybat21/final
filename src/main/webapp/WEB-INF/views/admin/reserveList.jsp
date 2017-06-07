@@ -76,9 +76,12 @@ td {
 		
 		<tbody>
 					<c:forEach items="${adminReserveList }" var="r">
+								<c:url var="detail" value="/ghDetail.gh">
+									<c:param name="host_no" value="${r.hostno }" />
+								</c:url>
 						<tr height="40px">
 							<td>${r.memno }</td>
-							<td>${r.roomno }</td>
+							<td><a href="${detail }">${r.roomno }</a></td>
 							<td>${r.count}</td>
 							<td><fmt:formatDate value="${r.checkin }" pattern="yyyy.MM.dd"/></td>
 							<td><fmt:formatDate value="${r.checkout }" pattern="yyyy.MM.dd"/></td>

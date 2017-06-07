@@ -81,10 +81,17 @@ td {
 		
 		<tbody>
 					<c:forEach items="${hostList }" var="host">
+								<c:url var="detail" value="/ghDetail.gh">
+									<c:param name="host_no" value="${host.no }" />
+								</c:url>
 						<tr height="50px">
 							<td>${host.no }</td>
-							<td>${host.email }</td>
-							<td>${host.name }</td>
+							<td>
+							<a href="${detail }">${host.email }</a>
+							</td>
+							<td>
+							<a href="${detail }">${host.name }</a>
+							</td>
 							<td>${host.tel }</td>
 							<td><fmt:formatDate value="${host.reg }" pattern="yyyy.MM.dd"/></td>
 							<td>${host.bizno}</td>
