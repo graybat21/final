@@ -429,18 +429,19 @@ body.modal-open {
 										id="abouthotel-description" style="padding: 0px;">
 										<div class="sub-section-left">
 											<div class="line-seperator"></div>
-											<h2 class="sub-section-header" data-abouthotel-header="true">숙소
-												설명</h2>
+											<h2 class="sub-section-header" data-abouthotel-header="true">체크인 / 체크아웃</h2>
 										</div>
 										<div class="sub-section-right">
 											<div class="line-seperator"></div>
 											<div class="collapsed" style="max-height: 100px; padding: 0 10px 10px 0">
 												<div>
 													<div class="hotel-desc">
-														후쿠오카 방문 시, 양질의 숙박과 훌륭한 서비스를 제공하는 본 숙소(게스트하우스 나카이마)에서 집과 같은
-														편안함을 느껴보시기 바랍니다. 이 곳에서 생동감 넘치는 도시의 많은 것을 최대로 즐길 수 있습니다.
-														숙소가 하카타 마치야 후루사토-칸, 쿠시다 쉬라인, 쿠시다-진자 등과 인접한 위치에 있기에 지역의 관광
-														명소와 볼거리를 구경하기 위해 멀리 갈 필요가 없습니다.<br>
+														
+														
+<font style="size: 12pt; text-decoration: underline; "><strong>체크인  </strong></font>&nbsp; &nbsp; &nbsp; &nbsp; 
+15:00~ (얼리체크인은 호스트에게 문의 바랍니다.)<br><br>
+<font style="size: 12pt; text-decoration: underline; "><strong>체크아웃  </strong></font>&nbsp; &nbsp; &nbsp; &nbsp; 
+11:00 이전<br><br>
 														
 													</div>
 													<div></div>
@@ -452,115 +453,16 @@ body.modal-open {
 										id="abouthotel-features" style="padding: 0px;">
 										<div class="sub-section-left">
 											<div class="line-seperator"></div>
-											<h2 class="sub-section-header" data-abouthotel-header="true">숙소
-												시설 및 서비스</h2>
+											<h2 class="sub-section-header" data-abouthotel-header="true">유의사항</h2>
 										</div>
 										<div class="sub-section-right">
 											<div class="line-seperator"></div>
 											<div class="collapsed">
 												<div data-abouthotel-detail="true">
 													<div class="sub-section no-margin" style="padding: 0px;">
-														<h3 class="sub-section-right-header">인터넷</h3>
-														<ul class="non-bullet-list no-margin">
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-wifi-in-public-areas"></i><span>Wi-Fi
-																		(공용 공간)</span></span></li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-free-wifi-in-all-rooms"></i><span>Wi-Fi
-																		(무료/전 객실)</span></span></li>
-															<li class="list-item three-column features-item">&nbsp;</li>
-														</ul>
-													</div>
-													<div class="sub-section no-margin"
-														style="padding: 20px 0px 0px;">
-														<h3 class="sub-section-right-header">이동 편의 시설/서비스</h3>
-														<ul class="non-bullet-list no-margin">
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-bicycle-rental"></i><span>자전거
-																		대여</span></span></li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-car-park"></i><span>주차장</span></span></li>
-															<li class="list-item three-column features-item">&nbsp;</li>
-														</ul>
-													</div>
-													<div class="sub-section no-margin"
-														style="padding: 20px 0px 0px;">
-														<h3 class="sub-section-right-header">식음료 시설/서비스</h3>
-														<ul class="non-bullet-list no-margin">
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-shared-kitchen"></i><span>공용
-																		주방</span></span></li>
-															<li class="list-item three-column features-item">&nbsp;</li>
-															<li class="list-item three-column features-item">&nbsp;</li>
-														</ul>
-													</div>
-													<div class="sub-section no-margin"
-														style="padding: 20px 0px 0px;">
-														<h3 class="sub-section-right-header">서비스 및 편의 시설</h3>
-														<ul class="non-bullet-list no-margin">
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-laundry-service"></i><span>세탁
-																		서비스</span></span></li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-daily-housekeeping"></i><span>일일
-																		청소 서비스</span></span></li>
-															<li class="list-item three-column features-item">&nbsp;</li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-laundromat"></i><span>세탁실</span></span></li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-smoking-area unavailable-feature-icon"></i><span
-																	class="unavailable-feature">흡연 공간</span></span></li>
-															<li class="list-item three-column features-item">&nbsp;</li>
-														</ul>
-													</div>
-													<div class="sub-section no-margin"
-														style="padding: 20px 0px 0px;">
-														<h3 class="sub-section-right-header">출입/접근 서비스</h3>
-														<ul class="non-bullet-list no-margin">
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-24hour-security"></i><span>24시간
-																		경비 서비스</span></span></li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-pets-allowed unavailable-feature-icon"></i><span
-																	class="unavailable-feature">반려동물 동반가능</span></span></li>
-															<li class="list-item three-column features-item">&nbsp;</li>
-														</ul>
-													</div>
-													<div class="sub-section no-margin"
-														style="padding: 20px 0px 0px;">
-														<h3 class="sub-section-right-header">모든 객실에서 이용 가능</h3>
-														<ul class="non-bullet-list no-margin">
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-bathrooms"></i><span>공동
-																		욕실</span></span></li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-complimentary-bottled-water unavailable-feature-icon"></i><span
-																	class="unavailable-feature">무료 생수</span></span></li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-microwave"></i><span>전자레인지</span></span></li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-heating"></i><span>난방</span></span></li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-wifi"></i><span>무선
-																		인터넷(무료)</span></span></li>
-															<li class="list-item three-column features-item">&nbsp;</li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-lockers"></i><span>라커</span></span></li>
-															<li class="list-item three-column features-item"><span><i
-																	class="ficon ficon-18 ficon-air-conditioning"></i><span>에어컨</span></span></li>
-															<li class="list-item three-column features-item">&nbsp;</li>
-														</ul>
-													</div>
-													<div class="sub-section no-margin"
-														style="padding: 20px 0px 0px;">
-														<h3 class="sub-section-right-header">숙소에서 사용 가능한 언어</h3>
-														<ul class="non-bullet-list no-margin">
-															<li class="list-item three-column features-item"><span><i
-																	class="flag flag-18 flag-18-jp"></i><span
-																	class="ah-available-feature">일본어</span></span></li>
-															<li class="list-item three-column features-item">&nbsp;</li>
-															<li class="list-item three-column features-item">&nbsp;</li>
-														</ul>
+														<h3 class="sub-section-right-header">
+														<font style="size: 12pt; text-decoration: underline; "><strong>취소 / 선결제  </strong></font>&nbsp; &nbsp; &nbsp; &nbsp; 게스트하우스 운영정책에 따라 취소 및 선결제 정책이 달라집니다. 취소 및 선결제를 원하실 시 호스트에게 직접 문의바랍니다.<br><br>
+														<font style="size: 12pt; text-decoration: underline; "><strong>현금 결제  </strong></font>&nbsp; &nbsp; &nbsp; &nbsp; 모든 숙박 업체에서는 현금 결제시 현금영수증 처리가 가능합니다.<br><br></h3>
 													</div>
 												</div>
 											</div>
@@ -599,50 +501,11 @@ body.modal-open {
 											<div class="collapsed" style="max-height: 116px;">
 												<div>
 													<div class="sub-section no-margin" style="padding: 0px;">
-														<h3 class="sub-section-right-header">체크인/체크아웃</h3>
 														<div>
 															<span class="useful-info-icon"><i
 																class="ficon ficon-18 ficon-express-check-in-check-out"></i></span>
-															<!-- react-text: 168 -->
-															체크인 시작시간
-															<!-- /react-text -->
-															<!-- react-text: 169 -->
-															:&nbsp;
-															<!-- /react-text -->
-															<strong>03:00 PM</strong>
-														</div>
-														<div>
-															<span class="useful-info-icon"><i
-																class="ficon ficon-18 ficon-express-check-in-check-out"></i></span>
-															<!-- react-text: 174 -->
-															체크인 마감시간
-															<!-- /react-text -->
-															<!-- react-text: 175 -->
-															:&nbsp;
-															<!-- /react-text -->
-															<strong>09:00 PM</strong>
-														</div>
-														<div>
-															<span class="useful-info-icon"><i
-																class="ficon ficon-18 ficon-express-check-in-check-out"></i></span>
-															<!-- react-text: 180 -->
-															체크아웃 마감시간
-															<!-- /react-text -->
-															<!-- react-text: 181 -->
-															:&nbsp;
-															<!-- /react-text -->
-															<strong>11:00 AM</strong>
-														</div>
-														<div>
-															<span class="useful-info-icon"><i
-																class="ficon ficon-18 ficon-24hour-frontdesk"></i></span>
-															<!-- react-text: 186 -->
-															리셉션 종료 시간
-															<!-- /react-text -->
-															<!-- react-text: 187 -->
-															:&nbsp;
-															<!-- /react-text -->
-															<strong>09:00 PM</strong>
+															<font style="size: 12pt; text-decoration: underline; "><strong>어린이 요금  </strong></font>&nbsp; &nbsp; &nbsp; &nbsp; 게스트하우스 운영정책에 따라 숙박 가능 연령이 달라집니다. 어린이 동반 고객은 예약 전에 호스트에게 직접 문의바랍니다.<br><br>
+															<font style="size: 12pt; text-decoration: underline; "><strong>반려동물  </strong></font>&nbsp; &nbsp; &nbsp; &nbsp; 반려 동물과 함께 숙박하시길 원하신다면 예약 전에 반드시 반려 동물 동반 가능 유무를 호스트에게 직접 문의해주세요.<br><br>
 														</div>
 													</div>
 												</div>

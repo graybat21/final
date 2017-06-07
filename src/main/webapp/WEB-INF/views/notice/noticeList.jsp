@@ -42,7 +42,7 @@
 								<c:param name="no" value="${list.no }" />
 								</c:url>
 								 		
-								<td align="left"><a href="${viewURL}"><strong><p style="color:#000000; text-decoration: none !important;">${list.subject }</p></strong></a></td>
+								<td align="left"><a href="${viewURL}"><strong><p style="color:#000000; text-decoration: none; !important;">${list.subject }</p></strong></a></td>
 								
 								<td align="right"><gray><fmt:formatDate value="${list.reg }" pattern="yyyy.MM.dd" /></gray></td>
 								</tr>

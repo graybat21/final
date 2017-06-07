@@ -47,5 +47,17 @@ public class HostServiceImpl implements HostService {
 		// TODO Auto-generated method stub
 		return hostMapper.deletePwChk(map);
 	}
+	
+	@Override
+	public Object modify(HostVO host) throws Exception{
+		// TODO Auto-generated method stub
+		return hostMapper.modify(host);
+	}
+
+	@Override
+	public HostVO selectHostByNo(int no) throws Exception {
+		// TODO Auto-generated method stub
+		return hostMapper.selectHostByNo(no);
+	}
 
 }

@@ -82,7 +82,7 @@
 								
 								
 									$.ajax({
-										url: 'hostchkPW.gh',
+										url: 'chkPW2.gh',
 										type: 'POST',
 										dataType: 'text',
 										data: { password: pass, session_host_no: session_host_no },

@@ -15,5 +15,9 @@ public interface HostService {
 	public int hostGetCurrentNo() throws Exception; // ���� no ��ȣ ���ϱ�
 	
 	public String deletePwChk(Map map) throws Exception;
+	
+	public Object modify(HostVO host) throws Exception;
+	
+	public HostVO selectHostByNo(int no) throws Exception;
 
 }

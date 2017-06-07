@@ -103,7 +103,7 @@ function validate(session_mem_no){
 								<tr>
 									<th>연락처</th>
 									<td>
-										<input type="tel" name="phone" placeholder="연락처불러오기" value="${mem.phone }" size="15" maxlength="11">
+										<input type="tel" name="phone" placeholder="연락처불러오기" value="${mem.phone }" size="15" maxlength="15">
 									</td>
 								</tr>
 
