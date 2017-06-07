@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
@@ -165,7 +164,7 @@ $(function() {
 		var jssor_1_options = {
 			$AutoPlay : 1,
 			/* 뀨 */
-			$SlideDuration : 8000000000,
+			$SlideDuration : 8000000000000000,
 			$SlideEasing : $Jease$.$OutQuint,
 			$CaptionSliderOptions : {
 				$Class : $JssorCaptionSlideo$,
@@ -549,29 +548,19 @@ function searchSubmit(){
 		<div data-u="slides"
 			style="cursor: default; position: relative; top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden;">
 			<div>
-				  <img data-u="image" src="${pageContext.request.contextPath}/resources/image/red.jpg" />
-
+<%-- 				  <img data-u="image" src="${pageContext.request.contextPath}/resources/image/red.jpg" />
+ --%>
 
 
 				<div class="inner-body">
 					<!-- <div class="wrapper-index"> -->
-					<img class="wrapper-index"
-						src="${pageContext.request.contextPath}/resources/image/red.jpg">
+					<img class="wrapper-index" src="${pageContext.request.contextPath}/resources/image/red2.jpg">
 
 
-					<!-- 추가: 검색 -->
-					<!-- 	<div class="wrapper-index"
-			style="background: transparent url(&quot;image/plane-beach.jpg&quot;) repeat scroll 0% 0%;"> -->
 					<div class="wrapper-inner">
 						<!--text-box-->
 
 						<br /> <br /> <br /> <br /> <br />
-						<div
-							class="row scroll-text hidden-xs slick-initialized slick-slider">
-							<div aria-live="polite" class="slick-list draggable"></div>
-
-
-						</div>
 						<div class="container">
 							<!--main-fill-->
 							<div class="main-fill ">
@@ -616,20 +605,12 @@ function searchSubmit(){
 											<div class="form-group">
 												<input class="datepicker1"
 													placeholder="Check In" id="datepicker1" name="from" type="text">
-												<!-- 
-													<img
-													class="ui-datepicker-trigger" src="image/icon-calendar.png"
-													alt="Select date" title="Select date"> -->
 											</div>
 										</li>
 										<li>
 											<div class="form-group">
 												<input class="datepicker2"
 													placeholder="Check Off" id="datepicker2" name="to" type="text">
-												<!-- 	<input type="text" id="datepicker4"> -->
-												<!-- <img
-													class="ui-datepicker-trigger" src="image/icon-calendar.png"
-													alt="Select date" title="Select date"> -->
 											</div>
 										</li>
 										<li><select class="select-one" name="participant">
@@ -671,6 +652,10 @@ function searchSubmit(){
 			<div>
 				<img data-u="image"
 					src="${pageContext.request.contextPath}/resources/image/purple.jpg" />
+					
+					
+					
+					
 			</div>
 			<div>
 				<img data-u="image"
@@ -695,41 +680,51 @@ function searchSubmit(){
 	</div>
 
 
-		<!-- 게하리스트 -->
-		<c:forEach items="${list}" var="list">
-		<!-- <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter recent"> -->
-			<div class="srch_list_wrap">
+
+	
+
+<br/>
+<br/>
+<br/>
+
+<!-- 게하리스트 -->
+<c:forEach items="${list}" var="list">
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 filter recent">
+		<div class="srch_list_wrap">
 				<div class="srch_result">
 					<div class="srch_group ui_0">
 						<div class="srch_list list_g5">
 							<ul>
-								<li><a class="link" >
-										<div class="ad_thumb">
-											<div class="img_wrap imgLiquidFill">
+								<li>
+<!-- 								<a class="link">
+ -->											<div class="img_wrap imgLiquidFill">
 												<img
 													src="${pageContext.request.contextPath}/resources/upload/${list.IMAGENAME}"
-													onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'" width="330px">
+													
+													onclick="javascript:location.href='ghDetail.gh?host_no=${list.NO}'" width="330px" >
 											</div>
-										</div>
+											
 									<br/>
 										<div class="txt">
 											<p class="name">
-												${list.NO}/${list.NAME}<span></span>&nbsp;
-
+								&nbsp;&nbsp;&nbsp;&nbsp;　　	${list.NAME}<span></span>&nbsp;
+<!-- .srch_list.list_g5 .txt .price -->
+	
 											</p>
 											<!--예약가-->
-											<p class="price">숙박예약 50,000원~</p>
+										<p class="price">　　　　${list.TEL}</p>
 
-											<p></p>
 										</div>
-								</a></li>
+								<!-- </a> -->
+								</li>
 							</ul>
 
 						</div>
 					</div>
 				</div>
 			</div>
-		</c:forEach>
+			</div>
+			</c:forEach>
 
 
 </body>
