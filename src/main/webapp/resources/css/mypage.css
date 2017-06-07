@@ -7,7 +7,7 @@
 .my_wrap {position:relative;}
 .my_menu {position:absolute;left:0;top:40px;width:100%;border-bottom:2px solid #e62a4a;z-index:99;}
 .my_menu h3 {display:none;}
-.my_menu ul li a {display:block;padding:15px 0;border-bottom:1px solid #ccc;text-align:center;color:#353535;background:#fff;}
+.my_menu ul li a {display:block;padding:15px 0;border-bottom:1px solid #ccc;text-align:center;color:#353535;background:#fff; text-decoration: none;}
 .my_menu ul li a:hover, .my_menu ul li a.active {color:#e62a4a;}
 .my_menu ul li:last-child a {border-bottom:none;}
 .my_wrap .my_contents {background:#f8f8f8;}
@@ -325,7 +325,7 @@
 	.my_wrap .my_contents {float:left;width:78.902%;min-height:800px;border-left:1px ;}
 	.my_menu {border-bottom:none;}
 	.my_menu h3 {display:block;padding-left:15px;color:#343434;text-align:left;font-size:2rem;line-height:128px;}
-	.my_menu ul li a {margin-bottom:35px;padding:0 15px;text-align:left;border-bottom:none;font-size:1.125rem;background:none;}
+	.my_menu ul li a {margin-bottom:35px;padding:0 15px;text-align:left;border-bottom:none;font-size:1.125rem;background:none; text-decoration: none;}
 	.my_menu ul li a:hover, .my_menu ul li a.active {background:url('https://img.goodchoice.kr/images/web_v2/service/ic_list_arrow_web.png') no-repeat 2px 48%; text-decoration: none;}
 	.my_contents .my_title {height:124px;border-left:0px solid #e7e7e7;background:#fff url('https://img.goodchoice.kr/images/web_v2/mypage/bg_right.png') repeat-x 0 0;}
 	.my_contents .my_title h4,
