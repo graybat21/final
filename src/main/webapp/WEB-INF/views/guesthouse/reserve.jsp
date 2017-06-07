@@ -129,9 +129,9 @@
 							<input id="check_${status.count }" type="checkbox" class="room" name="chk" > ${item.name } 
 								<strong> <b>${item.price }원
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" id="count_${status.count }" name="count" value=""
+								<input type="text" id="count_${status.count }" name="count" value="0"
 								onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' />명&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" id="tprice_${status.count }" name="tprice" value="" readonly />원</b></strong>
+								<input type="text" id="tprice_${status.count }" name="tprice" value="0" readonly />원</b></strong>
 								<input type="hidden" name="room_no" value="${item.no }">
 							</a>
 							<!-- style="width:80%;height:53px;line-height:55px;border:none;font-size:0.9375rem;color:#000;" -->
