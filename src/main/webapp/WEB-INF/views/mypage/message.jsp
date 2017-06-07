@@ -22,7 +22,7 @@
 			<!-- 서비스 콘텐츠 -->
 			<div class="svc_contents">
 				<div class="svc_title svc_inquiry">
-					<h4>1:1 문의</h4>
+					<h4>리뷰 메시지함</h4>
 				</div>
 				<!-- svc_cont_wrap -->
 				<div class="svc_cont_wrap" style="min-height: 1127px;">

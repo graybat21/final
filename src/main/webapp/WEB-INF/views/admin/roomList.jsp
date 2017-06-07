@@ -73,11 +73,15 @@ td {
 		
 		<tbody>
 					<c:forEach items="${roomList }" var="room">
+								<c:url var="detail" value="/ghDetail.gh">
+									<c:param name="host_no" value="${room.hostno }" />
+								</c:url>
 						<tr height="50px">
-							<td>${room.no }</td>
-							<td>${room.hostno }</td>
-							<td><img src="./resources/upload/${room.filename }" width="100px" height="100px"/></td>
-							<td>${room.name }</td>
+							<td width="80px">${room.no }</td>
+							<td width="110px">${room.hostno }</td>
+							<td><a href="${detail}"><img src="./resources/upload/${room.filename }" width="100px" height="100px"/></td>
+							<td>
+							<a href="${detail}">${room.name }</a></td>
 							<td>${room.max }</td>
 							<td>${room.price}</td>
 							<td>

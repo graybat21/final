@@ -136,7 +136,7 @@ header .header_area .btn_search.active:after{content:"";position:absolute;top:2p
 header .header_area .nav_sub{position:absolute;top:0;right:0}
 header .header_area .nav_sub ul{margin-top:50px}
 header .header_area .nav_sub ul li{float:left;margin-left:22px}
-header .header_area .nav_sub ul li a{display:inline-block;position:relative;padding-left:27px;font-size:14px;color:#333}
+header .header_area .nav_sub ul li a{display:inline-block;position:relative;padding-left:27px;font-size:14px;color:#333; text-decoration: none;}
 header .header_area .nav_sub ul .link_01{margin-left:0}
 header .header_area .nav_sub ul .link_02{margin-left:24px}
 header .header_area .nav_sub ul .link_01 a:before{content:'';display:inline-block;position:absolute;top:-2px;left:0;width:20px;height:20px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_gnb.gif') no-repeat 0 -197px}
@@ -561,7 +561,7 @@ header .btn_m_srch{display:none}
 header .header_area .nav_sub{position:absolute;top:0;right:0}
 header .header_area .nav_sub ul{margin-top:36px}
 header .header_area .nav_sub ul li{float:left;margin-left:22px}
-header .header_area .nav_sub ul li a{display:inline-block;position:relative;padding-left:27px;font-size:14px;color:#333}
+header .header_area .nav_sub ul li a{display:inline-block;position:relative;padding-left:27px;font-size:14px;color:#333; text-decoration: none;}
 header .header_area .nav_sub ul .link_01{margin-left:0}
 header .header_area .nav_sub ul .link_02{margin-left:24px}
 header .header_area .nav_sub ul .link_01 a:before{content:'';display:inline-block;position:absolute;top:-2px;left:0;width:20px;height:20px;background:url('https://img.goodchoice.kr/images/web_v2/common/pack_gnb.gif') no-repeat 0 -197px}
