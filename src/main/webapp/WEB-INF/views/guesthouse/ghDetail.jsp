@@ -296,7 +296,7 @@ var to = document.getElementById("datepicker2").value;
 				<span>
 				<input id="datepicker1" class="datepicker picker__input" placeholder="" 
 				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text" style="font-size:13px; font-weight: bold;">
-				<input id="from" name="from" value="from" type="hidden">
+				<input id="from" name="from" value="" type="hidden">
 				</span>
 			</div>
 		</div>
@@ -305,7 +305,7 @@ var to = document.getElementById("datepicker2").value;
 				<span>
 				<input id="datepicker2" class="datepicker picker__input" value="" readonly="" 
 				aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="newdatepic_01_root" type="text" style="font-size:13px; font-weight: bold;">
-				<input id="to" name="to" value="to" type="hidden">
+				<input id="to" name="to" value="" type="hidden">
 				</span>
 			</div>
 		</div>
