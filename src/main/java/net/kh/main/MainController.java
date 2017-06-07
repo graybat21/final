@@ -42,7 +42,7 @@ public class MainController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping("/ghList.gh")
 	public ModelAndView ghList(Search search) throws Exception {
-		ModelAndView mav = new ModelAndView("main/ghList/寃���由ъ�ㅽ��");
+		ModelAndView mav = new ModelAndView("main/ghList/검색목록");
 
 		List<Map<String, Object>> reserve = reserveService.selectSearchHappy();
 		// List<Date> dateList = new ArrayList<Date>();

@@ -148,8 +148,8 @@
                      <c:forEach var="item" items="${reserve }">
                      <div class="vr_table_td">
                      	<li>
-                     	<span><fmt:formatDate value="${item.CHECKIN }" pattern="yyyy-MM-dd"/>&nbsp;
-                     	~&nbsp;<fmt:formatDate value="${item.CHECKOUT }" pattern="yyyy-MM-dd"/></span>
+                     	<span><fmt:formatDate value="${item.CHECKIN }" pattern="yy-MM-dd"/>&nbsp;
+                     	~&nbsp;<fmt:formatDate value="${item.CHECKOUT }" pattern="yy-MM-dd"/></span>
                         <span>${item.HOST_NAME } / ${item.ROOM_NAME }</span>
                         <span>${item.COUNT}&nbsp;명 &nbsp;&nbsp;총&nbsp;${item.TOTALPRICE }원</span>
                         <span>${item.STATUS }</span>

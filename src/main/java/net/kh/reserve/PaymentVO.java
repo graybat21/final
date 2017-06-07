@@ -15,10 +15,10 @@ public class PaymentVO {
 	private String[] price;
 	private String[] tprice;
 	private String finalPrice;
-	private String mem_account;
-	private String mem_bank;
-	private String mem_phone;
-	private String mem_name;
+	private String memaccount;
+	private String membank;
+	private String memphone;
+	private String memname;
 	
 	private String checkin;
 	private String checkout;
@@ -34,6 +34,9 @@ public class PaymentVO {
 	public String getCheckout() {
 		return checkout;
 	}
+	
+	public Date transCheckin;
+	public Date transCheckout;
 	
 //	private Date checkin;
 //	private Date checkout;
@@ -105,37 +108,50 @@ public class PaymentVO {
 	public void setFinalPrice(String finalPrice) {
 		this.finalPrice = finalPrice;
 	}
-	public String getMem_account() {
-		return mem_account;
+	
+	public String getMemaccount() {
+		return memaccount;
 	}
-	public void setMem_account(String mem_account) {
-		this.mem_account = mem_account;
+	public void setMemaccount(String memaccount) {
+		this.memaccount = memaccount;
 	}
-	public String getMem_bank() {
-		return mem_bank;
+	public String getMembank() {
+		return membank;
 	}
-	public void setMem_bank(String mem_bank) {
-		this.mem_bank = mem_bank;
+	public void setMembank(String membank) {
+		this.membank = membank;
 	}
-	public String getMem_phone() {
-		return mem_phone;
+	public String getMemphone() {
+		return memphone;
 	}
-	public void setMem_phone(String mem_phone) {
-		this.mem_phone = mem_phone;
+	public void setMemphone(String memphone) {
+		this.memphone = memphone;
 	}
-	public String getMem_name() {
-		return mem_name;
+	public String getMemname() {
+		return memname;
 	}
-	public void setMem_name(String mem_name) {
-		this.mem_name = mem_name;
+	public void setMemname(String memname) {
+		this.memname = memname;
+	}
+	public Date getTransCheckin() {
+		return transCheckin;
+	}
+	public void setTransCheckin(Date transCheckin) {
+		this.transCheckin = transCheckin;
+	}
+	public Date getTransCheckout() {
+		return transCheckout;
+	}
+	public void setTransCheckout(Date transCheckout) {
+		this.transCheckout = transCheckout;
 	}
 	@Override
 	public String toString() {
 		return "\nPaymentVO [no=" + no + ", mem_no=" + mem_no + ", host_no=" + host_no + ", room_no="
 				+ Arrays.toString(room_no) + ", count=" + Arrays.toString(count) + ", reg=" + reg + ", price="
 				+ Arrays.toString(price) + ", tprice=" + Arrays.toString(tprice) + ", finalPrice=" + finalPrice
-				+ ", mem_account=" + mem_account + ", mem_bank=" + mem_bank + ", mem_phone=" + mem_phone + ", mem_name="
-				+ mem_name + ", checkin=" + checkin + ", checkout=" + checkout + "]";
+				+ ", mem_account=" + memaccount + ", mem_bank=" + membank + ", mem_phone=" + memphone + ", mem_name="
+				+ memname + ", checkin=" + checkin + ", checkout=" + checkout + "]";
 	}
 	
 	

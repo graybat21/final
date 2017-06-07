@@ -93,14 +93,15 @@
 		<a id="bookmark2"></a>
 		<div class="reserve_wrap row" style="display: block;">
 			<div class="info_title">
-				<h4>예약(${from } - ${to })</h4>
+				<h4>예약(<fmt:formatDate value="${from }" pattern="yyyy-MM-dd"/> &nbsp;-&nbsp; 
+				<fmt:formatDate value="${to }" pattern="yyyy-MM-dd"/>)</h4>
 			</div>
 			<div class="reserve">
 				<form action="insertReservation.gh" id="payForm" method="post">
-				<input type="text" id="from" name="checkin" value="${from }">
-				<input type="text" id="to" name="checkout" value="${to }">
-				<input type="text" name="mem_no" value="${sessionScope.session_mem_no }">
-				<input type="text" name="host_no" value="${host_no }">
+				<input type="hidden" id="from" name="checkin" value="${from }">
+				<input type="hidden" id="to" name="checkout" value="${to }">
+				<input type="hidden" name="mem_no" value="${sessionScope.session_mem_no }">
+				<input type="hidden" name="host_no" value="${host_no }">
 				<!-- 예약 -->
 				<!-- <script src="https://mup.mobilians.co.kr/js/ext/ext_inc_comm.js"></script>
 				<script src="/js/app/daily_order_inicis.js?rand=1476499599"></script>
@@ -123,21 +124,17 @@
 							data-dpod_no="9381178" data-chkin="2017.05.12 (금) 17:00"
 							data-chkout="2017.05.13 (토) 12:00" data-refund_time="14:00"
 							data-sale-type="2" data-armg-no="24019" -->
-							<a href="javascript:totalPriceChange();"> <input id="check_${status.count }"
-								type="checkbox" class="room" name="chk" > ${item.name } 
-								<strong> <b>${item.price }
-								<input type="hidden" id="price_${status.count }" name="price" value="${item.price }">
-								원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" id="count_${status.count }" name="count" value="0"
+							<a href="javascript:;" style="text-decoration:none"> 
+							<input type="hidden" id="price_${status.count }" name="price" value="${item.price }">
+							<input id="check_${status.count }" type="checkbox" class="room" name="chk" > ${item.name } 
+								<strong> <b>${item.price }원
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="text" id="count_${status.count }" name="count" value=""
 								onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' />명&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="text" id="tprice_${status.count }" name="tprice" value="0" readonly/></b></strong>
-								<input type="text" name="room_no" value="${item.no }">
+								<input type="text" id="tprice_${status.count }" name="tprice" value="" readonly />원</b></strong>
+								<input type="hidden" name="room_no" value="${item.no }">
 							</a>
-							<!-- <div class="wan-spinner wan-spinner-3">
-								<a href="javascript:void(0)" class="minus">-</a> -->
-								
-								<!-- <a href="javascript:void(0)" class="plus">+</a>
-							</div> -->
+							<!-- style="width:80%;height:53px;line-height:55px;border:none;font-size:0.9375rem;color:#000;" -->
 						</div>
 						<c:if test="${status.last }">
 							<input type="hidden" id="roomEnd" value="${status.count }">
@@ -152,16 +149,16 @@
 						<div class="list_inp bd_none">
 							<h5>예약자 이름</h5>
 							<div class="bd_b">
-								<input class="inp_txt" name="do_from_name" placeholder="이름자동입력"
-									maxlength="20" value="${member.name }" type="text" name="mem_name"
+								<input class="inp_txt" placeholder="이름자동입력"
+									maxlength="20" value="${member.name }" type="text" name="memname"
 									readonly="readonly">
 							</div>
 						</div>
 						<div class="list_inp bd_none">
 							<h5>휴대폰 번호</h5>
 							<div class="bd_b">
-								<input class="inp_txt" name="do_from_tel" id="do_from_tel"
-									placeholder="휴대폰 번호 자동입력" maxlength="13" name="mem_phone"
+								<input class="inp_txt" id="do_from_tel"
+									placeholder="휴대폰 번호 자동입력" maxlength="13" name="memphone"
 									value="${member.phone }" type="text" readonly="readonly">
 							</div>
 						</div>
@@ -173,15 +170,15 @@
 						<div class="list_inp">
 							<h5>입금 계좌</h5>
 							<div>
-								<input class="inp_txt" name="do_from_name" placeholder="호스트계좌번호"
-									maxlength="20" value="" type="text" name="mem_account">
+								<input class="inp_txt" placeholder="호스트계좌번호"
+									maxlength="20" value="" type="text" name="memaccount">
 							</div>
 						</div>
 						<div class="list_inp bd_none">
 							<h5>은행 및 예금주</h5>
 							<div>
-								<input class="inp_txt" name="do_from_name"
-									placeholder="은행 / 예금주" maxlength="20" type="text" name="mem_bank">
+								<input class="inp_txt" 
+									placeholder="은행 / 예금주" maxlength="20" type="text" name="membank">
 							</div>
 						</div>
 					</div>

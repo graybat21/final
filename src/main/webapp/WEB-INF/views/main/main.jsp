@@ -166,7 +166,7 @@ $(function() {
 		var jssor_1_options = {
 			$AutoPlay : 1,
 			/* 뀨 */
-			$SlideDuration : 8000000000000000,
+			$SlideDuration : 5000,
 			$SlideEasing : $Jease$.$OutQuint,
 			$CaptionSliderOptions : {
 				$Class : $JssorCaptionSlideo$,

@@ -31,7 +31,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "adminLogin", method = RequestMethod.GET)
 	public String loginForm() {
-		return "login/loginAdmin";
+		return "login";
 	}
 	
 	// 관리자의 회원관리 - 회원 목록

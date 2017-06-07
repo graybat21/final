@@ -205,15 +205,13 @@ public class ReserveController {
 	}
 
 	
-	@SuppressWarnings({ "deprecation", "null" })
+	@SuppressWarnings({ "deprecation" })
 	@RequestMapping(value = "/insertReservation.gh", method = RequestMethod.POST)
 	public ModelAndView insertReservation(PaymentVO payment/*,@RequestParam(value = "from", required = false) Date from,
 			@RequestParam(value = "to", required = false) Date to*/) throws Exception {
 		ModelAndView mav = new ModelAndView("guesthouse/reserveSuccess/예약 성공");
 		ReserveVO reserve = new ReserveVO();
-		List<ReserveVO> reserveList=null;
-		logger.info(payment.getCheckin());
-		logger.info(payment.getCheckout());
+//		List<ReserveVO> reserveList=null;
 //		DateFormat dFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 //		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA);
 //		Date checkin = payment.getCheckin();
@@ -238,6 +236,7 @@ public class ReserveController {
 //		reserve.setCheckout(checkout);
 		reserve.setCheckin(transCheckin);
 		reserve.setCheckout(transCheckout);
+		System.out.println("방개수" + sizeOfRoom);
 		for (int i = 0; i < sizeOfRoom; i++) {
 			reserve.setRoom_no(payment.getRoom_no()[i]);
 			reserve.setCount(payment.getCount()[i]);
@@ -246,6 +245,8 @@ public class ReserveController {
 //				reserveList.add(reserve);
 			}
 		}
+		payment.setTransCheckin(transCheckin);
+		payment.setTransCheckout(transCheckout);
 		logger.info(payment.toString());
 		mav.addObject("payment", payment);
 		mav.addObject("sizeOfRoom",sizeOfRoom);
