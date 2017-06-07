@@ -622,6 +622,11 @@ function searchSubmit(){
 												<option value="3">3 Guest</option>
 												<option value="4">4 Guest</option>
 												<option value="5">5 Guest</option>
+												<option value="6">6 Guest</option>
+			                                    <option value="7">7 Guest</option>
+			                                    <option value="8">8 Guest</option>
+			                                    <option value="9">9 Guest</option>
+			                                    <option value="10">10 Guest</option>
 										</select></li>
 										<li>
 											<div class="form-group">

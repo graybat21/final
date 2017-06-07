@@ -271,7 +271,7 @@ table.table_point tbody td.red1 { color:red1;}
                                     <option value="대구">대구</option>
                                     <option value="울산">울산</option>
                                     <option value="부산">부산</option>
-                                    <option value="제주도">제주도</option>
+                                    <option value="제주">제주</option>
                               </select></li>
                               <li>
                                  <div class="form-group">
@@ -292,6 +292,11 @@ table.table_point tbody td.red1 { color:red1;}
                                     <option value="3">3 Guest</option>
                                     <option value="4">4 Guest</option>
                                     <option value="5">5 Guest</option>
+                                    <option value="6">6 Guest</option>
+                                    <option value="7">7 Guest</option>
+                                    <option value="8">8 Guest</option>
+                                    <option value="9">9 Guest</option>
+                                    <option value="10">10 Guest</option>
 
                               </select></li>
 

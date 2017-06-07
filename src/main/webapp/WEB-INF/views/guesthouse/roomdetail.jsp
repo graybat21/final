@@ -365,7 +365,7 @@ body.modal-open {
 								</p>
 								<div class="room_txt">
 								<p class="room_info"><span>요금&nbsp;&nbsp;</span><strong>${item.price }</strong>원<i>|</i>1인 요금</p>								
-								<p class="room_info"><strong style="color:#000">잔여 인원</strong><i>|</i>3명</p>		
+								<p class="room_info"><strong style="color:#000">잔여 인원</strong><i>|</i>${item.max }명</p>		
 								</div>
 
 								</a>
