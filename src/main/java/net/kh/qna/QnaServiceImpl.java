@@ -81,6 +81,7 @@ public class QnaServiceImpl implements QnaService {
 	@Override
 	public int refMax() throws Exception {
 		// TODO Auto-generated method stub
+		
 		return qnaDao.refMax();
 	}
 }

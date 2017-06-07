@@ -188,9 +188,8 @@ public class RoomController {
 				String orgFileName = mpf.get(i).getOriginalFilename();
 				if (orgFileName == "") {
 					break;
-				} else {
-					newFileName = getUUID() + orgFileName.substring((orgFileName.lastIndexOf(".")));
-				}
+				} 
+				newFileName = getUUID() + orgFileName.substring((orgFileName.lastIndexOf(".")));
 				File file = new File(PATH + "/" + newFileName);
 
 				logger.info(orgFileName + "============원래 파일명=========");
