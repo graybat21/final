@@ -40,7 +40,7 @@
 			) ss
 		WHERE 
 			s.no = ss.no
-		ORDER BY no
+		ORDER BY no desc
 	</select>
 	
 	

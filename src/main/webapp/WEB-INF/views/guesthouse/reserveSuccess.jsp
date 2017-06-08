@@ -80,6 +80,9 @@ table.table_point tbody td.red1 { color:red1;}
 </tr>
 </c:if>
 </c:forEach>
+
+<h1>예약하셨습니다. 다음 계좌로 ${payment.finalPrice } 원을 입금해주세요.</h1>
+<h2>우리은행 : 1002-02-9566061 박선호</h2>
 </tbody>
 </table>
 

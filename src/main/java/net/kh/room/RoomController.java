@@ -128,6 +128,7 @@ public class RoomController {
 				if (getInfoByDate != null) {
 					max = Integer.parseInt(getInfoByDate.get("MAX").toString());
 					sum = Integer.parseInt(getInfoByDate.get("SUMCOUNT").toString());
+					System.out.println(sum);
 					rest = max - sum;
 					if (rest <= 0) {
 						System.out.println("제거할 방번호 구함.");

@@ -43,11 +43,11 @@
 					</tr>
 					  <c:forEach var="item" items="${room}" varStatus="status">
 					    <tr>
-					 		    <td align="left">${item.name}</td>
-								<td align="left">${item.max }</td>
-								<td align="left">${item.price}</td>
-				                <td align="left">${item.no}</td>
-				                <td><img src="./resources/upload/${image[status.count-1].filename}" width="100px" height="100px"/></td>
+				 		    <td align="left">${item.name}</td>
+							<td align="left">${item.max }</td>
+							<td align="left">${item.price}</td>
+			                <td align="left">${item.no}</td>
+			                <td><img src="./resources/upload/${image[status.index].filename}" width="100px" height="100px"/></td>
 					    </tr>
 					</c:forEach>
 					<tr>
